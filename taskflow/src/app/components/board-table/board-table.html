@@ -40,7 +40,9 @@
                 <span class="task-due overdue"><i name="alert"></i>Atrasada</span>
               }
 
-              <span class="task-due"><i name="clock"></i>{{ item.dueDate }}</span>
+              @if (item.dueDate) {
+                <span class="task-due"><i name="clock"></i>{{ item.dueDate }}</span>
+              }
             </div>
           </div>
         } @empty {
@@ -74,7 +76,10 @@
             }
             <div class="task-meta">
               <span class="tag tag-blue">{{ item.tag }}</span>
-              <span class="tag tag-warn">{{ item.dueDate }}</span>
+
+              @if (item.dueDate) {
+                <span class="task-due"><i name="clock"></i>{{ item.dueDate }}</span>
+              }
 
               @if (item.overdue) {
                 <span class="task-due overdue"><i name="alert"></i>Atrasada</span>
