@@ -1,59 +1,76 @@
-# Taskflow
+# TaskFlow
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.4.
+Aplicação de gerenciamento de tarefas no estilo Kanban, desenvolvida como projeto de portfólio com foco em boas práticas Angular modernas.
 
-## Development server
+## Visão geral
 
-To start a local development server, run:
+TaskFlow permite organizar tarefas em colunas de status (A fazer, Em andamento, Concluído), com suporte a prioridades, filtros e progresso geral calculado automaticamente. O layout foi projetado para demonstrar domínio de arquitetura de componentes, reatividade com Signals e consumo de API REST.
 
-```bash
-ng serve
-```
+## Stack
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- **Angular 22** — standalone components, Signals, computed state
+- **TypeScript 6** — tipagem estrita
+- **RxJS** — streams para comunicação com a API
+- **Angular HttpClient** — integração REST com interceptors de erro
+- **Angular CDK** — drag and drop entre colunas do Kanban
+- **Angular Reactive Forms** — criação e edição de tarefas
+- **SCSS** — design tokens, sistema de temas via partials
+- **json-server** — fake REST API para desenvolvimento local
+- **Vitest** — testes unitários
+- **Prettier + Husky** — formatação e git hooks
+- **pnpm** — gerenciamento de pacotes
 
-## Code scaffolding
+## Funcionalidades
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Quadro Kanban com 3 colunas e drag and drop
+- Cards com prioridade (alta / média / baixa) e data de vencimento
+- Indicador de tarefas atrasadas
+- Barra de progresso geral calculada via `computed()` signal
+- Filtros por prioridade, responsável e período
+- Alternância entre view Kanban e lista
+- Status bar com estado da API e branch atual
 
-```bash
-ng generate component component-name
-```
+## Rodando localmente
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+**Pré-requisitos:** Node.js 20+, pnpm
 
 ```bash
-ng test
+# Instalar dependências
+pnpm install
+
+# Subir a fake API (porta 3000)
+pnpm db-start
+
+# Subir o app Angular (porta 4200)
+pnpm start
 ```
 
-## Running end-to-end tests
+Abra `http://localhost:4200` no navegador. A API estará disponível em `http://localhost:3000`.
 
-For end-to-end (e2e) testing, run:
+## Scripts
 
-```bash
-ng e2e
+| Comando | Descrição |
+|---|---|
+| `pnpm start` | Dev server Angular |
+| `pnpm db-start` | json-server (fake API) |
+| `pnpm build` | Build de produção |
+| `pnpm test` | Testes unitários com Vitest |
+
+## Estrutura
+
+```
+src/
+├── app/
+│   ├── components/       # Componentes compartilhados (sidebar, topbar...)
+│   ├── pages/            # Views roteadas (board, list...)
+│   └── services/         # TaskService, ProjectService
+└── themes/
+    ├── _tokens.scss      # Design tokens (cores, raios, espaçamentos)
+    ├── _fonts.scss       # Import Inter
+    └── _utils.scss       # Classes utilitárias
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Autor
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Rodrigo Cunha** — Dev Pleno  
+[GitHub](https://github.com/falkneertb)
