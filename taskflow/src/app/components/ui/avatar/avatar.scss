@@ -1,0 +1,15 @@
+@use '../../../../themes/styles.scss' as *;
+
+.avatar {
+  width: toRem(30);
+  height: toRem(30);
+  border-radius: 50%;
+  background: $accent0;
+  color: $accent600;
+  font-size: toRem(12);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}

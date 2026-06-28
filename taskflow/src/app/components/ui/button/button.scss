@@ -1,0 +1,30 @@
+@use '../../../../themes/styles.scss' as *;
+
+:host {
+  display: flex;
+  align-items: center;
+  gap: toRem(6);
+  padding: toRem(7, 14);
+  border-radius: var(--radius);
+  font-size: toRem(13);
+  font-weight: 500;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.12s;
+}
+
+:host:hover {
+  opacity: 0.88;
+}
+
+:host(.btn-ghost) {
+  background: transparent;
+  color: $txt-2;
+  border: 0.5px solid $border100;
+}
+
+:host(.btn-primary) {
+  background: $accent600;
+  color: #fff;
+}
