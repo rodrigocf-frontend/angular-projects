@@ -46,11 +46,37 @@
   grid-template-columns: repeat(3, 1fr);
   gap: toRem(12);
   flex: 1;
+}
 
-  ul {
-    min-height: 300px;
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: toRem(24);
+  border: 1px dashed $border0;
+  border-radius: 12px;
+  gap: toRem(8);
+  color: $txt-3;
+  text-align: center;
+
+  i {
+    font-size: toRem(28);
+    margin-bottom: toRem(4);
   }
 }
+
+.empty-title {
+  font-size: toRem(13.5);
+  font-weight: 500;
+  color: $txt-2;
+}
+
+.empty-desc {
+  font-size: toRem(12);
+  color: $txt-3;
+}
+
 .col {
   display: flex;
   flex-direction: column;

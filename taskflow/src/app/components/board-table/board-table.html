@@ -43,6 +43,12 @@
               <span class="task-due"><i name="clock"></i>{{ item.dueDate }}</span>
             </div>
           </div>
+        } @empty {
+          <div class="empty-state">
+            <i name="list"></i>
+            <p class="empty-title">Nenhuma tarefa aqui</p>
+            <p class="empty-desc">Arraste uma tarefa ou crie uma nova</p>
+          </div>
         }
       </ul>
       <div class="add-task"><i name="add" style="font-size: 14px"></i>Adicionar tarefa</div>
@@ -74,6 +80,12 @@
                 <span class="task-due overdue"><i name="alert"></i>Atrasada</span>
               }
             </div>
+          </div>
+        } @empty {
+          <div class="empty-state">
+            <i name="list"></i>
+            <p class="empty-title">Nenhuma tarefa aqui</p>
+            <p class="empty-desc">Arraste uma tarefa ou crie uma nova</p>
           </div>
         }
       </ul>
@@ -111,6 +123,12 @@
 
               <span class="task-due"><i name="check"></i>{{ item.status }}</span>
             </div>
+          </div>
+        } @empty {
+          <div class="empty-state">
+            <i name="list"></i>
+            <p class="empty-title">Nenhuma tarefa aqui</p>
+            <p class="empty-desc">Arraste uma tarefa ou crie uma nova</p>
           </div>
         }
       </ul>

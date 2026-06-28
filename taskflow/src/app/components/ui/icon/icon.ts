@@ -15,6 +15,7 @@ const iconMap: Record<string, string> = {
   alert: 'fa-solid fa-circle-exclamation',
   trash: 'fa-solid fa-trash',
   edit: 'fa-solid fa-pen',
+  list: 'fa-regular fa-rectangle-list',
 };
 
 @Component({
