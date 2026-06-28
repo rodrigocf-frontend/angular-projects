@@ -137,8 +137,9 @@
 .progress-cats {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: toRem(6);
   margin-top: toRem(10);
+  row-gap: toRem(6);
+  column-gap: toRem(32);
 }
 .pcat {
   display: flex;
