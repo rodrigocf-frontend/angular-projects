@@ -11,7 +11,7 @@
 
     @for (item of navItems; track $index) {
       <div
-        (click)="onSelect($index, 'NAV_ITEMS')"
+        (click)="onSelect($index, 'NAV_ITEMS', item.route)"
         class="nav-item"
         [ngClass]="{ active: $index === navItemActive() }"
       >
