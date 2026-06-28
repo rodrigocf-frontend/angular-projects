@@ -1,9 +1,18 @@
+@use '../themes//styles.scss' as *;
+
 .app-container {
-  background: var(--bg);
+  background: $bg;
   display: grid;
   grid-template-columns: max-content 1fr;
   border-radius: 12px;
   overflow: hidden;
   height: 100vh;
-  border: 0.5px solid var(--border2);
+  border: 0.5px solid $border100;
+}
+
+.main-content {
+  display: grid;
+  grid-template-rows: toRem(56) 1fr 4.5vh;
+  overflow-y: scroll;
+  background: $bg;
 }

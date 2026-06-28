@@ -1,6 +1,10 @@
 <div class="app-container font-inter">
   <app-sidebar />
-  <main>
-    <router-outlet />
-  </main>
+  <div class="main-content">
+    <app-top-bar />
+    <main>
+      <router-outlet />
+    </main>
+    <app-bottom-bar />
+  </div>
 </div>
