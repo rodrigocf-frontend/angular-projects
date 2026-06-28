@@ -1,10 +1,11 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Icon } from '../ui/icon/icon';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, Icon],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })
@@ -12,23 +13,23 @@ export class SidebarComponent {
   navItems = [
     {
       label: 'Quadro',
-      icon: 'fa-solid fa-table-columns',
+      icon: 'kanban',
       route: '',
       badge: 12,
     },
     {
       label: 'Minhas tarefas',
-      icon: 'fa-solid fa-list',
+      icon: 'tasks',
       route: 'my-tasks',
       badge: 3,
       badgeWarn: true,
     },
     {
       label: 'Calendário',
-      icon: 'fa-regular fa-calendar',
+      icon: 'calendar',
       route: 'calendar',
     },
-    { label: 'Relatórios', icon: 'fa-solid fa-chart-bar', route: 'reports' },
+    { label: 'Relatórios', icon: 'reports', route: 'reports' },
   ];
 
   navProjects = [
