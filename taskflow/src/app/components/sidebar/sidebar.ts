@@ -1,13 +1,10 @@
-import { CommonModule } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-
-type NavBarTypes = 'NAV_ITEMS' | 'NAV_PROJECTS';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, CommonModule],
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })
@@ -44,12 +41,10 @@ export class SidebarComponent {
   totalTasks = signal(12);
   progress = computed(() => Math.round((this.completedTasks() / this.totalTasks()) * 100));
   projectActive = signal(0);
-  router = inject(Router);
+  private readonly router = inject(Router);
 
-  onSelect(value: number, from: NavBarTypes) {
-    if (from === 'NAV_PROJECTS') {
-      this.router.navigate(['']);
-      this.projectActive.set(value);
-    }
+  onSelect(value: number) {
+    this.router.navigate(['']);
+    this.projectActive.set(value);
   }
 }

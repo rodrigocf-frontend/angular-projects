@@ -9,27 +9,23 @@
   <div class="nav-section">
     <div class="nav-label">Visão geral</div>
 
-    @for (item of navItems; track $index) {
+    @for (item of navItems; track item.label) {
       <div
         class="nav-item"
         routerLinkActive="active"
-        routerLink="{{ item.route }}"
+        [routerLink]="item.route"
         [routerLinkActiveOptions]="{ exact: true }"
       >
-        <i class=" {{ item.icon }}"></i>{{ item.label }}
+        <i [class]="item.icon"></i>{{ item.label }}
         @if (item.badge) {
-          <span class="nav-badge" [ngClass]="{ warn: item.badgeWarn }">{{ item.badge }}</span>
+          <span class="nav-badge" [class.warn]="item.badgeWarn">{{ item.badge }}</span>
         }
       </div>
     }
     <div class="nav-label" style="margin-top: 16px">Projetos</div>
 
-    @for (item of navProjects; track $index) {
-      <div
-        (click)="onSelect($index, 'NAV_PROJECTS')"
-        class="nav-item"
-        [ngClass]="{ active: $index === projectActive() }"
-      >
+    @for (item of navProjects; track item.label) {
+      <div (click)="onSelect($index)" class="nav-item" [class.active]="$index === projectActive()">
         <i class="fa-solid fa-circle" [style.color]="item.color"></i>{{ item.label }}
       </div>
     }
