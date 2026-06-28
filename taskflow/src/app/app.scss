@@ -1,0 +1,9 @@
+.app {
+  background: var(--bg);
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100vh;
+  border: 0.5px solid var(--border2);
+}
