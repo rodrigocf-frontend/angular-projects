@@ -1,0 +1,39 @@
+@use '../../../themes/styles.scss' as *;
+
+:host {
+  position: sticky;
+  bottom: 0;
+  z-index: 2;
+}
+
+.statusbar {
+  background: $surface;
+  border-top: 0.5px solid $border0;
+  display: flex;
+  align-items: center;
+  gap: toRem(16);
+  padding: toRem(0, 16);
+  font-size: toRem(11.5);
+  color: $txt-3;
+  height: 100%;
+}
+.sb-item {
+  display: flex;
+  align-items: center;
+  gap: toRem(5);
+}
+.sb-dot {
+  width: toRem(6);
+  height: toRem(6);
+  border-radius: 50%;
+
+  &__success {
+    background: $success;
+  }
+}
+.sb-divider {
+  width: toRem(0.5);
+  height: toRem(14);
+  background: $border0;
+  margin: toRem(0, 4);
+}

@@ -1,0 +1,55 @@
+@use '../../../themes/styles.scss' as *;
+
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.topbar {
+  background: $surface;
+  border-bottom: 0.5px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: toRem(12);
+  padding: toRem(0, 20);
+  height: toRem(56);
+}
+.topbar-title {
+  font-size: toRem(15);
+  font-weight: 600;
+  color: $txt;
+  flex: 1;
+}
+.search {
+  display: flex;
+  align-items: center;
+  gap: toRem(8);
+  background: $surface-2;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: toRem(6, 12);
+  font-size: toRem(13);
+  color: $txt-2;
+  width: toRem(200);
+  cursor: text;
+  overflow: hidden;
+}
+
+.search i {
+  font-size: toRem(14);
+  color: $txt-3;
+  flex-shrink: 0;
+}
+
+.search input {
+  box-sizing: border-box;
+  flex: 1;
+  display: flex;
+  width: 100%;
+  background-color: transparent;
+  outline: transparent;
+  border: transparent;
+  color: $txt;
+  font-size: toRem(13);
+}
