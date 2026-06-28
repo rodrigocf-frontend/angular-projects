@@ -1,0 +1,179 @@
+@use '../../../themes/styles.scss' as *;
+
+.sidebar {
+  background: $surface;
+  border-right: 0.5px solid $border0;
+  display: flex;
+  flex-direction: column;
+  grid-row: 1/3;
+  overflow: hidden;
+  height: 100%;
+}
+
+.brand {
+  padding: toRem(20, 20, 16);
+  display: flex;
+  align-items: center;
+  gap: toRem(10);
+  border-bottom: 0.5px solid $border0;
+}
+
+.brand-icon {
+  width: toRem(30);
+  height: toRem(30);
+  border-radius: toRem(8);
+  background: $accent600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: toRem(14);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.brand-name {
+  font-size: toRem(15);
+  font-weight: 600;
+  color: $txt;
+  letter-spacing: -0.3px;
+}
+.brand-tag {
+  font-size: toRem(11);
+  color: $txt-3;
+  margin-top: toRem(1);
+}
+.nav-section {
+  padding: toRem(16, 12, 8);
+  flex: 1;
+  overflow-y: auto;
+}
+.nav-label {
+  font-size: toRem(11);
+  font-weight: 500;
+  color: $txt-3;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 0 toRem(8);
+  margin-bottom: toRem(4);
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: toRem(10);
+  padding: toRem(8) toRem(10);
+  border-radius: var(--radius);
+  cursor: pointer;
+  margin-bottom: toRem(2);
+  color: $txt-2;
+  font-size: toRem(13.5);
+  transition:
+    background 0.12s,
+    color 0.12s;
+  user-select: none;
+
+  &:hover {
+    background: $surface-2;
+    color: $txt;
+  }
+
+  &.active {
+    background: $accent0;
+    color: $accent600;
+    font-weight: 500;
+  }
+
+  i {
+    font-size: toRem(16);
+    flex-shrink: 0;
+  }
+}
+
+.nav-badge {
+  margin-left: auto;
+  font-size: toRem(11);
+  font-weight: 500;
+  background: $accent0;
+  color: $accent600;
+  padding: toRem(1) toRem(7);
+  border-radius: 20px;
+
+  &.warn {
+    background: $warning-bg;
+    color: $warning;
+  }
+}
+
+.progress-section {
+  padding: toRem(16);
+  border-top: 0.5px solid $border0;
+}
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: toRem(10);
+}
+.progress-label {
+  font-size: toRem(12);
+  font-weight: 500;
+  color: $txt-2;
+}
+.progress-pct {
+  font-size: toRem(12);
+  font-weight: 600;
+  color: $accent600;
+}
+.progress-track {
+  height: toRem(6);
+  background: $surface-2;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: $accent600;
+  border-radius: 3px;
+}
+.progress-cats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: toRem(6);
+  margin-top: toRem(10);
+}
+.pcat {
+  display: flex;
+  align-items: center;
+  gap: toRem(6);
+}
+.pcat-dot {
+  width: toRem(8);
+  height: toRem(8);
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &__success {
+    background-color: $success;
+  }
+
+  &__progress {
+    background-color: $accent600;
+  }
+
+  &__pending {
+    background-color: $border100;
+  }
+
+  &__overdue {
+    background-color: $danger;
+  }
+}
+.pcat-txt {
+  font-size: toRem(11.5);
+  color: $txt-2;
+}
+.pcat-n {
+  font-size: toRem(11.5);
+  font-weight: 500;
+  color: $txt;
+  margin-left: auto;
+}
