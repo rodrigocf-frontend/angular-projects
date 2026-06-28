@@ -1,0 +1,121 @@
+<div class="content">
+  <div class="filters">
+    <div class="chip active">Todas</div>
+    <div class="chip">Alta prioridade</div>
+    <div class="chip">Atribuídas a mim</div>
+    <div class="chip">Esta semana</div>
+    <div class="filter-right">
+      <button ghost>
+        <i name="tasks" style="font-size: 14px"></i>
+      </button>
+      <button ghost>
+        <i name="kanban" style="font-size: 14px"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="kanban" id="kanban-el">
+    <div class="col">
+      <div class="col-head">
+        <div class="col-dot col-dot__todo"></div>
+        <span class="col-name">A fazer</span>
+        <span class="col-count">{{ todo.length }}</span>
+      </div>
+      <ul
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[progressList, doneList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        @for (item of todo; track item.id) {
+          <div [class]="'task-card priority-' + item.priority" cdkDrag>
+            <div class="task-title">{{ item.title }}</div>
+            @if (item.description) {
+              <div class="task-desc">{{ item.description }}</div>
+            }
+            <div class="task-meta">
+              <span class="tag tag-blue">{{ item.tag }}</span>
+              @if (item.overdue) {
+                <span class="task-due overdue"><i name="alert"></i>Atrasada</span>
+              }
+
+              <span class="task-due"><i name="clock"></i>{{ item.dueDate }}</span>
+            </div>
+          </div>
+        }
+      </ul>
+      <div class="add-task"><i name="add" style="font-size: 14px"></i>Adicionar tarefa</div>
+    </div>
+    <div class="col">
+      <div class="col-head">
+        <div class="col-dot col-dot__progress"></div>
+        <span class="col-name">Em andamento</span>
+        <span class="col-count">{{ progress.length }}</span>
+      </div>
+      <ul
+        cdkDropList
+        #progressList="cdkDropList"
+        [cdkDropListData]="progress"
+        [cdkDropListConnectedTo]="[todoList, doneList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        @for (item of progress; track item.id) {
+          <div [class]="'task-card priority-' + item.priority" cdkDrag>
+            <div class="task-title">{{ item.title }}</div>
+            @if (item.description) {
+              <div class="task-desc">{{ item.description }}</div>
+            }
+            <div class="task-meta">
+              <span class="tag tag-blue">{{ item.tag }}</span>
+              <span class="tag tag-warn">{{ item.dueDate }}</span>
+
+              @if (item.overdue) {
+                <span class="task-due overdue"><i name="alert"></i>Atrasada</span>
+              }
+            </div>
+          </div>
+        }
+      </ul>
+
+      <div class="add-task"><i name="add" style="font-size: 14px"></i>Adicionar tarefa</div>
+    </div>
+
+    <div class="col">
+      <div class="col-head">
+        <div class="col-dot col-dot__success"></div>
+        <span class="col-name">Concluído</span>
+        <span class="col-count">{{ done.length }}</span>
+      </div>
+
+      <ul
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[todoList, progressList]"
+        (cdkDropListDropped)="drop($event)"
+      >
+        @for (item of done; track item.id) {
+          <div [class]="'task-card priority-' + item.priority" style="opacity: 0.7" cdkDrag>
+            <div class="task-title task-title-completed" style="text-decoration: line-through">
+              {{ item.title }}
+            </div>
+            @if (item.description) {
+              <div class="task-desc">{{ item.description }}</div>
+            }
+            <div class="task-meta">
+              <span class="tag tag-green">{{ item.tag }}</span>
+              @if (item.overdue) {
+                <span class="task-due overdue"><i name="alert"></i>Atrasada</span>
+              }
+
+              <span class="task-due"><i name="check"></i>{{ item.status }}</span>
+            </div>
+          </div>
+        }
+      </ul>
+
+      <div class="add-task"><i name="add" style="font-size: 14px"></i>Adicionar tarefa</div>
+    </div>
+  </div>
+</div>

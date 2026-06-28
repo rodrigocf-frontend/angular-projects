@@ -1,0 +1,239 @@
+@use '../../../themes/styles.scss' as *;
+
+.content {
+  padding: toRem(20);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: toRem(16);
+}
+.filters {
+  display: flex;
+  align-items: center;
+  gap: toRem(8);
+}
+
+.chip {
+  padding: toRem(5, 12);
+  border-radius: 20px;
+  font-size: toRem(12.5);
+  font-weight: 500;
+  cursor: pointer;
+  border: 0.5px solid $border100;
+  color: $txt-2;
+  background: $surface;
+  transition: all 0.12s;
+  user-select: none;
+}
+.chip:hover {
+  border-color: $accent600;
+  color: $accent600;
+}
+.chip.active {
+  background: $accent600;
+  color: #fff;
+  border-color: $accent600;
+}
+
+.filter-right {
+  margin-left: auto;
+  display: flex;
+  gap: toRem(8);
+}
+
+.kanban {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: toRem(12);
+  flex: 1;
+
+  ul {
+    min-height: 300px;
+  }
+}
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: toRem(8);
+}
+.col-head {
+  display: flex;
+  align-items: center;
+  gap: toRem(8);
+  padding: toRem(2, 0, 6);
+}
+.col-dot {
+  width: toRem(8);
+  height: toRem(8);
+  border-radius: 50%;
+
+  &__todo {
+    background: $txt-3;
+  }
+
+  &__progress {
+    background-color: $accent600;
+  }
+
+  &__success {
+    background-color: $success;
+  }
+}
+.col-name {
+  font-size: toRem(13);
+  font-weight: 600;
+  color: $txt;
+}
+.col-count {
+  font-size: toRem(12);
+  color: $txt-3;
+  margin-left: auto;
+}
+
+.task-card {
+  background: $surface;
+  border: 0.5px solid $border0;
+  border-radius: var(--radius-lg);
+  padding: toRem(12, 14);
+  cursor: pointer;
+  transition: border-color 0.12s;
+  position: relative;
+}
+.task-card:hover {
+  border-color: $accent600;
+  box-shadow: 0 0 0 3px rgba(91, 106, 240, 0.08);
+}
+.task-card.priority-high {
+  border-left: 3px solid $danger;
+  border-radius: 0 12px 12px 0;
+}
+.task-card.priority-med {
+  border-left: 3px solid $warning;
+  border-radius: 0 12px 12px 0;
+}
+.task-card.priority-low {
+  border-left: 3px solid $success;
+  border-radius: 0 12px 12px 0;
+}
+
+.task-title {
+  font-size: toRem(13.5);
+  font-weight: 500;
+  color: $txt;
+  margin-bottom: toRem(4);
+  line-height: 1.4;
+
+  &-completed {
+    color: $txt-2;
+  }
+}
+.task-meta {
+  display: flex;
+  align-items: center;
+  gap: toRem(8);
+  margin-top: toRem(8);
+}
+
+.tag {
+  font-size: toRem(11);
+  padding: toRem(2, 7);
+  border-radius: toRem(4);
+  font-weight: 500;
+}
+.tag-blue {
+  background: $accent0;
+  color: $accent600;
+}
+.tag-green {
+  background: $success-bg;
+  color: #16a34a;
+}
+.tag-warn {
+  background: $warning-bg;
+  color: #d97706;
+}
+.task-due {
+  font-size: toRem(11);
+  color: $txt-3;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: toRem(4);
+}
+.task-due.overdue {
+  color: $danger;
+}
+.task-due i {
+  font-size: toRem(12);
+}
+.task-desc {
+  font-size: toRem(12);
+  color: $txt-2;
+  margin-top: toRem(4);
+  line-height: 1.5;
+}
+.add-task {
+  display: flex;
+  align-items: center;
+  gap: toRem(8);
+  padding: toRem(8, 12);
+  border-radius: var(--radius);
+  color: $txt-3;
+  font-size: 12.5px;
+  cursor: pointer;
+  border: 0.5px dashed $border100;
+  transition: all 0.12s;
+}
+.add-task:hover {
+  color: $accent600;
+  border-color: $accent600;
+  background: $accent0;
+}
+.statusbar {
+  background: $surface;
+  border-top: 0.5px solid $border0;
+  display: flex;
+  align-items: center;
+  gap: toRem(16);
+  padding: toRem(0, 16);
+  font-size: toRem(11.5);
+  color: $txt-3;
+}
+.sb-item {
+  display: flex;
+  align-items: center;
+  gap: toRem(5);
+}
+.sb-dot {
+  width: toRem(6);
+  height: toRem(6);
+  border-radius: 50%;
+}
+.sb-divider {
+  width: toRem(0.5);
+  height: toRem(14);
+  background: $border0;
+  margin: toRem(0, 4);
+}
+
+.tooltip {
+  position: absolute;
+  background: $txt;
+  color: #fff;
+  font-size: toRem(11);
+  padding: toRem(4, 8);
+  border-radius: toRem(5);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.highlight {
+  outline: 2px solid $accent600;
+  outline-offset: 3px;
+  border-radius: var(--radius-lg);
+}
