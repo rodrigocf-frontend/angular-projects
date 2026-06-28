@@ -1,0 +1,32 @@
+$font-root: 16;
+
+$font-styles: (
+  'inter': (
+    'font-family': 'Inter',
+    'font-optical-sizing': auto,
+    'font-style': normal,
+  ),
+);
+
+@each $name, $properties in $font-styles {
+  .font-#{$name} {
+    @each $property, $value in $properties {
+      #{$property}: $value;
+    }
+  }
+}
+
+$font-sizes: (
+  'xs': 11px,
+  'sm': 12px,
+  'sm2': 12.5px,
+  'base': 13px,
+  'base2': 13.5px,
+  'md': 15px,
+);
+
+@each $name, $value in $font-sizes {
+  .font-#{$name} {
+    font-size: $value;
+  }
+}

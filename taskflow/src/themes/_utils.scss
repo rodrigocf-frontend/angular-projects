@@ -1,0 +1,18 @@
+@use 'sass:list';
+@use 'sass:math';
+@use 'fonts';
+
+@function toRem($values...) {
+  $rem-values: ();
+
+  @each $value in $values {
+    @if $value == 0 {
+      $rem-values: list.append($rem-values, 0);
+    } @else {
+      $divisao: math.div($value, fonts.$font-root);
+      $rem-values: list.append($rem-values, $divisao + rem);
+    }
+  }
+
+  @return $rem-values;
+}
