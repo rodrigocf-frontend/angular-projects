@@ -11,9 +11,10 @@
 
     @for (item of navItems; track $index) {
       <div
-        (click)="onSelect($index, 'NAV_ITEMS', item.route)"
         class="nav-item"
-        [ngClass]="{ active: $index === navItemActive() }"
+        routerLinkActive="active"
+        routerLink="{{ item.route }}"
+        [routerLinkActiveOptions]="{ exact: true }"
       >
         <i class=" {{ item.icon }}"></i>{{ item.label }}
         @if (item.badge) {
