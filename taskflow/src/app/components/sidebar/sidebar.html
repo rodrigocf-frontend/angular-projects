@@ -8,26 +8,40 @@
   </div>
   <div class="nav-section">
     <div class="nav-label">Visão geral</div>
-    <div class="nav-item active">
-      <i class="ti ti-layout-kanban"></i>Quadro<span class="nav-badge">12</span>
-    </div>
-    <div class="nav-item">
-      <i class="ti ti-list"></i>Minhas tarefas<span class="nav-badge warn">3</span>
-    </div>
-    <div class="nav-item"><i class="ti ti-calendar"></i>Calendário</div>
-    <div class="nav-item"><i class="ti ti-chart-bar"></i>Relatórios</div>
+
+    @for (item of navItems; track $index) {
+      <div
+        (click)="onSelect($index, 'NAV_ITEMS')"
+        class="nav-item"
+        [ngClass]="{ active: $index === navItemActive() }"
+      >
+        <i class=" {{ item.icon }}"></i>{{ item.label }}
+        @if (item.badge) {
+          <span class="nav-badge" [ngClass]="{ warn: item.badgeWarn }">{{ item.badge }}</span>
+        }
+      </div>
+    }
     <div class="nav-label" style="margin-top: 16px">Projetos</div>
-    <div class="nav-item"><i class="ti ti-circle" style="color: #5b6af0"></i>Angular Portfólio</div>
-    <div class="nav-item"><i class="ti ti-circle" style="color: #22c55e"></i>API Backend</div>
-    <div class="nav-item"><i class="ti ti-circle" style="color: #f59e0b"></i>Design System</div>
-    <div class="nav-item"><i class="ti ti-plus"></i>Novo projeto</div>
+
+    @for (item of navProjects; track $index) {
+      <div
+        (click)="onSelect($index, 'NAV_PROJECTS')"
+        class="nav-item"
+        [ngClass]="{ active: $index === projectActive() }"
+      >
+        <i class="fa-solid fa-circle" [style.color]="item.color"></i>{{ item.label }}
+      </div>
+    }
+    <div class="nav-item"><i class="fa-solid fa-plus"></i>Novo projeto</div>
   </div>
   <div class="progress-section" id="progress-el">
     <div class="progress-header">
       <span class="progress-label">Progresso geral</span>
-      <span class="progress-pct">58%</span>
+      <span class="progress-pct">{{ progress() }}%</span>
     </div>
-    <div class="progress-track"><div class="progress-fill" style="width: 58%"></div></div>
+    <div class="progress-track">
+      <div class="progress-fill" [style.width]="progress() + '%'"></div>
+    </div>
     <div class="progress-cats">
       <div class="pcat">
         <div class="pcat-dot pcat-dot__success"></div>
