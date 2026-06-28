@@ -66,6 +66,7 @@
   margin-bottom: toRem(2);
   color: $txt-2;
   font-size: toRem(13.5);
+  font-weight: 500;
   transition:
     background 0.12s,
     color 0.12s;
@@ -79,7 +80,6 @@
   &.active {
     background: $accent0;
     color: $accent600;
-    font-weight: 500;
   }
 
   i {
