@@ -73,4 +73,4 @@ src/
 ## Autor
 
 **Rodrigo Cunha** — Dev Pleno  
-[GitHub](https://github.com/falkneertb)
+[GitHub](https://github.com/rodrigocf-frontend)
