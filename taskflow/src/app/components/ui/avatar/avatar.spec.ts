@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Avatar } from './avatar';
 
 describe('Avatar', () => {
@@ -18,5 +17,10 @@ describe('Avatar', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render an element', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    expect(el.children.length).toBeGreaterThan(0);
   });
 });
