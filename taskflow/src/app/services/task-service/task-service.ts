@@ -32,14 +32,16 @@ export class TaskService {
 
   fetchTasks() {
     this.loadingService.start();
-    this.http.get<TasksAPIResponse[]>('http://localhost:3000/tasks').subscribe({
-      next: (data) => {
-        this.todo.set(data.filter((item) => item.status === 'todo'));
-        this.progress.set(data.filter((item) => item.status === 'progress'));
-        this.done.set(data.filter((item) => item.status === 'done'));
-      },
-      error: () => this.loadingService.stop(),
-      complete: () => this.loadingService.stop(),
-    });
+    this.http
+      .get<TasksAPIResponse[]>('http://localhost:3000/tasks')
+      .subscribe({
+        next: (data) => {
+          this.todo.set(data.filter((item) => item.status === 'todo'));
+          this.progress.set(data.filter((item) => item.status === 'progress'));
+          this.done.set(data.filter((item) => item.status === 'done'));
+        },
+        error: () => this.loadingService.stop(),
+        complete: () => this.loadingService.stop(),
+      });
   }
 }
