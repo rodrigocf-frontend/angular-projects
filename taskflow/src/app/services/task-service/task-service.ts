@@ -19,14 +19,18 @@ export interface TasksAPIResponse {
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
-  todo = signal<TasksAPIResponse[]>([]);
-  progress = signal<TasksAPIResponse[]>([]);
-  done = signal<TasksAPIResponse[]>([]);
+  private todo = signal<TasksAPIResponse[]>([]);
+  private progress = signal<TasksAPIResponse[]>([]);
+  private done = signal<TasksAPIResponse[]>([]);
 
   private http = inject(HttpClient);
   private loadingService = inject(LoadingService);
 
-  constructor() {
+  readonly todoList = this.todo.asReadonly();
+  readonly progressList = this.progress.asReadonly();
+  readonly doneList = this.done.asReadonly();
+
+  fetchTasks() {
     this.loadingService.start();
     this.http.get<TasksAPIResponse[]>('http://localhost:3000/tasks').subscribe({
       next: (data) => {
