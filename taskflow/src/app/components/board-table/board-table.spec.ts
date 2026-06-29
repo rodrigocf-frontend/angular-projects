@@ -1,11 +1,22 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BoardTable } from './board-table';
-import { TaskService } from '../../services/task-service/task-service';
+
+const makeTasks = (status: string, count: number) =>
+  Array.from({ length: count }, (_, i) => ({
+    id: String(i + 1),
+    title: `Task ${i + 1}`,
+    description: null,
+    tag: 'Feature',
+    tagClass: 'tag-blue',
+    dueDate: null,
+    overdue: false,
+    priority: 'low' as const,
+    status,
+  }));
 
 describe('BoardTable', () => {
   let component: BoardTable;
   let fixture: ComponentFixture<BoardTable>;
-  let taskService: TaskService;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -14,7 +25,11 @@ describe('BoardTable', () => {
 
     fixture = TestBed.createComponent(BoardTable);
     component = fixture.componentInstance;
-    taskService = TestBed.inject(TaskService);
+
+    fixture.componentRef.setInput('todo', makeTasks('todo', 3));
+    fixture.componentRef.setInput('progress', makeTasks('progress', 2));
+    fixture.componentRef.setInput('done', makeTasks('done', 1));
+
     await fixture.whenStable();
   });
 
@@ -22,27 +37,21 @@ describe('BoardTable', () => {
     expect(component).toBeTruthy();
   });
 
-  it('todo should reflect TaskService.todo signal', () => {
-    expect(component.todo()).toEqual(taskService.todo());
+  it('should reflect todo input', () => {
+    expect(component.todo().length).toBe(3);
   });
 
-  it('progress should reflect TaskService.progress signal', () => {
-    expect(component.progress()).toEqual(taskService.progress());
+  it('should reflect progress input', () => {
+    expect(component.progress().length).toBe(2);
   });
 
-  it('done should reflect TaskService.done signal', () => {
-    expect(component.done()).toEqual(taskService.done());
-  });
-
-  it('todo should update when TaskService.todo changes', () => {
-    const initial = component.todo().length;
-    taskService.todo.update((items) => items.slice(1));
-    expect(component.todo().length).toBe(initial - 1);
+  it('should reflect done input', () => {
+    expect(component.done().length).toBe(1);
   });
 
   it('drop within same container should reorder items', () => {
-    const [first, second] = component.todo();
-    const arr = component.todo();
+    const arr = [...component.todo()];
+    const [first, second] = arr;
     const container = { data: arr };
 
     component.drop({
@@ -53,15 +62,13 @@ describe('BoardTable', () => {
       item: { data: first },
     } as any);
 
-    expect(component.todo()[0]).toEqual(second);
-    expect(component.todo()[1]).toEqual(first);
+    expect(arr[0]).toEqual(second);
+    expect(arr[1]).toEqual(first);
   });
 
   it('drop between containers should transfer item', () => {
-    const todoArr = component.todo();
-    const progressArr = component.progress();
-    const todoLength = todoArr.length;
-    const progressLength = progressArr.length;
+    const todoArr = [...component.todo()];
+    const progressArr = [...component.progress()];
     const transferred = todoArr[0];
 
     component.drop({
@@ -72,20 +79,18 @@ describe('BoardTable', () => {
       item: { data: transferred },
     } as any);
 
-    expect(todoArr.length).toBe(todoLength - 1);
-    expect(progressArr.length).toBe(progressLength + 1);
+    expect(todoArr.length).toBe(2);
+    expect(progressArr.length).toBe(3);
     expect(progressArr[0]).toEqual(transferred);
   });
 
   it('should render 3 kanban columns', () => {
     const el: HTMLElement = fixture.nativeElement;
-    const cols = el.querySelectorAll('.col');
-    expect(cols.length).toBe(3);
+    expect(el.querySelectorAll('.col').length).toBe(3);
   });
 
-  it('should render task cards for todo items', () => {
+  it('should render task cards', () => {
     const el: HTMLElement = fixture.nativeElement;
-    const cards = el.querySelectorAll('.task-card');
-    expect(cards.length).toBeGreaterThan(0);
+    expect(el.querySelectorAll('.task-card').length).toBeGreaterThan(0);
   });
 });
