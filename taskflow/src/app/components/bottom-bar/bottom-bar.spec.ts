@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BottomBar } from './bottom-bar';
 
 describe('BottomBar', () => {
@@ -18,5 +17,20 @@ describe('BottomBar', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render statusbar element', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    expect(el.querySelector('.statusbar')).toBeTruthy();
+  });
+
+  it('should show json-server status', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    expect(el.textContent).toContain('json-server');
+  });
+
+  it('should show branch name', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    expect(el.textContent).toContain('feat/task-service');
   });
 });
