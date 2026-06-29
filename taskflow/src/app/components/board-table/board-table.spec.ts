@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BoardTable } from './board-table';
-import { TaskService } from '../../services/task-service';
+import { TaskService } from '../../services/task-service/task-service';
 
 describe('BoardTable', () => {
   let component: BoardTable;
@@ -36,7 +36,7 @@ describe('BoardTable', () => {
 
   it('todo should update when TaskService.todo changes', () => {
     const initial = component.todo().length;
-    taskService.todo.update(items => items.slice(1));
+    taskService.todo.update((items) => items.slice(1));
     expect(component.todo().length).toBe(initial - 1);
   });
 

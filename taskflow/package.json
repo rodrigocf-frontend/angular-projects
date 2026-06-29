@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^22.0.0",
     "@angular/router": "^22.0.0",
     "@fortawesome/fontawesome-free": "^7.3.0",
-    "json-server": "1.0.0-beta.15",
+    "json-server": "v0.17.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
