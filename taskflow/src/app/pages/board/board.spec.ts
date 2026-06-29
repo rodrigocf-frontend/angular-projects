@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { Board } from './board';
 
 describe('Board', () => {
@@ -18,5 +17,10 @@ describe('Board', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render board-table', () => {
+    const el: HTMLElement = fixture.nativeElement;
+    expect(el.querySelector('app-board-table')).toBeTruthy();
   });
 });
