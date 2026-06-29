@@ -28,7 +28,7 @@ export class TaskService {
 
   constructor() {
     this.loadingService.start();
-    this.http.get<TasksAPIResponse[]>('http://localhost:10000/tasks').subscribe({
+    this.http.get<TasksAPIResponse[]>('http://localhost:3000/tasks').subscribe({
       next: (data) => {
         this.todo.set(data.filter((item) => item.status === 'todo'));
         this.progress.set(data.filter((item) => item.status === 'progress'));
