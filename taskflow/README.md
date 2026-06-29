@@ -1,76 +1,76 @@
 # TaskFlow
 
-Aplicação de gerenciamento de tarefas no estilo Kanban, desenvolvida como projeto de portfólio com foco em boas práticas Angular modernas.
+A Kanban-style task management app built as a portfolio project, focused on modern Angular best practices.
 
-## Visão geral
+## Overview
 
-TaskFlow permite organizar tarefas em colunas de status (A fazer, Em andamento, Concluído), com suporte a prioridades, filtros e progresso geral calculado automaticamente. O layout foi projetado para demonstrar domínio de arquitetura de componentes, reatividade com Signals e consumo de API REST.
+TaskFlow lets you organize tasks across status columns (To Do, In Progress, Done) with priority levels, filters, and automatically computed progress. The layout is designed to demonstrate component architecture, reactivity with Signals, and REST API integration.
 
-## Stack
+## Tech Stack
 
 - **Angular 22** — standalone components, Signals, computed state
-- **TypeScript 6** — tipagem estrita
-- **RxJS** — streams para comunicação com a API
-- **Angular HttpClient** — integração REST com interceptors de erro
-- **Angular CDK** — drag and drop entre colunas do Kanban
-- **Angular Reactive Forms** — criação e edição de tarefas
-- **SCSS** — design tokens, sistema de temas via partials
-- **json-server** — fake REST API para desenvolvimento local
-- **Vitest** — testes unitários
-- **Prettier + Husky** — formatação e git hooks
-- **pnpm** — gerenciamento de pacotes
+- **TypeScript 6** — strict typing
+- **RxJS** — streams for API communication
+- **Angular HttpClient** — REST integration with error interceptors
+- **Angular CDK** — drag and drop between Kanban columns
+- **Angular Reactive Forms** — task creation and editing
+- **SCSS** — design tokens, theme system via partials
+- **json-server** — fake REST API for local development
+- **Vitest** — unit testing
+- **Prettier + Husky** — formatting and git hooks
+- **pnpm** — package management
 
-## Funcionalidades
+## Features
 
-- Quadro Kanban com 3 colunas e drag and drop
-- Cards com prioridade (alta / média / baixa) e data de vencimento
-- Indicador de tarefas atrasadas
-- Barra de progresso geral calculada via `computed()` signal
-- Filtros por prioridade, responsável e período
-- Alternância entre view Kanban e lista
-- Status bar com estado da API e branch atual
+- Kanban board with 3 columns and drag and drop
+- Task cards with priority (high / medium / low) and due date
+- Overdue task indicator
+- Overall progress bar computed via `computed()` signal
+- Filters by priority, assignee, and time period
+- Toggle between Kanban and list view
+- Status bar showing API state and current branch
 
-## Rodando localmente
+## Running Locally
 
-**Pré-requisitos:** Node.js 20+, pnpm
+**Prerequisites:** Node.js 20+, pnpm
 
 ```bash
-# Instalar dependências
+# Install dependencies
 pnpm install
 
-# Subir a fake API (porta 3000)
+# Start the fake API (port 3000)
 pnpm db-start
 
-# Subir o app Angular (porta 4200)
+# Start the Angular app (port 4200)
 pnpm start
 ```
 
-Abra `http://localhost:4200` no navegador. A API estará disponível em `http://localhost:3000`.
+Open `http://localhost:4200` in your browser. The API will be available at `http://localhost:3000`.
 
 ## Scripts
 
-| Comando | Descrição |
+| Command | Description |
 |---|---|
-| `pnpm start` | Dev server Angular |
+| `pnpm start` | Angular dev server |
 | `pnpm db-start` | json-server (fake API) |
-| `pnpm build` | Build de produção |
-| `pnpm test` | Testes unitários com Vitest |
+| `pnpm build` | Production build |
+| `pnpm test` | Unit tests with Vitest |
 
-## Estrutura
+## Project Structure
 
 ```
 src/
 ├── app/
-│   ├── components/       # Componentes compartilhados (sidebar, topbar...)
-│   ├── pages/            # Views roteadas (board, list...)
+│   ├── components/       # Shared components (sidebar, topbar...)
+│   ├── pages/            # Routed views (board, list...)
 │   └── services/         # TaskService, ProjectService
 └── themes/
-    ├── _tokens.scss      # Design tokens (cores, raios, espaçamentos)
-    ├── _fonts.scss       # Import Inter
-    └── _utils.scss       # Classes utilitárias
+    ├── _tokens.scss      # Design tokens (colors, radii, spacing)
+    ├── _fonts.scss       # Inter font import
+    └── _utils.scss       # Utility classes
 ```
 
-## Autor
+## Author
 
-**Rodrigo Cunha** — Dev Pleno  
+**Rodrigo Cunha** — Mid-level Developer  
 [GitHub](https://github.com/rodrigocf-frontend)
