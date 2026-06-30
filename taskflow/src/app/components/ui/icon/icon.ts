@@ -17,6 +17,8 @@ const iconMap: Record<string, string> = {
   edit: 'fa-solid fa-pen',
   list: 'fa-regular fa-rectangle-list',
   'rotate-right': 'fa-solid fa-rotate-right',
+  'circle-info': 'fa-solid fa-circle-info',
+  'triangle-exclamation': 'fa-solid fa-triangle-exclamation',
 };
 
 @Component({

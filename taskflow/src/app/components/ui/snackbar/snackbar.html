@@ -1,14 +1,6 @@
 @if (visible()) {
   <div class="snackbar" [ngClass]="'snackbar--' + current()!.type">
-    <i
-      class="fa-solid"
-      [ngClass]="{
-        'fa-circle-check': current()!.type === 'success',
-        'fa-circle-exclamation': current()!.type === 'error',
-        'fa-triangle-exclamation': current()!.type === 'warning',
-        'fa-circle-info': current()!.type === 'info',
-      }"
-    ></i>
+    <i [name]="snackIcon()"></i>
     <span class="snackbar-msg font-inter">{{ current()!.message }}</span>
     <button class="snackbar-close" (click)="dismiss()">
       <i class="fa-solid fa-xmark"></i>
