@@ -16,6 +16,7 @@ const iconMap: Record<string, string> = {
   trash: 'fa-solid fa-trash',
   edit: 'fa-solid fa-pen',
   list: 'fa-regular fa-rectangle-list',
+  'rotate-right': 'fa-solid fa-rotate-right',
 };
 
 @Component({
