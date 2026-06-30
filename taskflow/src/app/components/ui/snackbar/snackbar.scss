@@ -1,0 +1,73 @@
+@use '../../../../themes/styles.scss' as *;
+
+.snackbar {
+  position: fixed;
+  bottom: toRem(24);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: toRem(10);
+  padding: toRem(12) toRem(16);
+  border-radius: var(--radius-lg);
+  background: $txt;
+  color: #fff;
+  font-size: toRem(13.5);
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  min-width: toRem(280);
+  max-width: toRem(480);
+  animation: slide-up 0.2s ease;
+
+  i:first-child {
+    font-size: toRem(15);
+    flex-shrink: 0;
+  }
+
+  &--success i:first-child {
+    color: $success;
+  }
+  &--error i:first-child {
+    color: $danger;
+  }
+  &--warning i:first-child {
+    color: $warning;
+  }
+  &--info i:first-child {
+    color: $accent0;
+  }
+}
+
+.snackbar-msg {
+  flex: 1;
+  color: #fff;
+  font-size: toRem(13);
+  font-weight: 400;
+}
+
+.snackbar-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: toRem(13);
+  padding: 0;
+  flex-shrink: 0;
+  transition: color 0.12s;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(toRem(12));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
