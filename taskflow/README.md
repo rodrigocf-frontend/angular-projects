@@ -11,9 +11,8 @@ TaskFlow lets you organize tasks across status columns (To Do, In Progress, Done
 - **Angular 22** — standalone components, Signals, computed state
 - **TypeScript 6** — strict typing
 - **RxJS** — streams for API communication
-- **Angular HttpClient** — REST integration with error interceptors
+- **Angular HttpClient** — REST integration with error handling
 - **Angular CDK** — drag and drop between Kanban columns
-- **Angular Reactive Forms** — task creation and editing
 - **SCSS** — design tokens, theme system via partials
 - **json-server** — fake REST API for local development
 - **Vitest** — unit testing
@@ -26,9 +25,10 @@ TaskFlow lets you organize tasks across status columns (To Do, In Progress, Done
 - Task cards with priority (high / medium / low) and due date
 - Overdue task indicator
 - Overall progress bar computed via `computed()` signal
-- Filters by priority, assignee, and time period
-- Toggle between Kanban and list view
+- Loading overlay while fetching data from the API
+- Snackbar notifications for error feedback
 - Status bar showing API state and current branch
+- Environment-based API URL (dev vs production)
 
 ## Running Locally
 
@@ -52,7 +52,8 @@ Open `http://localhost:4200` in your browser. The API will be available at `http
 | Command | Description |
 |---|---|
 | `pnpm start` | Angular dev server |
-| `pnpm db-start` | json-server (fake API) |
+| `pnpm db-start` | json-server locally (port 3000) |
+| `pnpm db-start:render` | json-server for Render deployment |
 | `pnpm build` | Production build |
 | `pnpm test` | Unit tests with Vitest |
 
