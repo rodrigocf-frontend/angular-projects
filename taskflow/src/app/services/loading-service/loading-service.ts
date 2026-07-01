@@ -7,10 +7,14 @@ export class LoadingService {
   readonly isLoading = this.loading.asReadonly();
 
   start(): void {
-    this.loading.set(true);
+    if (!this.loading()) {
+      this.loading.set(true);
+    }
   }
 
   stop(): void {
-    this.loading.set(false);
+    if (this.isLoading()) {
+      this.loading.set(false);
+    }
   }
 }
