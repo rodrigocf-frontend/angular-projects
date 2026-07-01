@@ -24,12 +24,14 @@
     }
     <div class="nav-label" style="margin-top: 16px">Projetos</div>
 
-    @for (item of navProjects; track item.label) {
+    @for (item of navProjects(); track item.id) {
       <div (click)="onSelect($index)" class="nav-item" [class.active]="$index === projectActive()">
-        <i class="fa-solid fa-circle" [style.color]="item.color"></i>{{ item.label }}
+        <i class="fa-solid fa-circle" [style.color]="item.color"></i>{{ item.name }}
       </div>
     }
-    <div class="nav-item"><i class="fa-solid fa-plus"></i>Novo projeto</div>
+    <div class="nav-item" (click)="openNewProjectForm()">
+      <i class="fa-solid fa-plus"></i>Novo projeto
+    </div>
   </div>
   <div class="progress-section" id="progress-el">
     <div class="progress-header">

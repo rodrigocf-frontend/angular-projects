@@ -1,6 +1,7 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Icon } from '../ui/icon/icon';
+import { ProjectService } from '../../services/project-service/project-service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +10,7 @@ import { Icon } from '../ui/icon/icon';
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   navItems = [
     {
       label: 'Quadro',
@@ -32,11 +33,8 @@ export class SidebarComponent {
     { label: 'Relatórios', icon: 'reports', route: 'reports' },
   ];
 
-  navProjects = [
-    { label: 'Angular Portfólio', color: '#5B6AF0' },
-    { label: 'API Backend', color: '#22C55E' },
-    { label: 'Design System', color: '#F59E0B' },
-  ];
+  private projectService = inject(ProjectService);
+  navProjects = this.projectService.projectsList;
 
   completedTasks = signal(1);
   totalTasks = signal(12);
@@ -44,8 +42,16 @@ export class SidebarComponent {
   projectActive = signal(0);
   private readonly router = inject(Router);
 
+  ngOnInit(): void {
+    this.projectService.getAll();
+  }
+
   onSelect(value: number) {
     this.router.navigate(['']);
     this.projectActive.set(value);
+  }
+
+  openNewProjectForm() {
+    this.projectService.open();
   }
 }
