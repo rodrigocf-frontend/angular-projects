@@ -16,6 +16,6 @@ export class Board implements OnInit {
   doneList = this.taskService.doneList;
 
   ngOnInit(): void {
-    this.taskService.fetchTasks();
+    this.taskService.readTasks();
   }
 }

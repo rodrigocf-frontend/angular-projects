@@ -33,7 +33,9 @@ export class TaskService {
   readonly progressList = this.progress.asReadonly();
   readonly doneList = this.done.asReadonly();
 
-  fetchTasks() {
+  createTask() {}
+
+  readTasks() {
     this.loadingService.start();
     this.http.get<TasksAPIResponse[]>(`${environment.apiUrl}/tasks`).subscribe({
       next: (data) => {
@@ -48,4 +50,8 @@ export class TaskService {
       complete: () => this.loadingService.stop(),
     });
   }
+
+  updateTask() {}
+
+  deleteTask() {}
 }
