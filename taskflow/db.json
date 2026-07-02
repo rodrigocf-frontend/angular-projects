@@ -1,6 +1,23 @@
 {
   "$schema": "./node_modules/json-server/schema.json",
-  "projects": [],
+  "projects": [
+    {
+      "color": "#f59e0b",
+      "deadline": null,
+      "description": "",
+      "name": "API Backend",
+      "total": 5,
+      "id": 1
+    },
+    {
+      "color": "#a855f7",
+      "deadline": null,
+      "description": null,
+      "name": "API 2",
+      "total": 9,
+      "id": 2
+    }
+  ],
   "tasks": [
     {
       "id": 9,
@@ -11,7 +28,8 @@
       "dueDate": "Amanhã",
       "overdue": false,
       "priority": "med",
-      "status": "todo"
+      "status": "todo",
+      "projectId": 1
     },
     {
       "id": 10,
@@ -22,7 +40,8 @@
       "dueDate": "Sexta",
       "overdue": false,
       "priority": "low",
-      "status": "todo"
+      "status": "todo",
+      "projectId": 1
     },
     {
       "id": 11,
@@ -33,7 +52,8 @@
       "dueDate": "Sexta",
       "overdue": false,
       "priority": "high",
-      "status": "todo"
+      "status": "todo",
+      "projectId": 1
     },
     {
       "id": 12,
@@ -44,7 +64,8 @@
       "dueDate": "Sexta",
       "overdue": false,
       "priority": "med",
-      "status": "todo"
+      "status": "todo",
+      "projectId": 1
     },
     {
       "id": 13,
@@ -55,7 +76,8 @@
       "dueDate": null,
       "overdue": false,
       "priority": "low",
-      "status": "todo"
+      "status": "todo",
+      "projectId": 1
     },
     {
       "id": 14,
@@ -66,7 +88,8 @@
       "dueDate": null,
       "overdue": false,
       "priority": "low",
-      "status": "todo"
+      "status": "todo",
+      "projectId": 2
     },
     {
       "id": 6,
@@ -77,7 +100,8 @@
       "dueDate": "Hoje",
       "overdue": true,
       "priority": "high",
-      "status": "progress"
+      "status": "progress",
+      "projectId": 2
     },
     {
       "id": 7,
@@ -88,6 +112,7 @@
       "dueDate": "Hoje",
       "overdue": false,
       "priority": "med",
+      "projectId": 2,
       "status": "progress"
     },
     {
@@ -99,7 +124,8 @@
       "dueDate": "Quinta",
       "overdue": false,
       "priority": "low",
-      "status": "progress"
+      "status": "progress",
+      "projectId": 2
     },
     {
       "id": 1,
@@ -110,7 +136,8 @@
       "dueDate": null,
       "overdue": false,
       "priority": "low",
-      "status": "done"
+      "status": "done",
+      "projectId": 2
     },
     {
       "id": 2,
@@ -121,7 +148,8 @@
       "dueDate": null,
       "overdue": false,
       "priority": "low",
-      "status": "done"
+      "status": "done",
+      "projectId": 2
     },
     {
       "id": 3,
@@ -132,7 +160,8 @@
       "dueDate": null,
       "overdue": false,
       "priority": "low",
-      "status": "done"
+      "status": "done",
+      "projectId": 2
     },
     {
       "id": 4,
@@ -143,7 +172,8 @@
       "dueDate": null,
       "overdue": false,
       "priority": "low",
-      "status": "done"
+      "status": "done",
+      "projectId": 2
     },
     {
       "id": 5,
@@ -154,7 +184,8 @@
       "dueDate": null,
       "overdue": false,
       "priority": "low",
-      "status": "done"
+      "status": "done",
+      "projectId": 2
     }
   ]
 }
