@@ -4,11 +4,13 @@ import { TestBed } from '@angular/core/testing';
 import { LoadingService } from '../loading-service/loading-service';
 import { TaskService, TasksAPIResponse } from './task-service';
 
+const API = 'http://localhost:3000';
+
 const mockTasks: TasksAPIResponse[] = [
   { id: '1', title: 'Task A', description: null, dueDate: null, overdue: false, priority: 'high', status: 'todo', tag: 'Feature', tagClass: 'tag-blue' },
   { id: '2', title: 'Task B', description: null, dueDate: null, overdue: false, priority: 'med', status: 'progress', tag: 'Core', tagClass: 'tag-blue' },
   { id: '3', title: 'Task C', description: null, dueDate: null, overdue: false, priority: 'low', status: 'done', tag: 'Setup', tagClass: 'tag-green' },
-  { id: '4', title: 'Task D', description: null, dueDate: null, overdue: false, priority: 'low', status: 'todo', tag: 'Feature', tagClass: 'tag-blue' },
+  { id: '4', title: 'Task D', description: null, dueDate: null, overdue: true, priority: 'low', status: 'todo', tag: 'Feature', tagClass: 'tag-blue' },
 ];
 
 describe('TaskService', () => {
@@ -31,47 +33,92 @@ describe('TaskService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should start with empty signals before fetchTasks is called', () => {
+  it('should start with empty signals', () => {
     expect(service.todoList().length).toBe(0);
     expect(service.progressList().length).toBe(0);
     expect(service.doneList().length).toBe(0);
+    expect(service.overdueList().length).toBe(0);
   });
 
-  it('should populate todoList with status todo after fetchTasks', () => {
-    service.fetchTasks();
-    httpMock.expectOne('http://localhost:3000/tasks').flush(mockTasks);
-    expect(service.todoList().length).toBe(2);
-    expect(service.todoList().every(t => t.status === 'todo')).toBe(true);
+  it('visible should be false initially', () => {
+    expect(service.visible()).toBe(false);
   });
 
-  it('should populate progressList with status progress after fetchTasks', () => {
-    service.fetchTasks();
-    httpMock.expectOne('http://localhost:3000/tasks').flush(mockTasks);
-    expect(service.progressList().length).toBe(1);
-    expect(service.progressList()[0].status).toBe('progress');
+  it('open() should set visible to true', () => {
+    service.open();
+    expect(service.visible()).toBe(true);
   });
 
-  it('should populate doneList with status done after fetchTasks', () => {
-    service.fetchTasks();
-    httpMock.expectOne('http://localhost:3000/tasks').flush(mockTasks);
-    expect(service.doneList().length).toBe(1);
-    expect(service.doneList()[0].status).toBe('done');
+  it('close() should set visible to false after open', () => {
+    service.open();
+    service.close();
+    expect(service.visible()).toBe(false);
   });
 
-  it('should stop loading after successful fetch', () => {
-    const loadingService = TestBed.inject(LoadingService);
-    service.fetchTasks();
-    httpMock.expectOne('http://localhost:3000/tasks').flush(mockTasks);
-    expect(loadingService.isLoading()).toBe(false);
-  });
-
-  it('should stop loading after fetch error', () => {
-    const loadingService = TestBed.inject(LoadingService);
-    service.fetchTasks();
-    httpMock.expectOne('http://localhost:3000/tasks').flush('Server error', {
-      status: 500,
-      statusText: 'Internal Server Error',
+  describe('readTasks', () => {
+    it('should populate todoList after readTasks', () => {
+      service.readTasks(1);
+      httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
+      expect(service.todoList().length).toBe(2);
+      expect(service.todoList().every(t => t.status === 'todo')).toBe(true);
     });
-    expect(loadingService.isLoading()).toBe(false);
+
+    it('should populate progressList after readTasks', () => {
+      service.readTasks(1);
+      httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
+      expect(service.progressList().length).toBe(1);
+      expect(service.progressList()[0].status).toBe('progress');
+    });
+
+    it('should populate doneList after readTasks', () => {
+      service.readTasks(1);
+      httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
+      expect(service.doneList().length).toBe(1);
+      expect(service.doneList()[0].status).toBe('done');
+    });
+
+    it('should populate overdueList with overdue tasks', () => {
+      service.readTasks(1);
+      httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
+      expect(service.overdueList().length).toBe(1);
+      expect(service.overdueList()[0].overdue).toBe(true);
+    });
+
+    it('should stop loading after successful fetch', () => {
+      const loadingService = TestBed.inject(LoadingService);
+      service.readTasks(1);
+      httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
+      expect(loadingService.isLoading()).toBe(false);
+    });
+
+    it('should stop loading after fetch error', () => {
+      const loadingService = TestBed.inject(LoadingService);
+      service.readTasks(1);
+      httpMock.expectOne(`${API}/tasks?projectId=1`).flush('error', { status: 500, statusText: 'Server Error' });
+      expect(loadingService.isLoading()).toBe(false);
+    });
+  });
+
+  describe('createTask', () => {
+    it('should POST task and reload tasks for the same project', () => {
+      const payload = { title: 'New Task', status: 'todo', priority: 'low', projectId: 1 };
+      service.createTask(payload);
+
+      httpMock.expectOne(`${API}/tasks`).flush({ id: '99', ...payload });
+      httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
+
+      expect(service.todoList().length).toBe(2);
+    });
+
+    it('should start loading when creating a task', () => {
+      const loadingService = TestBed.inject(LoadingService);
+      const payload = { title: 'New Task', status: 'todo', priority: 'low', projectId: 1 };
+      service.createTask(payload);
+
+      expect(loadingService.isLoading()).toBe(true);
+
+      httpMock.expectOne(`${API}/tasks`).flush({ id: '99', ...payload });
+      httpMock.expectOne(`${API}/tasks?projectId=1`).flush([]);
+    });
   });
 });
