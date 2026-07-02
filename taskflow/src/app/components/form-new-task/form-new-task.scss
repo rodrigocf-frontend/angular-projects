@@ -1,0 +1,176 @@
+@use '../../../themes/styles.scss' as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 29, 35, 0.4);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background: $surface;
+  border-radius: 16px;
+  width: toRem(480);
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.modal-head {
+  padding: toRem(18) toRem(20);
+  border-bottom: 0.5px solid $border0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: $surface;
+  z-index: 1;
+}
+
+.modal-title {
+  font-size: toRem(15);
+  font-weight: 600;
+  color: $txt;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $txt-3;
+  font-size: toRem(16);
+  transition: color 0.12s;
+
+  &:hover {
+    color: $txt;
+  }
+}
+
+.modal-body {
+  padding: toRem(20);
+  display: flex;
+  flex-direction: column;
+  gap: toRem(16);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: toRem(12);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: toRem(6);
+  flex: 1;
+}
+
+.label {
+  font-size: toRem(12.5);
+  font-weight: 500;
+  color: $txt;
+
+  .req {
+    color: $danger;
+  }
+}
+
+.input {
+  border: 0.5px solid $border100;
+  border-radius: var(--radius);
+  padding: toRem(9) toRem(12);
+  font-size: toRem(13);
+  font-family: inherit;
+  color: $txt;
+  background: $surface-2;
+  outline: none;
+  transition: border-color 0.12s;
+  width: 100%;
+
+  &:focus {
+    border-color: $accent600;
+    background: $surface;
+  }
+}
+
+.textarea {
+  resize: none;
+  min-height: toRem(72);
+}
+
+.select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%236B7280' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right toRem(10) center;
+  padding-right: toRem(28);
+}
+
+.field-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.char-count {
+  font-size: toRem(11);
+  color: $txt-3;
+  text-align: right;
+}
+
+.select-group {
+  display: flex;
+  gap: toRem(6);
+}
+
+.select-btn {
+  flex: 1;
+  padding: toRem(7) toRem(10);
+  border-radius: var(--radius);
+  font-size: toRem(12.5);
+  font-weight: 500;
+  font-family: inherit;
+  border: 0.5px solid $border100;
+  background: $surface-2;
+  color: $txt-2;
+  cursor: pointer;
+  transition: all 0.12s;
+
+  &:hover:not(.selected) {
+    background: $surface;
+  }
+
+  &--low.selected {
+    background: $success-bg;
+    color: $success;
+    border-color: $success;
+  }
+  &--med.selected {
+    background: $warning-bg;
+    color: $warning;
+    border-color: $warning;
+  }
+  &--high.selected {
+    background: $danger-bg;
+    color: $danger;
+    border-color: $danger;
+  }
+}
+
+.modal-foot {
+  padding: toRem(16) toRem(20);
+  border-top: 0.5px solid $border0;
+  display: flex;
+  gap: toRem(8);
+  justify-content: flex-end;
+  position: sticky;
+  bottom: 0;
+  background: $surface;
+}
