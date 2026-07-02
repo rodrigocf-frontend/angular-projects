@@ -186,6 +186,56 @@
       "priority": "low",
       "status": "done",
       "projectId": 2
+    },
+    {
+      "title": "Rodrigo Task",
+      "description": "Uma descrição",
+      "priority": "low",
+      "status": "done",
+      "tag": "Core",
+      "dueDate": "",
+      "projectId": 1,
+      "id": 15
+    },
+    {
+      "title": "Rodrigo Task",
+      "description": "Uma descrição",
+      "priority": "low",
+      "status": "done",
+      "tag": "Core",
+      "dueDate": "",
+      "projectId": 1,
+      "id": 16
+    },
+    {
+      "title": "Regina Task",
+      "description": "adasd",
+      "priority": "med",
+      "status": "progress",
+      "tag": "",
+      "dueDate": "2026-07-07",
+      "projectId": 1,
+      "id": 17
+    },
+    {
+      "title": "Regina Task",
+      "description": "adasd",
+      "priority": "med",
+      "status": "progress",
+      "tag": "Design",
+      "dueDate": "2026-07-07",
+      "projectId": 1,
+      "id": 18
+    },
+    {
+      "title": "sasdas",
+      "description": "asdasdasd",
+      "priority": "high",
+      "status": "todo",
+      "tag": "",
+      "dueDate": "",
+      "projectId": 1,
+      "id": 19
     }
   ]
 }

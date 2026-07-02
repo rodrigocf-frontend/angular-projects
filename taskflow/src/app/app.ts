@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './components/sidebar/sidebar';
 import { TopBar } from './components/top-bar/top-bar';
@@ -6,7 +6,7 @@ import { BottomBar } from './components/bottom-bar/bottom-bar';
 import { LoadingOverlay } from './components/loading-overlay/loading-overlay';
 import { Snackbar } from './components/ui/snackbar/snackbar';
 import { FormNewProject } from './components/form-new-project/form-new-project';
-import { ProjectService } from './services/project-service/project-service';
+import { FormNewTask } from './components/form-new-task/form-new-task';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +18,7 @@ import { ProjectService } from './services/project-service/project-service';
     LoadingOverlay,
     Snackbar,
     FormNewProject,
+    FormNewTask,
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss',
