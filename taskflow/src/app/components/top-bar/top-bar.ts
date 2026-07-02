@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Button } from '../ui/button/button';
 import { Icon } from '../ui/icon/icon';
 import { Avatar } from '../ui/avatar/avatar';
+import { TaskService } from '../../services/task-service/task-service';
 
 @Component({
   selector: 'app-top-bar',
@@ -9,4 +10,10 @@ import { Avatar } from '../ui/avatar/avatar';
   templateUrl: './top-bar.html',
   styleUrl: './top-bar.scss',
 })
-export class TopBar {}
+export class TopBar {
+  private taskService = inject(TaskService);
+
+  openNewTaskForm() {
+    this.taskService.open();
+  }
+}
