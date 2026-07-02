@@ -8,7 +8,6 @@
   </div>
   <div class="nav-section">
     <div class="nav-label">Visão geral</div>
-
     @for (item of navItems; track item.label) {
       <div
         class="nav-item"
@@ -17,15 +16,19 @@
         [routerLinkActiveOptions]="{ exact: true }"
       >
         <i [name]="item.icon"></i>{{ item.label }}
-        @if (item.badge) {
-          <span class="nav-badge" [class.warn]="item.badgeWarn">{{ item.badge }}</span>
-        }
+        <!-- @if (item.badge) {
+            <span class="nav-badge" [class.warn]="item.badgeWarn">{{ item.badge }}</span>
+          } -->
       </div>
     }
     <div class="nav-label" style="margin-top: 16px">Projetos</div>
 
     @for (item of navProjects(); track item.id) {
-      <div (click)="onSelect($index)" class="nav-item" [class.active]="$index === projectActive()">
+      <div
+        (click)="onSelect($index)"
+        class="nav-item"
+        [class.active]="item.id === selectedProject()?.id"
+      >
         <i class="fa-solid fa-circle" [style.color]="item.color"></i>{{ item.name }}
       </div>
     }
@@ -36,27 +39,28 @@
   <div class="progress-section" id="progress-el">
     <div class="progress-header">
       <span class="progress-label">Progresso geral</span>
-      <span class="progress-pct">{{ progress() }}%</span>
+      <span class="progress-pct">{{ progressFill() }}%</span>
     </div>
     <div class="progress-track">
-      <div class="progress-fill" [style.width]="progress() + '%'"></div>
+      <div class="progress-fill" [style.width]="progressFill() + '%'"></div>
     </div>
     <div class="progress-cats">
       <div class="pcat">
         <div class="pcat-dot pcat-dot__success"></div>
-        <span class="pcat-txt">Concluídas</span><span class="pcat-n">7</span>
+        <span class="pcat-txt">Concluídas</span><span class="pcat-n">{{ doneCount() }}</span>
       </div>
       <div class="pcat">
         <div class="pcat-dot pcat-dot__progress"></div>
-        <span class="pcat-txt">Em andamento</span><span class="pcat-n">3</span>
+        <span class="pcat-txt">Em andamento</span
+        ><span class="pcat-n">{{ inProgressCount() }}</span>
       </div>
       <div class="pcat">
         <div class="pcat-dot pcat-dot__pending"></div>
-        <span class="pcat-txt">Pendentes</span><span class="pcat-n">2</span>
+        <span class="pcat-txt">Pendentes</span><span class="pcat-n">{{ todoCount() }}</span>
       </div>
       <div class="pcat">
         <div class="pcat-dot pcat-dot__overdue"></div>
-        <span class="pcat-txt">Atrasadas</span><span class="pcat-n">1</span>
+        <span class="pcat-txt">Atrasadas</span><span class="pcat-n">{{ overdueCount() }}</span>
       </div>
     </div>
   </div>
