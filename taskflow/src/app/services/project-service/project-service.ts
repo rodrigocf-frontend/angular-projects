@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { LoadingService } from '../loading-service/loading-service';
 
@@ -8,6 +8,7 @@ export interface Project {
   description: string;
   color: string;
   deadline: string | null;
+  total: number;
   id: number;
 }
 
@@ -22,6 +23,12 @@ export class ProjectService {
 
   visible = this.visibleState.asReadonly();
   projectsList = this.projects.asReadonly();
+  private currentProject = signal<Project | undefined>(undefined);
+  selectedProject = this.currentProject.asReadonly();
+
+  setCurrentProject(index: number) {
+    this.currentProject.set(this.projectsList()[index]);
+  }
 
   open() {
     this.visibleState.set(true);
@@ -33,14 +40,19 @@ export class ProjectService {
 
   create({ payload, onComplete }: { payload: ProjectAPIPayload; onComplete?: () => void }) {
     this.loadingService.start();
-    this.http.post(environment.apiUrl + '/projects', payload).subscribe({
-      complete: () => {
-        this.getAll({
-          onComplete,
-        });
-      },
-      error: () => this.loadingService.stop(),
-    });
+    this.http
+      .post(environment.apiUrl + '/projects', {
+        ...payload,
+        total: 0,
+      })
+      .subscribe({
+        complete: () => {
+          this.getAll({
+            onComplete,
+          });
+        },
+        error: () => this.loadingService.stop(),
+      });
   }
 
   getAll({ onComplete }: { onComplete?: () => void } = {}) {
@@ -48,6 +60,7 @@ export class ProjectService {
     this.http.get<Project[]>(environment.apiUrl + '/projects?sort=id').subscribe({
       next: (res) => {
         this.projects.set(res);
+        this.currentProject.set(res[0]);
       },
       complete: () => {
         onComplete?.();
