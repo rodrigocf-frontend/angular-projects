@@ -4,15 +4,16 @@ A Kanban-style task management app built as a portfolio project, focused on mode
 
 ## Overview
 
-TaskFlow lets you organize tasks across status columns (To Do, In Progress, Done) with priority levels, filters, and automatically computed progress. The layout is designed to demonstrate component architecture, reactivity with Signals, and REST API integration.
+TaskFlow lets you manage multiple projects, each with its own task board. Tasks are organized across three status columns (To Do, In Progress, Done) and can be dragged between them. The sidebar shows real-time progress computed directly from the loaded tasks via Angular Signals.
 
 ## Tech Stack
 
-- **Angular 22** — standalone components, Signals, computed state
+- **Angular 22** — standalone components, Signals, computed state, `effect()`
 - **TypeScript 6** — strict typing
-- **RxJS** — streams for API communication
+- **RxJS** — streams for HTTP communication
 - **Angular HttpClient** — REST integration with error handling
 - **Angular CDK** — drag and drop between Kanban columns
+- **Reactive Forms** — form creation with validation (`FormGroup`, `FormControl`, `Validators`)
 - **SCSS** — design tokens, theme system via partials
 - **json-server** — fake REST API for local development
 - **Vitest** — unit testing
@@ -21,14 +22,30 @@ TaskFlow lets you organize tasks across status columns (To Do, In Progress, Done
 
 ## Features
 
+- Multi-project support — switch between projects in the sidebar
 - Kanban board with 3 columns and drag and drop
-- Task cards with priority (high / medium / low) and due date
-- Overdue task indicator
-- Overall progress bar computed via `computed()` signal
+- Task creation modal with Reactive Forms (title, description, priority, status, tag, due date)
+- Project creation modal with color picker and Reactive Forms
+- Task cards with priority levels (high / medium / low) and due date indicators
+- Overdue task indicator per card
+- Real-time progress bar and task counts computed via `computed()` signals
 - Loading overlay while fetching data from the API
-- Snackbar notifications for error feedback
-- Status bar showing API state and current branch
-- Environment-based API URL (dev vs production)
+- Snackbar notifications for success and error feedback
+- Environment-based API URL (dev vs. production)
+
+## Architecture Decisions
+
+### Signals over NgRx
+State is managed with Angular Signals (`signal`, `computed`, `effect`) instead of NgRx. For a project of this scope, signals provide reactive state without the boilerplate of actions, reducers, and selectors.
+
+### Effect for project → task binding
+When the selected project changes in `ProjectService`, an `effect()` in `SidebarComponent` automatically calls `TaskService.readTasks(projectId)`. This keeps the board in sync without explicit wiring between components.
+
+### Global modal pattern
+`FormNewProject` and `FormNewTask` are mounted at the root `AppComponent` level and controlled via service signals (`visible`, `open()`, `close()`). This avoids z-index issues and keeps the modals outside the component tree that triggers them.
+
+### Flat service state (no store)
+Each service owns its own signals and exposes them as readonly. Components read from signals directly — no facade or store layer needed at this scale.
 
 ## Running Locally
 
@@ -62,13 +79,27 @@ Open `http://localhost:4200` in your browser. The API will be available at `http
 ```
 src/
 ├── app/
-│   ├── components/       # Shared components (sidebar, topbar...)
-│   ├── pages/            # Routed views (board, list...)
-│   └── services/         # TaskService, ProjectService
+│   ├── components/
+│   │   ├── board-table/        # Kanban columns with CDK drag-drop
+│   │   ├── form-new-project/   # Project creation modal
+│   │   ├── form-new-task/      # Task creation modal
+│   │   ├── sidebar/            # Navigation, project list, progress
+│   │   ├── top-bar/            # Header with nova tarefa button
+│   │   └── ui/                 # Avatar, Button, Icon, Snackbar
+│   ├── pages/
+│   │   ├── board/              # Main Kanban view
+│   │   ├── my-tasks/           # Task list view (in progress)
+│   │   ├── calendar/           # Placeholder
+│   │   └── reports/            # Placeholder
+│   └── services/
+│       ├── loading-service/    # Global loading state
+│       ├── project-service/    # Project CRUD + selected project signal
+│       ├── snack-service/      # Toast notification service
+│       └── task-service/       # Task CRUD + column signals
 └── themes/
-    ├── _tokens.scss      # Design tokens (colors, radii, spacing)
-    ├── _fonts.scss       # Inter font import
-    └── _utils.scss       # Utility classes
+    ├── _tokens.scss            # Design tokens (colors, radii, spacing)
+    ├── _fonts.scss             # Inter font import
+    └── _utils.scss             # Utility classes
 ```
 
 ## Author
