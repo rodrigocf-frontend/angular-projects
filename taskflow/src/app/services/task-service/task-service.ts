@@ -24,6 +24,7 @@ export class TaskService {
   private todo = signal<TasksAPIResponse[]>([]);
   private progress = signal<TasksAPIResponse[]>([]);
   private done = signal<TasksAPIResponse[]>([]);
+  private overdue = signal<TasksAPIResponse[]>([]);
 
   private http = inject(HttpClient);
   private loadingService = inject(LoadingService);
@@ -32,16 +33,18 @@ export class TaskService {
   readonly todoList = this.todo.asReadonly();
   readonly progressList = this.progress.asReadonly();
   readonly doneList = this.done.asReadonly();
+  readonly overdueList = this.overdue.asReadonly();
 
   createTask() {}
 
-  readTasks() {
+  readTasks(value: number | string = 1) {
     this.loadingService.start();
-    this.http.get<TasksAPIResponse[]>(`${environment.apiUrl}/tasks`).subscribe({
+    this.http.get<TasksAPIResponse[]>(`${environment.apiUrl}/tasks?projectId=${value}`).subscribe({
       next: (data) => {
         this.todo.set(data.filter((item) => item.status === 'todo'));
         this.progress.set(data.filter((item) => item.status === 'progress'));
         this.done.set(data.filter((item) => item.status === 'done'));
+        this.overdue.set(data.filter((item) => item.overdue));
       },
       error: () => {
         this.loadingService.stop();
