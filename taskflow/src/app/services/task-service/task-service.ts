@@ -21,6 +21,7 @@ export interface TasksAPIResponse {
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
+  private visibleState = signal(false);
   private todo = signal<TasksAPIResponse[]>([]);
   private progress = signal<TasksAPIResponse[]>([]);
   private done = signal<TasksAPIResponse[]>([]);
@@ -30,12 +31,36 @@ export class TaskService {
   private loadingService = inject(LoadingService);
   private snackService = inject(SnackbarService);
 
+  readonly visible = this.visibleState.asReadonly();
   readonly todoList = this.todo.asReadonly();
   readonly progressList = this.progress.asReadonly();
   readonly doneList = this.done.asReadonly();
   readonly overdueList = this.overdue.asReadonly();
 
-  createTask() {}
+  open() {
+    this.visibleState.set(true);
+  }
+
+  close() {
+    this.visibleState.set(false);
+  }
+
+  createTask(payload: any) {
+    this.loadingService.start();
+    this.http
+      .post(`${environment.apiUrl}/tasks`, {
+        ...payload,
+      })
+      .subscribe({
+        error: () => {
+          this.loadingService.stop();
+          this.snackService.error('Connection Error');
+        },
+        complete: () => {
+          this.readTasks(payload.projectId);
+        },
+      });
+  }
 
   readTasks(value: number | string = 1) {
     this.loadingService.start();
