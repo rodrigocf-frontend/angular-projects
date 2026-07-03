@@ -8,7 +8,11 @@
     <app-bottom-bar />
   </div>
 </div>
-<app-form-new-project />
+@defer (when projectService.visible()) {
+  <app-form-new-project />
+}
+@defer (when taskService.visible()) {
+  <app-form-new-task />
+}
 <app-loading-overlay />
 <app-snackbar />
-<app-form-new-task />
