@@ -14,7 +14,7 @@
           <input formControlName="title" class="input" maxlength="80" />
           <div class="field-footer">
             <span></span>
-            <span class="char-count">{{ formValues().title?.length ?? 0 }}/80</span>
+            <span class="char-count">{{ formValues()?.title?.length ?? 0 }}/80</span>
           </div>
         </div>
 
@@ -23,7 +23,7 @@
           <textarea formControlName="description" class="input textarea"></textarea>
           <div class="field-footer">
             <span></span>
-            <span class="char-count">{{ formValues().description?.length ?? 0 }}/300</span>
+            <span class="char-count">{{ formValues()?.description?.length ?? 0 }}/300</span>
           </div>
         </div>
 
@@ -53,7 +53,7 @@
             <label class="label">Status <span class="req">*</span></label>
             <select formControlName="status" class="input select">
               @for (item of status; track item.label) {
-                <option [value]="item.value" [selected]="formValues().status === item.value">
+                <option [value]="item.value" [selected]="formValues()?.status === item.value">
                   {{ item.label }}
                 </option>
               }
@@ -66,7 +66,7 @@
             <label class="label">Tag</label>
             <select formControlName="tag" class="input select">
               @for (item of tags; track item.label) {
-                <option [value]="item.value" [selected]="formValues().tag === item.value">
+                <option [value]="item.value" [selected]="formValues()?.tag === item.value">
                   {{ item.label }}
                 </option>
               }
@@ -82,7 +82,13 @@
 
       <div class="modal-foot">
         <button (click)="closeNewTaskForm()" ghost>Cancelar</button>
-        <button primary (click)="submitNewTask()"><i name="add"></i>Criar tarefa</button>
+        <button primary (click)="submitNewTask()">
+          @if (!edittingTask()) {
+            <i name="add"></i>Criar tarefa
+          } @else {
+            Atualizar
+          }
+        </button>
       </div>
     </form>
   </div>

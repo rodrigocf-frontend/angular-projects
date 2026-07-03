@@ -1,7 +1,12 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { Button } from '../ui/button/button';
 import { Icon } from '../ui/icon/icon';
-import { TaskService } from '../../services/task-service/task-service';
+import {
+  Task,
+  TaskPriority,
+  TaskService,
+  TaskStatus,
+} from '../../services/task-service/task-service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ProjectService } from '../../services/project-service/project-service';
@@ -16,8 +21,22 @@ export class FormNewTask {
   private taskService = inject(TaskService);
   private projectService = inject(ProjectService);
   visible = this.taskService.visible;
+  edittingTask = this.taskService.editTaskData;
 
-  priorities = [
+  constructor() {
+    effect(() => {
+      const task = this.edittingTask();
+      if (task) {
+        this.formNewTask.patchValue({ ...task });
+      }
+    });
+  }
+
+  priorities: {
+    value: TaskPriority;
+    label: string;
+    color: string;
+  }[] = [
     { value: 'low', label: 'Baixa', color: '#22c55e' },
     { value: 'med', label: 'Média', color: '#f59e0b' },
     { value: 'high', label: 'Alta', color: '#ef4444' },
@@ -34,7 +53,10 @@ export class FormNewTask {
     { value: 'DevOps', label: 'DevOps' },
   ];
 
-  status = [
+  status: {
+    label: string;
+    value: TaskStatus;
+  }[] = [
     {
       value: 'todo',
       label: 'A fazer',
@@ -52,7 +74,7 @@ export class FormNewTask {
   formNewTask = new FormGroup({
     title: new FormControl('', [Validators.required]),
     description: new FormControl(''),
-    priority: new FormControl(
+    priority: new FormControl<TaskPriority>(
       {
         disabled: false,
         value: 'low',
@@ -65,10 +87,12 @@ export class FormNewTask {
   });
 
   formValues = toSignal(this.formNewTask.valueChanges, {
-    initialValue: this.formNewTask.value,
+    initialValue: {
+      ...this.formNewTask.value,
+    },
   });
 
-  onSelectPriority(value: string) {
+  onSelectPriority(value: TaskPriority) {
     this.formNewTask.patchValue({
       priority: value,
     });
@@ -76,10 +100,18 @@ export class FormNewTask {
 
   submitNewTask() {
     if (this.formNewTask.valid) {
-      this.taskService.createTask({
-        ...this.formValues(),
-        projectId: this.projectService.selectedProject()?.id,
-      });
+      if (this.edittingTask()) {
+        this.taskService.updateTask({
+          ...(this.formValues() as Task),
+          id: this.edittingTask()?.id,
+          projectId: this.projectService.selectedProject()?.id,
+        });
+      } else {
+        this.taskService.createTask({
+          ...this.formValues(),
+          projectId: this.projectService.selectedProject()?.id,
+        });
+      }
       this.closeNewTaskForm();
     }
   }
