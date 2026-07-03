@@ -33,13 +33,13 @@
     },
     {
       "id": 10,
-      "title": "Criar pipe de formatação de data",
+      "title": "Atacar Pontos de Api",
       "description": null,
       "tag": "Shared",
       "tagClass": "tag-blue",
       "dueDate": "Sexta",
       "overdue": false,
-      "priority": "low",
+      "priority": "high",
       "status": "progress",
       "projectId": 1
     },
@@ -52,7 +52,7 @@
       "dueDate": "Sexta",
       "overdue": false,
       "priority": "high",
-      "status": "done",
+      "status": "progress",
       "projectId": 1
     },
     {
@@ -64,7 +64,7 @@
       "dueDate": "Sexta",
       "overdue": false,
       "priority": "med",
-      "status": "todo",
+      "status": "done",
       "projectId": 1
     },
     {
@@ -191,7 +191,7 @@
       "title": "Rodrigo Task",
       "description": "Uma descrição",
       "priority": "low",
-      "status": "done",
+      "status": "progress",
       "tag": "Core",
       "dueDate": "",
       "projectId": 1,
@@ -200,8 +200,8 @@
     {
       "title": "Rodrigo Task",
       "description": "Uma descrição",
-      "priority": "low",
-      "status": "progress",
+      "priority": "med",
+      "status": "done",
       "tag": "Core",
       "dueDate": "",
       "projectId": 1,
@@ -210,8 +210,8 @@
     {
       "title": "Regina Task",
       "description": "adasd",
-      "priority": "med",
-      "status": "progress",
+      "priority": "high",
+      "status": "done",
       "tag": "",
       "dueDate": "2026-07-07",
       "projectId": 1,
