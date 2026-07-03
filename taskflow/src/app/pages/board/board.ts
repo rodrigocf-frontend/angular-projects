@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { BoardTable } from '../../components/board-table/board-table';
-import { TaskService } from '../../services/task-service/task-service';
+import { Task, TaskService } from '../../services/task-service/task-service';
 
 @Component({
   selector: 'app-board',
@@ -17,5 +17,9 @@ export class Board {
 
   onDropTask(newTaskData: any) {
     this.taskService.updateTask(newTaskData);
+  }
+
+  editTask(payload: Task) {
+    this.taskService.edit(payload);
   }
 }

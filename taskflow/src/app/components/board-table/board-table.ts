@@ -8,6 +8,7 @@ import {
 import { Component, input, output } from '@angular/core';
 import { Button } from '../ui/button/button';
 import { Icon } from '../ui/icon/icon';
+import { Task } from '../../services/task-service/task-service';
 
 @Component({
   selector: 'app-board-table',
@@ -20,6 +21,7 @@ export class BoardTable {
   progress = input<any[]>([]);
   done = input<any[]>([]);
   onDropTask = output<any>();
+  onClickTask = output<Task>();
 
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
@@ -37,5 +39,9 @@ export class BoardTable {
         status: event.container.id,
       });
     }
+  }
+
+  tapTask(payload: Task) {
+    this.onClickTask.emit(payload);
   }
 }

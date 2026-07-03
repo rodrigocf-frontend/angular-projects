@@ -7,7 +7,7 @@ import { SnackbarService } from '../snack-service/snack-service';
 export type TaskStatus = 'todo' | 'progress' | 'done';
 export type TaskPriority = 'low' | 'med' | 'high';
 
-export interface TasksAPIResponse {
+export interface Task {
   id: string;
   title: string;
   description: string | null;
@@ -17,7 +17,10 @@ export interface TasksAPIResponse {
   status: TaskStatus;
   tag: string;
   tagClass: string;
+  projectId: number;
 }
+
+type TasksAPIResponse = Task;
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
@@ -37,12 +40,22 @@ export class TaskService {
   readonly doneList = this.done.asReadonly();
   readonly overdueList = this.overdue.asReadonly();
 
+  private edittingTask = signal<TasksAPIResponse | null>(null);
+
+  editTaskData = this.edittingTask.asReadonly();
+
   open() {
     this.visibleState.set(true);
   }
 
   close() {
+    this.edittingTask.set(null);
     this.visibleState.set(false);
+  }
+
+  edit(payload: any) {
+    this.edittingTask.set(payload);
+    this.open();
   }
 
   createTask(payload: any) {
@@ -79,7 +92,7 @@ export class TaskService {
     });
   }
 
-  updateTask(payload: any) {
+  updateTask(payload: Partial<Task>) {
     this.loadingService.start();
     this.http.patch(`${environment.apiUrl}/tasks/${payload.id}`, payload).subscribe({
       error: () => {
@@ -87,7 +100,7 @@ export class TaskService {
         this.snackService.error('Connection Error');
       },
       complete: () => {
-        this.loadingService.stop();
+        this.readTasks(payload.projectId);
       },
     });
   }
