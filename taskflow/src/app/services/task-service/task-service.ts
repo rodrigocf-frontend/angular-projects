@@ -79,7 +79,18 @@ export class TaskService {
     });
   }
 
-  updateTask() {}
+  updateTask(payload: any) {
+    this.loadingService.start();
+    this.http.patch(`${environment.apiUrl}/tasks/${payload.id}`, payload).subscribe({
+      error: () => {
+        this.loadingService.stop();
+        this.snackService.error('Connection Error');
+      },
+      complete: () => {
+        this.loadingService.stop();
+      },
+    });
+  }
 
   deleteTask() {}
 }

@@ -14,4 +14,8 @@ export class Board {
   todoList = this.taskService.todoList;
   progressList = this.taskService.progressList;
   doneList = this.taskService.doneList;
+
+  onDropTask(newTaskData: any) {
+    this.taskService.updateTask(newTaskData);
+  }
 }

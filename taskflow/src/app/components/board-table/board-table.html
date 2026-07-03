@@ -22,6 +22,7 @@
         <span class="col-count">{{ todo().length }}</span>
       </div>
       <ul
+        id="todo"
         cdkDropList
         #todoList="cdkDropList"
         [cdkDropListData]="todo()"
@@ -29,7 +30,7 @@
         (cdkDropListDropped)="drop($event)"
       >
         @for (item of todo(); track item.id) {
-          <div [class]="'task-card priority-' + item.priority" cdkDrag>
+          <div [class]="'task-card priority-' + item.priority" [cdkDragData]="item" cdkDrag>
             <div class="task-title">{{ item.title }}</div>
             @if (item.description) {
               <div class="task-desc">{{ item.description }}</div>
@@ -62,6 +63,7 @@
         <span class="col-count">{{ progress().length }}</span>
       </div>
       <ul
+        id="progress"
         cdkDropList
         #progressList="cdkDropList"
         [cdkDropListData]="progress()"
@@ -69,7 +71,7 @@
         (cdkDropListDropped)="drop($event)"
       >
         @for (item of progress(); track item.id) {
-          <div [class]="'task-card priority-' + item.priority" cdkDrag>
+          <div [class]="'task-card priority-' + item.priority" [cdkDragData]="item" cdkDrag>
             <div class="task-title">{{ item.title }}</div>
             @if (item.description) {
               <div class="task-desc">{{ item.description }}</div>
@@ -106,6 +108,7 @@
       </div>
 
       <ul
+        id="done"
         cdkDropList
         #doneList="cdkDropList"
         [cdkDropListData]="done()"
@@ -113,7 +116,12 @@
         (cdkDropListDropped)="drop($event)"
       >
         @for (item of done(); track item.id) {
-          <div [class]="'task-card priority-' + item.priority" style="opacity: 0.7" cdkDrag>
+          <div
+            [class]="'task-card priority-' + item.priority"
+            style="opacity: 0.7"
+            [cdkDragData]="item"
+            cdkDrag
+          >
             <div class="task-title task-title-completed" style="text-decoration: line-through">
               {{ item.title }}
             </div>

@@ -1,1 +1,6 @@
-<app-board-table [todo]="todoList()" [done]="doneList()" [progress]="progressList()" />
+<app-board-table
+  [todo]="todoList()"
+  [done]="doneList()"
+  [progress]="progressList()"
+  (onDropTask)="onDropTask($event)"
+/>

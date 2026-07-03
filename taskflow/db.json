@@ -40,7 +40,7 @@
       "dueDate": "Sexta",
       "overdue": false,
       "priority": "low",
-      "status": "todo",
+      "status": "progress",
       "projectId": 1
     },
     {
@@ -52,7 +52,7 @@
       "dueDate": "Sexta",
       "overdue": false,
       "priority": "high",
-      "status": "todo",
+      "status": "done",
       "projectId": 1
     },
     {
@@ -201,7 +201,7 @@
       "title": "Rodrigo Task",
       "description": "Uma descrição",
       "priority": "low",
-      "status": "done",
+      "status": "progress",
       "tag": "Core",
       "dueDate": "",
       "projectId": 1,

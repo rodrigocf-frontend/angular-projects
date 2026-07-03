@@ -5,7 +5,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Button } from '../ui/button/button';
 import { Icon } from '../ui/icon/icon';
 
@@ -19,6 +19,7 @@ export class BoardTable {
   todo = input<any[]>([]);
   progress = input<any[]>([]);
   done = input<any[]>([]);
+  onDropTask = output<any>();
 
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
@@ -30,6 +31,11 @@ export class BoardTable {
         event.previousIndex,
         event.currentIndex,
       );
+
+      this.onDropTask.emit({
+        ...event.item.data,
+        status: event.container.id,
+      });
     }
   }
 }
