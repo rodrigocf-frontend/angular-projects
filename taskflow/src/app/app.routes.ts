@@ -1,24 +1,20 @@
 import { Routes } from '@angular/router';
-import { Board } from './pages/board/board';
-import { MyTasks } from './pages/my-tasks/my-tasks';
-import { Calendar } from './pages/calendar/calendar';
-import { Reports } from './pages/reports/reports';
 
 export const routes: Routes = [
   {
     path: '',
-    component: Board,
+    loadComponent: () => import('./pages/board/board').then((m) => m.Board),
   },
   {
     path: 'my-tasks',
-    component: MyTasks,
+    loadComponent: () => import('./pages/my-tasks/my-tasks').then((m) => m.MyTasks),
   },
   {
     path: 'calendar',
-    component: Calendar,
+    loadComponent: () => import('./pages/calendar/calendar').then((m) => m.Calendar),
   },
   {
     path: 'reports',
-    component: Reports,
+    loadComponent: () => import('./pages/reports/reports').then((m) => m.Reports),
   },
 ];
