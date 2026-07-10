@@ -24,13 +24,16 @@ TaskFlow lets you manage multiple projects, each with its own task board. Tasks 
 
 - Multi-project support — switch between projects in the sidebar
 - Kanban board with 3 columns and drag and drop
-- Task creation modal with Reactive Forms (title, description, priority, status, tag, due date)
+- Task editing — click any card to open the pre-filled edit form
+- Task creation and editing modal with Reactive Forms (title, description, priority, status, tag, due date)
 - Project creation modal with color picker and Reactive Forms
+- My Tasks page — personal task list grouped by status with progress summary
 - Task cards with priority levels (high / medium / low) and due date indicators
 - Overdue task indicator per card
 - Real-time progress bar and task counts computed via `computed()` signals
 - Loading overlay while fetching data from the API
 - Snackbar notifications for success and error feedback
+- Lazy loading routes with `loadComponent` and deferred modals with `@defer`
 - Environment-based API URL (dev vs. production)
 
 ## Architecture Decisions
@@ -88,14 +91,15 @@ src/
 │   │   └── ui/                 # Avatar, Button, Icon, Snackbar
 │   ├── pages/
 │   │   ├── board/              # Main Kanban view
-│   │   ├── my-tasks/           # Task list view (in progress)
+│   │   ├── my-tasks/           # Personal task list grouped by status
 │   │   ├── calendar/           # Placeholder
 │   │   └── reports/            # Placeholder
 │   └── services/
 │       ├── loading-service/    # Global loading state
 │       ├── project-service/    # Project CRUD + selected project signal
 │       ├── snack-service/      # Toast notification service
-│       └── task-service/       # Task CRUD + column signals
+│       ├── task-service/       # Task CRUD + column signals + edit state
+│       └── user-service/       # Current user identity signal
 └── themes/
     ├── _tokens.scss            # Design tokens (colors, radii, spacing)
     ├── _fonts.scss             # Inter font import

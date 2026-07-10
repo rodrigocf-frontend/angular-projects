@@ -1,132 +1,29 @@
 {
   "$schema": "./node_modules/json-server/schema.json",
+  "users": [
+    { "id": 1, "name": "Rodrigo", "initials": "RO", "color": "#5b6af0" },
+    { "id": 2, "name": "Regina", "initials": "RE", "color": "#a855f7" },
+    { "id": 3, "name": "Lucas", "initials": "LU", "color": "#f59e0b" }
+  ],
   "projects": [
     {
+      "id": 1,
+      "name": "API Backend",
+      "description": "",
       "color": "#f59e0b",
       "deadline": null,
-      "description": "",
-      "name": "API Backend",
-      "total": 5,
-      "id": 1
+      "total": 5
     },
     {
+      "id": 2,
+      "name": "API 2",
+      "description": null,
       "color": "#a855f7",
       "deadline": null,
-      "description": null,
-      "name": "API 2",
-      "total": 9,
-      "id": 2
+      "total": 9
     }
   ],
   "tasks": [
-    {
-      "id": 9,
-      "title": "Configurar rotas lazy loading",
-      "description": "Definir loadChildren nos módulos de features",
-      "tag": "Angular",
-      "tagClass": "tag-blue",
-      "dueDate": "Amanhã",
-      "overdue": false,
-      "priority": "med",
-      "status": "todo",
-      "projectId": 1
-    },
-    {
-      "id": 10,
-      "title": "Atacar Pontos de Api",
-      "description": null,
-      "tag": "Shared",
-      "tagClass": "tag-blue",
-      "dueDate": "Sexta",
-      "overdue": false,
-      "priority": "high",
-      "status": "progress",
-      "projectId": 1
-    },
-    {
-      "id": 11,
-      "title": "Task board com drag and drop (CDK)",
-      "description": null,
-      "tag": "Feature",
-      "tagClass": "tag-blue",
-      "dueDate": "Sexta",
-      "overdue": false,
-      "priority": "high",
-      "status": "progress",
-      "projectId": 1
-    },
-    {
-      "id": 12,
-      "title": "Modal de detalhes da tarefa",
-      "description": null,
-      "tag": "Feature",
-      "tagClass": "tag-blue",
-      "dueDate": "Sexta",
-      "overdue": false,
-      "priority": "med",
-      "status": "done",
-      "projectId": 1
-    },
-    {
-      "id": 13,
-      "title": "Tela Minhas tarefas",
-      "description": null,
-      "tag": "Feature",
-      "tagClass": "tag-blue",
-      "dueDate": null,
-      "overdue": false,
-      "priority": "low",
-      "status": "todo",
-      "projectId": 1
-    },
-    {
-      "id": 14,
-      "title": "Deploy (Vercel + Railway)",
-      "description": null,
-      "tag": "DevOps",
-      "tagClass": "tag-blue",
-      "dueDate": null,
-      "overdue": false,
-      "priority": "low",
-      "status": "todo",
-      "projectId": 2
-    },
-    {
-      "id": 6,
-      "title": "Implementar TaskService com HttpClient",
-      "description": "CRUD completo + tratamento de erros via interceptor",
-      "tag": "Core",
-      "tagClass": "tag-blue",
-      "dueDate": "Hoje",
-      "overdue": true,
-      "priority": "high",
-      "status": "progress",
-      "projectId": 2
-    },
-    {
-      "id": 7,
-      "title": "Montar Reactive Form de criação",
-      "description": "Validações customizadas + feedback visual",
-      "tag": "Feature",
-      "tagClass": "tag-blue",
-      "dueDate": "Hoje",
-      "overdue": false,
-      "priority": "med",
-      "projectId": 2,
-      "status": "progress"
-    },
-    {
-      "id": 8,
-      "title": "Estilizar componentes shared",
-      "description": null,
-      "tag": "Design",
-      "tagClass": "tag-blue",
-      "dueDate": "Quinta",
-      "overdue": false,
-      "priority": "low",
-      "status": "progress",
-      "projectId": 2
-    },
     {
       "id": 1,
       "title": "Estrutura de pastas do projeto",
@@ -136,8 +33,9 @@
       "dueDate": null,
       "overdue": false,
       "priority": "low",
-      "status": "done",
-      "projectId": 2
+      "status": "progress",
+      "projectId": 2,
+      "userId": 1
     },
     {
       "id": 2,
@@ -149,7 +47,8 @@
       "overdue": false,
       "priority": "low",
       "status": "done",
-      "projectId": 2
+      "projectId": 2,
+      "userId": 1
     },
     {
       "id": 3,
@@ -161,7 +60,8 @@
       "overdue": false,
       "priority": "low",
       "status": "done",
-      "projectId": 2
+      "projectId": 2,
+      "userId": 2
     },
     {
       "id": 4,
@@ -173,7 +73,8 @@
       "overdue": false,
       "priority": "low",
       "status": "done",
-      "projectId": 2
+      "projectId": 2,
+      "userId": 3
     },
     {
       "id": 5,
@@ -185,57 +86,190 @@
       "overdue": false,
       "priority": "low",
       "status": "done",
-      "projectId": 2
+      "projectId": 2,
+      "userId": 1
     },
     {
-      "title": "Rodrigo Task",
-      "description": "Uma descrição",
+      "id": 6,
+      "title": "Implementar TaskService com HttpClient",
+      "description": "CRUD completo + tratamento de erros via interceptor",
+      "tag": "Core",
+      "tagClass": "tag-blue",
+      "dueDate": "2026-07-03",
+      "overdue": true,
+      "priority": "high",
+      "status": "progress",
+      "projectId": 2,
+      "userId": 1
+    },
+    {
+      "id": 7,
+      "title": "Montar Reactive Form de criação",
+      "description": "Validações customizadas + feedback visual",
+      "tag": "Feature",
+      "tagClass": "tag-blue",
+      "dueDate": "2026-07-03",
+      "overdue": false,
+      "priority": "med",
+      "status": "todo",
+      "projectId": 2,
+      "userId": 2
+    },
+    {
+      "id": 8,
+      "title": "Estilizar componentes shared",
+      "description": null,
+      "tag": "Design",
+      "tagClass": "tag-blue",
+      "dueDate": "2026-07-10",
+      "overdue": false,
       "priority": "low",
       "status": "progress",
-      "tag": "Core",
-      "dueDate": "",
-      "projectId": 1,
-      "id": 15
+      "projectId": 2,
+      "userId": 3
     },
     {
+      "id": 9,
+      "title": "Configurar rotas lazy loading",
+      "description": "Definir loadChildren nos módulos de features",
+      "tag": "Angular",
+      "tagClass": "tag-blue",
+      "dueDate": "2026-07-04",
+      "overdue": false,
+      "priority": "med",
+      "status": "todo",
+      "projectId": 1,
+      "userId": 1
+    },
+    {
+      "id": 10,
+      "title": "Atacar Pontos de Api",
+      "description": null,
+      "tag": "Shared",
+      "tagClass": "tag-blue",
+      "dueDate": "2026-07-11",
+      "overdue": false,
+      "priority": "high",
+      "status": "progress",
+      "projectId": 1,
+      "userId": 2
+    },
+    {
+      "id": 11,
+      "title": "Task board com drag and drop (CDK)",
+      "description": null,
+      "tag": "Feature",
+      "tagClass": "tag-blue",
+      "dueDate": "2026-07-11",
+      "overdue": false,
+      "priority": "high",
+      "status": "progress",
+      "projectId": 1,
+      "userId": 1
+    },
+    {
+      "id": 12,
+      "title": "Modal de detalhes da tarefa",
+      "description": null,
+      "tag": "Feature",
+      "tagClass": "tag-green",
+      "dueDate": "2026-07-11",
+      "overdue": false,
+      "priority": "med",
+      "status": "done",
+      "projectId": 1,
+      "userId": 3
+    },
+    {
+      "id": 13,
+      "title": "Tela Minhas tarefas",
+      "description": null,
+      "tag": "Feature",
+      "tagClass": "tag-blue",
+      "dueDate": null,
+      "overdue": false,
+      "priority": "low",
+      "status": "todo",
+      "projectId": 1,
+      "userId": 1
+    },
+    {
+      "id": 14,
+      "title": "Deploy (Vercel + Railway)",
+      "description": null,
+      "tag": "DevOps",
+      "tagClass": "tag-blue",
+      "dueDate": null,
+      "overdue": false,
+      "priority": "low",
+      "status": "todo",
+      "projectId": 2,
+      "userId": 2
+    },
+    {
+      "id": 15,
       "title": "Rodrigo Task",
       "description": "Uma descrição",
+      "tag": "Core",
+      "tagClass": "tag-blue",
+      "dueDate": null,
+      "overdue": false,
+      "priority": "low",
+      "status": "progress",
+      "projectId": 1,
+      "userId": 1
+    },
+    {
+      "id": 16,
+      "title": "Rodrigo Task 2",
+      "description": "Uma descrição",
+      "tag": "Core",
+      "tagClass": "tag-green",
+      "dueDate": null,
+      "overdue": false,
       "priority": "med",
       "status": "done",
-      "tag": "Core",
-      "dueDate": "",
       "projectId": 1,
-      "id": 16
+      "userId": 1
     },
     {
+      "id": 17,
       "title": "Regina Task",
       "description": "adasd",
+      "tag": "",
+      "tagClass": "tag-green",
+      "dueDate": "2026-07-07",
+      "overdue": false,
       "priority": "high",
       "status": "done",
-      "tag": "",
-      "dueDate": "2026-07-07",
       "projectId": 1,
-      "id": 17
+      "userId": 2
     },
     {
-      "title": "Regina Task",
+      "id": 18,
+      "title": "Regina Task 2",
       "description": "adasd",
+      "tag": "Design",
+      "tagClass": "tag-blue",
+      "dueDate": "2026-07-07",
+      "overdue": false,
       "priority": "med",
       "status": "progress",
-      "tag": "Design",
-      "dueDate": "2026-07-07",
       "projectId": 1,
-      "id": 18
+      "userId": 2
     },
     {
+      "id": 19,
       "title": "sasdas",
       "description": "asdasdasd",
+      "tag": "",
+      "tagClass": "tag-blue",
+      "dueDate": null,
+      "overdue": false,
       "priority": "high",
       "status": "todo",
-      "tag": "",
-      "dueDate": "",
       "projectId": 1,
-      "id": 19
+      "userId": 3
     }
   ]
 }
