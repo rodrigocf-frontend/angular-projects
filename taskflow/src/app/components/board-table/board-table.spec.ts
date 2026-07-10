@@ -93,4 +93,30 @@ describe('BoardTable', () => {
     const el: HTMLElement = fixture.nativeElement;
     expect(el.querySelectorAll('.task-card').length).toBeGreaterThan(0);
   });
+
+  it('cross-container drop should emit onDropTask with container id as status', () => {
+    const todoArr = [...component.todo()];
+    const progressArr = [...component.progress()];
+    const transferred = todoArr[0];
+    let emitted: any;
+    component.onDropTask.subscribe((v) => (emitted = v));
+
+    component.drop({
+      previousContainer: { id: 'todo', data: todoArr },
+      container: { id: 'progress', data: progressArr },
+      previousIndex: 0,
+      currentIndex: 0,
+      item: { data: transferred },
+    } as any);
+
+    expect(emitted).toMatchObject({ ...transferred, status: 'progress' });
+  });
+
+  it('tapTask should emit onClickTask with the task', () => {
+    const task = component.todo()[0];
+    let emitted: any;
+    component.onClickTask.subscribe((v) => (emitted = v));
+    component.tapTask(task as any);
+    expect(emitted).toEqual(task);
+  });
 });
