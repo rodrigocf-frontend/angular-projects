@@ -1,5 +1,6 @@
 @use 'fonts' as *;
 @use 'utils' as *;
+@use 'tokens' as *;
 @forward 'utils';
 @forward 'tokens';
 
@@ -22,4 +23,25 @@ a,
 p,
 button {
   font-family: 'Inter', sans-serif;
+}
+
+.bg {
+  &-accent {
+    background-color: $accent600;
+  }
+
+  &-warning {
+    background-color: $warning;
+  }
+
+  &-success {
+    background-color: $success;
+  }
+  &-danger {
+    background-color: $danger;
+  }
+
+  &-txt3 {
+    background-color: $txt-3;
+  }
 }

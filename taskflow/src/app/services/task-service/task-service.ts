@@ -3,6 +3,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { LoadingService } from '../loading-service/loading-service';
 import { environment } from '../../../environments/environment';
 import { SnackbarService } from '../snack-service/snack-service';
+import { Project } from '../project-service/project-service';
 
 export type TaskStatus = 'todo' | 'progress' | 'done';
 export type TaskPriority = 'low' | 'med' | 'high';
@@ -18,6 +19,8 @@ export interface Task {
   tag: string;
   tagClass: string;
   projectId: number;
+  userId: number;
+  project?: Project;
 }
 
 type TasksAPIResponse = Task;
@@ -103,6 +106,12 @@ export class TaskService {
         this.readTasks(payload.projectId);
       },
     });
+  }
+
+  readMyTask() {
+    return this.http.get<TasksAPIResponse[]>(
+      `${environment.apiUrl}/tasks?userId=${1}&_expand=project`,
+    );
   }
 
   deleteTask() {}

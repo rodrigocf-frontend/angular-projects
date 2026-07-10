@@ -1,0 +1,315 @@
+// my-activities.component.scss
+@use '../../../themes/styles.scss' as *;
+
+.topbar {
+  background: $surface;
+  border-bottom: 0.5px solid $border0;
+  display: flex;
+  align-items: center;
+  gap: toRem(12);
+  padding: 0 toRem(20);
+  height: toRem(56);
+  flex-shrink: 0;
+}
+
+.topbar-title {
+  font-size: toRem(15);
+  font-weight: 600;
+  color: $txt;
+  flex: 1;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: toRem(6);
+  padding: toRem(6) toRem(12);
+  border-radius: var(--radius);
+  font-size: toRem(12.5);
+  font-weight: 500;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+
+  &-ghost {
+    background: transparent;
+    color: $txt-2;
+    border: 0.5px solid $border100;
+  }
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: toRem(20);
+  display: flex;
+  flex-direction: column;
+  gap: toRem(16);
+}
+
+// summary
+.summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: toRem(10);
+}
+
+.stat {
+  background: $surface;
+  border: 0.5px solid $border0;
+  border-radius: var(--radius-lg);
+  padding: toRem(12) toRem(14);
+  display: flex;
+  flex-direction: column;
+  gap: toRem(4);
+
+  &-n {
+    font-size: toRem(20);
+    font-weight: 600;
+    color: $txt;
+
+    &--accent {
+      color: $accent600;
+    }
+    &--danger {
+      color: $danger;
+    }
+    &--success {
+      color: $success;
+    }
+    &--warning {
+      color: $warning;
+    }
+  }
+
+  &-label {
+    font-size: toRem(11.5);
+    color: $txt-2;
+  }
+
+  &-bar {
+    height: 3px;
+    border-radius: 2px;
+    margin-top: toRem(6);
+  }
+}
+
+// group
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: toRem(6);
+
+  &-head {
+    display: flex;
+    align-items: center;
+    gap: toRem(8);
+    padding: toRem(2) 0;
+  }
+
+  &-dot {
+    width: toRem(8);
+    height: toRem(8);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  &-name {
+    font-size: toRem(11.5);
+    font-weight: 600;
+    color: $txt-2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &-count {
+    font-size: toRem(11.5);
+    color: $txt-3;
+    background: $surface-2;
+    padding: toRem(1) toRem(7);
+    border-radius: 20px;
+  }
+}
+
+// task row
+.task-row {
+  background: $surface;
+  border: 0.5px solid $border0;
+  border-radius: var(--radius-lg);
+  padding: toRem(11) toRem(14);
+  display: flex;
+  align-items: center;
+  gap: toRem(12);
+  cursor: pointer;
+  transition:
+    border-color 0.12s,
+    box-shadow 0.12s;
+
+  &:hover {
+    border-color: $accent600;
+    box-shadow: 0 0 0 3px rgba(91, 106, 240, 0.06);
+  }
+
+  &.done {
+    opacity: 0.6;
+
+    .task-title {
+      text-decoration: line-through;
+      color: $txt-3;
+    }
+  }
+}
+
+.priority-bar {
+  width: 3px;
+  height: toRem(32);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.check {
+  width: toRem(18);
+  height: toRem(18);
+  border-radius: 50%;
+  border: 1.5px solid $border100;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.12s;
+  font-size: toRem(9);
+
+  &:hover {
+    border-color: $accent600;
+  }
+
+  &.checked {
+    background: $success;
+    border-color: $success;
+    color: #fff;
+  }
+}
+
+.task-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: toRem(4);
+}
+
+.task-title {
+  font-size: toRem(13);
+  font-weight: 500;
+  color: $txt;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-sub {
+  display: flex;
+  align-items: center;
+  gap: toRem(8);
+}
+
+.tag {
+  font-size: toRem(11);
+  padding: toRem(2) toRem(7);
+  border-radius: 4px;
+  font-weight: 500;
+
+  &-blue {
+    background: $accent0;
+    color: $accent600;
+  }
+  &-green {
+    background: $success-bg;
+    color: #16a34a;
+  }
+  &-warn {
+    background: $warning-bg;
+    color: #d97706;
+  }
+}
+
+.due {
+  font-size: toRem(11);
+  color: $txt-3;
+  display: flex;
+  align-items: center;
+  gap: toRem(3);
+
+  i {
+    font-size: toRem(11);
+  }
+
+  &.overdue {
+    color: $danger;
+  }
+}
+
+.task-right {
+  display: flex;
+  align-items: center;
+  gap: toRem(10);
+  flex-shrink: 0;
+}
+
+.project-chip {
+  font-size: toRem(11);
+  padding: toRem(2) toRem(8);
+  border-radius: 20px;
+  border: 0.5px solid $border100;
+  color: $txt-2;
+  display: flex;
+  align-items: center;
+  gap: toRem(5);
+}
+
+.project-dot {
+  width: toRem(6);
+  height: toRem(6);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.status-chip {
+  font-size: toRem(11);
+  padding: toRem(2) toRem(8);
+  border-radius: 20px;
+  font-weight: 500;
+
+  &--progress {
+    background: $accent0;
+    color: $accent600;
+  }
+  &--todo {
+    background: $surface-2;
+    color: $txt-3;
+  }
+  &--done {
+    background: $success-bg;
+    color: #16a34a;
+  }
+}
+
+.empty-group {
+  display: flex;
+  align-items: center;
+  gap: toRem(8);
+  padding: toRem(10) toRem(14);
+  border: 0.5px dashed var(--border-2);
+  border-radius: var(--radius);
+  color: var(--txt-3);
+}
+
+i {
+  font-size: toRem(14);
+  flex-shrink: 0;
+}
+
+.empty-group-text {
+  font-size: toRem(12.5);
+}
