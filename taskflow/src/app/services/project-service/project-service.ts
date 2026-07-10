@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { LoadingService } from '../loading-service/loading-service';
 
 export interface Project {
   name: string;
@@ -18,7 +17,6 @@ export type ProjectAPIPayload = Partial<Project>;
 export class ProjectService {
   private visibleState = signal(false);
   private readonly http = inject(HttpClient);
-  private readonly loadingService = inject(LoadingService);
   private projects = signal<Project[]>([]);
 
   visible = this.visibleState.asReadonly();
@@ -39,7 +37,6 @@ export class ProjectService {
   }
 
   create({ payload, onComplete }: { payload: ProjectAPIPayload; onComplete?: () => void }) {
-    this.loadingService.start();
     this.http
       .post(environment.apiUrl + '/projects', {
         ...payload,
@@ -47,26 +44,12 @@ export class ProjectService {
       })
       .subscribe({
         complete: () => {
-          this.getAll({
-            onComplete,
-          });
+          this.getAll();
         },
-        error: () => this.loadingService.stop(),
       });
   }
 
-  getAll({ onComplete }: { onComplete?: () => void } = {}) {
-    this.loadingService.start();
-    this.http.get<Project[]>(environment.apiUrl + '/projects?sort=id').subscribe({
-      next: (res) => {
-        this.projects.set(res);
-        this.currentProject.set(res[0]);
-      },
-      complete: () => {
-        onComplete?.();
-        this.loadingService.stop();
-      },
-      error: () => this.loadingService.stop(),
-    });
+  getAll() {
+    return this.http.get<Project[]>(environment.apiUrl + '/projects?sort=id');
   }
 }
