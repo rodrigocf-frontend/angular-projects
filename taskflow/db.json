@@ -1,9 +1,24 @@
 {
   "$schema": "./node_modules/json-server/schema.json",
   "users": [
-    { "id": 1, "name": "Rodrigo", "initials": "RO", "color": "#5b6af0" },
-    { "id": 2, "name": "Regina", "initials": "RE", "color": "#a855f7" },
-    { "id": 3, "name": "Lucas", "initials": "LU", "color": "#f59e0b" }
+    {
+      "id": 1,
+      "name": "Rodrigo",
+      "initials": "RO",
+      "color": "#5b6af0"
+    },
+    {
+      "id": 2,
+      "name": "Regina",
+      "initials": "RE",
+      "color": "#a855f7"
+    },
+    {
+      "id": 3,
+      "name": "Lucas",
+      "initials": "LU",
+      "color": "#f59e0b"
+    }
   ],
   "projects": [
     {
@@ -90,19 +105,6 @@
       "userId": 1
     },
     {
-      "id": 6,
-      "title": "Implementar TaskService com HttpClient",
-      "description": "CRUD completo + tratamento de erros via interceptor",
-      "tag": "Core",
-      "tagClass": "tag-blue",
-      "dueDate": "2026-07-03",
-      "overdue": true,
-      "priority": "high",
-      "status": "progress",
-      "projectId": 2,
-      "userId": 1
-    },
-    {
       "id": 7,
       "title": "Montar Reactive Form de criação",
       "description": "Validações customizadas + feedback visual",
@@ -182,13 +184,13 @@
     },
     {
       "id": 13,
-      "title": "Tela Minhas tarefas",
+      "title": "Tela Minhas tarefas [Edited]",
       "description": null,
-      "tag": "Feature",
+      "tag": "Core",
       "tagClass": "tag-blue",
       "dueDate": null,
       "overdue": false,
-      "priority": "low",
+      "priority": "high",
       "status": "todo",
       "projectId": 1,
       "userId": 1
@@ -215,7 +217,7 @@
       "dueDate": null,
       "overdue": false,
       "priority": "low",
-      "status": "progress",
+      "status": "todo",
       "projectId": 1,
       "userId": 1
     },
