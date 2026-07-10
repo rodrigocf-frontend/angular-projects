@@ -44,16 +44,14 @@ export class MyTasks implements OnInit {
   }
 
   fetchUserTasks() {
-    this.loadingService.start();
     this.taskService.readMyTask().subscribe({
       next: (data) => {
         this.userTasks.set(data);
       },
       error: () => {
-        this.loadingService.stop();
         this.snackService.error('Connection Error');
       },
-      complete: () => this.loadingService.stop(),
+      complete: () => {},
     });
   }
 }

@@ -10,6 +10,8 @@ import {
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ProjectService } from '../../services/project-service/project-service';
+import { SnackbarService } from '../../services/snack-service/snack-service';
+import { SidebarService } from '../../services/sidebar-service/sidebar-service';
 
 @Component({
   selector: 'app-form-new-task',
@@ -18,10 +20,13 @@ import { ProjectService } from '../../services/project-service/project-service';
   styleUrl: './form-new-task.scss',
 })
 export class FormNewTask {
-  private taskService = inject(TaskService);
-  private projectService = inject(ProjectService);
+  private readonly taskService = inject(TaskService);
+  private readonly snackbarService = inject(SnackbarService);
+  private readonly sidebarService = inject(SidebarService);
+
   visible = this.taskService.visible;
   edittingTask = this.taskService.editTaskData;
+  selectedProject = this.sidebarService.selectedProject;
 
   constructor() {
     effect(() => {
@@ -101,16 +106,34 @@ export class FormNewTask {
   submitNewTask() {
     if (this.formNewTask.valid) {
       if (this.edittingTask()) {
-        this.taskService.updateTask({
-          ...(this.formValues() as Task),
-          id: this.edittingTask()?.id,
-          projectId: this.projectService.selectedProject()?.id,
-        });
+        this.taskService
+          .updateTask({
+            ...(this.formValues() as Task),
+            id: this.edittingTask()?.id,
+            projectId: this.selectedProject()?.id,
+          })
+          .subscribe({
+            error: () => {
+              this.snackbarService.error('Connection Error');
+            },
+            complete: () => {
+              this.taskService.readTasks().subscribe();
+            },
+          });
       } else {
-        this.taskService.createTask({
-          ...this.formValues(),
-          projectId: this.projectService.selectedProject()?.id,
-        });
+        this.taskService
+          .createTask({
+            ...this.formValues(),
+            projectId: this.selectedProject()?.id,
+          })
+          .subscribe({
+            error: () => {
+              this.snackbarService.error('Connection Error');
+            },
+            complete: () => {
+              this.taskService.readTasks().subscribe();
+            },
+          });
       }
       this.closeNewTaskForm();
     }

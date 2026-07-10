@@ -1,6 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, effect, inject, untracked } from '@angular/core';
 import { BoardTable } from '../../components/board-table/board-table';
 import { Task, TaskService } from '../../services/task-service/task-service';
+import { SnackbarService } from '../../services/snack-service/snack-service';
+import { SidebarService } from '../../services/sidebar-service/sidebar-service';
 
 @Component({
   selector: 'app-board',
@@ -9,14 +11,41 @@ import { Task, TaskService } from '../../services/task-service/task-service';
   styleUrl: './board.scss',
 })
 export class Board {
-  private taskService = inject(TaskService);
+  private readonly taskService = inject(TaskService);
+  private readonly snackService = inject(SnackbarService);
+  private readonly sidebarService = inject(SidebarService);
 
-  todoList = this.taskService.todoList;
-  progressList = this.taskService.progressList;
-  doneList = this.taskService.doneList;
+  private allTasks = this.taskService.allTasks;
+  private currentProject = this.sidebarService.selectedProject;
+
+  todoList = computed(() => this.allTasks().filter((item) => item.status === 'todo'));
+  progressList = computed(() => this.allTasks().filter((item) => item.status === 'progress'));
+  doneList = computed(() => this.allTasks().filter((item) => item.status === 'done'));
+
+  constructor() {
+    effect(() => {
+      const activeProject = this.currentProject();
+
+      if (activeProject?.id) {
+        untracked(() => this.fetchTasks());
+      }
+    });
+  }
+
+  fetchTasks() {
+    if (this.currentProject()?.id) {
+      this.taskService.readTasks().subscribe({
+        error: () => {
+          this.snackService.error('Connection Error');
+        },
+      });
+    }
+  }
 
   onDropTask(newTaskData: any) {
-    this.taskService.updateTask(newTaskData);
+    this.taskService.updateTask(newTaskData).subscribe({
+      complete: () => this.fetchTasks(),
+    });
   }
 
   editTask(payload: Task) {

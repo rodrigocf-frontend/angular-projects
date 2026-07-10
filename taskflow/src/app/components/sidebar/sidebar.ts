@@ -1,8 +1,10 @@
-import { Component, computed, effect, inject, OnInit, untracked } from '@angular/core';
+import { Component, computed, effect, inject, OnInit, signal, untracked } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Icon } from '../ui/icon/icon';
-import { ProjectService } from '../../services/project-service/project-service';
+import { Project, ProjectService } from '../../services/project-service/project-service';
 import { TaskService } from '../../services/task-service/task-service';
+import { SnackbarService } from '../../services/snack-service/snack-service';
+import { SidebarService } from '../../services/sidebar-service/sidebar-service';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,19 +14,27 @@ import { TaskService } from '../../services/task-service/task-service';
   styleUrl: './sidebar.scss',
 })
 export class SidebarComponent implements OnInit {
-  private projectService = inject(ProjectService);
-  private taskService = inject(TaskService);
+  private readonly projectService = inject(ProjectService);
+  private readonly taskService = inject(TaskService);
   private readonly router = inject(Router);
-  navProjects = this.projectService.projectsList;
-  selectedProject = this.projectService.selectedProject;
+  private readonly snackbarService = inject(SnackbarService);
+  private readonly sidebarService = inject(SidebarService);
 
-  inProgressCount = computed(() => this.taskService.progressList().length);
-  doneCount = computed(() => this.taskService.doneList().length);
-  todoCount = computed(() => this.taskService.todoList().length);
-  overdueCount = computed(() => this.taskService.overdueList().length);
+  private projects = signal<Project[]>([]);
+  private allTasks = this.taskService.allTasks;
+  currentProject = this.sidebarService.selectedProject;
+
+  navProjects = this.projects.asReadonly();
+
+  todoCount = computed(() => this.allTasks().filter((item) => item.status === 'todo').length);
+  progressCount = computed(
+    () => this.allTasks().filter((item) => item.status === 'progress').length,
+  );
+  doneCount = computed(() => this.allTasks().filter((item) => item.status === 'done').length);
+  overdueCount = computed(() => this.allTasks().filter((item) => item.overdue).length);
 
   progressFill = computed(() => {
-    const total = this.selectedProject()?.total;
+    const total = this.currentProject()?.total;
 
     if (total) {
       return Math.round((this.doneCount() / total) * 100);
@@ -53,23 +63,41 @@ export class SidebarComponent implements OnInit {
 
   constructor() {
     effect(() => {
-      const activeProject = this.projectService.selectedProject();
-
+      const activeProject = this.currentProject();
       if (activeProject?.id) {
         untracked(() => {
-          this.taskService.readTasks(activeProject.id);
+          this.fetchTasks();
         });
       }
     });
   }
 
   ngOnInit(): void {
-    this.projectService.getAll();
+    this.fetchProjects();
+  }
+
+  fetchProjects() {
+    this.projectService.getAll().subscribe({
+      next: (res) => {
+        this.projects.set(res);
+        this.sidebarService.setProject(res[0]);
+      },
+    });
+  }
+
+  fetchTasks() {
+    if (this.currentProject()?.id) {
+      this.taskService.readTasks().subscribe({
+        error: () => {
+          this.snackbarService.error('Connection Error');
+        },
+      });
+    }
   }
 
   onSelect(value: number) {
     this.router.navigate(['']);
-    this.projectService.setCurrentProject(value);
+    this.sidebarService.setProject(this.projects()[value]);
   }
 
   openNewProjectForm() {

@@ -27,7 +27,7 @@
       <div
         (click)="onSelect($index)"
         class="nav-item"
-        [class.active]="item.id === selectedProject()?.id"
+        [class.active]="item.id === currentProject()?.id"
       >
         <i class="fa-solid fa-circle" [style.color]="item.color"></i>{{ item.name }}
       </div>
@@ -51,8 +51,7 @@
       </div>
       <div class="pcat">
         <div class="pcat-dot pcat-dot__progress"></div>
-        <span class="pcat-txt">Em andamento</span
-        ><span class="pcat-n">{{ inProgressCount() }}</span>
+        <span class="pcat-txt">Em andamento</span><span class="pcat-n">{{ progressCount() }}</span>
       </div>
       <div class="pcat">
         <div class="pcat-dot pcat-dot__pending"></div>
