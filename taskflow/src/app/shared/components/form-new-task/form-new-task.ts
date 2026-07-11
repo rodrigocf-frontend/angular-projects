@@ -74,8 +74,8 @@ export class FormNewTask {
   ];
 
   formNewTask = new FormGroup({
-    title: new FormControl('', [Validators.required]),
-    description: new FormControl(''),
+    title: new FormControl<string>('', [Validators.required]),
+    description: new FormControl(<string>''),
     priority: new FormControl<TaskPriority>(
       {
         disabled: false,
@@ -101,13 +101,17 @@ export class FormNewTask {
   }
 
   submitNewTask() {
+    const selectedProject = this.selectedProject();
+    if (!selectedProject) return;
+
     if (this.formNewTask.valid) {
-      if (this.edittingTask()) {
+      const editedTask = this.edittingTask();
+      if (editedTask) {
         this.taskService
           .updateTask({
             ...(this.formValues() as Task),
-            id: this.edittingTask()?.id,
-            projectId: this.selectedProject()?.id,
+            id: editedTask.id,
+            projectId: selectedProject.id,
           })
           .subscribe({
             error: () => {
@@ -120,8 +124,8 @@ export class FormNewTask {
       } else {
         this.taskService
           .createTask({
-            ...this.formValues(),
-            projectId: this.selectedProject()?.id,
+            ...(this.formValues() as Task),
+            projectId: selectedProject.id,
           })
           .subscribe({
             error: () => {
