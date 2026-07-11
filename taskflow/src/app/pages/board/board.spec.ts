@@ -46,7 +46,7 @@ describe('Board', () => {
   it('editTask should call taskService.edit with the payload', () => {
     const taskService = TestBed.inject(TaskService);
     const spy = vi.spyOn(taskService, 'edit').mockImplementation(() => {});
-    const task = { id: '1', title: 'Task A', status: 'todo' } as Task;
+    const task = { id: '1', title: 'Task A', status: 'todo' } as any;
     component.editTask(task);
     expect(spy).toHaveBeenCalledWith(task);
   });
@@ -54,7 +54,7 @@ describe('Board', () => {
   it('onDropTask should call taskService.updateTask with the payload', () => {
     const taskService = TestBed.inject(TaskService);
     const spy = vi.spyOn(taskService, 'updateTask').mockReturnValue(of({}) as any);
-    const payload = { id: '1', status: 'progress' } as Partial<Task>;
+    const payload = { id: '1', status: 'progress' } as any;
     component.onDropTask(payload);
     expect(spy).toHaveBeenCalledWith(payload);
   });

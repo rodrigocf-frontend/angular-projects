@@ -1,7 +1,7 @@
-import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { SnackbarService } from '../../core/services/snack-service/snack-service';
 import { TaskService } from '../../core/services/task-service/task-service';
-import { TaskWithProjectDto } from '../../shared/dto/task.dto';
+import { TaskWithProjectDto, getTagClass } from '../../shared/dto/task.dto';
 import { TopBar } from '../../shared/components/top-bar/top-bar';
 import { Icon } from '../../shared/components/ui/icon/icon';
 
@@ -11,7 +11,7 @@ import { Icon } from '../../shared/components/ui/icon/icon';
   templateUrl: './my-tasks.html',
   styleUrl: './my-tasks.scss',
 })
-export class MyTasks implements OnInit {
+export class MyTasks {
   private taskService = inject(TaskService);
   private snackService = inject(SnackbarService);
 
@@ -40,18 +40,14 @@ export class MyTasks implements OnInit {
       : Math.round((this.progressTasks().length / this.totalTasks()) * 100),
   );
 
-  ngOnInit(): void {
-    this.fetchUserTasks();
-  }
+  getTagClass = getTagClass;
 
-  fetchUserTasks() {
-    this.taskService.readMyTask().subscribe({
-      next: (data) => {
-        this.userTasks.set(data);
-      },
-      error: () => {
-        this.snackService.error('Connection Error');
-      },
+  constructor() {
+    effect(() => {
+      this.taskService.readMyTask().subscribe({
+        next: (data) => this.userTasks.set(data),
+        error: () => this.snackService.error('Connection Error'),
+      });
     });
   }
 }

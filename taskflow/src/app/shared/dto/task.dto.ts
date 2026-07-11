@@ -12,11 +12,24 @@ export interface Task {
   priority: TaskPriority;
   status: TaskStatus;
   tag: string;
-  tagClass: string;
   projectId: number;
   userId: number;
 }
 
 export interface TaskWithProjectDto extends Task {
   project: Project;
+}
+
+const tagClassMap: Record<string, string> = {
+  Feature: 'tag-blue',
+  Core: 'tag-blue',
+  Design: 'tag-blue',
+  Angular: 'tag-blue',
+  Shared: 'tag-blue',
+  Setup: 'tag-green',
+  DevOps: 'tag-blue',
+};
+
+export function getTagClass(tag: string): string {
+  return tagClassMap[tag] ?? 'tag-blue';
 }

@@ -44,7 +44,7 @@
             }
             <div class="task-meta">
               @if (item.tag) {
-                <span class="tag tag-blue">{{ item.tag }}</span>
+                <span [class]="'tag ' + getTagClass(item.tag)">{{ item.tag }}</span>
               }
               @if (item.overdue) {
                 <span class="task-due overdue"><i name="alert"></i>Atrasada</span>
@@ -92,7 +92,7 @@
             }
             <div class="task-meta">
               @if (item.tag) {
-                <span class="tag tag-blue">{{ item.tag }}</span>
+                <span [class]="'tag ' + getTagClass(item.tag)">{{ item.tag }}</span>
               }
 
               @if (item.dueDate) {
@@ -146,7 +146,7 @@
             }
             <div class="task-meta">
               @if (item.tag) {
-                <span class="tag tag-blue">{{ item.tag }}</span>
+                <span [class]="'tag ' + getTagClass(item.tag)">{{ item.tag }}</span>
               }
               @if (item.overdue) {
                 <span class="task-due overdue"><i name="alert"></i>Atrasada</span>

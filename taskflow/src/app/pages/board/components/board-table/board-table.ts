@@ -8,7 +8,7 @@ import {
 import { Component, computed, inject, input, output, signal } from '@angular/core';
 import { Button } from '../../../../shared/components/ui/button/button';
 import { Icon } from '../../../../shared/components/ui/icon/icon';
-import { Task, TaskWithProjectDto } from '../../../../shared/dto/task.dto';
+import { TaskWithProjectDto, getTagClass } from '../../../../shared/dto/task.dto';
 import { UserService } from '../../../../core/services/user-service/user-service';
 import { isThisWeek } from 'date-fns';
 
@@ -85,4 +85,6 @@ export class BoardTable {
   tapTask(payload: TaskWithProjectDto) {
     this.onClickTask.emit(payload);
   }
+
+  getTagClass = getTagClass;
 }

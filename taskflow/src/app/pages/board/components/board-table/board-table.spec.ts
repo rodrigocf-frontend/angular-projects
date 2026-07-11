@@ -7,7 +7,6 @@ const makeTasks = (status: string, count: number) =>
     title: `Task ${i + 1}`,
     description: null,
     tag: 'Feature',
-    tagClass: 'tag-blue',
     dueDate: null,
     overdue: false,
     priority: 'low' as const,

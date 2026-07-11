@@ -18,10 +18,10 @@ const mockProject: Project = {
 };
 
 const mockTasks: Task[] = [
-  { id: '1', title: 'Task A', description: null, dueDate: null, overdue: false, priority: 'high', status: 'todo', tag: 'Feature', tagClass: 'tag-blue', projectId: 1, userId: 1 },
-  { id: '2', title: 'Task B', description: null, dueDate: null, overdue: false, priority: 'med', status: 'progress', tag: 'Core', tagClass: 'tag-blue', projectId: 1, userId: 1 },
-  { id: '3', title: 'Task C', description: null, dueDate: null, overdue: false, priority: 'low', status: 'done', tag: 'Setup', tagClass: 'tag-green', projectId: 1, userId: 1 },
-  { id: '4', title: 'Task D', description: null, dueDate: null, overdue: true, priority: 'low', status: 'todo', tag: 'Feature', tagClass: 'tag-blue', projectId: 1, userId: 1 },
+  { id: '1', title: 'Task A', description: null, dueDate: null, overdue: false, priority: 'high', status: 'todo', tag: 'Feature', projectId: 1, userId: 1 },
+  { id: '2', title: 'Task B', description: null, dueDate: null, overdue: false, priority: 'med', status: 'progress', tag: 'Core', projectId: 1, userId: 1 },
+  { id: '3', title: 'Task C', description: null, dueDate: null, overdue: false, priority: 'low', status: 'done', tag: 'Setup', projectId: 1, userId: 1 },
+  { id: '4', title: 'Task D', description: null, dueDate: null, overdue: true, priority: 'low', status: 'todo', tag: 'Feature', projectId: 1, userId: 1 },
 ];
 
 describe('TaskService', () => {
@@ -70,13 +70,13 @@ describe('TaskService', () => {
   });
 
   it('edit() should set editTaskData and open modal', () => {
-    service.edit(mockTasks[0]);
+    service.edit(mockTasks[0] as any);
     expect(service.editTaskData()).toEqual(mockTasks[0]);
     expect(service.visible()).toBe(true);
   });
 
   it('close() should clear editTaskData', () => {
-    service.edit(mockTasks[0]);
+    service.edit(mockTasks[0] as any);
     service.close();
     expect(service.editTaskData()).toBeNull();
     expect(service.visible()).toBe(false);
@@ -119,7 +119,7 @@ describe('TaskService', () => {
 
   describe('createTask', () => {
     it('should POST to tasks endpoint', () => {
-      const payload = { title: 'New Task', status: 'todo', priority: 'low', projectId: 1 };
+      const payload = { title: 'New Task', status: 'todo', priority: 'low', projectId: 1 } as any;
       service.createTask(payload).subscribe();
 
       const req = httpMock.expectOne(`${API}/tasks`);
@@ -129,7 +129,7 @@ describe('TaskService', () => {
     });
 
     it('should return an Observable', () => {
-      const payload = { title: 'New Task', status: 'todo', priority: 'low', projectId: 1 };
+      const payload = { title: 'New Task', status: 'todo', priority: 'low', projectId: 1 } as any;
       let emitted = false;
       service.createTask(payload).subscribe(() => (emitted = true));
 
@@ -140,7 +140,7 @@ describe('TaskService', () => {
 
   describe('updateTask', () => {
     it('should PATCH the task by id', () => {
-      const payload: Partial<Task> = { id: '1', status: 'progress' };
+      const payload = { id: '1', status: 'progress' } as any;
       service.updateTask(payload).subscribe();
 
       const req = httpMock.expectOne(`${API}/tasks/1`);
@@ -149,7 +149,7 @@ describe('TaskService', () => {
     });
 
     it('should return an Observable', () => {
-      const payload: Partial<Task> = { id: '1', status: 'done' };
+      const payload = { id: '1', status: 'done' } as any;
       let emitted = false;
       service.updateTask(payload).subscribe(() => (emitted = true));
 

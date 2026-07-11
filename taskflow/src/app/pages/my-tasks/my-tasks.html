@@ -39,14 +39,14 @@
           <div class="task-info">
             <span class="task-title">{{ task.title }}</span>
             <div class="task-sub">
-              <span class="tag tag-blue">{{ task.tag }}</span>
+              <span [class]="'tag ' + getTagClass(task.tag)">{{ task.tag }}</span>
               <span class="due overdue"><i name="alert"></i>Atrasada</span>
             </div>
           </div>
           <div class="task-right">
             <div class="project-chip">
               <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-              {{ task.project.name }}
+              {{ task.project?.name }}
             </div>
             <span [class]="'status-chip status-chip--' + task.status">{{ task.status }}</span>
           </div>
@@ -73,7 +73,7 @@
           <div class="task-info">
             <span class="task-title">{{ task.title }}</span>
             <div class="task-sub">
-              <span class="tag tag-blue">{{ task.tag }}</span>
+              <span [class]="'tag ' + getTagClass(task.tag)">{{ task.tag }}</span>
               @if (task.dueDate) {
                 <span class="due"><i name="clock"></i>{{ task.dueDate }}</span>
               }
@@ -82,7 +82,7 @@
           <div class="task-right">
             <div class="project-chip">
               <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-              {{ task.project.name }}
+              {{ task.project?.name }}
             </div>
             <span class="status-chip status-chip--progress">{{ task.status }}</span>
           </div>
@@ -110,7 +110,7 @@
           <div class="task-info">
             <span class="task-title">{{ task.title }}</span>
             <div class="task-sub">
-              <span class="tag tag-blue">{{ task.tag }}</span>
+              <span [class]="'tag ' + getTagClass(task.tag)">{{ task.tag }}</span>
               @if (task.dueDate) {
                 <span class="due"><i name="clock"></i>{{ task.dueDate }}</span>
               }
@@ -119,7 +119,7 @@
           <div class="task-right">
             <div class="project-chip">
               <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-              {{ task.project.name }}
+              {{ task.project?.name }}
             </div>
             <span class="status-chip status-chip--todo">{{ task.status }}</span>
           </div>
@@ -146,13 +146,13 @@
           <div class="task-info">
             <span class="task-title">{{ task.title }}</span>
             <div class="task-sub">
-              <span class="tag tag-green">{{ task.tag }}</span>
+              <span [class]="'tag ' + getTagClass(task.tag)">{{ task.tag }}</span>
             </div>
           </div>
           <div class="task-right">
             <div class="project-chip">
               <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-              {{ task.project.name }}
+              {{ task.project?.name }}
             </div>
             <span class="status-chip status-chip--done">{{ task.status }}</span>
           </div>
