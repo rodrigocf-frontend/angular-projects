@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { Button } from '../ui/button/button';
 import { Icon } from '../ui/icon/icon';
 import { Avatar } from '../ui/avatar/avatar';
@@ -20,7 +20,6 @@ export class TopBar {
   private currentNavigation = signal('');
   private url = toSignal(this.activatedRoute.url);
 
-  currentRoute = this.currentNavigation.asReadonly();
   selectedProject = this.sidebarService.selectedProject;
 
   constructor() {
