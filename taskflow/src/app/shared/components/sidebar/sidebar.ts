@@ -20,11 +20,10 @@ export class SidebarComponent implements OnInit {
   private readonly snackbarService = inject(SnackbarService);
   private readonly sidebarService = inject(SidebarService);
 
-  private projects = signal<Project[]>([]);
   private allTasks = this.taskService.allTasks;
   currentProject = this.sidebarService.selectedProject;
 
-  navProjects = this.projects.asReadonly();
+  navProjects = this.projectService.projectsList;
 
   todoCount = computed(() => this.allTasks().filter((item) => item.status === 'todo').length);
   progressCount = computed(
@@ -79,7 +78,6 @@ export class SidebarComponent implements OnInit {
   fetchProjects() {
     this.projectService.getAll().subscribe({
       next: (res) => {
-        this.projects.set(res);
         this.sidebarService.setProject(res[0]);
       },
     });
@@ -97,7 +95,7 @@ export class SidebarComponent implements OnInit {
 
   onSelect(value: number) {
     this.router.navigate(['']);
-    this.sidebarService.setProject(this.projects()[value]);
+    this.sidebarService.setProject(this.navProjects()[value]);
   }
 
   openNewProjectForm() {

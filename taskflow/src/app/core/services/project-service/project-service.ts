@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { environment } from '../../../../environments/environment.development';
+import { environment } from '../../../../environments/environment';
+import { tap } from 'rxjs';
 
 export interface Project {
   name: string;
@@ -36,20 +37,16 @@ export class ProjectService {
     this.visibleState.set(false);
   }
 
-  create({ payload, onComplete }: { payload: ProjectAPIPayload; onComplete?: () => void }) {
-    this.http
-      .post(environment.apiUrl + '/projects', {
-        ...payload,
-        total: 0,
-      })
-      .subscribe({
-        complete: () => {
-          this.getAll();
-        },
-      });
+  create({ payload }: { payload: ProjectAPIPayload }) {
+    return this.http.post(environment.apiUrl + '/projects', {
+      ...payload,
+      total: 0,
+    });
   }
 
   getAll() {
-    return this.http.get<Project[]>(environment.apiUrl + '/projects?sort=id');
+    return this.http
+      .get<Project[]>(environment.apiUrl + '/projects?sort=id')
+      .pipe(tap((res) => this.projects.set(res)));
   }
 }

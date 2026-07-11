@@ -64,6 +64,13 @@ describe('ProjectService', () => {
       expect(result[0].name).toBe('Project A');
     });
 
+    it('should update projectsList signal via tap', () => {
+      service.getAll().subscribe();
+      httpMock.expectOne(`${API}/projects?sort=id`).flush(mockProjects);
+      expect(service.projectsList().length).toBe(2);
+      expect(service.projectsList()[0].name).toBe('Project A');
+    });
+
     it('should make a GET request to the correct endpoint', () => {
       service.getAll().subscribe();
       const req = httpMock.expectOne(`${API}/projects?sort=id`);
@@ -74,13 +81,15 @@ describe('ProjectService', () => {
 
   describe('setCurrentProject', () => {
     it('should set selectedProject to the project at the given index', () => {
-      (service as any).projects.set(mockProjects);
+      service.getAll().subscribe();
+      httpMock.expectOne(`${API}/projects?sort=id`).flush(mockProjects);
       service.setCurrentProject(1);
       expect(service.selectedProject()?.id).toBe(2);
     });
 
     it('should set selectedProject to the first project when index is 0', () => {
-      (service as any).projects.set(mockProjects);
+      service.getAll().subscribe();
+      httpMock.expectOne(`${API}/projects?sort=id`).flush(mockProjects);
       service.setCurrentProject(0);
       expect(service.selectedProject()?.id).toBe(1);
     });
@@ -89,12 +98,21 @@ describe('ProjectService', () => {
   describe('create', () => {
     it('should POST to projects endpoint with total: 0', () => {
       const payload = { name: 'Novo Projeto', color: '#5b6af0', description: '', deadline: null };
-      service.create({ payload });
+      service.create({ payload }).subscribe();
 
       const req = httpMock.expectOne(`${API}/projects`);
       expect(req.request.method).toBe('POST');
       expect(req.request.body).toMatchObject({ ...payload, total: 0 });
       req.flush({ id: 3, ...payload, total: 0 });
+    });
+
+    it('should return an Observable', () => {
+      const payload = { name: 'Novo', color: '#5b6af0', description: '', deadline: null };
+      let emitted = false;
+      service.create({ payload }).subscribe(() => (emitted = true));
+
+      httpMock.expectOne(`${API}/projects`).flush({ id: 3, ...payload, total: 0 });
+      expect(emitted).toBe(true);
     });
   });
 });

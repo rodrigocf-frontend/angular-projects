@@ -61,18 +61,22 @@ export class FormNewProject {
   submitNewProject() {
     if (this.formGroup.valid) {
       const values = this.formValues();
-      this.projectService.create({
-        payload: {
-          color: values.color!,
-          deadline: values.deadline!,
-          description: values.description!,
-          name: values.name!,
-        },
-        onComplete: () => {
-          this.snackService.success('Projeto criado com sucesso.');
-          this.closeNewProjectForm();
-        },
-      });
+      this.projectService
+        .create({
+          payload: {
+            color: values.color!,
+            deadline: values.deadline!,
+            description: values.description!,
+            name: values.name!,
+          },
+        })
+        .subscribe({
+          complete: () => {
+            this.snackService.success('Projeto criado com sucesso.');
+            this.projectService.getAll().subscribe();
+            this.closeNewProjectForm();
+          },
+        });
     }
   }
 }
