@@ -280,7 +280,7 @@
       "dueDate": "2026-07-07",
       "overdue": false,
       "priority": "med",
-      "status": "progress",
+      "status": "todo",
       "projectId": 1,
       "userId": 2
     },
