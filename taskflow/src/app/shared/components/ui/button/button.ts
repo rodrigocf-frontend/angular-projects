@@ -1,27 +1,23 @@
-import { Attribute, Component } from '@angular/core';
+import { booleanAttribute, Component, computed, input } from '@angular/core';
 
 @Component({
   selector: 'button[primary], button[ghost], button[danger]',
   templateUrl: './button.html',
   styleUrl: './button.scss',
   host: {
-    '[class.btn-primary]': 'isPrimary',
-    '[class.btn-ghost]': 'isGhost',
-    '[class.btn-danger]': 'isDanger',
+    '[class.btn-primary]': 'primary()',
+    '[class.btn-ghost]': 'ghost()',
+    '[class.btn-danger]': 'danger()',
+    '[class.base]': 'isBase()',
+    '[class.sm]': 'isSm()',
   },
 })
 export class Button {
-  isPrimary = false;
-  isGhost = false;
-  isDanger = false;
+  primary = input(false, { transform: booleanAttribute });
+  ghost = input(false, { transform: booleanAttribute });
+  danger = input(false, { transform: booleanAttribute });
+  size = input<'base' | 'sm'>('base');
 
-  constructor(
-    @Attribute('primary') primary: boolean | null,
-    @Attribute('ghost') ghost: boolean | null,
-    @Attribute('danger') danger: boolean | null,
-  ) {
-    this.isPrimary = primary !== null;
-    this.isGhost = ghost !== null;
-    this.isDanger = danger !== null;
-  }
+  isBase = computed(() => this.size() === 'base');
+  isSm = computed(() => this.size() === 'sm');
 }

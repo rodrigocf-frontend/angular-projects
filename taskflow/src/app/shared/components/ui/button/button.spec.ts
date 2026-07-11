@@ -35,12 +35,12 @@ describe('Button — primary', () => {
     expect(instance).toBeTruthy();
   });
 
-  it('should set isPrimary to true', () => {
-    expect(instance.isPrimary).toBe(true);
+  it('should set primary to true', () => {
+    expect(instance.primary()).toBe(true);
   });
 
-  it('should set isGhost to false', () => {
-    expect(instance.isGhost).toBe(false);
+  it('should set ghost to false', () => {
+    expect(instance.ghost()).toBe(false);
   });
 
   it('should apply btn-primary class', () => {
@@ -70,12 +70,12 @@ describe('Button — ghost', () => {
     expect(instance).toBeTruthy();
   });
 
-  it('should set isGhost to true', () => {
-    expect(instance.isGhost).toBe(true);
+  it('should set ghost to true', () => {
+    expect(instance.ghost()).toBe(true);
   });
 
-  it('should set isPrimary to false', () => {
-    expect(instance.isPrimary).toBe(false);
+  it('should set primary to false', () => {
+    expect(instance.primary()).toBe(false);
   });
 
   it('should apply btn-ghost class', () => {

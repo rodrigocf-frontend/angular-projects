@@ -4,7 +4,6 @@
   display: flex;
   align-items: center;
   gap: toRem(6);
-  padding: toRem(7, 14);
   border-radius: $radius;
   font-size: toRem(13);
   font-weight: 500;
@@ -32,4 +31,12 @@
 :host(.btn-danger) {
   background: $danger;
   color: #fff;
+}
+
+:host(.base) {
+  padding: toRem(7, 14);
+}
+
+:host(.sm) {
+  padding: toRem(3.5, 7);
 }
