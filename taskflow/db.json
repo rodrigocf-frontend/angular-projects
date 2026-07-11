@@ -139,7 +139,7 @@
       "dueDate": "2026-07-04",
       "overdue": false,
       "priority": "med",
-      "status": "todo",
+      "status": "progress",
       "projectId": 1,
       "userId": 1
     },
@@ -165,7 +165,7 @@
       "dueDate": "2026-07-11",
       "overdue": false,
       "priority": "high",
-      "status": "progress",
+      "status": "todo",
       "projectId": 1,
       "userId": 1
     },
@@ -184,9 +184,9 @@
     },
     {
       "id": 13,
-      "title": "Tela Minhas tarefas [Edited]",
+      "title": "Tela Minhas tarefas",
       "description": null,
-      "tag": "Core",
+      "tag": "Angular",
       "tagClass": "tag-blue",
       "dueDate": null,
       "overdue": false,
@@ -230,7 +230,7 @@
       "dueDate": null,
       "overdue": false,
       "priority": "med",
-      "status": "done",
+      "status": "progress",
       "projectId": 1,
       "userId": 1
     },
