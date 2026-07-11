@@ -18,12 +18,13 @@ TaskFlow lets you manage multiple projects, each with its own task board. Tasks 
 - **json-server** — fake REST API for local development
 - **Vitest** — unit testing
 - **Prettier + Husky** — formatting and git hooks
+- **date-fns** — date utilities for week-based task filtering
 - **pnpm** — package management
 
 ## Features
 
 - Multi-project support — switch between projects in the sidebar
-- Kanban board with 3 columns and drag and drop
+- Kanban board with 3 columns, drag and drop, and chip filters (all / high priority / assigned to me / this week)
 - Task editing — click any card to open the pre-filled edit form
 - Task creation and editing modal with Reactive Forms (title, description, priority, status, tag, due date)
 - Project creation modal with color picker and Reactive Forms
