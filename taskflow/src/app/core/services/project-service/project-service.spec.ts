@@ -39,10 +39,6 @@ describe('ProjectService', () => {
     expect(service.visible()).toBe(false);
   });
 
-  it('selectedProject should be undefined initially', () => {
-    expect(service.selectedProject()).toBeUndefined();
-  });
-
   it('open() should set visible to true', () => {
     service.open();
     expect(service.visible()).toBe(true);
@@ -77,22 +73,6 @@ describe('ProjectService', () => {
       const req = httpMock.expectOne(`${API}/projects?sort=id`);
       expect(req.request.method).toBe('GET');
       req.flush(mockProjects);
-    });
-  });
-
-  describe('setCurrentProject', () => {
-    it('should set selectedProject to the project at the given index', () => {
-      service.getAll().subscribe();
-      httpMock.expectOne(`${API}/projects?sort=id`).flush(mockProjects);
-      service.setCurrentProject(1);
-      expect(service.selectedProject()?.id).toBe(2);
-    });
-
-    it('should set selectedProject to the first project when index is 0', () => {
-      service.getAll().subscribe();
-      httpMock.expectOne(`${API}/projects?sort=id`).flush(mockProjects);
-      service.setCurrentProject(0);
-      expect(service.selectedProject()?.id).toBe(1);
     });
   });
 

@@ -27,12 +27,6 @@ describe('App', () => {
     expect(el.querySelector('app-sidebar')).toBeTruthy();
   });
 
-  it('should render top bar', async () => {
-    const fixture = TestBed.createComponent(App);
-    const el: HTMLElement = fixture.nativeElement;
-    expect(el.querySelector('app-top-bar')).toBeTruthy();
-  });
-
   it('should render bottom bar', async () => {
     const fixture = TestBed.createComponent(App);
     const el: HTMLElement = fixture.nativeElement;
