@@ -11,7 +11,7 @@ export class SnackbarService {
   current = signal<Snack | null>(null);
   visible = signal(false);
 
-  private timer: any;
+  private timer: ReturnType<typeof setTimeout> = 0;
 
   show(type: Snack['type'], message: string, duration = 3500) {
     clearTimeout(this.timer);

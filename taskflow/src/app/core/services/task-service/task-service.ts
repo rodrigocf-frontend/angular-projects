@@ -4,10 +4,12 @@ import { SidebarService } from '../sidebar-service/sidebar-service';
 import { tap } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { Task, TaskWithProjectDto } from '../../../shared/dto/task.dto';
+import { UserService } from '../user-service/user-service';
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
   private readonly sidebarService = inject(SidebarService);
+  private readonly userService = inject(UserService);
   private http = inject(HttpClient);
 
   private tasks = signal<Task[]>([]);
@@ -29,7 +31,7 @@ export class TaskService {
     this.visibleState.set(false);
   }
 
-  edit(payload: any) {
+  edit(payload: TaskWithProjectDto) {
     this.edittingTask.set(payload);
     this.open();
   }
@@ -38,7 +40,7 @@ export class TaskService {
     this.tasks.set(tasksList);
   }
 
-  createTask(payload: any) {
+  createTask(payload: Task) {
     return this.http.post(`${environment.apiUrl}/tasks`, {
       ...payload,
     });
@@ -52,15 +54,13 @@ export class TaskService {
       .pipe(tap((res) => this.setTasks(res)));
   }
 
-  updateTask(payload: Partial<Task>) {
+  updateTask(payload: Task) {
     return this.http.patch(`${environment.apiUrl}/tasks/${payload.id}`, payload);
   }
 
   readMyTask() {
     return this.http.get<TaskWithProjectDto[]>(
-      `${environment.apiUrl}/tasks?userId=${1}&_expand=project`,
+      `${environment.apiUrl}/tasks?userId=${this.userService.userIdentification()}&_expand=project`,
     );
   }
-
-  deleteTask() {}
 }
