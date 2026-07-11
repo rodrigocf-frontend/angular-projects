@@ -44,7 +44,7 @@ export class Board {
     }
   }
 
-  onDropTask(newTaskData: any) {
+  onDropTask(newTaskData: TaskWithProjectDto) {
     this.taskService.updateTask(newTaskData).subscribe({
       complete: () => this.fetchTasks(),
     });
