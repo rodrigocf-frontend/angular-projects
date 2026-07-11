@@ -24,16 +24,6 @@ export class Board {
   progressList = computed(() => this.allTasks().filter((item) => item.status === 'progress'));
   doneList = computed(() => this.allTasks().filter((item) => item.status === 'done'));
 
-  constructor() {
-    effect(() => {
-      const activeProject = this.currentProject();
-
-      if (activeProject?.id) {
-        untracked(() => this.fetchTasks());
-      }
-    });
-  }
-
   fetchTasks() {
     if (this.currentProject()?.id) {
       this.taskService.readTasks().subscribe({

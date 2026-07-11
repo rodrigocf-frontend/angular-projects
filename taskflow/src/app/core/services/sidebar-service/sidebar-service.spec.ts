@@ -32,8 +32,8 @@ describe('SidebarService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('selectedProject should be undefined initially', () => {
-    expect(service.selectedProject()).toBeUndefined();
+  it('selectedProject should have id 0 initially', () => {
+    expect(service.selectedProject().id).toBe(0);
   });
 
   it('setProject() should update selectedProject', () => {
