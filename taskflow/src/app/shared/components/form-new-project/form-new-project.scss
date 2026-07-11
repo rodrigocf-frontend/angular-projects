@@ -150,6 +150,10 @@
 .btn-primary {
   background: $accent600;
   color: #fff;
+
+  i {
+    font-size: toRem(13);
+  }
 }
 .btn-primary:disabled {
   background: $border100;

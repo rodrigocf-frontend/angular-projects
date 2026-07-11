@@ -39,6 +39,10 @@
   margin-left: auto;
   display: flex;
   gap: toRem(8);
+
+  button i {
+    font-size: toRem(14);
+  }
 }
 
 .kanban {
@@ -151,7 +155,12 @@
 
   &-completed {
     color: $txt-2;
+    text-decoration: line-through;
   }
+}
+
+.task-card--done {
+  opacity: 0.7;
 }
 .task-meta {
   display: flex;
@@ -209,6 +218,10 @@
   cursor: pointer;
   border: 0.5px dashed $border100;
   transition: all 0.12s;
+
+  i {
+    font-size: toRem(14);
+  }
 }
 .add-task:hover {
   color: $accent600;

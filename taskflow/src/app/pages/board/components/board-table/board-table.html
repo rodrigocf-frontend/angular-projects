@@ -6,10 +6,10 @@
     <div class="chip">Esta semana</div>
     <div class="filter-right">
       <button ghost>
-        <i name="tasks" style="font-size: 14px"></i>
+        <i name="tasks"></i>
       </button>
       <button ghost>
-        <i name="kanban" style="font-size: 14px"></i>
+        <i name="kanban"></i>
       </button>
     </div>
   </div>
@@ -61,7 +61,7 @@
           </div>
         }
       </ul>
-      <div class="add-task"><i name="add" style="font-size: 14px"></i>Adicionar tarefa</div>
+      <div class="add-task"><i name="add"></i>Adicionar tarefa</div>
     </div>
     <div class="col">
       <div class="col-head">
@@ -111,7 +111,7 @@
         }
       </ul>
 
-      <div class="add-task"><i name="add" style="font-size: 14px"></i>Adicionar tarefa</div>
+      <div class="add-task"><i name="add"></i>Adicionar tarefa</div>
     </div>
 
     <div class="col">
@@ -131,13 +131,12 @@
       >
         @for (item of done(); track item.id) {
           <div
-            [class]="'task-card priority-' + item.priority"
-            style="opacity: 0.7"
+            [class]="'task-card task-card--done priority-' + item.priority"
             [cdkDragData]="item"
             cdkDrag
             (click)="tapTask(item)"
           >
-            <div class="task-title task-title-completed" style="text-decoration: line-through">
+            <div class="task-title task-title-completed">
               {{ item.title }}
             </div>
             @if (item.description) {
@@ -163,7 +162,7 @@
         }
       </ul>
 
-      <div class="add-task"><i name="add" style="font-size: 14px"></i>Adicionar tarefa</div>
+      <div class="add-task"><i name="add"></i>Adicionar tarefa</div>
     </div>
   </div>
 </div>

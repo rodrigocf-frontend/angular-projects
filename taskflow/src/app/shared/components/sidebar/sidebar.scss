@@ -55,6 +55,10 @@
   text-transform: uppercase;
   padding: 0 toRem(8);
   margin-bottom: toRem(4);
+
+  &--projects {
+    margin-top: toRem(16);
+  }
 }
 .nav-item {
   display: flex;

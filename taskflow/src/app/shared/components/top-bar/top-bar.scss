@@ -36,6 +36,10 @@
   overflow: hidden;
 }
 
+.topbar button i {
+  font-size: toRem(14);
+}
+
 .search i {
   font-size: toRem(14);
   color: $txt-3;
