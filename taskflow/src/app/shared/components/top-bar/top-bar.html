@@ -2,13 +2,11 @@
   <span class="topbar-title">{{ getTitle() }} · {{ selectedProject()?.name }}</span>
   @if (currentRoute() === '') {
     <div class="search">
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <i name="search"></i>
       <input placeholder="Buscar tarefas…" />
     </div>
     <button ghost><i name="filter"></i>Filtrar</button>
   }
-  <button primary (click)="openNewTaskForm()">
-    <i name="add"></i>Nova tarefa
-  </button>
+  <button primary (click)="openNewTaskForm()"><i name="add"></i>Nova tarefa</button>
   <app-avatar />
 </header>

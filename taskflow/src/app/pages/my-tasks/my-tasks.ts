@@ -3,10 +3,11 @@ import { SnackbarService } from '../../core/services/snack-service/snack-service
 import { TaskService } from '../../core/services/task-service/task-service';
 import { TaskWithProjectDto } from '../../shared/dto/task.dto';
 import { TopBar } from '../../shared/components/top-bar/top-bar';
+import { Icon } from '../../shared/components/ui/icon/icon';
 
 @Component({
   selector: 'app-my-tasks',
-  imports: [TopBar],
+  imports: [TopBar, Icon],
   templateUrl: './my-tasks.html',
   styleUrl: './my-tasks.scss',
 })

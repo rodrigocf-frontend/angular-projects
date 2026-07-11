@@ -2,9 +2,15 @@
   <div class="overlay" (click)="closeNewTaskForm()">
     <form [formGroup]="formNewTask" class="modal font-inter" (click)="$event.stopPropagation()">
       <div class="modal-head">
-        <span class="modal-title">Nova tarefa</span>
+        <span class="modal-title">
+          @if (!edittingTask()) {
+            Nova tarefa
+          } @else {
+            Editar tarefa
+          }
+        </span>
         <button class="modal-close" (click)="closeNewTaskForm()">
-          <i class="fa-solid fa-xmark"></i>
+          <i name="close"></i>
         </button>
       </div>
 

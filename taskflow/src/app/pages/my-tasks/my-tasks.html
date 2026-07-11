@@ -35,13 +35,13 @@
       @for (task of overdueTasks(); track task.id) {
         <div class="task-row">
           <div class="priority-bar bg-danger"></div>
-          <div class="check"><i class="fa-solid fa-check"></i></div>
+          <div class="check"><i name="check"></i></div>
           <div class="task-info">
             <span class="task-title">{{ task.title }}</span>
             <div class="task-sub">
               <span class="tag tag-blue">{{ task.tag }}</span>
               <span class="due overdue"
-                ><i class="fa-solid fa-circle-exclamation"></i>Atrasada</span
+                ><i name="alert"></i>Atrasada</span
               >
             </div>
           </div>
@@ -55,7 +55,7 @@
         </div>
       } @empty {
         <div class="empty-group">
-          <i class="fa-regular fa-circle-check"></i>
+          <i name="circle-check"></i>
           <span class="empty-group-text">Nenhuma tarefa atrasada</span>
         </div>
       }
@@ -71,13 +71,13 @@
       @for (task of progressTasks(); track task.id) {
         <div class="task-row">
           <div class="priority-bar bg-warning"></div>
-          <div class="check"><i class="fa-solid fa-check"></i></div>
+          <div class="check"><i name="check"></i></div>
           <div class="task-info">
             <span class="task-title">{{ task.title }}</span>
             <div class="task-sub">
               <span class="tag tag-blue">{{ task.tag }}</span>
               @if (task.dueDate) {
-                <span class="due"><i class="fa-regular fa-clock"></i>{{ task.dueDate }}</span>
+                <span class="due"><i name="clock"></i>{{ task.dueDate }}</span>
               }
             </div>
           </div>
@@ -91,7 +91,7 @@
         </div>
       } @empty {
         <div class="empty-group">
-          <i class="fa-regular fa-circle-check"></i>
+          <i name="circle-check"></i>
           <span class="empty-group-text">Nenhuma tarefa em andamento</span>
         </div>
       }
@@ -108,13 +108,13 @@
       @for (task of todoTasks(); track task.id) {
         <div class="task-row">
           <div class="priority-bar bg-warning"></div>
-          <div class="check"><i class="fa-solid fa-check"></i></div>
+          <div class="check"><i name="check"></i></div>
           <div class="task-info">
             <span class="task-title">{{ task.title }}</span>
             <div class="task-sub">
               <span class="tag tag-blue">{{ task.tag }}</span>
               @if (task.dueDate) {
-                <span class="due"><i class="fa-regular fa-clock"></i>{{ task.dueDate }}</span>
+                <span class="due"><i name="clock"></i>{{ task.dueDate }}</span>
               }
             </div>
           </div>
@@ -128,7 +128,7 @@
         </div>
       } @empty {
         <div class="empty-group">
-          <i class="fa-regular fa-circle-check"></i>
+          <i name="circle-check"></i>
           <span class="empty-group-text">Nenhuma tarefa a fazer</span>
         </div>
       }
@@ -144,7 +144,7 @@
       @for (task of doneTasks(); track task.id) {
         <div class="task-row done">
           <div class="priority-bar"></div>
-          <div class="check checked"><i class="fa-solid fa-check"></i></div>
+          <div class="check checked"><i name="check"></i></div>
           <div class="task-info">
             <span class="task-title">{{ task.title }}</span>
             <div class="task-sub">
@@ -161,7 +161,7 @@
         </div>
       } @empty {
         <div class="empty-group">
-          <i class="fa-regular fa-circle-check"></i>
+          <i name="circle-check"></i>
           <span class="empty-group-text">Nenhuma tarefa pronta</span>
         </div>
       }

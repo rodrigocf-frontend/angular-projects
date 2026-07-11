@@ -29,11 +29,11 @@
         class="nav-item"
         [class.active]="item.id === currentProject()?.id"
       >
-        <i class="fa-solid fa-circle" [style.color]="item.color"></i>{{ item.name }}
+        <i name="project" [style.color]="item.color"></i>{{ item.name }}
       </div>
     }
     <div class="nav-item" (click)="openNewProjectForm()">
-      <i class="fa-solid fa-plus"></i>Novo projeto
+      <i name="add"></i>Novo projeto
     </div>
   </div>
   <div class="progress-section" id="progress-el">
