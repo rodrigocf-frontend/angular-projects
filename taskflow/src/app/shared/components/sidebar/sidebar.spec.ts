@@ -3,7 +3,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideRouter } from '@angular/router';
 import { SidebarComponent } from './sidebar';
-import { Project } from '../../core/services/project-service/project-service';
+import { Project } from '../../../core/services/project-service/project-service';
 
 const API = 'http://localhost:3000';
 
@@ -20,11 +20,7 @@ describe('SidebarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SidebarComponent],
-      providers: [
-        provideRouter([]),
-        provideHttpClient(),
-        provideHttpClientTesting(),
-      ],
+      providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SidebarComponent);

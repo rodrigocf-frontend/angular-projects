@@ -3,8 +3,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Icon } from '../ui/icon/icon';
 import { NgClass } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ProjectService } from '../../core/services/project-service/project-service';
-import { SnackbarService } from '../../core/services/snack-service/snack-service';
+import { ProjectService } from '../../../core/services/project-service/project-service';
+import { SnackbarService } from '../../../core/services/snack-service/snack-service';
 
 @Component({
   selector: 'app-form-new-project',

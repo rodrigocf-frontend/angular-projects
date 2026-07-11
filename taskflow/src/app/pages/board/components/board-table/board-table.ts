@@ -6,9 +6,9 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { Component, input, output } from '@angular/core';
-import { Button } from '../ui/button/button';
-import { Icon } from '../ui/icon/icon';
-import { Task } from '../../core/services/task-service/task-service';
+import { Button } from '../../../../shared/components/ui/button/button';
+import { Icon } from '../../../../shared/components/ui/icon/icon';
+import { Task } from '../../../../core/services/task-service/task-service';
 
 @Component({
   selector: 'app-board-table',

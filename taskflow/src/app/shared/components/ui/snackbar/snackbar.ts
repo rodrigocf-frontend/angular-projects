@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { Icon } from '../icon/icon';
-import { SnackbarService } from '../../../core/services/snack-service/snack-service';
+import { SnackbarService } from '../../../../core/services/snack-service/snack-service';
 
 @Component({
   selector: 'app-snackbar',

@@ -9,9 +9,9 @@ import {
   TaskPriority,
   TaskService,
   TaskStatus,
-} from '../../core/services/task-service/task-service';
-import { SnackbarService } from '../../core/services/snack-service/snack-service';
-import { SidebarService } from '../../core/services/sidebar-service/sidebar-service';
+} from '../../../core/services/task-service/task-service';
+import { SnackbarService } from '../../../core/services/snack-service/snack-service';
+import { SidebarService } from '../../../core/services/sidebar-service/sidebar-service';
 
 @Component({
   selector: 'app-form-new-task',

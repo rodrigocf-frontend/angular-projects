@@ -1,5 +1,5 @@
 import { Component, computed, effect, inject, untracked } from '@angular/core';
-import { BoardTable } from '../../components/board-table/board-table';
+import { BoardTable } from './components/board-table/board-table';
 import { Task, TaskService } from '../../core/services/task-service/task-service';
 import { SnackbarService } from '../../core/services/snack-service/snack-service';
 import { SidebarService } from '../../core/services/sidebar-service/sidebar-service';
