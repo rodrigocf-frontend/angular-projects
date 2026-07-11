@@ -52,7 +52,6 @@ export class MyTasks implements OnInit {
       error: () => {
         this.snackService.error('Connection Error');
       },
-      complete: () => {},
     });
   }
 }

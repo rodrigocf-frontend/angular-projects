@@ -40,17 +40,15 @@
             <span class="task-title">{{ task.title }}</span>
             <div class="task-sub">
               <span class="tag tag-blue">{{ task.tag }}</span>
-              <span class="due overdue"
-                ><i name="alert"></i>Atrasada</span
-              >
+              <span class="due overdue"><i name="alert"></i>Atrasada</span>
             </div>
           </div>
           <div class="task-right">
             <div class="project-chip">
               <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-              {{ task.project?.name }}
+              {{ task.project.name }}
             </div>
-            <span class="status-chip status-progress">{{ task.status }}</span>
+            <span [class]="'status-chip status-chip--' + task.status">{{ task.status }}</span>
           </div>
         </div>
       } @empty {
@@ -84,9 +82,9 @@
           <div class="task-right">
             <div class="project-chip">
               <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-              {{ task.project?.name }}
+              {{ task.project.name }}
             </div>
-            <span class="status-chip status-progress">{{ task.status }}</span>
+            <span class="status-chip status-chip--progress">{{ task.status }}</span>
           </div>
         </div>
       } @empty {
@@ -121,9 +119,9 @@
           <div class="task-right">
             <div class="project-chip">
               <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-              {{ task.project?.name }}
+              {{ task.project.name }}
             </div>
-            <span class="status-chip status-todo">{{ task.status }}</span>
+            <span class="status-chip status-chip--todo">{{ task.status }}</span>
           </div>
         </div>
       } @empty {
@@ -154,9 +152,9 @@
           <div class="task-right">
             <div class="project-chip">
               <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-              {{ task.project?.name }}
+              {{ task.project.name }}
             </div>
-            <span class="status-chip status-done">{{ task.status }}</span>
+            <span class="status-chip status-chip--done">{{ task.status }}</span>
           </div>
         </div>
       } @empty {
