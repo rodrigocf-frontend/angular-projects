@@ -14,26 +14,26 @@
     width: toRem(64);
     height: toRem(64);
     border-radius: 50%;
-    background: var(--accent-bg);
+    background: $accent0;
     display: flex;
     align-items: center;
     justify-content: center;
 
     i {
       font-size: toRem(28);
-      color: var(--accent);
+      color: $accent600;
     }
   }
 
   &__title {
     font-size: toRem(18);
     font-weight: 600;
-    color: var(--txt);
+    color: $txt;
   }
 
   &__desc {
     font-size: toRem(13);
-    color: var(--txt-2);
+    color: $txt-2;
     max-width: toRem(320);
     line-height: 1.6;
   }
@@ -44,8 +44,8 @@
     gap: toRem(6);
     font-size: toRem(12);
     font-weight: 500;
-    color: var(--accent);
-    background: var(--accent-bg);
+    color: $accent600;
+    background: $accent0;
     padding: toRem(5) toRem(12);
     border-radius: 20px;
 
