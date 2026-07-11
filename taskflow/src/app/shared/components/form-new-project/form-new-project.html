@@ -3,7 +3,7 @@
     <form [formGroup]="formGroup" class="modal" (click)="$event.stopPropagation()">
       <div class="modal-head">
         <span class="modal-title">Novo projeto</span>
-        <button class="modal-close" (click)="closeNewProjectForm()"><i class="ti ti-x"></i></button>
+        <button class="modal-close" (click)="closeNewProjectForm()"><i name="close"></i></button>
       </div>
 
       <div class="modal-body">
@@ -54,9 +54,9 @@
       </div>
 
       <div class="modal-foot">
-        <button class="btn btn-ghost" (click)="closeNewProjectForm()">Cancelar</button>
-        <button [disabled]="formGroup.invalid" class="btn btn-primary" (click)="submitNewProject()">
-          <i class="ti ti-plus"></i>Criar projeto
+        <button ghost (click)="closeNewProjectForm()">Cancelar</button>
+        <button [disabled]="formGroup.invalid" primary (click)="submitNewProject()">
+          <i name="add"></i>Criar projeto
         </button>
       </div>
     </form>

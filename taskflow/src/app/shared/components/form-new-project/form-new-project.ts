@@ -5,10 +5,11 @@ import { NgClass } from '@angular/common';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ProjectService } from '../../../core/services/project-service/project-service';
 import { SnackbarService } from '../../../core/services/snack-service/snack-service';
+import { Button } from '../ui/button/button';
 
 @Component({
   selector: 'app-form-new-project',
-  imports: [ReactiveFormsModule, Icon, NgClass],
+  imports: [ReactiveFormsModule, Icon, NgClass, Button],
   templateUrl: './form-new-project.html',
   styleUrl: './form-new-project.scss',
 })
