@@ -3,7 +3,7 @@ import { BoardTable } from './components/board-table/board-table';
 import { TaskService } from '../../core/services/task-service/task-service';
 import { SnackbarService } from '../../core/services/snack-service/snack-service';
 import { SidebarService } from '../../core/services/sidebar-service/sidebar-service';
-import { Task } from '../../shared/dto/task.dto';
+import { Task, TaskWithProjectDto } from '../../shared/dto/task.dto';
 import { TopBar } from '../../shared/components/top-bar/top-bar';
 
 @Component({
@@ -50,7 +50,7 @@ export class Board {
     });
   }
 
-  editTask(payload: Task) {
+  editTask(payload: TaskWithProjectDto) {
     this.taskService.edit(payload);
   }
 }

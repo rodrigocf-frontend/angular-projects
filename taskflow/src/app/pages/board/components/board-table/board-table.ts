@@ -8,7 +8,7 @@ import {
 import { Component, computed, inject, input, output, signal } from '@angular/core';
 import { Button } from '../../../../shared/components/ui/button/button';
 import { Icon } from '../../../../shared/components/ui/icon/icon';
-import { Task } from '../../../../shared/dto/task.dto';
+import { Task, TaskWithProjectDto } from '../../../../shared/dto/task.dto';
 import { UserService } from '../../../../core/services/user-service/user-service';
 import { isThisWeek } from 'date-fns';
 
@@ -28,11 +28,11 @@ enum Filters {
 export class BoardTable {
   private userService = inject(UserService);
 
-  todo = input<Task[]>([]);
-  progress = input<Task[]>([]);
-  done = input<Task[]>([]);
-  onDropTask = output<Task>();
-  onClickTask = output<Task>();
+  todo = input<TaskWithProjectDto[]>([]);
+  progress = input<TaskWithProjectDto[]>([]);
+  done = input<TaskWithProjectDto[]>([]);
+  onDropTask = output<TaskWithProjectDto>();
+  onClickTask = output<TaskWithProjectDto>();
 
   private chip = signal(0);
   private userId = this.userService.userIdentification;
@@ -45,7 +45,7 @@ export class BoardTable {
   doneListFiltered = computed(() => this.filterBy(this.currentChip(), this.done()));
   progressListFiltered = computed(() => this.filterBy(this.currentChip(), this.progress()));
 
-  filterBy(chipIndex: number, tasks: Task[]) {
+  filterBy(chipIndex: number, tasks: TaskWithProjectDto[]) {
     switch (chipIndex) {
       case Filters.ALL:
         return tasks;
@@ -82,7 +82,7 @@ export class BoardTable {
     }
   }
 
-  tapTask(payload: Task) {
+  tapTask(payload: TaskWithProjectDto) {
     this.onClickTask.emit(payload);
   }
 }

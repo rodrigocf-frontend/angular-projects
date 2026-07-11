@@ -12,7 +12,7 @@ export class TaskService {
   private readonly userService = inject(UserService);
   private http = inject(HttpClient);
 
-  private tasks = signal<Task[]>([]);
+  private tasks = signal<TaskWithProjectDto[]>([]);
 
   private visibleState = signal(false);
   readonly visible = this.visibleState.asReadonly();
@@ -36,7 +36,7 @@ export class TaskService {
     this.open();
   }
 
-  setTasks(tasksList: Task[]) {
+  setTasks(tasksList: TaskWithProjectDto[]) {
     this.tasks.set(tasksList);
   }
 
