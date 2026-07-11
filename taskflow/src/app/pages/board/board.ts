@@ -1,8 +1,8 @@
 import { Component, computed, effect, inject, untracked } from '@angular/core';
 import { BoardTable } from '../../components/board-table/board-table';
-import { Task, TaskService } from '../../services/task-service/task-service';
-import { SnackbarService } from '../../services/snack-service/snack-service';
-import { SidebarService } from '../../services/sidebar-service/sidebar-service';
+import { Task, TaskService } from '../../core/services/task-service/task-service';
+import { SnackbarService } from '../../core/services/snack-service/snack-service';
+import { SidebarService } from '../../core/services/sidebar-service/sidebar-service';
 
 @Component({
   selector: 'app-board',

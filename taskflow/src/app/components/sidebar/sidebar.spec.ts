@@ -3,7 +3,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { provideRouter } from '@angular/router';
 import { SidebarComponent } from './sidebar';
-import { Project } from '../../services/project-service/project-service';
+import { Project } from '../../core/services/project-service/project-service';
 
 const API = 'http://localhost:3000';
 

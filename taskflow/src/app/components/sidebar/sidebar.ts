@@ -1,10 +1,10 @@
 import { Component, computed, effect, inject, OnInit, signal, untracked } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Icon } from '../ui/icon/icon';
-import { Project, ProjectService } from '../../services/project-service/project-service';
-import { TaskService } from '../../services/task-service/task-service';
-import { SnackbarService } from '../../services/snack-service/snack-service';
-import { SidebarService } from '../../services/sidebar-service/sidebar-service';
+import { Project, ProjectService } from '../../core/services/project-service/project-service';
+import { TaskService } from '../../core/services/task-service/task-service';
+import { SnackbarService } from '../../core/services/snack-service/snack-service';
+import { SidebarService } from '../../core/services/sidebar-service/sidebar-service';
 
 @Component({
   selector: 'app-sidebar',

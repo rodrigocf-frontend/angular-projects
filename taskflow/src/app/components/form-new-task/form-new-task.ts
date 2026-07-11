@@ -1,17 +1,17 @@
 import { Component, effect, inject } from '@angular/core';
 import { Button } from '../ui/button/button';
 import { Icon } from '../ui/icon/icon';
+
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { toSignal } from '@angular/core/rxjs-interop';
 import {
   Task,
   TaskPriority,
   TaskService,
   TaskStatus,
-} from '../../services/task-service/task-service';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { ProjectService } from '../../services/project-service/project-service';
-import { SnackbarService } from '../../services/snack-service/snack-service';
-import { SidebarService } from '../../services/sidebar-service/sidebar-service';
+} from '../../core/services/task-service/task-service';
+import { SnackbarService } from '../../core/services/snack-service/snack-service';
+import { SidebarService } from '../../core/services/sidebar-service/sidebar-service';
 
 @Component({
   selector: 'app-form-new-task',

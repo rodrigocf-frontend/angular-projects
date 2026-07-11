@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Button } from '../ui/button/button';
 import { Icon } from '../ui/icon/icon';
 import { Avatar } from '../ui/avatar/avatar';
-import { TaskService } from '../../services/task-service/task-service';
+import { TaskService } from '../../core/services/task-service/task-service';
 
 @Component({
   selector: 'app-top-bar',

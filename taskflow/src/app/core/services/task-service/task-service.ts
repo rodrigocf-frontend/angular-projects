@@ -1,10 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { environment } from '../../../environments/environment';
-import { SnackbarService } from '../snack-service/snack-service';
 import { Project } from '../project-service/project-service';
 import { SidebarService } from '../sidebar-service/sidebar-service';
 import { tap } from 'rxjs';
+import { environment } from '../../../../environments/environment.development';
 
 export type TaskStatus = 'todo' | 'progress' | 'done';
 export type TaskPriority = 'low' | 'med' | 'high';

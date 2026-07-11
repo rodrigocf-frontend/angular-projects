@@ -1,7 +1,6 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { Task, TaskService } from '../../services/task-service/task-service';
-import { LoadingService } from '../../services/loading-service/loading-service';
-import { SnackbarService } from '../../services/snack-service/snack-service';
+import { Task, TaskService } from '../../core/services/task-service/task-service';
+import { SnackbarService } from '../../core/services/snack-service/snack-service';
 
 @Component({
   selector: 'app-my-tasks',
@@ -11,7 +10,6 @@ import { SnackbarService } from '../../services/snack-service/snack-service';
 })
 export class MyTasks implements OnInit {
   private taskService = inject(TaskService);
-  private loadingService = inject(LoadingService);
   private snackService = inject(SnackbarService);
 
   private userTasks = signal<Task[]>([]);
