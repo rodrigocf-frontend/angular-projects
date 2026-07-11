@@ -51,6 +51,7 @@ export class SidebarComponent implements OnInit {
   constructor() {
     effect(() => {
       const activeProject = this.currentProject();
+
       if (activeProject?.id) {
         untracked(() => {
           this.fetchTasks();

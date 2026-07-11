@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SidebarComponent } from './shared/components/sidebar/sidebar';
-import { TopBar } from './shared/components/top-bar/top-bar';
 import { BottomBar } from './shared/components/bottom-bar/bottom-bar';
 import { LoadingOverlay } from './shared/components/loading-overlay/loading-overlay';
 import { Snackbar } from './shared/components/ui/snackbar/snackbar';
@@ -15,7 +14,6 @@ import { ProjectService } from './core/services/project-service/project-service'
   imports: [
     RouterOutlet,
     SidebarComponent,
-    TopBar,
     BottomBar,
     LoadingOverlay,
     Snackbar,

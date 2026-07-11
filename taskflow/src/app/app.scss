@@ -12,7 +12,7 @@
 
 .main-content {
   display: grid;
-  grid-template-rows: toRem(56) 1fr 4.5vh;
+  grid-template-rows: 0fr 1fr 4.5vh;
   overflow-y: scroll;
   background: $bg;
 }

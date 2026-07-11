@@ -12,12 +12,6 @@ export class ProjectService {
 
   visible = this.visibleState.asReadonly();
   projectsList = this.projects.asReadonly();
-  private currentProject = signal<Project | undefined>(undefined);
-  selectedProject = this.currentProject.asReadonly();
-
-  setCurrentProject(index: number) {
-    this.currentProject.set(this.projectsList()[index]);
-  }
 
   open() {
     this.visibleState.set(true);

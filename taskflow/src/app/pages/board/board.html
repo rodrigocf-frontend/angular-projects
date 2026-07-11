@@ -1,7 +1,10 @@
-<app-board-table
-  [todo]="todoList()"
-  [done]="doneList()"
-  [progress]="progressList()"
-  (onDropTask)="onDropTask($event)"
-  (onClickTask)="editTask($event)"
-/>
+<app-top-bar />
+<main>
+  <app-board-table
+    [todo]="todoList()"
+    [done]="doneList()"
+    [progress]="progressList()"
+    (onDropTask)="onDropTask($event)"
+    (onClickTask)="editTask($event)"
+  />
+</main>

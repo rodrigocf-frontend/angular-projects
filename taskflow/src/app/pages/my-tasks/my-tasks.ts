@@ -2,10 +2,11 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { SnackbarService } from '../../core/services/snack-service/snack-service';
 import { TaskService } from '../../core/services/task-service/task-service';
 import { TaskWithProjectDto } from '../../shared/dto/task.dto';
+import { TopBar } from '../../shared/components/top-bar/top-bar';
 
 @Component({
   selector: 'app-my-tasks',
-  imports: [],
+  imports: [TopBar],
   templateUrl: './my-tasks.html',
   styleUrl: './my-tasks.scss',
 })

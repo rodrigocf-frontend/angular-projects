@@ -4,10 +4,11 @@ import { TaskService } from '../../core/services/task-service/task-service';
 import { SnackbarService } from '../../core/services/snack-service/snack-service';
 import { SidebarService } from '../../core/services/sidebar-service/sidebar-service';
 import { Task } from '../../shared/dto/task.dto';
+import { TopBar } from '../../shared/components/top-bar/top-bar';
 
 @Component({
   selector: 'app-board',
-  imports: [BoardTable],
+  imports: [BoardTable, TopBar],
   templateUrl: './board.html',
   styleUrl: './board.scss',
 })

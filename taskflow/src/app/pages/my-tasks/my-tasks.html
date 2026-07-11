@@ -1,165 +1,170 @@
-<div class="content">
-  <!-- summary -->
-  <div class="summary">
-    <div class="stat">
-      <span class="stat-n accent">{{ progressTasks().length }}</span>
-      <span class="stat-label">Em andamento</span>
-      <div class="stat-bar bg-accent" [style.width]="progressPercent() + '%'"></div>
-    </div>
-    <div class="stat">
-      <span class="stat-n danger">{{ overdueTasks().length }}</span>
-      <span class="stat-label">Atrasadas</span>
-      <div class="stat-bar bg-danger" [style.width]="overduePercent() + '%'"></div>
-    </div>
-    <div class="stat">
-      <span class="stat-n warning">{{ todoTasks().length }}</span>
-      <span class="stat-label">A fazer</span>
-      <div class="stat-bar bg-warning" [style.width]="todoPercent() + '%'"></div>
-    </div>
-    <div class="stat">
-      <span class="stat-n success">{{ doneTasks().length }}</span>
-      <span class="stat-label">Concluídas</span>
-      <div class="stat-bar bg-success" [style.width]="donePercent() + '%'"></div>
-    </div>
-  </div>
-
-  <!-- atrasadas -->
-  <div class="group">
-    <div class="group-head">
-      <div class="group-dot bg-danger"></div>
-      <span class="group-name">Atrasadas</span>
-      <span class="group-count">{{ overdueTasks().length }}</span>
-    </div>
-    @for (task of overdueTasks(); track task.id) {
-      <div class="task-row">
-        <div class="priority-bar bg-danger"></div>
-        <div class="check"><i class="fa-solid fa-check"></i></div>
-        <div class="task-info">
-          <span class="task-title">{{ task.title }}</span>
-          <div class="task-sub">
-            <span class="tag tag-blue">{{ task.tag }}</span>
-            <span class="due overdue"><i class="fa-solid fa-circle-exclamation"></i>Atrasada</span>
-          </div>
-        </div>
-        <div class="task-right">
-          <div class="project-chip">
-            <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-            {{ task.project?.name }}
-          </div>
-          <span class="status-chip status-progress">{{ task.status }}</span>
-        </div>
+<app-top-bar />
+<main>
+  <div class="content">
+    <!-- summary -->
+    <div class="summary">
+      <div class="stat">
+        <span class="stat-n accent">{{ progressTasks().length }}</span>
+        <span class="stat-label">Em andamento</span>
+        <div class="stat-bar bg-accent" [style.width]="progressPercent() + '%'"></div>
       </div>
-    } @empty {
-      <div class="empty-group">
-        <i class="fa-regular fa-circle-check"></i>
-        <span class="empty-group-text">Nenhuma tarefa atrasada</span>
+      <div class="stat">
+        <span class="stat-n danger">{{ overdueTasks().length }}</span>
+        <span class="stat-label">Atrasadas</span>
+        <div class="stat-bar bg-danger" [style.width]="overduePercent() + '%'"></div>
       </div>
-    }
-  </div>
-
-  <!-- em andamento -->
-  <div class="group">
-    <div class="group-head">
-      <div class="group-dot bg-accent"></div>
-      <span class="group-name">Em andamento</span>
-      <span class="group-count">{{ progressTasks().length }}</span>
-    </div>
-    @for (task of progressTasks(); track task.id) {
-      <div class="task-row">
-        <div class="priority-bar bg-warning"></div>
-        <div class="check"><i class="fa-solid fa-check"></i></div>
-        <div class="task-info">
-          <span class="task-title">{{ task.title }}</span>
-          <div class="task-sub">
-            <span class="tag tag-blue">{{ task.tag }}</span>
-            @if (task.dueDate) {
-              <span class="due"><i class="fa-regular fa-clock"></i>{{ task.dueDate }}</span>
-            }
-          </div>
-        </div>
-        <div class="task-right">
-          <div class="project-chip">
-            <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-            {{ task.project?.name }}
-          </div>
-          <span class="status-chip status-progress">{{ task.status }}</span>
-        </div>
+      <div class="stat">
+        <span class="stat-n warning">{{ todoTasks().length }}</span>
+        <span class="stat-label">A fazer</span>
+        <div class="stat-bar bg-warning" [style.width]="todoPercent() + '%'"></div>
       </div>
-    } @empty {
-      <div class="empty-group">
-        <i class="fa-regular fa-circle-check"></i>
-        <span class="empty-group-text">Nenhuma tarefa em andamento</span>
+      <div class="stat">
+        <span class="stat-n success">{{ doneTasks().length }}</span>
+        <span class="stat-label">Concluídas</span>
+        <div class="stat-bar bg-success" [style.width]="donePercent() + '%'"></div>
       </div>
-    }
-  </div>
-
-  <!-- a fazer -->
-  <div class="group">
-    <div class="group-head">
-      <div class="group-dot bg-txt3"></div>
-      <span class="group-name">A fazer</span>
-      <span class="group-count">{{ todoTasks().length }}</span>
     </div>
 
-    @for (task of todoTasks(); track task.id) {
-      <div class="task-row">
-        <div class="priority-bar bg-warning"></div>
-        <div class="check"><i class="fa-solid fa-check"></i></div>
-        <div class="task-info">
-          <span class="task-title">{{ task.title }}</span>
-          <div class="task-sub">
-            <span class="tag tag-blue">{{ task.tag }}</span>
-            @if (task.dueDate) {
-              <span class="due"><i class="fa-regular fa-clock"></i>{{ task.dueDate }}</span>
-            }
+    <!-- atrasadas -->
+    <div class="group">
+      <div class="group-head">
+        <div class="group-dot bg-danger"></div>
+        <span class="group-name">Atrasadas</span>
+        <span class="group-count">{{ overdueTasks().length }}</span>
+      </div>
+      @for (task of overdueTasks(); track task.id) {
+        <div class="task-row">
+          <div class="priority-bar bg-danger"></div>
+          <div class="check"><i class="fa-solid fa-check"></i></div>
+          <div class="task-info">
+            <span class="task-title">{{ task.title }}</span>
+            <div class="task-sub">
+              <span class="tag tag-blue">{{ task.tag }}</span>
+              <span class="due overdue"
+                ><i class="fa-solid fa-circle-exclamation"></i>Atrasada</span
+              >
+            </div>
+          </div>
+          <div class="task-right">
+            <div class="project-chip">
+              <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
+              {{ task.project?.name }}
+            </div>
+            <span class="status-chip status-progress">{{ task.status }}</span>
           </div>
         </div>
-        <div class="task-right">
-          <div class="project-chip">
-            <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-            {{ task.project?.name }}
-          </div>
-          <span class="status-chip status-todo">{{ task.status }}</span>
+      } @empty {
+        <div class="empty-group">
+          <i class="fa-regular fa-circle-check"></i>
+          <span class="empty-group-text">Nenhuma tarefa atrasada</span>
         </div>
-      </div>
-    } @empty {
-      <div class="empty-group">
-        <i class="fa-regular fa-circle-check"></i>
-        <span class="empty-group-text">Nenhuma tarefa a fazer</span>
-      </div>
-    }
-  </div>
-
-  <!-- concluídas -->
-  <div class="group">
-    <div class="group-head">
-      <div class="group-dot bg-success"></div>
-      <span class="group-name">Concluídas</span>
-      <span class="group-count">{{ doneTasks().length }}</span>
+      }
     </div>
-    @for (task of doneTasks(); track task.id) {
-      <div class="task-row done">
-        <div class="priority-bar"></div>
-        <div class="check checked"><i class="fa-solid fa-check"></i></div>
-        <div class="task-info">
-          <span class="task-title">{{ task.title }}</span>
-          <div class="task-sub">
-            <span class="tag tag-green">{{ task.tag }}</span>
+
+    <!-- em andamento -->
+    <div class="group">
+      <div class="group-head">
+        <div class="group-dot bg-accent"></div>
+        <span class="group-name">Em andamento</span>
+        <span class="group-count">{{ progressTasks().length }}</span>
+      </div>
+      @for (task of progressTasks(); track task.id) {
+        <div class="task-row">
+          <div class="priority-bar bg-warning"></div>
+          <div class="check"><i class="fa-solid fa-check"></i></div>
+          <div class="task-info">
+            <span class="task-title">{{ task.title }}</span>
+            <div class="task-sub">
+              <span class="tag tag-blue">{{ task.tag }}</span>
+              @if (task.dueDate) {
+                <span class="due"><i class="fa-regular fa-clock"></i>{{ task.dueDate }}</span>
+              }
+            </div>
+          </div>
+          <div class="task-right">
+            <div class="project-chip">
+              <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
+              {{ task.project?.name }}
+            </div>
+            <span class="status-chip status-progress">{{ task.status }}</span>
           </div>
         </div>
-        <div class="task-right">
-          <div class="project-chip">
-            <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-            {{ task.project?.name }}
-          </div>
-          <span class="status-chip status-done">{{ task.status }}</span>
+      } @empty {
+        <div class="empty-group">
+          <i class="fa-regular fa-circle-check"></i>
+          <span class="empty-group-text">Nenhuma tarefa em andamento</span>
         </div>
+      }
+    </div>
+
+    <!-- a fazer -->
+    <div class="group">
+      <div class="group-head">
+        <div class="group-dot bg-txt3"></div>
+        <span class="group-name">A fazer</span>
+        <span class="group-count">{{ todoTasks().length }}</span>
       </div>
-    } @empty {
-      <div class="empty-group">
-        <i class="fa-regular fa-circle-check"></i>
-        <span class="empty-group-text">Nenhuma tarefa pronta</span>
+
+      @for (task of todoTasks(); track task.id) {
+        <div class="task-row">
+          <div class="priority-bar bg-warning"></div>
+          <div class="check"><i class="fa-solid fa-check"></i></div>
+          <div class="task-info">
+            <span class="task-title">{{ task.title }}</span>
+            <div class="task-sub">
+              <span class="tag tag-blue">{{ task.tag }}</span>
+              @if (task.dueDate) {
+                <span class="due"><i class="fa-regular fa-clock"></i>{{ task.dueDate }}</span>
+              }
+            </div>
+          </div>
+          <div class="task-right">
+            <div class="project-chip">
+              <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
+              {{ task.project?.name }}
+            </div>
+            <span class="status-chip status-todo">{{ task.status }}</span>
+          </div>
+        </div>
+      } @empty {
+        <div class="empty-group">
+          <i class="fa-regular fa-circle-check"></i>
+          <span class="empty-group-text">Nenhuma tarefa a fazer</span>
+        </div>
+      }
+    </div>
+
+    <!-- concluídas -->
+    <div class="group">
+      <div class="group-head">
+        <div class="group-dot bg-success"></div>
+        <span class="group-name">Concluídas</span>
+        <span class="group-count">{{ doneTasks().length }}</span>
       </div>
-    }
+      @for (task of doneTasks(); track task.id) {
+        <div class="task-row done">
+          <div class="priority-bar"></div>
+          <div class="check checked"><i class="fa-solid fa-check"></i></div>
+          <div class="task-info">
+            <span class="task-title">{{ task.title }}</span>
+            <div class="task-sub">
+              <span class="tag tag-green">{{ task.tag }}</span>
+            </div>
+          </div>
+          <div class="task-right">
+            <div class="project-chip">
+              <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
+              {{ task.project?.name }}
+            </div>
+            <span class="status-chip status-done">{{ task.status }}</span>
+          </div>
+        </div>
+      } @empty {
+        <div class="empty-group">
+          <i class="fa-regular fa-circle-check"></i>
+          <span class="empty-group-text">Nenhuma tarefa pronta</span>
+        </div>
+      }
+    </div>
   </div>
-</div>
+</main>
