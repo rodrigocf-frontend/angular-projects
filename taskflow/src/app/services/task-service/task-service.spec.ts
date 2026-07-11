@@ -1,10 +1,20 @@
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { LoadingService } from '../loading-service/loading-service';
 import { Task, TaskService } from './task-service';
+import { SidebarService } from '../sidebar-service/sidebar-service';
+import { Project } from '../project-service/project-service';
 
 const API = 'http://localhost:3000';
+
+const mockProject: Project = {
+  id: 1,
+  name: 'Project A',
+  description: '',
+  color: '#5b6af0',
+  deadline: null,
+  total: 5,
+};
 
 const mockTasks: Task[] = [
   { id: '1', title: 'Task A', description: null, dueDate: null, overdue: false, priority: 'high', status: 'todo', tag: 'Feature', tagClass: 'tag-blue', projectId: 1, userId: 1 },
@@ -15,6 +25,7 @@ const mockTasks: Task[] = [
 
 describe('TaskService', () => {
   let service: TaskService;
+  let sidebarService: SidebarService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
@@ -22,6 +33,7 @@ describe('TaskService', () => {
       providers: [provideHttpClient(), provideHttpClientTesting()],
     });
     service = TestBed.inject(TaskService);
+    sidebarService = TestBed.inject(SidebarService);
     httpMock = TestBed.inject(HttpTestingController);
   });
 
@@ -33,11 +45,8 @@ describe('TaskService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should start with empty signals', () => {
-    expect(service.todoList().length).toBe(0);
-    expect(service.progressList().length).toBe(0);
-    expect(service.doneList().length).toBe(0);
-    expect(service.overdueList().length).toBe(0);
+  it('allTasks should start empty', () => {
+    expect(service.allTasks().length).toBe(0);
   });
 
   it('visible should be false initially', () => {
@@ -73,92 +82,96 @@ describe('TaskService', () => {
   });
 
   describe('readTasks', () => {
-    it('should populate todoList after readTasks', () => {
-      service.readTasks(1);
-      httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
-      expect(service.todoList().length).toBe(2);
-      expect(service.todoList().every(t => t.status === 'todo')).toBe(true);
+    beforeEach(() => {
+      sidebarService.setProject(mockProject);
     });
 
-    it('should populate progressList after readTasks', () => {
-      service.readTasks(1);
+    it('should update allTasks after fetch', () => {
+      service.readTasks().subscribe();
       httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
-      expect(service.progressList().length).toBe(1);
-      expect(service.progressList()[0].status).toBe('progress');
+      expect(service.allTasks().length).toBe(4);
     });
 
-    it('should populate doneList after readTasks', () => {
-      service.readTasks(1);
-      httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
-      expect(service.doneList().length).toBe(1);
-      expect(service.doneList()[0].status).toBe('done');
+    it('should use projectId from SidebarService in the URL', () => {
+      service.readTasks().subscribe();
+      const req = httpMock.expectOne(`${API}/tasks?projectId=1`);
+      expect(req.request.method).toBe('GET');
+      req.flush([]);
     });
 
-    it('should populate overdueList with overdue tasks', () => {
-      service.readTasks(1);
+    it('allTasks should reflect tasks by status after fetch', () => {
+      service.readTasks().subscribe();
       httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
-      expect(service.overdueList().length).toBe(1);
-      expect(service.overdueList()[0].overdue).toBe(true);
+      const todos = service.allTasks().filter((t) => t.status === 'todo');
+      const dones = service.allTasks().filter((t) => t.status === 'done');
+      expect(todos.length).toBe(2);
+      expect(dones.length).toBe(1);
     });
 
-    it('should stop loading after successful fetch', () => {
-      const loadingService = TestBed.inject(LoadingService);
-      service.readTasks(1);
+    it('allTasks should include overdue tasks', () => {
+      service.readTasks().subscribe();
       httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
-      expect(loadingService.isLoading()).toBe(false);
-    });
-
-    it('should stop loading after fetch error', () => {
-      const loadingService = TestBed.inject(LoadingService);
-      service.readTasks(1);
-      httpMock.expectOne(`${API}/tasks?projectId=1`).flush('error', { status: 500, statusText: 'Server Error' });
-      expect(loadingService.isLoading()).toBe(false);
+      const overdue = service.allTasks().filter((t) => t.overdue);
+      expect(overdue.length).toBe(1);
     });
   });
 
   describe('createTask', () => {
-    it('should POST task and reload tasks for the same project', () => {
+    it('should POST to tasks endpoint', () => {
       const payload = { title: 'New Task', status: 'todo', priority: 'low', projectId: 1 };
-      service.createTask(payload);
+      service.createTask(payload).subscribe();
 
-      httpMock.expectOne(`${API}/tasks`).flush({ id: '99', ...payload });
-      httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
-
-      expect(service.todoList().length).toBe(2);
+      const req = httpMock.expectOne(`${API}/tasks`);
+      expect(req.request.method).toBe('POST');
+      expect(req.request.body).toMatchObject(payload);
+      req.flush({ id: '99', ...payload });
     });
 
-    it('should start loading when creating a task', () => {
-      const loadingService = TestBed.inject(LoadingService);
+    it('should return an Observable', () => {
       const payload = { title: 'New Task', status: 'todo', priority: 'low', projectId: 1 };
-      service.createTask(payload);
-
-      expect(loadingService.isLoading()).toBe(true);
+      let emitted = false;
+      service.createTask(payload).subscribe(() => (emitted = true));
 
       httpMock.expectOne(`${API}/tasks`).flush({ id: '99', ...payload });
-      httpMock.expectOne(`${API}/tasks?projectId=1`).flush([]);
+      expect(emitted).toBe(true);
     });
   });
 
   describe('updateTask', () => {
-    it('should PATCH task and refetch tasks', () => {
-      const payload: Partial<Task> = { id: '1', title: 'Updated', status: 'progress', projectId: 1 };
-      service.updateTask(payload);
+    it('should PATCH the task by id', () => {
+      const payload: Partial<Task> = { id: '1', status: 'progress' };
+      service.updateTask(payload).subscribe();
+
+      const req = httpMock.expectOne(`${API}/tasks/1`);
+      expect(req.request.method).toBe('PATCH');
+      req.flush({ ...mockTasks[0], ...payload });
+    });
+
+    it('should return an Observable', () => {
+      const payload: Partial<Task> = { id: '1', status: 'done' };
+      let emitted = false;
+      service.updateTask(payload).subscribe(() => (emitted = true));
 
       httpMock.expectOne(`${API}/tasks/1`).flush({ ...mockTasks[0], ...payload });
-      httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
-
-      expect(service.progressList().length).toBe(1);
+      expect(emitted).toBe(true);
     });
   });
 
   describe('readMyTask', () => {
     it('should return an observable with user tasks expanded with project', () => {
       let result: Task[] = [];
-      service.readMyTask().subscribe(data => (result = data));
+      service.readMyTask().subscribe((data) => (result = data));
 
       httpMock.expectOne(`${API}/tasks?userId=1&_expand=project`).flush(mockTasks);
 
       expect(result.length).toBe(4);
+    });
+
+    it('should make a GET request to the correct endpoint', () => {
+      service.readMyTask().subscribe();
+      const req = httpMock.expectOne(`${API}/tasks?userId=1&_expand=project`);
+      expect(req.request.method).toBe('GET');
+      req.flush([]);
     });
   });
 });

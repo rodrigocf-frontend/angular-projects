@@ -28,13 +28,22 @@ describe('LoadingService', () => {
     expect(service.isLoading()).toBe(false);
   });
 
-  it('calling start() twice should not double-trigger', () => {
+  it('two start() calls should keep isLoading true', () => {
     service.start();
     service.start();
     expect(service.isLoading()).toBe(true);
   });
 
-  it('calling stop() when not loading should not throw', () => {
+  it('two start() calls require two stop() calls to clear loading', () => {
+    service.start();
+    service.start();
+    service.stop();
+    expect(service.isLoading()).toBe(true);
+    service.stop();
+    expect(service.isLoading()).toBe(false);
+  });
+
+  it('stop() when not loading should not throw and should stay false', () => {
     expect(() => service.stop()).not.toThrow();
     expect(service.isLoading()).toBe(false);
   });

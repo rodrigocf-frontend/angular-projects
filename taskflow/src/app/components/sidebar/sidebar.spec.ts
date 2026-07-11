@@ -59,14 +59,14 @@ describe('SidebarComponent', () => {
   });
 
   it('should select first project after loading', () => {
-    expect(component.selectedProject()?.id).toBe(1);
+    expect(component.currentProject()?.id).toBe(1);
   });
 
   it('onSelect should update selected project', () => {
     component.onSelect(1);
     TestBed.flushEffects();
     httpMock.expectOne(`${API}/tasks?projectId=2`).flush([]);
-    expect(component.selectedProject()?.id).toBe(2);
+    expect(component.currentProject()?.id).toBe(2);
   });
 
   it('should render nav items in the template', () => {

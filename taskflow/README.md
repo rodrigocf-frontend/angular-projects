@@ -41,8 +41,11 @@ TaskFlow lets you manage multiple projects, each with its own task board. Tasks 
 ### Signals over NgRx
 State is managed with Angular Signals (`signal`, `computed`, `effect`) instead of NgRx. For a project of this scope, signals provide reactive state without the boilerplate of actions, reducers, and selectors.
 
-### Effect for project → task binding
-When the selected project changes in `ProjectService`, an `effect()` in `SidebarComponent` automatically calls `TaskService.readTasks(projectId)`. This keeps the board in sync without explicit wiring between components.
+### SidebarService as shared project state
+`SidebarService` holds the `selectedProject` signal. Both `SidebarComponent` and `Board` declare an `effect()` that reacts to this signal and calls `TaskService.readTasks()`, which fetches tasks for the active project and updates the shared `allTasks` signal via `tap()`. This keeps every consumer in sync without explicit wiring.
+
+### HTTP interceptor for global loading
+A functional `loadingInterceptor` wraps every HTTP request with `LoadingService.start()` / `stop()` using RxJS `finalize()`. `LoadingService` is counter-based (`activeRequests` signal) so concurrent requests don't cancel each other's loading state prematurely.
 
 ### Global modal pattern
 `FormNewProject` and `FormNewTask` are mounted at the root `AppComponent` level and controlled via service signals (`visible`, `open()`, `close()`). This avoids z-index issues and keeps the modals outside the component tree that triggers them.
@@ -94,11 +97,14 @@ src/
 │   │   ├── my-tasks/           # Personal task list grouped by status
 │   │   ├── calendar/           # Placeholder
 │   │   └── reports/            # Placeholder
+│   ├── core/
+│   │   └── interceptors/       # loadingInterceptor — wraps HTTP with LoadingService
 │   └── services/
-│       ├── loading-service/    # Global loading state
-│       ├── project-service/    # Project CRUD + selected project signal
+│       ├── loading-service/    # Counter-based global loading state
+│       ├── project-service/    # Project CRUD and modal visibility
+│       ├── sidebar-service/    # Shared selected project signal
 │       ├── snack-service/      # Toast notification service
-│       ├── task-service/       # Task CRUD + column signals + edit state
+│       ├── task-service/       # Task CRUD, shared allTasks signal, edit state
 │       └── user-service/       # Current user identity signal
 └── themes/
     ├── _tokens.scss            # Design tokens (colors, radii, spacing)

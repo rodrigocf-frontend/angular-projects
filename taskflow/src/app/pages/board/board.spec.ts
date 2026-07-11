@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { of } from 'rxjs';
 import { Board } from './board';
 import { Task, TaskService } from '../../services/task-service/task-service';
 
@@ -50,7 +51,7 @@ describe('Board', () => {
 
   it('onDropTask should call taskService.updateTask with the payload', () => {
     const taskService = TestBed.inject(TaskService);
-    const spy = vi.spyOn(taskService, 'updateTask').mockImplementation(() => {});
+    const spy = vi.spyOn(taskService, 'updateTask').mockReturnValue(of({}) as any);
     const payload = { id: '1', status: 'progress' } as Partial<Task>;
     component.onDropTask(payload);
     expect(spy).toHaveBeenCalledWith(payload);

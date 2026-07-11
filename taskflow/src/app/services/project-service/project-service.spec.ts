@@ -54,56 +54,47 @@ describe('ProjectService', () => {
   });
 
   describe('getAll', () => {
-    it('should fetch and set projects', () => {
-      service.getAll();
+    it('should return an Observable of projects', () => {
+      let result: Project[] = [];
+      service.getAll().subscribe((projects) => (result = projects));
+
       httpMock.expectOne(`${API}/projects?sort=id`).flush(mockProjects);
-      expect(service.projectsList().length).toBe(2);
-      expect(service.projectsList()[0].name).toBe('Project A');
+
+      expect(result.length).toBe(2);
+      expect(result[0].name).toBe('Project A');
     });
 
-    it('should set the first project as selected after loading', () => {
-      service.getAll();
-      httpMock.expectOne(`${API}/projects?sort=id`).flush(mockProjects);
-      expect(service.selectedProject()?.id).toBe(1);
-    });
-
-    it('should call onComplete callback', () => {
-      const onComplete = vi.fn();
-      service.getAll({ onComplete });
-      httpMock.expectOne(`${API}/projects?sort=id`).flush(mockProjects);
-      expect(onComplete).toHaveBeenCalledOnce();
+    it('should make a GET request to the correct endpoint', () => {
+      service.getAll().subscribe();
+      const req = httpMock.expectOne(`${API}/projects?sort=id`);
+      expect(req.request.method).toBe('GET');
+      req.flush(mockProjects);
     });
   });
 
   describe('setCurrentProject', () => {
-    it('should select project by index', () => {
-      service.getAll();
-      httpMock.expectOne(`${API}/projects?sort=id`).flush(mockProjects);
+    it('should set selectedProject to the project at the given index', () => {
+      (service as any).projects.set(mockProjects);
       service.setCurrentProject(1);
       expect(service.selectedProject()?.id).toBe(2);
+    });
+
+    it('should set selectedProject to the first project when index is 0', () => {
+      (service as any).projects.set(mockProjects);
+      service.setCurrentProject(0);
+      expect(service.selectedProject()?.id).toBe(1);
     });
   });
 
   describe('create', () => {
-    it('should POST and reload the project list', () => {
+    it('should POST to projects endpoint with total: 0', () => {
       const payload = { name: 'Novo Projeto', color: '#5b6af0', description: '', deadline: null };
       service.create({ payload });
 
-      httpMock.expectOne(`${API}/projects`).flush({ id: 3, ...payload, total: 0 });
-      httpMock.expectOne(`${API}/projects?sort=id`).flush([...mockProjects, { id: 3, ...payload, total: 0 }]);
-
-      expect(service.projectsList().length).toBe(3);
-    });
-
-    it('should call onComplete after create and reload', () => {
-      const onComplete = vi.fn();
-      const payload = { name: 'Novo', color: '#5b6af0', description: '', deadline: null };
-      service.create({ payload, onComplete });
-
-      httpMock.expectOne(`${API}/projects`).flush({ id: 3, ...payload, total: 0 });
-      httpMock.expectOne(`${API}/projects?sort=id`).flush(mockProjects);
-
-      expect(onComplete).toHaveBeenCalledOnce();
+      const req = httpMock.expectOne(`${API}/projects`);
+      expect(req.request.method).toBe('POST');
+      expect(req.request.body).toMatchObject({ ...payload, total: 0 });
+      req.flush({ id: 3, ...payload, total: 0 });
     });
   });
 });
