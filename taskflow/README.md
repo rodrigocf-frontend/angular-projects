@@ -85,27 +85,32 @@ Open `http://localhost:4200` in your browser. The API will be available at `http
 ```
 src/
 ├── app/
-│   ├── components/
-│   │   ├── board-table/        # Kanban columns with CDK drag-drop
-│   │   ├── form-new-project/   # Project creation modal
-│   │   ├── form-new-task/      # Task creation modal
-│   │   ├── sidebar/            # Navigation, project list, progress
-│   │   ├── top-bar/            # Header with nova tarefa button
-│   │   └── ui/                 # Avatar, Button, Icon, Snackbar
-│   ├── pages/
-│   │   ├── board/              # Main Kanban view
-│   │   ├── my-tasks/           # Personal task list grouped by status
-│   │   ├── calendar/           # Placeholder
-│   │   └── reports/            # Placeholder
 │   ├── core/
-│   │   └── interceptors/       # loadingInterceptor — wraps HTTP with LoadingService
-│   └── services/
-│       ├── loading-service/    # Counter-based global loading state
-│       ├── project-service/    # Project CRUD and modal visibility
-│       ├── sidebar-service/    # Shared selected project signal
-│       ├── snack-service/      # Toast notification service
-│       ├── task-service/       # Task CRUD, shared allTasks signal, edit state
-│       └── user-service/       # Current user identity signal
+│   │   ├── interceptors/       # loadingInterceptor — wraps HTTP with LoadingService
+│   │   └── services/
+│   │       ├── loading-service/    # Counter-based global loading state
+│   │       ├── project-service/    # Project CRUD and modal visibility
+│   │       ├── sidebar-service/    # Shared selected project signal
+│   │       ├── snack-service/      # Toast notification service
+│   │       ├── task-service/       # Task CRUD, shared allTasks signal, edit state
+│   │       └── user-service/       # Current user identity signal
+│   ├── shared/
+│   │   └── components/
+│   │       ├── coming-soon/    # Reusable empty-state for unbuilt pages
+│   │       ├── form-new-project/   # Project creation modal
+│   │       ├── form-new-task/      # Task creation/edit modal
+│   │       ├── loading-overlay/    # Full-screen loading spinner
+│   │       ├── sidebar/            # Navigation, project list, progress
+│   │       ├── top-bar/            # Header with action buttons
+│   │       └── ui/                 # Avatar, Button, Icon, Snackbar
+│   └── pages/
+│       ├── board/
+│       │   ├── components/
+│       │   │   └── board-table/    # Kanban columns with CDK drag-drop
+│       │   └── board.ts            # Main Kanban view
+│       ├── my-tasks/           # Personal task list grouped by status
+│       ├── calendar/           # Coming soon
+│       └── reports/            # Coming soon
 └── themes/
     ├── _tokens.scss            # Design tokens (colors, radii, spacing)
     ├── _fonts.scss             # Inter font import
