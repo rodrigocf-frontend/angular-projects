@@ -95,8 +95,9 @@ src/
 │   │       ├── task-service/       # Task CRUD, shared allTasks signal, edit state
 │   │       └── user-service/       # Current user identity signal
 │   ├── shared/
+│   │   ├── dto/                # Domain types — Task, Project, DTOs
 │   │   └── components/
-│   │       ├── coming-soon/    # Reusable empty-state for unbuilt pages
+│   │       ├── coming-soon/        # Reusable empty-state for unbuilt pages
 │   │       ├── form-new-project/   # Project creation modal
 │   │       ├── form-new-task/      # Task creation/edit modal
 │   │       ├── loading-overlay/    # Full-screen loading spinner
