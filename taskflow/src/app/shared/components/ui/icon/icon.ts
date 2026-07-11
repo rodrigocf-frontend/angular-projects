@@ -1,6 +1,26 @@
 import { Component, computed, input } from '@angular/core';
 
-const iconMap: Record<string, string> = {
+export type IconKey =
+  | 'kanban'
+  | 'tasks'
+  | 'calendar'
+  | 'reports'
+  | 'project'
+  | 'add'
+  | 'search'
+  | 'filter'
+  | 'branch'
+  | 'clock'
+  | 'check'
+  | 'alert'
+  | 'trash'
+  | 'edit'
+  | 'list'
+  | 'rotate-right'
+  | 'circle-info'
+  | 'triangle-exclamation';
+
+const iconMap: Record<IconKey, string> = {
   kanban: 'fa-solid fa-table-columns',
   tasks: 'fa-solid fa-list',
   calendar: 'fa-regular fa-calendar',
@@ -30,6 +50,6 @@ const iconMap: Record<string, string> = {
   },
 })
 export class Icon {
-  name = input.required<string>();
+  name = input.required<IconKey>();
   iconClass = computed(() => iconMap[this.name()] ?? '');
 }

@@ -1,6 +1,6 @@
 import { Component, computed, effect, inject, OnInit, signal, untracked } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
-import { Icon } from '../ui/icon/icon';
+import { Icon, IconKey } from '../ui/icon/icon';
 import { Project, ProjectService } from '../../../core/services/project-service/project-service';
 import { TaskService } from '../../../core/services/task-service/task-service';
 import { SnackbarService } from '../../../core/services/snack-service/snack-service';
@@ -41,22 +41,10 @@ export class SidebarComponent implements OnInit {
     return 0;
   });
 
-  navItems = [
-    {
-      label: 'Quadro',
-      icon: 'kanban',
-      route: '',
-    },
-    {
-      label: 'Minhas tarefas',
-      icon: 'tasks',
-      route: 'my-tasks',
-    },
-    {
-      label: 'Calendário',
-      icon: 'calendar',
-      route: 'calendar',
-    },
+  navItems: { label: string; icon: IconKey; route: string }[] = [
+    { label: 'Quadro', icon: 'kanban', route: '' },
+    { label: 'Minhas tarefas', icon: 'tasks', route: 'my-tasks' },
+    { label: 'Calendário', icon: 'calendar', route: 'calendar' },
     { label: 'Relatórios', icon: 'reports', route: 'reports' },
   ];
 

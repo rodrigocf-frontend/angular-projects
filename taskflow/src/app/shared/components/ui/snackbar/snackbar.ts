@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { NgClass } from '@angular/common';
-import { Icon } from '../icon/icon';
+import { Icon, IconKey } from '../icon/icon';
 import { SnackbarService } from '../../../../core/services/snack-service/snack-service';
 
 @Component({
@@ -19,7 +19,7 @@ export class Snackbar {
     this.snackbarService.dismiss();
   }
 
-  snackIcon() {
+  snackIcon(): IconKey {
     switch (this.current()!.type) {
       case 'success':
         return 'check';
@@ -29,8 +29,6 @@ export class Snackbar {
         return 'circle-info';
       case 'warning':
         return 'triangle-exclamation';
-      default:
-        return '';
     }
   }
 }
