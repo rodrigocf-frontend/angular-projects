@@ -18,7 +18,10 @@ export type IconKey =
   | 'list'
   | 'rotate-right'
   | 'circle-info'
-  | 'triangle-exclamation';
+  | 'triangle-exclamation'
+  | 'close'
+  | 'code'
+  | 'circle-check';
 
 const iconMap: Record<IconKey, string> = {
   kanban: 'fa-solid fa-table-columns',
@@ -39,6 +42,9 @@ const iconMap: Record<IconKey, string> = {
   'rotate-right': 'fa-solid fa-rotate-right',
   'circle-info': 'fa-solid fa-circle-info',
   'triangle-exclamation': 'fa-solid fa-triangle-exclamation',
+  close: 'fa-solid fa-xmark',
+  code: 'fa-solid fa-code',
+  'circle-check': 'fa-regular fa-circle-check',
 };
 
 @Component({
