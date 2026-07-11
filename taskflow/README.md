@@ -53,6 +53,9 @@ A functional `loadingInterceptor` wraps every HTTP request with `LoadingService.
 ### Flat service state (no store)
 Each service owns its own signals and exposes them as readonly. Components read from signals directly — no facade or store layer needed at this scale.
 
+### Attribute-selector UI components
+`Button` uses `selector: 'button[primary], button[ghost], button[danger]'` so it enhances the native `<button>` element rather than wrapping it — no extra DOM node, full accessibility semantics preserved. Variant inputs (`primary`, `ghost`, `danger`) use `input()` with `booleanAttribute` transform, which correctly converts the presence of a bare HTML attribute (e.g. `<button primary>`) to `true`. `Icon` uses `selector: 'i[name]'` and an `iconMap` record to keep Font Awesome class strings out of templates — every icon reference is type-checked against the `IconKey` union at compile time.
+
 ## Running Locally
 
 **Prerequisites:** Node.js 20+, pnpm
