@@ -1,9 +1,11 @@
 <div class="content">
   <div class="filters">
-    <div class="chip active">Todas</div>
-    <div class="chip">Alta prioridade</div>
-    <div class="chip">Atribuídas a mim</div>
-    <div class="chip">Esta semana</div>
+    @for (chip of chips; track $index) {
+      <div class="chip" [class.active]="currentChip() === $index" (click)="onClickChip($index)">
+        {{ chip }}
+      </div>
+    }
+
     <div class="filter-right">
       <button ghost>
         <i name="tasks"></i>
@@ -19,7 +21,7 @@
       <div class="col-head">
         <div class="col-dot col-dot__todo"></div>
         <span class="col-name">A fazer</span>
-        <span class="col-count">{{ todo().length }}</span>
+        <span class="col-count">{{ todosListFiltered().length }}</span>
       </div>
       <ul
         id="todo"
@@ -29,7 +31,7 @@
         [cdkDropListConnectedTo]="[progressList, doneList]"
         (cdkDropListDropped)="drop($event)"
       >
-        @for (item of todo(); track item.id) {
+        @for (item of todosListFiltered(); track item.id) {
           <div
             [class]="'task-card priority-' + item.priority"
             [cdkDragData]="item"
@@ -67,7 +69,7 @@
       <div class="col-head">
         <div class="col-dot col-dot__progress"></div>
         <span class="col-name">Em andamento</span>
-        <span class="col-count">{{ progress().length }}</span>
+        <span class="col-count">{{ progressListFiltered().length }}</span>
       </div>
       <ul
         id="progress"
@@ -77,7 +79,7 @@
         [cdkDropListConnectedTo]="[todoList, doneList]"
         (cdkDropListDropped)="drop($event)"
       >
-        @for (item of progress(); track item.id) {
+        @for (item of progressListFiltered(); track item.id) {
           <div
             [class]="'task-card priority-' + item.priority"
             [cdkDragData]="item"
@@ -118,7 +120,7 @@
       <div class="col-head">
         <div class="col-dot col-dot__success"></div>
         <span class="col-name">Concluído</span>
-        <span class="col-count">{{ done().length }}</span>
+        <span class="col-count">{{ doneListFiltered().length }}</span>
       </div>
 
       <ul
@@ -129,7 +131,7 @@
         [cdkDropListConnectedTo]="[todoList, progressList]"
         (cdkDropListDropped)="drop($event)"
       >
-        @for (item of done(); track item.id) {
+        @for (item of doneListFiltered(); track item.id) {
           <div
             [class]="'task-card task-card--done priority-' + item.priority"
             [cdkDragData]="item"

@@ -5,10 +5,19 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { Component, input, output } from '@angular/core';
+import { Component, computed, inject, input, output, signal } from '@angular/core';
 import { Button } from '../../../../shared/components/ui/button/button';
 import { Icon } from '../../../../shared/components/ui/icon/icon';
 import { Task } from '../../../../shared/dto/task.dto';
+import { UserService } from '../../../../core/services/user-service/user-service';
+import { isThisWeek } from 'date-fns';
+
+enum Filters {
+  ALL,
+  HIGH_PRIORITY,
+  TO_ME,
+  THIS_WEEK,
+}
 
 @Component({
   selector: 'app-board-table',
@@ -17,11 +26,43 @@ import { Task } from '../../../../shared/dto/task.dto';
   imports: [CdkDropList, CdkDrag, Button, Icon],
 })
 export class BoardTable {
-  todo = input<any[]>([]);
-  progress = input<any[]>([]);
-  done = input<any[]>([]);
-  onDropTask = output<any>();
+  private userService = inject(UserService);
+
+  todo = input<Task[]>([]);
+  progress = input<Task[]>([]);
+  done = input<Task[]>([]);
+  onDropTask = output<Task>();
   onClickTask = output<Task>();
+
+  private chip = signal(0);
+  private userId = this.userService.userIdentification;
+
+  chips = ['Todas', 'Alta prioridade', 'Atribuídas a mim', 'Esta semana'];
+
+  currentChip = this.chip.asReadonly();
+
+  todosListFiltered = computed(() => this.filterBy(this.currentChip(), this.todo()));
+  doneListFiltered = computed(() => this.filterBy(this.currentChip(), this.done()));
+  progressListFiltered = computed(() => this.filterBy(this.currentChip(), this.progress()));
+
+  filterBy(chipIndex: number, tasks: Task[]) {
+    switch (chipIndex) {
+      case Filters.ALL:
+        return tasks;
+      case Filters.HIGH_PRIORITY:
+        return tasks.filter((item) => item.priority === 'high');
+      case Filters.TO_ME:
+        return tasks.filter((item) => item.userId === this.userId());
+      case Filters.THIS_WEEK:
+        return tasks.filter((item) => item.dueDate && isThisWeek(new Date(item.dueDate)));
+      default:
+        return tasks;
+    }
+  }
+
+  onClickChip(index: number) {
+    this.chip.set(index);
+  }
 
   drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
