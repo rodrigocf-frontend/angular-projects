@@ -36,6 +36,30 @@
       "color": "#a855f7",
       "deadline": null,
       "total": 9
+    },
+    {
+      "color": "#22c55e",
+      "deadline": null,
+      "description": "Projeto legal",
+      "name": "API 3",
+      "total": 0,
+      "id": 3
+    },
+    {
+      "color": "#ef4444",
+      "deadline": null,
+      "description": "",
+      "name": "API 3",
+      "total": 0,
+      "id": 4
+    },
+    {
+      "color": "#a855f7",
+      "deadline": "2026-07-02",
+      "description": "asdasd",
+      "name": "API4",
+      "total": 0,
+      "id": 5
     }
   ],
   "tasks": [
@@ -217,7 +241,7 @@
       "dueDate": null,
       "overdue": false,
       "priority": "low",
-      "status": "todo",
+      "status": "progress",
       "projectId": 1,
       "userId": 1
     },
