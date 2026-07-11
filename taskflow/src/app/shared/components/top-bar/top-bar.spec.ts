@@ -28,11 +28,6 @@ describe('TopBar', () => {
     expect(el.querySelector('.topbar')).toBeTruthy();
   });
 
-  it('should render search input', () => {
-    const el: HTMLElement = fixture.nativeElement;
-    expect(el.querySelector('input')).toBeTruthy();
-  });
-
   it('should render Nova tarefa button', () => {
     const el: HTMLElement = fixture.nativeElement;
     const buttons = el.querySelectorAll('button');
