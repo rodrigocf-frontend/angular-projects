@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { SidebarService } from './sidebar-service';
-import { Project } from '../project-service/project-service';
+import { Project } from '../../../shared/dto/project.dto';
 
 const mockProject: Project = {
   id: 1,

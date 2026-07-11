@@ -1,29 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { Project } from '../project-service/project-service';
 import { SidebarService } from '../sidebar-service/sidebar-service';
 import { tap } from 'rxjs';
-import { environment } from '../../../../environments/environment.development';
-
-export type TaskStatus = 'todo' | 'progress' | 'done';
-export type TaskPriority = 'low' | 'med' | 'high';
-
-export interface Task {
-  id: string;
-  title: string;
-  description: string | null;
-  dueDate: string | null;
-  overdue: boolean;
-  priority: TaskPriority;
-  status: TaskStatus;
-  tag: string;
-  tagClass: string;
-  projectId: number;
-  userId: number;
-  project?: Project;
-}
-
-type TasksAPIResponse = Task;
+import { environment } from '../../../../environments/environment';
+import { Task, TaskWithProjectDto } from '../../../shared/dto/task.dto';
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
@@ -34,7 +14,7 @@ export class TaskService {
 
   private visibleState = signal(false);
   readonly visible = this.visibleState.asReadonly();
-  private edittingTask = signal<TasksAPIResponse | null>(null);
+  private edittingTask = signal<TaskWithProjectDto | null>(null);
   private readonly currentProject = this.sidebarService.selectedProject;
 
   readonly editTaskData = this.edittingTask.asReadonly();
@@ -66,7 +46,9 @@ export class TaskService {
 
   readTasks() {
     return this.http
-      .get<TasksAPIResponse[]>(`${environment.apiUrl}/tasks?projectId=${this.currentProject()?.id}`)
+      .get<
+        TaskWithProjectDto[]
+      >(`${environment.apiUrl}/tasks?projectId=${this.currentProject()?.id}`)
       .pipe(tap((res) => this.setTasks(res)));
   }
 
@@ -75,7 +57,7 @@ export class TaskService {
   }
 
   readMyTask() {
-    return this.http.get<TasksAPIResponse[]>(
+    return this.http.get<TaskWithProjectDto[]>(
       `${environment.apiUrl}/tasks?userId=${1}&_expand=project`,
     );
   }

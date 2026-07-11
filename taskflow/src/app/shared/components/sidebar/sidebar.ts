@@ -1,7 +1,7 @@
 import { Component, computed, effect, inject, OnInit, signal, untracked } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { Icon, IconKey } from '../ui/icon/icon';
-import { Project, ProjectService } from '../../../core/services/project-service/project-service';
+import { ProjectService } from '../../../core/services/project-service/project-service';
 import { TaskService } from '../../../core/services/task-service/task-service';
 import { SnackbarService } from '../../../core/services/snack-service/snack-service';
 import { SidebarService } from '../../../core/services/sidebar-service/sidebar-service';

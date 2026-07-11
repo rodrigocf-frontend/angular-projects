@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { Project } from '../project-service/project-service';
+import { Project } from '../../../shared/dto/project.dto';
 
 @Injectable({ providedIn: 'root' })
 export class SidebarService {

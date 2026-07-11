@@ -1,9 +1,10 @@
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { Task, TaskService } from './task-service';
+import { TaskService } from './task-service';
 import { SidebarService } from '../sidebar-service/sidebar-service';
-import { Project } from '../project-service/project-service';
+import { Task } from '../../../shared/dto/task.dto';
+import { Project } from '../../../shared/dto/project.dto';
 
 const API = 'http://localhost:3000';
 

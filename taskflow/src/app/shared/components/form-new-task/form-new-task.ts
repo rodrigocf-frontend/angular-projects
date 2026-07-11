@@ -4,14 +4,11 @@ import { Icon } from '../ui/icon/icon';
 
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
-import {
-  Task,
-  TaskPriority,
-  TaskService,
-  TaskStatus,
-} from '../../../core/services/task-service/task-service';
+
 import { SnackbarService } from '../../../core/services/snack-service/snack-service';
 import { SidebarService } from '../../../core/services/sidebar-service/sidebar-service';
+import { TaskService } from '../../../core/services/task-service/task-service';
+import { Task, TaskPriority, TaskStatus } from '../../dto/task.dto';
 
 @Component({
   selector: 'app-form-new-task',

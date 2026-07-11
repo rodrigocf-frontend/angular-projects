@@ -3,7 +3,8 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 import { Board } from './board';
-import { Task, TaskService } from '../../core/services/task-service/task-service';
+import { TaskService } from '../../core/services/task-service/task-service';
+import { Task } from '../../shared/dto/task.dto';
 
 describe('Board', () => {
   let component: Board;

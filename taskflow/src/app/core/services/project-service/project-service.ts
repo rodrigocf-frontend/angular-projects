@@ -2,17 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { tap } from 'rxjs';
-
-export interface Project {
-  name: string;
-  description: string;
-  color: string;
-  deadline: string | null;
-  total: number;
-  id: number;
-}
-
-export type ProjectAPIPayload = Partial<Project>;
+import { CreateProjectDto, Project } from '../../../shared/dto/project.dto';
 
 @Injectable({ providedIn: 'root' })
 export class ProjectService {
@@ -37,7 +27,7 @@ export class ProjectService {
     this.visibleState.set(false);
   }
 
-  create({ payload }: { payload: ProjectAPIPayload }) {
+  create({ payload }: { payload: CreateProjectDto }) {
     return this.http.post(environment.apiUrl + '/projects', {
       ...payload,
       total: 0,

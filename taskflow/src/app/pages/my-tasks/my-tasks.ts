@@ -1,6 +1,7 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { Task, TaskService } from '../../core/services/task-service/task-service';
 import { SnackbarService } from '../../core/services/snack-service/snack-service';
+import { TaskService } from '../../core/services/task-service/task-service';
+import { TaskWithProjectDto } from '../../shared/dto/task.dto';
 
 @Component({
   selector: 'app-my-tasks',
@@ -12,7 +13,7 @@ export class MyTasks implements OnInit {
   private taskService = inject(TaskService);
   private snackService = inject(SnackbarService);
 
-  private userTasks = signal<Task[]>([]);
+  private userTasks = signal<TaskWithProjectDto[]>([]);
 
   private totalTasks = computed(() => this.userTasks().length);
   doneTasks = computed(() => this.userTasks().filter((task) => task.status === 'done'));

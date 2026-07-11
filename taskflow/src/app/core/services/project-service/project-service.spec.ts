@@ -1,7 +1,8 @@
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { Project, ProjectService } from './project-service';
+import { ProjectService } from './project-service';
+import { Project } from '../../../shared/dto/project.dto';
 
 const API = 'http://localhost:3000';
 

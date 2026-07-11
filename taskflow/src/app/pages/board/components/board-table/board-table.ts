@@ -8,7 +8,7 @@ import {
 import { Component, input, output } from '@angular/core';
 import { Button } from '../../../../shared/components/ui/button/button';
 import { Icon } from '../../../../shared/components/ui/icon/icon';
-import { Task } from '../../../../core/services/task-service/task-service';
+import { Task } from '../../../../shared/dto/task.dto';
 
 @Component({
   selector: 'app-board-table',

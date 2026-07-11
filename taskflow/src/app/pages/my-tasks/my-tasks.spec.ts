@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { MyTasks } from './my-tasks';
-import { Task } from '../../core/services/task-service/task-service';
+import { Task } from '../../shared/dto/task.dto';
 
 const API = 'http://localhost:3000';
 
