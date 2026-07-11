@@ -105,8 +105,8 @@
     {
       "id": 4,
       "title": "Design system e tokens SCSS",
-      "description": null,
-      "tag": "Design",
+      "description": "sadasd",
+      "tag": "Core",
       "tagClass": "tag-green",
       "dueDate": null,
       "overdue": false,
@@ -316,6 +316,16 @@
       "dueDate": "",
       "projectId": 1,
       "id": 21
+    },
+    {
+      "title": "sdfsdf",
+      "description": null,
+      "priority": "low",
+      "status": "todo",
+      "tag": "Core",
+      "dueDate": null,
+      "projectId": 2,
+      "id": 22
     }
   ]
 }
