@@ -119,7 +119,7 @@
 .task-card {
   background: $surface;
   border: 0.5px solid $border0;
-  border-radius: var(--radius-lg);
+  border-radius: $radius-lg;
   padding: toRem(12, 14);
   cursor: pointer;
   transition: border-color 0.12s;
@@ -203,7 +203,7 @@
   align-items: center;
   gap: toRem(8);
   padding: toRem(8, 12);
-  border-radius: var(--radius);
+  border-radius: $radius;
   color: $txt-3;
   font-size: 12.5px;
   cursor: pointer;
@@ -235,7 +235,7 @@
 .highlight {
   outline: 2px solid $accent600;
   outline-offset: 3px;
-  border-radius: var(--radius-lg);
+  border-radius: $radius-lg;
 }
 
 .cdk-drag-preview {

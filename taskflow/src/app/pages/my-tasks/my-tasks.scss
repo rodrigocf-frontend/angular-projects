@@ -24,7 +24,7 @@
   align-items: center;
   gap: toRem(6);
   padding: toRem(6) toRem(12);
-  border-radius: var(--radius);
+  border-radius: $radius;
   font-size: toRem(12.5);
   font-weight: 500;
   font-family: inherit;
@@ -57,7 +57,7 @@
 .stat {
   background: $surface;
   border: 0.5px solid $border0;
-  border-radius: var(--radius-lg);
+  border-radius: $radius-lg;
   padding: toRem(12) toRem(14);
   display: flex;
   flex-direction: column;
@@ -135,7 +135,7 @@
 .task-row {
   background: $surface;
   border: 0.5px solid $border0;
-  border-radius: var(--radius-lg);
+  border-radius: $radius-lg;
   padding: toRem(11) toRem(14);
   display: flex;
   align-items: center;
@@ -165,6 +165,10 @@
   height: toRem(32);
   border-radius: 2px;
   flex-shrink: 0;
+}
+
+.task-row.done .priority-bar {
+  background: $border100;
 }
 
 .check {
@@ -300,9 +304,9 @@
   align-items: center;
   gap: toRem(8);
   padding: toRem(10) toRem(14);
-  border: 0.5px dashed var(--border-2);
-  border-radius: var(--radius);
-  color: var(--txt-3);
+  border: 0.5px dashed $border100;
+  border-radius: $radius;
+  color: $txt-3;
 }
 
 i {

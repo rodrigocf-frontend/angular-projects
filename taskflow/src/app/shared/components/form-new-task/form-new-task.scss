@@ -83,7 +83,7 @@
 
 .input {
   border: 0.5px solid $border100;
-  border-radius: var(--radius);
+  border-radius: $radius;
   padding: toRem(9) toRem(12);
   font-size: toRem(13);
   font-family: inherit;
@@ -133,7 +133,7 @@
 .select-btn {
   flex: 1;
   padding: toRem(7) toRem(10);
-  border-radius: var(--radius);
+  border-radius: $radius;
   font-size: toRem(12.5);
   font-weight: 500;
   font-family: inherit;

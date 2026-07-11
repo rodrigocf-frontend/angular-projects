@@ -5,7 +5,7 @@
   align-items: center;
   gap: toRem(6);
   padding: toRem(7, 14);
-  border-radius: var(--radius);
+  border-radius: $radius;
   font-size: toRem(13);
   font-weight: 500;
   font-family: inherit;

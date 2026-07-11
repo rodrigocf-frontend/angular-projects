@@ -58,7 +58,7 @@
 }
 .input {
   border: 0.5px solid $border0;
-  border-radius: var(--radius);
+  border-radius: $radius;
   padding: toRem(9, 12);
   font-size: toRem(13);
   font-family: inherit;
@@ -135,7 +135,7 @@
   align-items: center;
   gap: toRem(6);
   padding: toRem(8, 16);
-  border-radius: var(--radius);
+  border-radius: $radius;
   font-size: toRem(13);
   font-weight: 500;
   font-family: inherit;

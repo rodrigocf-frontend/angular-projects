@@ -10,7 +10,7 @@
   align-items: center;
   gap: toRem(10);
   padding: toRem(12) toRem(16);
-  border-radius: var(--radius-lg);
+  border-radius: $radius-lg;
   background: $txt;
   color: #fff;
   font-size: toRem(13.5);

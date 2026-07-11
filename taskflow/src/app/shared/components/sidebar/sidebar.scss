@@ -61,7 +61,7 @@
   align-items: center;
   gap: toRem(10);
   padding: toRem(8) toRem(10);
-  border-radius: var(--radius);
+  border-radius: $radius;
   cursor: pointer;
   margin-bottom: toRem(2);
   color: $txt-2;

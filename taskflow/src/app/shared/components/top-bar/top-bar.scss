@@ -8,7 +8,7 @@
 
 .topbar {
   background: $surface;
-  border-bottom: 0.5px solid var(--border);
+  border-bottom: 0.5px solid $border0;
   display: flex;
   align-items: center;
   gap: toRem(12);
@@ -26,8 +26,8 @@
   align-items: center;
   gap: toRem(8);
   background: $surface-2;
-  border: 0.5px solid var(--border);
-  border-radius: var(--radius);
+  border: 0.5px solid $border0;
+  border-radius: $radius;
   padding: toRem(6, 12);
   font-size: toRem(13);
   color: $txt-2;
