@@ -7,4 +7,9 @@ export interface Project {
   id: number;
 }
 
-export type CreateProjectDto = Partial<Project>;
+export interface CreateProjectDto {
+  name: string;
+  description: string;
+  color: string;
+  deadline: string | null;
+}
