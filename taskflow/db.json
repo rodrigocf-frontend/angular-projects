@@ -189,7 +189,7 @@
       "dueDate": "2026-07-11",
       "overdue": false,
       "priority": "high",
-      "status": "todo",
+      "status": "progress",
       "projectId": 1,
       "userId": 1
     },
