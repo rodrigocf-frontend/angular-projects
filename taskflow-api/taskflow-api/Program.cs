@@ -22,6 +22,9 @@ app.UseCors(MyAllowSpecificOrigins);
 string pathToFileTodos = @"./db/todos-data.json";
 string pathToFileProject = @"./db/projects-data.json";
 
+File.Create(pathToFileTodos);
+File.Create(pathToFileProject);
+
 List<Project> ReadProjects()
 {
     string projectsStringData = File.ReadAllText(pathToFileProject);
