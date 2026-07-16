@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\taskflow-api"
+    "\\taskflow-api",
+    "\\taskflow-api\\bin"
   ],
-  "SelectedNode": "\\taskflow-api\\Dockerfile",
+  "SelectedNode": "\\taskflow-api\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

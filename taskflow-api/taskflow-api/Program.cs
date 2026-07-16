@@ -1,4 +1,5 @@
 
+using System.Text.Json;
 using Microsoft.Net.Http.Headers;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,65 +14,111 @@ builder.Services.AddCors(options =>
                         .AllowAnyHeader();
                     });
 });
+
 var app = builder.Build();
 
 app.UseCors(MyAllowSpecificOrigins);
 
-List<Todo> todos =
-[];
+string pathToFileTodos = @"./db/todos-data.json";
+string pathToFileProject = @"./db/projects-data.json";
 
-List<Project> projects = [];
+List<Project> ReadProjects()
+{
+    string projectsStringData = File.ReadAllText(pathToFileProject);
+    return JsonSerializer.Deserialize<List<Project>>(projectsStringData);
+}
+
+List<Todo> ReadTodos()
+{
+    string todosStringData = File.ReadAllText(pathToFileTodos);
+    return JsonSerializer.Deserialize<List<Todo>>(todosStringData);
+
+}
+
+void SaveTodos(List<Todo> allTodos)
+{    File.WriteAllText(pathToFileTodos, JsonSerializer.Serialize(allTodos));
+
+}
+
+void SaveProjects(List<Project> allProjects)
+{
+    File.WriteAllText(pathToFileProject, JsonSerializer.Serialize(allProjects));
+
+}
+
 
 app.MapGet("/api/v1/tasks", (string? projectId, int? userId) =>
 {
-  if (!string.IsNullOrEmpty(projectId))
+    List<Todo> allTodos = ReadTodos();
+    if (!string.IsNullOrEmpty(projectId))
   {
-    var result = todos.Where(i => i.ProjectId == projectId);
+    var result = allTodos.Where(i => i.ProjectId == projectId);
     return result;
   }
   else if (userId is not null)
   {
-    var result = todos.Where(t => t.UserId == userId);
+    var result = allTodos.Where(t => t.UserId == userId);
     return result;
   }
-  return todos;
+  return allTodos;
 });
 
 
 app.MapPatch("/api/v1/tasks/{taskId}", (string taskId, Todo updatedTodo) =>
 {
-  var todo = todos.FirstOrDefault(t => t.Id == taskId);
+  List<Todo> allTodos = ReadTodos();
+
+  var todo = allTodos.FirstOrDefault(t => t.Id == taskId);
 
   if (todo == null)
     return Results.NotFound();
 
-  todos.Remove(todo);
-  todos.Add(updatedTodo);
+  allTodos.Remove(todo);
+  allTodos.Add(updatedTodo);
+  SaveTodos(allTodos);
+  
   return Results.Ok();
 });
 
 app.MapPost("/api/v1/tasks", (Todo todo) =>
 {
-  Console.WriteLine(todo);
+  List<Todo> allTodos = ReadTodos();
   string idCurto = Guid.NewGuid().ToString();
   Todo newTodo = todo with { Id = idCurto };
-  todos.Add(newTodo);
+  allTodos.Add(newTodo);
+  SaveTodos(allTodos);
+  List<Project> allProjects = ReadProjects();
+  int projectFinded = allProjects.FindIndex(i => i.Id == newTodo.ProjectId);
+  if (projectFinded != -1)
+  {
+        allProjects[projectFinded] = allProjects[projectFinded] with
+        {
+            total = allProjects[projectFinded].total + 1  // incrementa
+        };
+        SaveProjects(allProjects);
+  }
+  
   return Results.Ok();
 });
 
 app.MapPost("/api/v1/projects", (Project project) =>
 {
+  List<Project> allProjects = ReadProjects(); 
   string idCurto = Guid.NewGuid().ToString();
   Project newProject = project with { Id = idCurto };
-  projects.Add(newProject);
+  allProjects.Add(newProject);
+  SaveProjects(allProjects);
   return Results.Ok();
 });
 
-app.MapGet("/api/v1/projects", () => Results.Ok(projects));
+app.MapGet("/api/v1/projects", () =>
+{
+    return ReadProjects();
+});
 
 app.Run();
 
-public record Project(
+public record class Project(
     string Id,
     string Name,
     string Description,

@@ -44,10 +44,12 @@
             </div>
           </div>
           <div class="task-right">
-            <div class="project-chip">
-              <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-              {{ task.project?.name }}
-            </div>
+            @if (task.project?.name) {
+              <div class="project-chip">
+                <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
+                {{ task.project?.name }}
+              </div>
+            }
             <span [class]="'status-chip status-chip--' + task.status">{{ task.status }}</span>
           </div>
         </div>
@@ -80,10 +82,12 @@
             </div>
           </div>
           <div class="task-right">
-            <div class="project-chip">
-              <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-              {{ task.project?.name }}
-            </div>
+            @if (task.project?.name) {
+              <div class="project-chip">
+                <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
+                {{ task.project?.name }}
+              </div>
+            }
             <span class="status-chip status-chip--progress">{{ task.status }}</span>
           </div>
         </div>
@@ -117,10 +121,12 @@
             </div>
           </div>
           <div class="task-right">
-            <div class="project-chip">
-              <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-              {{ task.project?.name }}
-            </div>
+            @if (task.project?.name) {
+              <div class="project-chip">
+                <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
+                {{ task.project?.name }}
+              </div>
+            }
             <span class="status-chip status-chip--todo">{{ task.status }}</span>
           </div>
         </div>
@@ -150,10 +156,12 @@
             </div>
           </div>
           <div class="task-right">
-            <div class="project-chip">
-              <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
-              {{ task.project?.name }}
-            </div>
+            @if (task.project?.name) {
+              <div class="project-chip">
+                <div class="project-dot" [style.backgroundColor]="task.project?.color"></div>
+                {{ task.project?.name }}
+              </div>
+            }
             <span class="status-chip status-chip--done">{{ task.status }}</span>
           </div>
         </div>
