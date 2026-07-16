@@ -41,8 +41,10 @@ export class TaskService {
   }
 
   createTask(payload: Task) {
-    return this.http.post(`${environment.apiUrl}/tasks`, {
+    console.log('create');
+    return this.http.post(`${environment.apiUrl}/v1/tasks`, {
       ...payload,
+      userId: this.userService.userIdentification(),
     });
   }
 
@@ -50,17 +52,17 @@ export class TaskService {
     return this.http
       .get<
         TaskWithProjectDto[]
-      >(`${environment.apiUrl}/tasks?projectId=${this.currentProject()?.id}`)
+      >(`${environment.apiUrl}/v1/tasks?projectId=${this.currentProject().id}`)
       .pipe(tap((res) => this.setTasks(res)));
   }
 
   updateTask(payload: Task) {
-    return this.http.patch(`${environment.apiUrl}/tasks/${payload.id}`, payload);
+    return this.http.patch(`${environment.apiUrl}/v1/tasks/${payload.id}`, payload);
   }
 
   readMyTask() {
     return this.http.get<TaskWithProjectDto[]>(
-      `${environment.apiUrl}/tasks?userId=${this.userService.userIdentification()}&_expand=project`,
+      `${environment.apiUrl}/v1/tasks?userId=${this.userService.userIdentification()}`,
     );
   }
 }

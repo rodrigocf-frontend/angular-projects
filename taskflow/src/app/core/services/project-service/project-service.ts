@@ -22,7 +22,7 @@ export class ProjectService {
   }
 
   create({ payload }: { payload: CreateProjectDto }) {
-    return this.http.post(environment.apiUrl + '/projects', {
+    return this.http.post(environment.apiUrl + '/v1/projects', {
       ...payload,
       total: 0,
     });
@@ -30,7 +30,7 @@ export class ProjectService {
 
   getAll() {
     return this.http
-      .get<Project[]>(environment.apiUrl + '/projects?sort=id')
+      .get<Project[]>(environment.apiUrl + '/v1/projects')
       .pipe(tap((res) => this.projects.set(res)));
   }
 }
