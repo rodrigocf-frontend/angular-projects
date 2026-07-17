@@ -19,8 +19,8 @@ var app = builder.Build();
 
 app.UseCors(MyAllowSpecificOrigins);
 
-string pathToFileTodos = @"./db/todos-data.json";
-string pathToFileProject = @"./db/projects-data.json";
+string pathToFileTodos = @"./todos-data.json";
+string pathToFileProject = @"./projects-data.json";
 
 File.Create(pathToFileTodos);
 File.Create(pathToFileProject);

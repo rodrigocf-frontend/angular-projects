@@ -51,7 +51,6 @@ E:\Documentos\Projetos\angular-projects\taskflow-api\taskflow-api\obj\Debug\net1
 E:\Documentos\Projetos\angular-projects\taskflow-api\taskflow-api\obj\Debug\net10.0\staticwebassets.development.json
 E:\Documentos\Projetos\angular-projects\taskflow-api\taskflow-api\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 E:\Documentos\Projetos\angular-projects\taskflow-api\taskflow-api\obj\Debug\net10.0\swae.build.ex.cache
-E:\Documentos\Projetos\angular-projects\taskflow-api\taskflow-api\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 E:\Documentos\Projetos\angular-projects\taskflow-api\taskflow-api\bin\Debug\net10.0\taskflow-api.deps.json
 E:\Documentos\Projetos\angular-projects\taskflow-api\taskflow-api\bin\Debug\net10.0\taskflow-api.runtimeconfig.json
 E:\Documentos\Projetos\angular-projects\taskflow-api\taskflow-api\bin\Debug\net10.0\taskflow-api.dll

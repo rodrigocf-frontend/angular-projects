@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "sz+zKELoUI0=",
+  "dgSpecHash": "rau0ReSWMCM=",
   "success": true,
-  "projectFilePath": "E:\\Documentos\\Projetos\\angular-projects\\taskflow\\taskflow-api\\taskflow-api\\taskflow-api.csproj",
+  "projectFilePath": "E:\\Documentos\\Projetos\\angular-projects\\taskflow-api\\taskflow-api\\taskflow-api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\rodri\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.23.0\\microsoft.visualstudio.azure.containers.tools.targets.1.23.0.nupkg.sha512"
   ],
