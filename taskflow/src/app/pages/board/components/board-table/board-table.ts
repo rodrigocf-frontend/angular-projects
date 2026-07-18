@@ -8,9 +8,10 @@ import {
 import { Component, computed, inject, input, output, signal } from '@angular/core';
 import { Button } from '../../../../shared/components/ui/button/button';
 import { Icon } from '../../../../shared/components/ui/icon/icon';
-import { TaskWithProjectDto, getTagClass } from '../../../../shared/dto/task.dto';
+import { TaskStatus, TaskWithProjectDto, getTagClass } from '../../../../shared/dto/task.dto';
 import { UserService } from '../../../../core/services/user-service/user-service';
 import { isThisWeek } from 'date-fns';
+import { TaskService } from '../../../../core/services/task-service/task-service';
 
 enum Filters {
   ALL,
@@ -27,6 +28,7 @@ enum Filters {
 })
 export class BoardTable {
   private userService = inject(UserService);
+  private taskService = inject(TaskService);
 
   todo = input<TaskWithProjectDto[]>([]);
   progress = input<TaskWithProjectDto[]>([]);
@@ -87,4 +89,8 @@ export class BoardTable {
   }
 
   getTagClass = getTagClass;
+
+  openNewTaskModal(mode: TaskStatus) {
+    this.taskService.open(mode);
+  }
 }

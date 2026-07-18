@@ -3,13 +3,14 @@ import { inject, Injectable, signal } from '@angular/core';
 import { SidebarService } from '../sidebar-service/sidebar-service';
 import { tap } from 'rxjs';
 import { environment } from '../../../../environments/environment';
-import { Task, TaskWithProjectDto } from '../../../shared/dto/task.dto';
+import { Task, TaskStatus, TaskWithProjectDto } from '../../../shared/dto/task.dto';
 import { UserService } from '../user-service/user-service';
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
   private readonly sidebarService = inject(SidebarService);
   private readonly userService = inject(UserService);
+  formMode = signal<TaskStatus>('todo');
   private http = inject(HttpClient);
 
   private tasks = signal<TaskWithProjectDto[]>([]);
@@ -22,8 +23,21 @@ export class TaskService {
   readonly editTaskData = this.edittingTask.asReadonly();
   readonly allTasks = this.tasks.asReadonly();
 
-  open() {
-    this.visibleState.set(true);
+  open(statusMode: TaskStatus = 'todo') {
+    switch (statusMode) {
+      case 'progress':
+        this.formMode.set('progress');
+        this.visibleState.set(true);
+        return;
+      case 'done':
+        this.formMode.set('done');
+        this.visibleState.set(true);
+        return;
+      default:
+        this.formMode.set('todo');
+        this.visibleState.set(true);
+        break;
+    }
   }
 
   close() {
@@ -41,7 +55,6 @@ export class TaskService {
   }
 
   createTask(payload: Task) {
-    console.log('create');
     return this.http.post(`${environment.apiUrl}/v1/tasks`, {
       ...payload,
       userId: this.userService.userIdentification(),

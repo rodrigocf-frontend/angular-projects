@@ -1,4 +1,4 @@
-import { Component, effect, inject } from '@angular/core';
+import { Component, computed, effect, inject } from '@angular/core';
 import { Button } from '../ui/button/button';
 import { Icon } from '../ui/icon/icon';
 
@@ -28,8 +28,15 @@ export class FormNewTask {
   constructor() {
     effect(() => {
       const task = this.edittingTask();
+      const status = this.taskService.formMode();
       if (task) {
         this.formNewTask.patchValue({ ...task });
+        return;
+      }
+      if (status) {
+        this.formNewTask.patchValue({
+          status,
+        });
       }
     });
   }
@@ -83,7 +90,7 @@ export class FormNewTask {
       },
       [Validators.required],
     ),
-    status: new FormControl('todo', [Validators.required]),
+    status: new FormControl<TaskStatus>(this.taskService.formMode(), [Validators.required]),
     tag: new FormControl(''),
     dueDate: new FormControl(''),
   });
@@ -145,6 +152,7 @@ export class FormNewTask {
     this.formNewTask.reset({
       tag: '',
       priority: 'low',
+      status: 'todo',
     });
   }
 }

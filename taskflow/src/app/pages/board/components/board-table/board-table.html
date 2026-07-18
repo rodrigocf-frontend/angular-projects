@@ -63,7 +63,9 @@
           </div>
         }
       </ul>
-      <div class="add-task"><i name="add"></i>Adicionar tarefa</div>
+      <div class="add-task" (click)="openNewTaskModal('todo')">
+        <i name="add"></i>Adicionar tarefa
+      </div>
     </div>
     <div class="col">
       <div class="col-head">
@@ -113,7 +115,9 @@
         }
       </ul>
 
-      <div class="add-task"><i name="add"></i>Adicionar tarefa</div>
+      <div class="add-task" (click)="openNewTaskModal('progress')">
+        <i name="add"></i>Adicionar tarefa
+      </div>
     </div>
 
     <div class="col">
@@ -164,7 +168,9 @@
         }
       </ul>
 
-      <div class="add-task"><i name="add"></i>Adicionar tarefa</div>
+      <div class="add-task" (click)="openNewTaskModal('done')">
+        <i name="add"></i>Adicionar tarefa
+      </div>
     </div>
   </div>
 </div>
