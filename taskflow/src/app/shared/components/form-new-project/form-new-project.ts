@@ -6,6 +6,9 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ProjectService } from '../../../core/services/project-service/project-service';
 import { SnackbarService } from '../../../core/services/snack-service/snack-service';
 import { Button } from '../ui/button/button';
+import { Router } from '@angular/router';
+import { tap } from 'rxjs';
+import { SidebarService } from '../../../core/services/sidebar-service/sidebar-service';
 
 @Component({
   selector: 'app-form-new-project',
@@ -16,6 +19,7 @@ import { Button } from '../ui/button/button';
 export class FormNewProject {
   private projectService = inject(ProjectService);
   private readonly snackService = inject(SnackbarService);
+  private sidebarService = inject(SidebarService);
 
   visible = this.projectService.visible;
 
@@ -74,7 +78,11 @@ export class FormNewProject {
         .subscribe({
           complete: () => {
             this.snackService.success('Projeto criado com sucesso.');
-            this.projectService.getAll().subscribe();
+            this.projectService
+              .getAll({
+                lastSelection: true,
+              })
+              .subscribe();
             this.closeNewProjectForm();
           },
         });

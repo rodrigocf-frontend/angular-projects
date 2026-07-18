@@ -5,6 +5,7 @@ import { ProjectService } from '../../../core/services/project-service/project-s
 import { TaskService } from '../../../core/services/task-service/task-service';
 import { SnackbarService } from '../../../core/services/snack-service/snack-service';
 import { SidebarService } from '../../../core/services/sidebar-service/sidebar-service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar',
@@ -65,11 +66,7 @@ export class SidebarComponent implements OnInit {
   }
 
   fetchProjects() {
-    this.projectService.getAll().subscribe({
-      next: (res) => {
-        this.sidebarService.setProject(res[0]);
-      },
-    });
+    this.projectService.getAll().subscribe();
   }
 
   fetchTasks() {
