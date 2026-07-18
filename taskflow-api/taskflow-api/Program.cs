@@ -9,9 +9,7 @@ builder.Services.AddCors(options =>
   options.AddPolicy(name: MyAllowSpecificOrigins,
                     policy =>
                     {
-                      policy.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader();
+                      policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                     });
 });
 
@@ -19,107 +17,162 @@ var app = builder.Build();
 
 app.UseCors(MyAllowSpecificOrigins);
 
-string pathToFileTodos = @"./todos-data.json";
-string pathToFileProject = @"./projects-data.json";
 
-File.Create(pathToFileTodos);
-File.Create(pathToFileProject);
 
-List<Project> ReadProjects()
+string getFileName<T>()
 {
-    string projectsStringData = File.ReadAllText(pathToFileProject);
-    return JsonSerializer.Deserialize<List<Project>>(projectsStringData);
-}
-
-List<Todo> ReadTodos()
-{
-    string todosStringData = File.ReadAllText(pathToFileTodos);
-    return JsonSerializer.Deserialize<List<Todo>>(todosStringData);
-
-}
-
-void SaveTodos(List<Todo> allTodos)
-{    File.WriteAllText(pathToFileTodos, JsonSerializer.Serialize(allTodos));
-
-}
-
-void SaveProjects(List<Project> allProjects)
-{
-    File.WriteAllText(pathToFileProject, JsonSerializer.Serialize(allProjects));
-
+    if (typeof(T) == typeof(Project))
+    {
+        return "./db/projects-data.json";
+    }
+    if (typeof(T) == typeof(Todo))
+    {
+       return "./db/todos-data.json";
+    }
+    return "";
 }
 
 
-app.MapGet("/api/v1/tasks", (string? projectId, int? userId) =>
+async Task<List<T>> ReadData<T>()
 {
-    List<Todo> allTodos = ReadTodos();
-    if (!string.IsNullOrEmpty(projectId))
-  {
-    var result = allTodos.Where(i => i.ProjectId == projectId);
-    return result;
-  }
-  else if (userId is not null)
-  {
-    var result = allTodos.Where(t => t.UserId == userId);
-    return result;
-  }
-  return allTodos;
+    try
+    {
+        string pathToFile = getFileName<T>();
+        string stringData = await File.ReadAllTextAsync(pathToFile);
+        return JsonSerializer.Deserialize<List<T>>(stringData);
+    }
+    catch
+    {
+        throw;
+    }
+}
+
+
+
+void SaveData<T>(List<T> data)
+{
+    string pathToFile = getFileName<T>();
+    File.WriteAllText(pathToFile, JsonSerializer.Serialize(data));
+
+}
+
+
+app.MapGet("/api/v1/projects", async () =>
+{
+    var projectsData =await ReadData<Project>();
+    return Results.Ok(projectsData);
 });
 
-
-app.MapPatch("/api/v1/tasks/{taskId}", (string taskId, Todo updatedTodo) =>
+app.MapPost("/api/v1/projects", async (Project project) =>
 {
-  List<Todo> allTodos = ReadTodos();
-
-  var todo = allTodos.FirstOrDefault(t => t.Id == taskId);
-
-  if (todo == null)
-    return Results.NotFound();
-
-  allTodos.Remove(todo);
-  allTodos.Add(updatedTodo);
-  SaveTodos(allTodos);
-  
-  return Results.Ok();
-});
-
-app.MapPost("/api/v1/tasks", (Todo todo) =>
-{
-  List<Todo> allTodos = ReadTodos();
-  string idCurto = Guid.NewGuid().ToString();
-  Todo newTodo = todo with { Id = idCurto };
-  allTodos.Add(newTodo);
-  SaveTodos(allTodos);
-  List<Project> allProjects = ReadProjects();
-  int projectFinded = allProjects.FindIndex(i => i.Id == newTodo.ProjectId);
-  if (projectFinded != -1)
-  {
-        allProjects[projectFinded] = allProjects[projectFinded] with
+    try
+    {
+        var projects = await ReadData<Project>();
+        if (projects != null)
         {
-            total = allProjects[projectFinded].total + 1  // incrementa
-        };
-        SaveProjects(allProjects);
-  }
-  
-  return Results.Ok();
+            string idCurto = Guid.NewGuid().ToString();
+            Project newProject = project with { Id = idCurto };
+            projects.Add(newProject);
+            SaveData<Project>(projects);
+            return Results.Ok();
+
+        }
+        return Results.Ok();
+
+
+    }
+    catch
+    {
+        throw;
+
+    }
 });
 
-app.MapPost("/api/v1/projects", (Project project) =>
+
+app.MapGet("/api/v1/tasks", async (string? projectId, int? userId) =>
 {
-  List<Project> allProjects = ReadProjects(); 
-  string idCurto = Guid.NewGuid().ToString();
-  Project newProject = project with { Id = idCurto };
-  allProjects.Add(newProject);
-  SaveProjects(allProjects);
-  return Results.Ok();
+    try
+    {
+        var todos = await ReadData<Todo>();
+        if (!string.IsNullOrEmpty(projectId))
+        {
+            var result = todos.Where(i => i.ProjectId == projectId);
+            return result;
+        }
+        else if (userId is not null)
+        {
+            var result = todos.Where(t => t.UserId == userId);
+            return result;
+        }
+        return todos;
+
+    }
+    catch
+    {
+        throw;
+    }
 });
 
-app.MapGet("/api/v1/projects", () =>
+
+app.MapPost("/api/v1/tasks", async (Todo todo) =>
 {
-    return ReadProjects();
+    try
+    {
+        var todos = await ReadData<Todo>();
+        string idCurto = Guid.NewGuid().ToString();
+        Todo newTodo = todo with { Id = idCurto };
+        todos.Add(newTodo);
+        SaveData<Todo>(todos);
+        var projects = await ReadData<Project>();
+        int projectFinded = projects.FindIndex(i => i.Id == newTodo.ProjectId);
+        if (projectFinded != -1)
+        {
+            projects[projectFinded] = projects[projectFinded] with
+            {
+                total = projects[projectFinded].total + 1  // incrementa
+            };
+            SaveData<Project>(projects);
+        }
+
+        return Results.Ok();
+
+    } catch
+    {
+        throw;
+    }
 });
+
+
+app.MapPatch("/api/v1/tasks/{taskId}", async (string taskId, Todo updatedTodo) =>
+{
+    try
+    {
+        var todos = await ReadData<Todo>();
+        var todo = todos.FirstOrDefault(t => t.Id == taskId);
+        if (todo == null)
+            return Results.NotFound();
+
+        Console.WriteLine(todo.Id);
+        Todo todoCopy = updatedTodo with{ Id = todo.Id};
+
+        todos.Remove(todo);
+        todos.Add(todoCopy);
+        SaveData<Todo>(todos);
+        return Results.Ok();
+
+    }
+    catch
+    {
+        return Results.Ok();
+    }
+});
+
 
 app.Run();
+
+
+
+
 
 public record class Project(
     string Id,
