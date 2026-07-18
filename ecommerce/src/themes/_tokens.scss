@@ -1,0 +1,42 @@
+// _tokens.scss
+
+// superfícies
+$bg: #fafafa;
+$surface: #ffffff;
+$warm: #e8e3dc;
+
+// texto
+$txt: #111111;
+$txt-2: #6b6b6b;
+$txt-3: #a0a0a0;
+
+// acento
+$gold: #c9a96e;
+
+// bordas
+$border: #e5e5e5;
+
+// estrutural
+$radius: 2px;
+
+// tipografia
+$ff-display: 'Cormorant Garamond', serif;
+$ff-body: 'Inter', sans-serif;
+
+// escala tipográfica
+$text-xs: 10px;
+$text-sm: 11px;
+$text-base: 13px;
+$text-md: 14px;
+$text-lg: 16px;
+$text-xl: 20px;
+$text-2xl: 24px;
+$text-3xl: 36px;
+$text-4xl: 48px;
+
+// letter-spacing
+$ls-tight: -0.5px;
+$ls-wide: 1.5px;
+$ls-wider: 2px;
+$ls-widest: 3px;
+$ls-display: 6px;
