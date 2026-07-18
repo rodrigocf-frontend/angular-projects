@@ -1,3 +1,4 @@
 export const environment = {
-  apiUrl: 'https://angular-projects-i5ih.onrender.com/api',
+  apiUrl: 'http://localhost:5000/v1', // dotnet local
+  // apiUrl: 'http://localhost:5000', // json-server local
 };

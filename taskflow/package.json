@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "db-start": "json-server db.json",
+    "db-start": "json-server db.json --routes routes.json",
     "db-start:render": "json-server --watch db.json --port $PORT --host 0.0.0.0",
     "test": "ng test",
     "prepare": "husky"

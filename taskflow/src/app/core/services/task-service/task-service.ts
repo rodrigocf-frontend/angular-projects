@@ -62,7 +62,7 @@ export class TaskService {
 
   readMyTask() {
     return this.http.get<TaskWithProjectDto[]>(
-      `${environment.apiUrl}/v1/tasks?userId=${this.userService.userIdentification()}`,
+      `${environment.apiUrl}/v1/tasks?userId=${this.userService.userIdentification()}&_expand=project`,
     );
   }
 }
