@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'http://localhost:5000/v1', // dotnet local
+  apiUrl: 'https://angular-projects-jgeg.onrender.com/api', // dotnet local
   // apiUrl: 'http://localhost:5000', // json-server local
 };
