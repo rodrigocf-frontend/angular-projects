@@ -6,6 +6,7 @@ import { TaskService } from '../../../core/services/task-service/task-service';
 import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { SidebarService } from '../../../core/services/sidebar-service/sidebar-service';
+import { ProjectService } from '../../../core/services/project-service/project-service';
 
 @Component({
   selector: 'app-top-bar',
@@ -17,10 +18,12 @@ export class TopBar {
   private sidebarService = inject(SidebarService);
   private taskService = inject(TaskService);
   private activatedRoute = inject(ActivatedRoute);
+  private projectService = inject(ProjectService);
   private currentNavigation = signal('');
   private url = toSignal(this.activatedRoute.url);
 
   selectedProject = this.sidebarService.selectedProject;
+  projects = this.projectService.projectsList;
 
   constructor() {
     effect(() => {

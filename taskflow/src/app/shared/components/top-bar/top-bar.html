@@ -1,5 +1,7 @@
 <header class="topbar" id="topbar-el">
   <span class="topbar-title">{{ getTitle() }} · {{ selectedProject()?.name }}</span>
-  <button primary (click)="openNewTaskForm()"><i name="add"></i>Nova tarefa</button>
+  @if (projects().length > 0) {
+    <button primary (click)="openNewTaskForm()"><i name="add"></i>Nova tarefa</button>
+  }
   <app-avatar />
 </header>
