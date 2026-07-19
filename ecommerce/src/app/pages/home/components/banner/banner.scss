@@ -1,0 +1,72 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.banner {
+  margin: rem(0, 48, 80);
+  background: $txt;
+  padding: rem(64, 80);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: rem(48);
+  align-items: center;
+}
+.banner-eyebrow {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-widest);
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: rem(16);
+}
+.banner-title {
+  font-family: $ff-display;
+  font-size: rem($text-4xl);
+  font-weight: 300;
+  line-height: 1;
+  color: $bg;
+  margin-bottom: rem(20);
+}
+.banner-title em {
+  font-style: italic;
+}
+.banner-desc {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  font-weight: 300;
+  color: rgba(250, 250, 250, 0.6);
+  line-height: 1.8;
+  margin-bottom: rem(32);
+}
+.btn-light {
+  background: $bg;
+  color: $txt;
+  border: none;
+  cursor: pointer;
+  font-family: $ff-body;
+  font-size: rem($text-sm);
+  font-weight: 400;
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  padding: rem(14, 32);
+}
+
+.banner-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: rem(32);
+}
+.stat-n {
+  font-family: $ff-display;
+  font-size: rem(40);
+  font-weight: 300;
+  color: $bg;
+  letter-spacing: rem($ls-tight);
+  line-height: 1;
+}
+.stat-label {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  color: rgba(250, 250, 250, 0.5);
+  margin-top: rem(4);
+}
