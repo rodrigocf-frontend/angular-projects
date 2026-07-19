@@ -1,0 +1,89 @@
+@use '../../../../themes/styles.scss' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: $bg;
+  border-bottom: 0.5px solid $border;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 rem(48);
+  height: rem(64);
+
+  &__nav {
+    display: flex;
+    gap: rem(28);
+  }
+
+  &__nav a {
+    font-family: $ff-body;
+    font-size: $text-xs;
+    font-weight: 400;
+    letter-spacing: $ls-wide;
+    text-transform: uppercase;
+    color: $txt-2;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.15s;
+
+    &:hover {
+      color: $txt;
+    }
+  }
+
+  &__logo {
+    font-family: $ff-display;
+    font-size: $text-xl;
+    font-weight: 300;
+    letter-spacing: $ls-display;
+    text-transform: uppercase;
+    text-align: center;
+    color: $txt;
+  }
+
+  &__actions {
+    display: flex;
+    gap: rem(20);
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: $ff-body;
+    font-size: $text-xs;
+    font-weight: 400;
+    letter-spacing: $ls-wider;
+    text-transform: uppercase;
+    color: $txt-2;
+    transition: color 0.15s;
+
+    &:hover {
+      color: $txt;
+    }
+  }
+
+  &__cart-btn {
+    position: relative;
+  }
+
+  &__cart-badge {
+    position: absolute;
+    top: rem(-6);
+    right: rem(-8);
+    width: rem(16);
+    height: rem(16);
+    border-radius: 50%;
+    background: $txt;
+    color: $bg;
+    font-size: rem(9);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
