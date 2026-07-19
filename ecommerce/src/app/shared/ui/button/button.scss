@@ -1,0 +1,39 @@
+@use '../../../../themes/styles.scss' as *;
+
+:host {
+  font-family: $ff-body;
+  font-size: rem($text-sm);
+  border: none;
+  cursor: pointer;
+  font-weight: 400;
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+}
+
+:host(.btn-primary) {
+  background: $txt;
+  color: $bg;
+  padding: rem(14, 32);
+  transition: background 0.15s;
+
+  &:hover {
+    background: #333;
+  }
+}
+
+:host(.btn-ghost) {
+  background: none;
+  color: $txt-2;
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+  transition: color 0.15s;
+
+  &:hover {
+    color: $txt;
+  }
+  &::after {
+    content: '→';
+    font-size: rem($text-md);
+  }
+}
