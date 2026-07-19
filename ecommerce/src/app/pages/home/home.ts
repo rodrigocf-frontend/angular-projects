@@ -5,10 +5,11 @@ import { Categories } from './components/categories/categories';
 import { HighlightProducts } from './components/highlight-products/highlight-products';
 import { Banner } from './components/banner/banner';
 import { Newsletter } from './components/newsletter/newsletter';
+import { Footer } from '../../shared/components/footer/footer';
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, Marquee, Categories, HighlightProducts, Banner, Newsletter],
+  imports: [Hero, Marquee, Categories, HighlightProducts, Banner, Newsletter, Footer],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
