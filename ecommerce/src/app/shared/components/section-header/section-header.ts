@@ -3,11 +3,12 @@ import { Component, input, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-section-header',
-  imports: [NgTemplateOutlet],
+  imports: [],
   templateUrl: './section-header.html',
   styleUrl: './section-header.scss',
 })
 export class SectionHeader {
-  readonly title = input.required<TemplateRef<any>>();
-  link = input.required<string>();
+  readonly title = input.required<string>();
+  readonly emphasys = input.required<string>();
+  readonly link = input.required<string>();
 }

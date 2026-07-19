@@ -1,30 +1,35 @@
 @use '../../../../themes/styles.scss' as *;
 
-.section-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: rem(40);
-}
-.section-title {
-  font-family: $ff-display;
-  font-size: rem($text-3xl);
-  font-weight: 300;
-  letter-spacing: rem($ls-tight);
-  color: $txt;
-}
-.section-title em {
-  font-style: italic;
-}
-.section-link {
-  font-family: $ff-body;
-  font-size: rem($text-sm);
-  font-weight: 400;
-  letter-spacing: rem(ls-wider);
-  text-transform: uppercase;
-  color: $txt-2;
-  cursor: pointer;
-  text-decoration: none;
-  border-bottom: 0.5px solid $txt-3;
-  padding-bottom: rem(2);
+::ng-deep {
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: rem(40);
+
+    h2 {
+      font-family: $ff-display;
+      font-size: rem($text-3xl);
+      font-weight: 300;
+      letter-spacing: rem($ls-tight);
+      color: $txt;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    a {
+      font-family: $ff-body;
+      font-size: rem($text-sm);
+      font-weight: 400;
+      letter-spacing: rem(ls-wider);
+      text-transform: uppercase;
+      color: $txt-2;
+      cursor: pointer;
+      text-decoration: none;
+      border-bottom: 0.5px solid $txt-3;
+      padding-bottom: rem(2);
+    }
+  }
 }
