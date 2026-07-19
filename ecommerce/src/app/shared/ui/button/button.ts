@@ -11,7 +11,7 @@ import { Attribute, Component, signal } from '@angular/core';
   },
 })
 export class Button {
-  isPrimary = signal<boolean>(true);
+  isPrimary = signal<boolean>(false);
   isGhost = signal<boolean>(false);
 
   constructor(@Attribute('primary') primary: boolean, @Attribute('ghost') ghost: boolean) {
