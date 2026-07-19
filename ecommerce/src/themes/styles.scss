@@ -1,0 +1,27 @@
+@use './tokens' as *;
+@forward './tokens';
+
+body {
+  background-color: $bg;
+  font-family: $ff-body;
+}
+
+p,
+a,
+input,
+span,
+button {
+  font-family: $ff-body;
+}
+
+.inter {
+  font-family: $ff-body;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.cormorant {
+  font-family: $ff-display;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
