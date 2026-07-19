@@ -7,93 +7,100 @@
   overflow: hidden;
   display: flex;
   align-items: flex-end;
+}
 
-  &-bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, $warm 0%, #d4cfc8 40%, #c4bfb8 100%);
-  }
-  &-img-placeholder {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 55%;
-    height: 100%;
-    background: linear-gradient(160deg, #c8c3bb 0%, #a8a39c 60%, #989390 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, $warm 0%, #d4cfc8 40%, #c4bfb8 100%);
+}
 
-  &-img-placeholder span {
-    font-family: $ff-display;
-    font-size: rem($text-base);
-    letter-spacing: rem($ls-widest);
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
-  }
-  &-content {
-    position: relative;
-    z-index: 2;
-    padding: rem(0, 48, 64);
-    max-width: rem(580);
-  }
-  &-eyebrow {
-    font-family: $ff-body;
-    font-size: rem($text-xs);
-    font-weight: 400;
-    letter-spacing: rem($ls-widest);
-    text-transform: uppercase;
-    color: $gold;
-    margin-bottom: rem(16);
-  }
-  &-title {
-    font-family: $ff-display;
-    font-size: clamp(52px, 7vw, 96px);
-    font-weight: 300;
-    line-height: 0.95;
-    letter-spacing: rem($ls-tight);
-    color: $txt;
-    margin-bottom: rem(24);
-  }
-  &-title em {
-    font-style: italic;
-    color: $txt-2;
-  }
-  &-desc {
-    font-family: $ff-body;
-    font-size: rem($text-base);
-    font-weight: 300;
-    color: $txt-2;
-    line-height: 1.8;
-    max-width: rem(320);
-    margin-bottom: rem(36);
-  }
-  &-actions {
-    display: flex;
-    gap: rem(16);
-    align-items: center;
-  }
+.hero-img-placeholder {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(160deg, #c8c3bb 0%, #a8a39c 60%, #989390 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  &-scroll {
-    position: absolute;
-    bottom: rem(32);
-    right: rem(48);
-    font-family: $ff-body;
-    font-size: rem($text-xs);
-    letter-spacing: rem($ls-wider);
-    text-transform: uppercase;
-    color: $txt-3;
-    writing-mode: vertical-rl;
-    display: flex;
-    align-items: center;
-    gap: rem(12);
-  }
+.hero-img-placeholder span {
+  font-family: $ff-display;
+  font-size: rem($text-base);
+  letter-spacing: rem($ls-widest);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
 
-  &-scroll::before {
-    content: '';
-    width: rem(0.5);
-    height: rem(40);
-    background: $txt-3;
-  }
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: rem(0, 48, 64);
+  max-width: rem(580);
+}
+
+.hero-eyebrow {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  font-weight: 400;
+  letter-spacing: rem($ls-widest);
+  text-transform: uppercase;
+  color: $gold;
+  margin-bottom: rem(16);
+}
+
+.hero-title {
+  font-family: $ff-display;
+  font-size: clamp(52px, 7vw, 96px);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: rem($ls-tight);
+  color: $txt;
+  margin-bottom: rem(24);
+}
+
+.hero-title em {
+  font-style: italic;
+  color: $txt-2;
+}
+
+.hero-desc {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  font-weight: 300;
+  color: $txt-2;
+  line-height: 1.8;
+  max-width: rem(320);
+  margin-bottom: rem(36);
+}
+
+.hero-actions {
+  display: flex;
+  gap: rem(16);
+  align-items: center;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: rem(32);
+  right: rem(48);
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  color: $txt-3;
+  writing-mode: vertical-rl;
+  display: flex;
+  align-items: center;
+  gap: rem(12);
+}
+
+.hero-scroll::before {
+  content: '';
+  width: rem(0.5);
+  height: rem(40);
+  background: $txt-3;
 }

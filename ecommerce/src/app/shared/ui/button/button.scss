@@ -15,10 +15,10 @@
   color: $bg;
   padding: rem(14, 32);
   transition: background 0.15s;
+}
 
-  &:hover {
-    background: #333;
-  }
+:host(.btn-primary):hover {
+  background: #333;
 }
 
 :host(.btn-ghost) {
@@ -28,13 +28,13 @@
   align-items: center;
   gap: rem(8);
   transition: color 0.15s;
+}
 
-  &:hover {
-    color: $txt;
-  }
+:host(.btn-ghost):hover {
+  color: $txt;
+}
 
-  &::after {
-    content: '→';
-    font-size: rem($text-md);
-  }
+:host(.btn-ghost)::after {
+  content: '→';
+  font-size: rem($text-md);
 }
