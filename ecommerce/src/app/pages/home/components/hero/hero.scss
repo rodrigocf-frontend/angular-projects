@@ -11,7 +11,7 @@
   &-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, var(--warm) 0%, #d4cfc8 40%, #c4bfb8 100%);
+    background: linear-gradient(135deg, $warm 0%, #d4cfc8 40%, #c4bfb8 100%);
   }
   &-img-placeholder {
     position: absolute;
@@ -27,8 +27,8 @@
 
   &-img-placeholder span {
     font-family: $ff-display;
-    font-size: $text-base;
-    letter-spacing: $ls-widest;
+    font-size: rem($text-base);
+    letter-spacing: rem($ls-widest);
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.5);
   }
@@ -40,9 +40,9 @@
   }
   &-eyebrow {
     font-family: $ff-body;
-    font-size: $text-xs;
+    font-size: rem($text-xs);
     font-weight: 400;
-    letter-spacing: $ls-widest;
+    letter-spacing: rem($ls-widest);
     text-transform: uppercase;
     color: $gold;
     margin-bottom: rem(16);
@@ -52,7 +52,7 @@
     font-size: clamp(52px, 7vw, 96px);
     font-weight: 300;
     line-height: 0.95;
-    letter-spacing: $ls-tight;
+    letter-spacing: rem($ls-tight);
     color: $txt;
     margin-bottom: rem(24);
   }
@@ -62,7 +62,7 @@
   }
   &-desc {
     font-family: $ff-body;
-    font-size: $text-base;
+    font-size: rem($text-base);
     font-weight: 300;
     color: $txt-2;
     line-height: 1.8;
@@ -77,23 +77,23 @@
 
   &-scroll {
     position: absolute;
-    bottom: 32px;
-    right: 48px;
-    font-family: var(--ff-body);
-    font-size: var(--text-xs);
-    letter-spacing: var(--ls-wider);
+    bottom: rem(32);
+    right: rem(48);
+    font-family: $ff-body;
+    font-size: rem($text-xs);
+    letter-spacing: rem($ls-wider);
     text-transform: uppercase;
-    color: var(--txt-3);
+    color: $txt-3;
     writing-mode: vertical-rl;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: rem(12);
   }
 
   &-scroll::before {
     content: '';
-    width: 0.5px;
-    height: 40px;
-    background: var(--txt-3);
+    width: rem(0.5);
+    height: rem(40);
+    background: $txt-3;
   }
 }
