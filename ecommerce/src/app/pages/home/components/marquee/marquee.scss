@@ -1,0 +1,43 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.marquee-wrap {
+  border-top: 0.5px solid $border;
+  border-bottom: 0.5px solid $border;
+  overflow: hidden;
+  padding: rem(14, 0);
+  background: $surface;
+
+  .marquee {
+    display: flex;
+    gap: rem(48);
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+
+  .marquee-item {
+    font-family: $ff-display;
+    font-size: rem($text-base);
+    font-weight: 300;
+    letter-spacing: rem($ls-widest);
+    text-transform: uppercase;
+    color: $txt-2;
+    display: flex;
+    align-items: center;
+    gap: rem(48);
+  }
+  .marquee-dot {
+    width: rem(4);
+    height: rem(4);
+    border-radius: 50%;
+    background: $gold;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
