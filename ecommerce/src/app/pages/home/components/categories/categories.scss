@@ -1,0 +1,49 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.section {
+  padding: rem(80, 48);
+}
+
+/* CATEGORIES */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: rem(12);
+}
+.cat-card {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+.cat-bg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+.cat-card:hover .cat-bg {
+  transform: scale(1.04);
+}
+.cat-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: rem(24, 20, 20);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 0%, transparent 100%);
+}
+.cat-name {
+  font-family: $ff-display;
+  font-size: rem($text-xl);
+  font-weight: 300;
+  letter-spacing: rem(1);
+  color: #fff;
+  display: block;
+}
+.cat-count {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
