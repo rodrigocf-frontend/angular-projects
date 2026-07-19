@@ -1,0 +1,85 @@
+@use '../../../../themes/styles.scss' as *;
+
+.footer {
+  background: $txt;
+  padding: rem(64, 48, 32);
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: rem(48);
+  margin-bottom: rem(48);
+}
+.footer-brand {
+  font-family: $ff-display;
+  font-size: rem($text-2xl);
+  font-weight: 300;
+  letter-spacing: rem($ls-display);
+  text-transform: uppercase;
+  color: $bg;
+  margin-bottom: rem(16);
+}
+.footer-desc {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  font-weight: 300;
+  color: rgba(250, 250, 250, 0.5);
+  line-height: 1.8;
+  max-width: rem(240);
+}
+.footer-col-title {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  font-weight: 500;
+  letter-spacing: rem($ls-widest);
+  text-transform: uppercase;
+  color: rgba(250, 250, 250, 0.4);
+  margin-bottom: rem(20);
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: rem(12);
+}
+.footer-links a {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  font-weight: 300;
+  color: rgba(250, 250, 250, 0.7);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.footer-links a:hover {
+  color: $bg;
+}
+.footer-bottom {
+  border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+  padding-top: rem(24);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-copy {
+  font-family: $ff-body;
+  font-size: rem($text-sm);
+  color: rgba(250, 250, 250, 0.3);
+  letter-spacing: rem(0.5);
+}
+.footer-socials {
+  display: flex;
+  gap: rem(20);
+}
+.footer-socials a {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  color: rgba(250, 250, 250, 0.4);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+.footer-socials a:hover {
+  color: $bg;
+}
