@@ -8,6 +8,4 @@ import { Navbar } from './shared/components/navbar/navbar';
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {
-  protected readonly title = signal('ecommerce');
-}
+export class App {}
