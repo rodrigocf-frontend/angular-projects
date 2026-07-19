@@ -1,0 +1,172 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.sidebar {
+  border-right: 0.5px solid $border;
+  padding: rem(32, 24);
+  background: $surface;
+  position: sticky;
+  top: rem(113);
+  height: calc(100vh - 7.0625rem);
+  overflow-y: auto;
+}
+
+.filter-group {
+  margin-bottom: rem(32);
+}
+
+.filter-title {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  font-weight: 500;
+  letter-spacing: rem($ls-widest);
+  text-transform: uppercase;
+  color: $txt;
+  margin-bottom: rem(16);
+  padding-bottom: rem(12);
+  border-bottom: 0.5px solid $border;
+}
+.filter-options {
+  display: flex;
+  flex-direction: column;
+  gap: rem(10);
+}
+.filter-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.filter-option-left {
+  display: flex;
+  align-items: center;
+  gap: rem(10);
+}
+.filter-checkbox {
+  width: rem(14);
+  height: rem(14);
+  border: 0.5px solid $txt-3;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.filter-checkbox.checked {
+  background: $txt;
+  border-color: $txt;
+}
+.filter-checkbox.checked::after {
+  content: '✓';
+  color: $bg;
+  font-size: rem(9);
+}
+.filter-label {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  font-weight: 300;
+  color: $txt-2;
+}
+.filter-count {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  color: $txt-3;
+}
+
+/* TAMANHOS */
+.size-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(5);
+}
+.size-option {
+  width: rem(36);
+  height: rem(36);
+  border: 0.5px solid $border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wide);
+  cursor: pointer;
+  color: $txt-2;
+  transition: all 0.15s;
+}
+.size-option:hover {
+  border-color: $txt;
+  color: $txt;
+}
+.size-option.selected {
+  background: $txt;
+  color: $bg;
+  border-color: $txt;
+}
+
+/* CORES */
+.color-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(8);
+}
+.color-option {
+  width: rem(24);
+  height: rem(24);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.15s;
+  position: relative;
+}
+.color-option.selected {
+  border-color: $txt;
+}
+.color-option.selected::after {
+  content: '';
+  position: absolute;
+  inset: rem(-4);
+  border-radius: 50%;
+  border: 1px solid $txt;
+}
+
+/* PREÇO */
+.price-inputs {
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+}
+.price-input {
+  flex: 1;
+  border: 0.5px solid $border;
+  padding: rem(8, 10);
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt;
+  background: $bg;
+  outline: none;
+}
+.price-input:focus {
+  border-color: $txt;
+}
+.price-sep {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  color: $txt-3;
+}
+
+.filter-clear {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  color: $txt-3;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  margin-top: rem(8);
+}
+.filter-clear:hover {
+  color: $txt;
+}

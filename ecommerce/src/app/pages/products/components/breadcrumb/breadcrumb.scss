@@ -1,0 +1,32 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.breadcrumb {
+  padding: rem(16, 48);
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+  border-bottom: 0.5px solid $border;
+}
+.breadcrumb a {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wide);
+  text-transform: uppercase;
+  color: $txt-3;
+  text-decoration: none;
+  cursor: pointer;
+}
+.breadcrumb a:hover {
+  color: $txt;
+}
+.breadcrumb-sep {
+  font-size: rem($text-xs);
+  color: $txt-3;
+}
+.breadcrumb-current {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wide);
+  text-transform: uppercase;
+  color: $txt;
+}

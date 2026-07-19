@@ -1,0 +1,7 @@
+@use '../../../themes/styles.scss' as *;
+
+.page {
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+  min-height: calc(100vh - 7.0625rem);
+}
