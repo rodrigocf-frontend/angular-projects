@@ -1,0 +1,55 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.newsletter {
+  padding: rem(80, 48);
+  background: $warm;
+  text-align: center;
+}
+.newsletter-title {
+  font-family: $ff-display;
+  font-size: rem($text-4xl);
+  font-weight: 300;
+  color: $txt;
+  margin-bottom: rem(12);
+}
+.newsletter-title em {
+  font-style: italic;
+}
+.newsletter-desc {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  font-weight: 300;
+  color: $txt-2;
+  margin-bottom: rem(32);
+}
+.newsletter-form {
+  display: flex;
+  max-width: rem(400);
+  margin: 0 auto;
+}
+.newsletter-input {
+  flex: 1;
+  border: 0.5px solid $txt;
+  background: transparent;
+  padding: rem(14, 20);
+  font-family: ff-body;
+  font-size: rem($text-base);
+  color: $txt;
+  outline: none;
+}
+.newsletter-input::placeholder {
+  color: $txt-3;
+}
+.newsletter-btn {
+  background: $txt;
+  color: $bg;
+  border: 0.5px solid var(--txt);
+  cursor: pointer;
+  font-family: $ff-body;
+  font-size: rem($text-sm);
+  font-weight: 400;
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  padding: rem(14, 24);
+  white-space: nowrap;
+}
