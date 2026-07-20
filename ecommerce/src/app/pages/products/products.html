@@ -1,4 +1,28 @@
 <app-breadcrumb />
 <div class="page">
   <app-sidebar />
+  <main class="main">
+    <div class="main-header">
+      <h1 class="main-title">Coleções <em>SS26</em></h1>
+      <div class="main-meta">
+        <span class="results-count">48 peças</span>
+        <select class="sort-select">
+          <option>Relevância</option>
+          <option>Menor preço</option>
+          <option>Maior preço</option>
+          <option>Novidades</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="active-filters">
+      <div class="active-filter">Vestidos <button>×</button></div>
+      <div class="active-filter">Preto <button>×</button></div>
+      <div class="active-filter">P <button>×</button></div>
+      <div class="active-filter">G <button>×</button></div>
+      <button class="clear-all">Limpar tudo</button>
+    </div>
+    <app-products-list />
+    <app-pagination />
+  </main>
 </div>

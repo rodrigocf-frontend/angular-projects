@@ -1,0 +1,36 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(4);
+  margin-top: rem(48);
+  padding-bottom: rem(48);
+}
+.page-btn {
+  width: rem(36);
+  height: rem(36);
+  border: 0.5px solid $border;
+  background: none;
+  cursor: pointer;
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt-2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.page-btn:hover {
+  border-color: $txt;
+  color: $txt;
+}
+.page-btn.active {
+  background: $txt;
+  color: $bg;
+  border-color: $txt;
+}
+.page-btn.nav {
+  font-size: rem(16);
+}

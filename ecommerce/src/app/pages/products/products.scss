@@ -5,3 +5,99 @@
   grid-template-columns: 15rem 1fr;
   min-height: calc(100vh - 7.0625rem);
 }
+
+.main {
+  padding: rem(32, 40);
+}
+
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: rem(32);
+}
+.main-title {
+  font-family: $ff-display;
+  font-size: rem($text-3xl);
+  font-weight: 300;
+  letter-spacing: rem($ls-tight);
+  color: $txt;
+}
+.main-title em {
+  font-style: italic;
+}
+.main-meta {
+  display: flex;
+  align-items: center;
+  gap: rem(20);
+}
+.results-count {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt-3;
+}
+
+.sort-select {
+  border: 0.5px solid $border;
+  padding: rem(8, 28, 8, 12);
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wide);
+  text-transform: uppercase;
+  color: $txt-2;
+  background: $bg;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'%3E%3Cpath fill='%23A0A0A0' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right rem(8) center;
+}
+
+.active-filters {
+  display: flex;
+  gap: rem(8);
+  margin-bottom: rem(24);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.active-filter {
+  display: flex;
+  align-items: center;
+  gap: rem(5);
+  border: 0.5px solid $border;
+  padding: rem(5, 10);
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wide);
+  text-transform: uppercase;
+  color: $txt-2;
+}
+.active-filter button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $txt-3;
+  font-size: rem(14);
+  line-height: 1;
+  padding: 0;
+  margin-left: rem(2);
+}
+.active-filter button:hover {
+  color: $txt;
+}
+.clear-all {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  color: $txt-3;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: rem(5, 0);
+}
+.clear-all:hover {
+  color: $txt;
+}
