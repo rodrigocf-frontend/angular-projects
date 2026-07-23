@@ -43,7 +43,7 @@
 .newsletter-btn {
   background: $txt;
   color: $bg;
-  border: 0.5px solid var(--txt);
+  border: 0.5px solid $txt;
   cursor: pointer;
   font-family: $ff-body;
   font-size: rem($text-sm);

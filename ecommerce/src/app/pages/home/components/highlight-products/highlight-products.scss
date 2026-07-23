@@ -20,7 +20,7 @@
   overflow: hidden;
   aspect-ratio: 3/4;
   margin-bottom: rem(14);
-  background: var(--warm);
+  background: $warm;
 }
 
 .product-img-placeholder {
@@ -93,7 +93,7 @@
   font-size: rem($text-xs);
   letter-spacing: rem($ls-wider);
   text-transform: uppercase;
-  color: var(--txt-3);
+  color: $txt-3;
   margin-bottom: 4px;
 }
 
