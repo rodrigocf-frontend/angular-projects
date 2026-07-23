@@ -14,13 +14,17 @@
         </select>
       </div>
     </div>
-
     <div class="active-filters">
-      <div class="active-filter">Vestidos <button>×</button></div>
-      <div class="active-filter">Preto <button>×</button></div>
-      <div class="active-filter">P <button>×</button></div>
-      <div class="active-filter">G <button>×</button></div>
-      <button class="clear-all">Limpar tudo</button>
+      @if (filtersActives$ | async; as actives) {
+        @for (item of actives; track $index) {
+          <div class="active-filter">
+            {{ item.name }} <button (click)="handleFilter(item)">×</button>
+          </div>
+        }
+        @if (actives.length > 0) {
+          <button class="clear-all" (click)="clearFilter()">Limpar tudo</button>
+        }
+      }
     </div>
     <app-products-list />
     <app-pagination />

@@ -1,87 +1,55 @@
 <aside class="sidebar">
-  <div class="filter-group">
-    <div class="filter-title">Categoria</div>
-    <div class="filter-options">
-      <div class="filter-option">
-        <div class="filter-option-left">
-          <div class="filter-checkbox checked"></div>
-          <span class="filter-label">Vestidos</span>
-        </div>
-        <span class="filter-count">48</span>
-      </div>
-      <div class="filter-option">
-        <div class="filter-option-left">
-          <div class="filter-checkbox"></div>
-          <span class="filter-label">Blazers</span>
-        </div>
-        <span class="filter-count">24</span>
-      </div>
-      <div class="filter-option">
-        <div class="filter-option-left">
-          <div class="filter-checkbox"></div>
-          <span class="filter-label">Calças</span>
-        </div>
-        <span class="filter-count">36</span>
-      </div>
-      <div class="filter-option">
-        <div class="filter-option-left">
-          <div class="filter-checkbox"></div>
-          <span class="filter-label">Saias</span>
-        </div>
-        <span class="filter-count">18</span>
-      </div>
-      <div class="filter-option">
-        <div class="filter-option-left">
-          <div class="filter-checkbox"></div>
-          <span class="filter-label">Acessórios</span>
-        </div>
-        <span class="filter-count">62</span>
+  @if (categories$ | async; as filters) {
+    <div class="filter-group">
+      <div class="filter-title">Categoria</div>
+      <div class="filter-options">
+        @for (item of filters.categories; track $index) {
+          <div class="filter-option" (click)="handleFilter(item)">
+            <div class="filter-option-left">
+              <div class="filter-checkbox" [class.checked]="item.checked"></div>
+              <span class="filter-label">{{ item.name }}</span>
+            </div>
+            <span class="filter-count">{{ item.count }}</span>
+          </div>
+        }
       </div>
     </div>
-  </div>
 
-  <div class="filter-group">
-    <div class="filter-title">Tamanho</div>
-    <div class="size-options">
-      <div class="size-option">PP</div>
-      <div class="size-option selected">P</div>
-      <div class="size-option">M</div>
-      <div class="size-option selected">G</div>
-      <div class="size-option">GG</div>
-      <div class="size-option">34</div>
-      <div class="size-option">36</div>
-      <div class="size-option">38</div>
-      <div class="size-option">40</div>
-      <div class="size-option">42</div>
+    <div class="filter-group">
+      <div class="filter-title">Tamanho</div>
+      <div class="size-options">
+        @for (item of filters.sizes; track $index) {
+          <div class="size-option" [class.selected]="item.checked" (click)="handleFilter(item)">
+            {{ item.name }}
+          </div>
+        }
+      </div>
     </div>
-  </div>
 
-  <div class="filter-group">
-    <div class="filter-title">Cor</div>
-    <div class="color-options">
-      <div class="color-option selected" style="background: #111111" title="Preto"></div>
-      <div
-        class="color-option"
-        style="background: #ffffff; border: 1px solid #e5e5e5"
-        title="Branco"
-      ></div>
-      <div class="color-option" style="background: #c4a882" title="Bege"></div>
-      <div class="color-option" style="background: #8b7355" title="Caramelo"></div>
-      <div class="color-option" style="background: #6b6b6b" title="Cinza"></div>
-      <div class="color-option" style="background: #4a3728" title="Marrom"></div>
-      <div class="color-option" style="background: #e8c4c4" title="Rose"></div>
-      <div class="color-option" style="background: #2c4a3e" title="Verde escuro"></div>
+    <div class="filter-group">
+      <div class="filter-title">Cor</div>
+      <div class="color-options">
+        @for (item of filters.colors; track $index) {
+          <div
+            class="color-option"
+            [class.selected]="item.checked"
+            [style.background]="item.hex"
+            [title]="item.name"
+            (click)="handleFilter(item)"
+          ></div>
+        }
+      </div>
     </div>
-  </div>
 
-  <div class="filter-group">
-    <div class="filter-title">Faixa de preço</div>
-    <div class="price-inputs">
-      <input class="price-input" type="text" value="R$ 200" />
-      <span class="price-sep">—</span>
-      <input class="price-input" type="text" value="R$ 1.500" />
+    <div class="filter-group">
+      <div class="filter-title">Faixa de preço</div>
+      <div class="price-inputs">
+        <input class="price-input" type="text" value="R$ 200" />
+        <span class="price-sep">—</span>
+        <input class="price-input" type="text" value="R$ 1.500" />
+      </div>
     </div>
-  </div>
 
-  <button class="filter-clear">Limpar filtros</button>
+    <button class="filter-clear" (click)="clearFilter()">Limpar filtros</button>
+  }
 </aside>
