@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Product } from '../../../../shared/models/product.model';
-import { CategoryFilter, ColorFilter, SizeFilter } from './products.reducer';
+import { CategoryFilter, ColorFilter, PriceFilter, SizeFilter } from './products.reducers';
 
 export const setProducts = createAction(
   '[Create Action]',
@@ -13,6 +13,7 @@ export enum FilterType {
   category,
   size,
   color,
+  price,
 }
 
 export const setFilter = createAction(
@@ -22,6 +23,7 @@ export const setFilter = createAction(
     color?: ColorFilter;
     category?: CategoryFilter;
     size?: SizeFilter;
+    price?: PriceFilter;
   }>(),
 );
 

@@ -1,6 +1,6 @@
-import { createReducer, createSelector, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { Product } from '../../../../shared/models/product.model';
-import { clearFilter, FilterType, setFilter, setProducts } from './products.action';
+import { clearFilter, FilterType, setFilter, setProducts } from './products.actions';
 import { countBy, entries } from 'lodash-es';
 
 export interface ProductFilter {
@@ -18,13 +18,22 @@ export interface ColorFilter extends ProductFilter {
   hex: string;
 }
 
+export interface PriceFilter extends ProductFilter {
+  type: 'fromPrice' | 'toPrice';
+  value: number;
+}
+
+export interface Filters {
+  categories: CategoryFilter[];
+  sizes: SizeFilter[];
+  colors: ColorFilter[];
+  fromPrice: PriceFilter;
+  toPrice: PriceFilter;
+}
+
 export interface ProductsState {
   list: Product[];
-  filters: {
-    categories: CategoryFilter[];
-    sizes: SizeFilter[];
-    colors: ColorFilter[];
-  };
+  filters: Filters;
 }
 
 export interface AppState {
@@ -37,6 +46,18 @@ const initialState: ProductsState = {
     categories: [],
     sizes: [],
     colors: [],
+    toPrice: {
+      type: 'toPrice',
+      value: 0,
+      name: '',
+      checked: false,
+    },
+    fromPrice: {
+      type: 'fromPrice',
+      value: 0,
+      name: '',
+      checked: false,
+    },
   },
 };
 
@@ -95,7 +116,7 @@ const setupColors = (products: Product[]): ColorFilter[] => {
   return Array.from(colorsValues);
 };
 
-function checkFilter<T>(filters: (ProductFilter & T)[], productFilter?: ProductFilter) {
+const checkFilter = <T extends ProductFilter>(filters: T[], productFilter?: T) => {
   return filters.map((item) => {
     if (item.name === productFilter?.name) {
       if (item.checked) {
@@ -111,7 +132,7 @@ function checkFilter<T>(filters: (ProductFilter & T)[], productFilter?: ProductF
     }
     return item;
   });
-}
+};
 
 export function isColorFilter(filter: any): filter is ColorFilter {
   return typeof filter === 'object' && filter !== null && 'hex' in filter;
@@ -126,6 +147,11 @@ export function isSizeFilter(filter: any): filter is SizeFilter {
     typeof filter === 'object' && filter !== null && !('hex' in filter) && !('count' in filter)
   );
 }
+
+export function isPriceFilter(filter: any): filter is PriceFilter {
+  return typeof filter === 'object' && filter !== null && 'value' in filter;
+}
+
 export const productsReducer = createReducer(
   initialState,
   on(setProducts, (state, { products }) => {
@@ -134,13 +160,14 @@ export const productsReducer = createReducer(
       ...state,
       list: products,
       filters: {
+        ...state.filters,
         categories,
         sizes,
         colors,
       },
     };
   }),
-  on(setFilter, (state, { filterType, color, category, size }) => {
+  on(setFilter, (state, { filterType, color, category, size, price }) => {
     switch (filterType) {
       case FilterType.color:
         return {
@@ -166,6 +193,25 @@ export const productsReducer = createReducer(
             sizes: checkFilter<SizeFilter>(state.filters.sizes, size),
           },
         };
+      case FilterType.price:
+        if (price?.type === 'fromPrice') {
+          return {
+            ...state,
+            filters: {
+              ...state.filters,
+              fromPrice: { ...price, name: `A partir de R$ ${price.value}` },
+            },
+          };
+        } else if (price?.type === 'toPrice') {
+          return {
+            ...state,
+            filters: {
+              ...state.filters,
+              toPrice: { ...price, name: `Até R$ ${price.value}` },
+            },
+          };
+        }
+        return state;
       default:
         return state;
     }
@@ -176,28 +222,21 @@ export const productsReducer = createReducer(
     return {
       ...state,
       filters: {
+        ...state.filters,
         categories,
         colors,
         sizes,
+        toPrice: {
+          ...state.filters.toPrice,
+          value: 0,
+          checked: false,
+        },
+        fromPrice: {
+          ...state.filters.fromPrice,
+          value: 0,
+          checked: false,
+        },
       },
     };
   }),
-);
-
-const selectProducts = (state: AppState) => state.products;
-export const selectFilters = (state: AppState) => state.products.filters;
-
-export const selectAllProducts = createSelector(selectProducts, (products) => products.list);
-
-export const selectAllSizesProducts = createSelector(selectFilters, (filters) => filters.sizes);
-
-export const selectFiltersActives = createSelector(
-  selectFilters,
-  ({ categories, colors, sizes }): ProductFilter[] => {
-    const categoriesActives = categories.filter((item) => item.checked);
-    const colorsActives = colors.filter((item) => item.checked);
-    const sizesActives = sizes.filter((item) => item.checked);
-
-    return [...categoriesActives, ...colorsActives, ...sizesActives];
-  },
 );
