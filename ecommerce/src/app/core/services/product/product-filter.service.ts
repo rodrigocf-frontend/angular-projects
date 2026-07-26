@@ -6,24 +6,28 @@ import {
   isColorFilter,
   isSizeFilter,
   ProductFilter,
-  selectFilters,
-  selectFiltersActives,
   SizeFilter,
-} from '../../../pages/products/store/products/products.reducer';
+} from '../../../pages/products/store/products/products.reducers';
 import {
   clearFilter,
   FilterType,
   setFilter,
   setProducts,
-} from '../../../pages/products/store/products/products.action';
+} from '../../../pages/products/store/products/products.actions';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ALL_PRODUCTS_MOCK } from '../../../../mocks/models/products.mock';
+import {
+  selectFilters,
+  selectFiltersActives,
+  selectProductsFiltereds,
+} from '../../../pages/products/store/products/products.selectors';
 
 @Injectable({ providedIn: 'root' })
 export class ProductFilterService {
   private store = inject(Store);
   readonly filtersActives$ = this.store.select(selectFiltersActives);
+  readonly productsFiltered$ = this.store.select(selectProductsFiltereds);
 
   readonly categories$: Observable<{
     sizes: SizeFilter[];
