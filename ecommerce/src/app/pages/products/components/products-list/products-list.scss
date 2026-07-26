@@ -33,6 +33,11 @@
   text-transform: uppercase;
   color: $txt-3;
 }
+
+.product-badge-container {
+  display: flex;
+}
+
 .product-badge {
   position: absolute;
   top: rem(12);
