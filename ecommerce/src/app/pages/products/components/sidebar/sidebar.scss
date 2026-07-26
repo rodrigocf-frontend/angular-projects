@@ -134,6 +134,7 @@
   display: flex;
   align-items: center;
   gap: rem(8);
+  flex-direction: column;
 }
 .price-input {
   flex: 1;

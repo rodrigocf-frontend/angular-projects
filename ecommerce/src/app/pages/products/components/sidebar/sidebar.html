@@ -44,9 +44,21 @@
     <div class="filter-group">
       <div class="filter-title">Faixa de preço</div>
       <div class="price-inputs">
-        <input class="price-input" type="text" value="R$ 200" />
+        <input
+          #fromPriceEvent
+          class="price-input"
+          type="text"
+          [value]="fromPrice()"
+          (input)="onChangePrice(fromPriceEvent.value, 'from')"
+        />
         <span class="price-sep">—</span>
-        <input class="price-input" type="text" value="R$ 1.500" />
+        <input
+          #toPriceEvent
+          class="price-input"
+          type="text"
+          [value]="toPrice()"
+          (input)="onChangePrice(toPriceEvent.value, 'to')"
+        />
       </div>
     </div>
 
