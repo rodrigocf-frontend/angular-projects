@@ -1,6 +1,6 @@
 import { Component, computed, effect, inject, input, OnInit, signal } from '@angular/core';
 import { ProductFilterService } from '../../../../core/services/product/product-filter.service';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { Product } from '../../../../shared/models/product.model';
 import { orderBy } from 'lodash-es';
 import { map, tap } from 'rxjs';
@@ -14,7 +14,7 @@ export enum ListOrder {
 
 @Component({
   selector: 'app-products-list',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, CurrencyPipe],
   templateUrl: './products-list.html',
   styleUrl: './products-list.scss',
 })
