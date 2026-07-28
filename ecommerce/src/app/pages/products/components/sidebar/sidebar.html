@@ -48,7 +48,6 @@
           #fromPriceEvent
           class="price-input"
           type="text"
-          [value]="fromPrice()"
           (input)="onChangePrice(fromPriceEvent.value, 'from')"
         />
         <span class="price-sep">—</span>
@@ -56,7 +55,6 @@
           #toPriceEvent
           class="price-input"
           type="text"
-          [value]="toPrice()"
           (input)="onChangePrice(toPriceEvent.value, 'to')"
         />
       </div>

@@ -18,19 +18,9 @@ export class Sidebar {
   private productsFilterService = inject(ProductFilterService);
   private store = inject(Store);
   categories$ = this.productsFilterService.categories$;
-  fromPrice = signal(0);
-  toPrice = signal(0);
 
   constructor() {
-    this.store
-      .select(selectFilters)
-      .pipe(takeUntilDestroyed())
-      .subscribe({
-        next: (f) => {
-          this.fromPrice.set(f.fromPrice.value);
-          this.toPrice.set(f.toPrice.value);
-        },
-      });
+    this.store.select(selectFilters).pipe(takeUntilDestroyed());
   }
 
   handleFilter(item: ProductFilter) {
