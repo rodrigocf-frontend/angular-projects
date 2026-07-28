@@ -35,7 +35,7 @@ export const selectFiltersActives = createSelector(
 export const selectProductsFiltereds = createSelector(
   selectAllProducts,
   selectCheckedFilters,
-  (list, { categories, colors, sizes }) => {
+  (list, { categories, colors, sizes, fromPrice, toPrice }) => {
     const selectedCategoryNames = categories.map((c) => c.name);
     const selectedColorNames = colors.map((c) => c.name);
     const selectedSizeNames = sizes.map((s) => s.name);
@@ -54,7 +54,10 @@ export const selectProductsFiltereds = createSelector(
           variant.sizes.some((size) => selectedSizeNames.includes(size.label)),
         );
 
-      return matchesCategory && matchesColor && matchesSize;
+      const matchesFromPrice = fromPrice.length === 0 || product.price >= fromPrice[0].value;
+      const matchesToPrice = toPrice.length === 0 || product.price <= toPrice[0].value;
+
+      return matchesCategory && matchesColor && matchesSize && matchesFromPrice && matchesToPrice;
     });
   },
 );
