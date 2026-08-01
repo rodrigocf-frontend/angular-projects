@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { provideEffects } from '@ngrx/effects';
-import { ProductsEffects } from './pages/products/store/products/products.effects';
+import { ProductsPageEffects } from './pages/products/store/products/products.effects';
 
 export const routes: Routes = [
   {
@@ -10,6 +10,6 @@ export const routes: Routes = [
   {
     path: 'products',
     loadComponent: () => import('./pages/products/products'),
-    providers: [provideEffects(ProductsEffects)],
+    providers: [provideEffects(ProductsPageEffects)],
   },
 ];

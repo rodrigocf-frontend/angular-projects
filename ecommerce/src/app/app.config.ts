@@ -3,17 +3,20 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideState, provideStore } from '@ngrx/store';
 import { productsReducer } from './pages/products/store/products/products.reducers';
-import { provideEffects } from '@ngrx/effects';
-import { ProductsEffects } from './pages/products/store/products/products.effects';
+import { provideHttpClient } from '@angular/common/http';
+
+import { environment } from '../environments/environment';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideStore(),
+    provideHttpClient(),
     provideState({
       name: 'products',
       reducer: productsReducer,
     }),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideEffects(ProductsEffects),
+    ...environment.providers,
   ],
 };
