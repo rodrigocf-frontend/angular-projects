@@ -1,8 +1,15 @@
 <div class="pagination">
-  <button class="page-btn nav">←</button>
-  <button class="page-btn active">1</button>
-  <button class="page-btn">2</button>
-  <button class="page-btn">3</button>
-  <button class="page-btn">4</button>
-  <button class="page-btn nav">→</button>
+  @for (page of pages(); track page) {
+    @if (page === '...') {
+      <span class="page-ellipsis">...</span>
+    } @else {
+      <button
+        class="page-btn"
+        [class.active]="page === this.pagination().current"
+        (click)="goTo(page)"
+      >
+        {{ page }}
+      </button>
+    }
+  }
 </div>
