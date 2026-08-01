@@ -1,5 +1,4 @@
-import { NgTemplateOutlet } from '@angular/common';
-import { Component, input, TemplateRef } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-section-header',

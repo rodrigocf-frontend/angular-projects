@@ -7,7 +7,7 @@ import { isPriceFilter, ProductFilter } from './store/products/products.reducers
 import { AsyncPipe } from '@angular/common';
 import { ProductFilterService } from '../../core/services/product/product-filter.service';
 import { Product } from '../../shared/models/product.model';
-import { isNumber, toNumber } from 'lodash-es';
+import { toNumber } from 'lodash-es';
 import { map } from 'rxjs';
 
 @Component({
