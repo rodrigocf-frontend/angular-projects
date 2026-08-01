@@ -37,6 +37,9 @@ export default class Products implements OnInit {
       }),
     ),
   );
+
+  productsPagination$ = this.productsFilterService.productsPagination$;
+
   readonly orderedBy = signal<ListOrder>(ListOrder.relevance);
 
   readonly orderSelects: {

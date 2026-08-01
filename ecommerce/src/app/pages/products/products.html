@@ -1,11 +1,13 @@
 <app-breadcrumb />
 <div class="page">
   <app-sidebar />
-  <main class="main">
+  <main class="main" id="products-list">
     <div class="main-header">
       <h1 class="main-title">Coleções <em>SS26</em></h1>
       <div class="main-meta">
-        <span class="results-count">48 peças</span>
+        @if (productsPagination$ | async; as pagination) {
+          <span class="results-count">{{ pagination.items }} peças</span>
+        }
         <select class="sort-select" #sortSelect (change)="onSelectOrder(sortSelect.value)">
           @for (item of orderSelects; track item.label) {
             <option [value]="item.value">
@@ -28,6 +30,8 @@
       }
     </div>
     <app-products-list [orderedby]="orderedBy()" />
-    <app-pagination />
+    @if (productsPagination$ | async; as pagination) {
+      <app-pagination [pagination]="pagination" />
+    }
   </main>
 </div>
