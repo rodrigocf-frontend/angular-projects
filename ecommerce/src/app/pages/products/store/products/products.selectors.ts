@@ -32,6 +32,10 @@ export const selectFiltersActives = createSelector(
   },
 );
 
+export const selectCheckedCategories = createSelector(selectFilters, (state) => {
+  return state.categories.filter((i) => i.checked);
+});
+
 export const selectProductsFiltereds = createSelector(
   selectAllProducts,
   selectCheckedFilters,

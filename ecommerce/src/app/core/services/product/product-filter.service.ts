@@ -22,10 +22,22 @@ import {
   selectProductsFiltereds,
   selectProductsPagination,
 } from '../../../pages/products/store/products/products.selectors';
+import { HttpClient } from '@angular/common/http';
+
+export interface CategoryFilterFromApi extends Omit<CategoryFilter, 'checked'> {}
+export interface SizeFilterFromApi extends Omit<SizeFilter, 'checked'> {}
+export interface ColorFilterFromApi extends Omit<ColorFilter, 'checked'> {}
+
+export interface FiltersApiResponse {
+  categories: CategoryFilterFromApi[];
+  sizes: SizeFilterFromApi[];
+  colors: ColorFilter[];
+}
 
 @Injectable({ providedIn: 'root' })
 export class ProductFilterService {
   private store = inject(Store);
+  private readonly http = inject(HttpClient);
   readonly filtersActives$ = this.store.select(selectFiltersActives);
   readonly productsFiltered$ = this.store.select(selectProductsFiltereds);
   readonly productsPagination$ = this.store.select(selectProductsPagination);
@@ -52,6 +64,10 @@ export class ProductFilterService {
     if (isSizeFilter(filter)) {
       this.store.dispatch(setFilter({ filterType: FilterType.size, size: filter }));
     }
+  }
+
+  getFilters() {
+    return this.http.get<FiltersApiResponse>(`http://localhost:3000/filters`);
   }
 
   clearFilter() {

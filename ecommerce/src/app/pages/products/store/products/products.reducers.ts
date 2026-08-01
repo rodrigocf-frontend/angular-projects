@@ -1,6 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import { Product } from '../../../../shared/models/product.model';
 import {
+  changePage,
   clearFilter,
   FilterType,
   setFilter,
@@ -8,6 +9,12 @@ import {
   setupProductsFilter,
 } from './products.actions';
 import { countBy, entries } from 'lodash-es';
+import {
+  CategoryFilterFromApi,
+  ColorFilterFromApi,
+  FiltersApiResponse,
+  SizeFilterFromApi,
+} from '../../../../core/services/product/product-filter.service';
 
 export interface ProductFilter {
   name: string;
@@ -87,10 +94,10 @@ const initialState: ProductsState = {
   },
 };
 
-const setupFilters = (products: Product[]) => {
-  const categories = setupCategories(products);
-  const sizes = setupSizes(products);
-  const colors = setupColors(products);
+const setupFilters = (filters: FiltersApiResponse) => {
+  const categories = setupCategories(filters.categories);
+  const sizes = setupSizes(filters.sizes);
+  const colors = setupColors(filters.colors);
   return {
     categories,
     sizes,
@@ -98,48 +105,25 @@ const setupFilters = (products: Product[]) => {
   };
 };
 
-const setupCategories = (products: Product[]): CategoryFilter[] => {
-  const count = countBy(products, 'category');
-  const entriesCategories = entries(count);
-  return entriesCategories.map((c) => ({
-    name: c[0],
-    count: c[1],
+const setupCategories = (categories: CategoryFilterFromApi[]): CategoryFilter[] => {
+  return categories.map((c) => ({
+    ...c,
     checked: false,
   }));
 };
 
-const setupSizes = (products: Product[]): SizeFilter[] => {
-  const sizes: string[] = [];
-  products.forEach((product) => {
-    product.variants.forEach((variant) => {
-      variant.sizes.forEach((size) => {
-        sizes.push(size.label);
-      });
-    });
-  });
-
-  const sizesArray = Array.from(new Set(sizes));
-
-  return sizesArray.map((size) => ({
-    name: size,
+const setupSizes = (sizes: SizeFilterFromApi[]): SizeFilter[] => {
+  return sizes.map((s) => ({
+    ...s,
     checked: false,
   }));
 };
 
-const setupColors = (products: Product[]): ColorFilter[] => {
-  const colors: ColorFilter[] = [];
-  products.forEach((product) => {
-    product.variants.forEach((variant) => {
-      colors.push({
-        ...variant.color,
-        checked: false,
-      });
-    });
-  });
-
-  const colorsValues = new Map(colors.map((item) => [item.name, item])).values();
-
-  return Array.from(colorsValues);
+const setupColors = (colors: ColorFilterFromApi[]): ColorFilter[] => {
+  return colors.map((c) => ({
+    ...c,
+    checked: false,
+  }));
 };
 
 const checkFilter = <T extends ProductFilter>(filters: T[], productFilter?: T) => {
@@ -186,16 +170,16 @@ export const productsReducer = createReducer(
       list: products,
     };
   }),
-  on(setupProductsFilter, (state, { products, pagination }) => {
-    const { categories, colors, sizes } = setupFilters(products);
+  on(setupProductsFilter, (state, { filters, pagination }) => {
+    const { categories, colors, sizes } = setupFilters(filters);
     return {
       ...state,
       filters: {
         ...state.filters,
         pagination,
         categories,
-        sizes,
         colors,
+        sizes,
       },
     };
   }),
@@ -248,27 +232,39 @@ export const productsReducer = createReducer(
         return state;
     }
   }),
-  on(clearFilter, (state) => {
-    const { categories, colors, sizes } = setupFilters(state.list);
-
+  on(changePage, (state, { page }) => {
     return {
       ...state,
       filters: {
         ...state.filters,
-        categories,
-        colors,
-        sizes,
-        toPrice: {
-          ...state.filters.toPrice,
-          value: 0,
-          checked: false,
-        },
-        fromPrice: {
-          ...state.filters.fromPrice,
-          value: 0,
-          checked: false,
+        pagination: {
+          ...state.filters.pagination,
+          current: page,
         },
       },
     };
   }),
+  // on(clearFilter, (state) => {
+  //   const { categories, colors, sizes } = setupFilters(state.list);
+
+  //   return {
+  //     ...state,
+  //     filters: {
+  //       ...state.filters,
+  //       categories,
+  //       colors,
+  //       sizes,
+  //       toPrice: {
+  //         ...state.filters.toPrice,
+  //         value: 0,
+  //         checked: false,
+  //       },
+  //       fromPrice: {
+  //         ...state.filters.fromPrice,
+  //         value: 0,
+  //         checked: false,
+  //       },
+  //     },
+  //   };
+  // }),
 );

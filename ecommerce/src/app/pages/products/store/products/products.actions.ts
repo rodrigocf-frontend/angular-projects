@@ -2,11 +2,13 @@ import { createAction, props } from '@ngrx/store';
 import {
   CategoryFilter,
   ColorFilter,
+  Filters,
   FiltersPagination,
   PriceFilter,
   SizeFilter,
 } from './products.reducers';
 import { Product } from '../../../../shared/models/product.model';
+import { FiltersApiResponse } from '../../../../core/services/product/product-filter.service';
 
 export const loadProducts = createAction(
   '[Page Products] - Load Products',
@@ -22,6 +24,15 @@ export const setProducts = createAction(
 
 export const setupProductsFilter = createAction(
   '[Page Products] - Set Filter Sucess',
+  props<{
+    filters: FiltersApiResponse;
+    pagination: FiltersPagination;
+    products: Product[];
+  }>(),
+);
+
+export const setFiltersSections = createAction(
+  '[Page Products] - Set setFiltersSections Sucess',
   props<{
     pagination: FiltersPagination;
     products: Product[];
@@ -43,6 +54,13 @@ export const setFilter = createAction(
     category?: CategoryFilter;
     size?: SizeFilter;
     price?: PriceFilter;
+  }>(),
+);
+
+export const changePage = createAction(
+  '[Products Page] - change page',
+  props<{
+    page: number;
   }>(),
 );
 
