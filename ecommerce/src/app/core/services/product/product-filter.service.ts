@@ -11,16 +11,16 @@ import {
 import {
   clearFilter,
   FilterType,
+  loadProducts,
   setFilter,
-  setProducts,
 } from '../../../pages/products/store/products/products.actions';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { ALL_PRODUCTS_MOCK } from '../../../../mocks/models/products.mock';
+import { Observable, tap } from 'rxjs';
 import {
   selectFilters,
   selectFiltersActives,
   selectProductsFiltereds,
+  selectProductsPagination,
 } from '../../../pages/products/store/products/products.selectors';
 
 @Injectable({ providedIn: 'root' })
@@ -28,6 +28,7 @@ export class ProductFilterService {
   private store = inject(Store);
   readonly filtersActives$ = this.store.select(selectFiltersActives);
   readonly productsFiltered$ = this.store.select(selectProductsFiltereds);
+  readonly productsPagination$ = this.store.select(selectProductsPagination);
 
   readonly categories$: Observable<{
     sizes: SizeFilter[];
@@ -36,11 +37,7 @@ export class ProductFilterService {
   }> = this.store.select(selectFilters);
 
   syncProducts() {
-    this.store.dispatch(
-      setProducts({
-        products: ALL_PRODUCTS_MOCK,
-      }),
-    );
+    this.store.dispatch(loadProducts({ page: 1 }));
   }
 
   startFilter(filter: ProductFilter) {
