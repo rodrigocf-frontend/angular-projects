@@ -3,6 +3,8 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideState, provideStore } from '@ngrx/store';
 import { productsReducer } from './pages/products/store/products/products.reducers';
+import { provideEffects } from '@ngrx/effects';
+import { ProductsEffects } from './pages/products/store/products/products.effects';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideStore(),
@@ -12,5 +14,6 @@ export const appConfig: ApplicationConfig = {
     }),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
+    provideEffects(ProductsEffects),
   ],
 };
