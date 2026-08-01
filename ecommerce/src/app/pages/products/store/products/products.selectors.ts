@@ -61,3 +61,5 @@ export const selectProductsFiltereds = createSelector(
     });
   },
 );
+
+export const selectProductsPagination = createSelector(selectFilters, (state) => state.pagination);

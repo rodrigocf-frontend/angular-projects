@@ -1,6 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
 import { Product } from '../../../../shared/models/product.model';
-import { clearFilter, FilterType, setFilter, setProducts } from './products.actions';
+import {
+  clearFilter,
+  FilterType,
+  setFilter,
+  setProducts,
+  setupProductsFilter,
+} from './products.actions';
 import { countBy, entries } from 'lodash-es';
 
 export interface ProductFilter {
@@ -23,7 +29,18 @@ export interface PriceFilter extends ProductFilter {
   value: number;
 }
 
+export interface FiltersPagination {
+  first: number;
+  prev: number;
+  next: number;
+  last: number;
+  pages: number;
+  items: number;
+  current: number;
+}
+
 export interface Filters {
+  pagination: FiltersPagination;
   categories: CategoryFilter[];
   sizes: SizeFilter[];
   colors: ColorFilter[];
@@ -43,6 +60,15 @@ export interface AppState {
 const initialState: ProductsState = {
   list: [],
   filters: {
+    pagination: {
+      first: 1,
+      prev: 0,
+      next: 0,
+      last: 0,
+      pages: 0,
+      items: 0,
+      current: 1,
+    },
     categories: [],
     sizes: [],
     colors: [],
@@ -155,12 +181,18 @@ export function isPriceFilter(filter: any): filter is PriceFilter {
 export const productsReducer = createReducer(
   initialState,
   on(setProducts, (state, { products }) => {
-    const { categories, colors, sizes } = setupFilters(products);
     return {
       ...state,
       list: products,
+    };
+  }),
+  on(setupProductsFilter, (state, { products, pagination }) => {
+    const { categories, colors, sizes } = setupFilters(products);
+    return {
+      ...state,
       filters: {
         ...state.filters,
+        pagination,
         categories,
         sizes,
         colors,

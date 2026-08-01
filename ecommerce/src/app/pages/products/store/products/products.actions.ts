@@ -1,10 +1,29 @@
 import { createAction, props } from '@ngrx/store';
+import {
+  CategoryFilter,
+  ColorFilter,
+  FiltersPagination,
+  PriceFilter,
+  SizeFilter,
+} from './products.reducers';
 import { Product } from '../../../../shared/models/product.model';
-import { CategoryFilter, ColorFilter, PriceFilter, SizeFilter } from './products.reducers';
+
+export const loadProducts = createAction(
+  '[Page Products] - Load Products',
+  props<{ page: number }>(),
+);
 
 export const setProducts = createAction(
-  '[Create Action]',
+  '[Page Products] - Set Products Sucess',
   props<{
+    products: Product[];
+  }>(),
+);
+
+export const setupProductsFilter = createAction(
+  '[Page Products] - Set Filter Sucess',
+  props<{
+    pagination: FiltersPagination;
     products: Product[];
   }>(),
 );
