@@ -24,6 +24,7 @@ export class Sidebar {
   }
 
   handleFilter(item: ProductFilter) {
+    console.log(item);
     this.productsFilterService.startFilter(item);
   }
   clearFilter() {
