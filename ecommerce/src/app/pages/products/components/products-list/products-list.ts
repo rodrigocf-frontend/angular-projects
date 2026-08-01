@@ -4,6 +4,7 @@ import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { Product } from '../../../../shared/models/product.model';
 import { orderBy } from 'lodash-es';
 import { map, tap } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 export enum ListOrder {
   relevance,
@@ -14,27 +15,25 @@ export enum ListOrder {
 
 @Component({
   selector: 'app-products-list',
-  imports: [AsyncPipe, CurrencyPipe],
+  imports: [CurrencyPipe],
   templateUrl: './products-list.html',
   styleUrl: './products-list.scss',
 })
 export class ProductsList {
   private productsFilterService = inject(ProductFilterService);
   orderedby = input.required<ListOrder>();
-  products = signal<Product[]>([]);
-  productsFiltered$ = this.productsFilterService.productsFiltered$.pipe(
-    map((product) => this.orderProductsBy(product)),
-    tap((e) => this.products.set(e)),
-  );
+  products = toSignal(this.productsFilterService.productsFiltered$);
+  p = computed(() => this.products());
 
   constructor() {
     effect(() => {
       const k = this.orderedby();
       if (k) {
-        this.productsFiltered$.pipe(map((product) => this.orderProductsBy(product))).subscribe();
+        // this.productsFiltered$.pipe(map((product) => this.orderProductsBy(product))).subscribe();
       }
     });
   }
+
   getSizes(product: Product): string[] {
     const sizes = new Set<string>();
     product.variants.forEach((variant) => {

@@ -1,40 +1,38 @@
 <div class="products-grid">
-  @if (productsFiltered$ | async) {
-    @for (item of products(); track item.id) {
-      <div class="product-card">
-        <div class="product-img">
-          <div
-            class="product-img-placeholder"
-            style="background: linear-gradient(160deg, #e8e3dc, #d4cfc8)"
-          >
-            <span>{{ item.name }}</span>
-          </div>
-          <div class="product-badge-container">
-            @if (item.isNew) {
-              <span class="product-badge badge-new">Novo</span>
-            }
-            @if (!item.isNew && item.isSale) {
-              <span class="product-badge badge-sale">−{{ item.discount }}</span>
-            }
-          </div>
-          <button class="product-wish">♡</button>
-          <div class="product-sizes">
-            @for (size of getSizes(item); track size) {
-              <span class="size-tag">{{ size }}</span>
-            }
-          </div>
+  @for (item of products(); track item.id) {
+    <div class="product-card">
+      <div class="product-img">
+        <div
+          class="product-img-placeholder"
+          style="background: linear-gradient(160deg, #e8e3dc, #d4cfc8)"
+        >
+          <span>{{ item.name }}</span>
         </div>
-        <p class="product-brand">{{ item.brand }}</p>
-        <p class="product-name">{{ item.name }}</p>
-        <div class="product-price">
-          <span class="price-current">{{ item.price | currency: 'BRL' : 'symbol' }}</span>
+        <div class="product-badge-container">
+          @if (item.isNew) {
+            <span class="product-badge badge-new">Novo</span>
+          }
+          @if (!item.isNew && item.isSale) {
+            <span class="product-badge badge-sale">−{{ item.discount }}</span>
+          }
         </div>
-        <div class="product-colors">
-          @for (variant of item.variants; track $index) {
-            <div class="dot" [style.background]="variant.color.hex"></div>
+        <button class="product-wish">♡</button>
+        <div class="product-sizes">
+          @for (size of getSizes(item); track size) {
+            <span class="size-tag">{{ size }}</span>
           }
         </div>
       </div>
-    }
+      <p class="product-brand">{{ item.brand }}</p>
+      <p class="product-name">{{ item.name }}</p>
+      <div class="product-price">
+        <span class="price-current">{{ item.price | currency: 'BRL' : 'symbol' }}</span>
+      </div>
+      <div class="product-colors">
+        @for (variant of item.variants; track $index) {
+          <div class="dot" [style.background]="variant.color.hex"></div>
+        }
+      </div>
+    </div>
   }
 </div>
