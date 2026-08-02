@@ -44,17 +44,21 @@
       <div class="filter-title">Faixa de preço</div>
       <div class="price-inputs">
         <input
-          #fromPriceEvent
+          name="fromPrice"
+          [formControl]="fromPrice"
           class="price-input"
           type="text"
-          (input)="onChangePrice(fromPriceEvent.value, 'from')"
+          placeholder="R$ 0,00"
+          appCurrencyMask
         />
         <span class="price-sep">—</span>
         <input
-          #toPriceEvent
+          name="toPrice"
+          [formControl]="toPrice"
           class="price-input"
           type="text"
-          (input)="onChangePrice(toPriceEvent.value, 'to')"
+          placeholder="R$ 0,00"
+          appCurrencyMask
         />
       </div>
     </div>

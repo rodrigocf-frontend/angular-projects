@@ -66,6 +66,7 @@
   font-size: rem($text-base);
   font-weight: 300;
   color: $txt-2;
+  text-transform: capitalize;
 }
 .filter-count {
   font-family: $ff-body;
@@ -80,8 +81,8 @@
   gap: rem(5);
 }
 .size-option {
-  width: rem(36);
-  height: rem(36);
+  width: rem(44);
+  height: rem(44);
   border: 0.5px solid $border;
   display: flex;
   align-items: center;
