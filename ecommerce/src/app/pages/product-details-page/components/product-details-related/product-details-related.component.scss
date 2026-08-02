@@ -1,0 +1,58 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.related {
+  padding: rem(64, 48);
+  border-top: 0.5px solid $border;
+}
+.related-title {
+  font-family: $ff-display;
+  font-size: rem($text-3xl);
+  font-weight: 300;
+  letter-spacing: rem($ls-tight);
+  color: $txt;
+  margin-bottom: rem(32);
+}
+.related-title em {
+  font-style: italic;
+}
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: rem(20);
+}
+.rel-card {
+  cursor: pointer;
+}
+.rel-img {
+  aspect-ratio: 3/4;
+  margin-bottom: rem(12);
+  overflow: hidden;
+}
+.rel-img-bg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s;
+}
+.rel-card:hover .rel-img-bg {
+  transform: scale(1.03);
+}
+.rel-brand {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  color: $txt-3;
+  margin-bottom: rem(4);
+}
+.rel-name {
+  font-family: $ff-display;
+  font-size: rem($text-lg);
+  font-weight: 400;
+  color: $txt;
+  margin-bottom: rem(4);
+}
+.rel-price {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt;
+}

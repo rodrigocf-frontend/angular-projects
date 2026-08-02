@@ -1,8 +1,17 @@
 import { Component } from '@angular/core';
+import { Breadcrumb } from '../../shared/components/breadcrumb/breadcrumb';
+import { ProductDetailsGalleryComponent } from './components/product-details-gallery/product-details-gallery.component';
+import { ProductDetailsInfoComponent } from './components/product-details-info/product-details-info.component';
+import { ProductDetailsRelatedComponent } from './components/product-details-related/product-details-related.component';
 
 @Component({
   selector: 'app-product-details-page',
-  imports: [],
+  imports: [
+    Breadcrumb,
+    ProductDetailsGalleryComponent,
+    ProductDetailsInfoComponent,
+    ProductDetailsRelatedComponent,
+  ],
   templateUrl: './product-details-page.component.html',
   styleUrl: './product-details-page.component.scss',
 })

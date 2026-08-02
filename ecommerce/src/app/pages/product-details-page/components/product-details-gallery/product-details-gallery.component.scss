@@ -1,0 +1,61 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.gallery {
+  display: grid;
+  grid-template-columns: rem(80) 1fr;
+  gap: rem(12);
+  padding: rem(32, 24, 32, 48);
+  position: sticky;
+  top: rem(113);
+  height: calc(100vh - 113px);
+}
+.thumbnails {
+  display: flex;
+  flex-direction: column;
+  gap: rem(8);
+}
+
+.thumb {
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  overflow: hidden;
+  border: 0.5px solid transparent;
+  transition: border-color 0.15s;
+}
+.thumb.active {
+  border-color: $txt;
+}
+.thumb-bg {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s;
+}
+.thumb:hover .thumb-bg {
+  transform: scale(1.05);
+}
+.main-img {
+  overflow: hidden;
+  position: relative;
+}
+.main-bg {
+  width: 100%;
+  height: 100%;
+}
+.img-nav {
+  position: absolute;
+  bottom: rem(16);
+  right: rem(16);
+  display: flex;
+  gap: rem(6);
+}
+.img-nav button {
+  width: rem(28);
+  height: rem(28);
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  cursor: pointer;
+  font-size: rem(14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,321 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.product-info {
+  padding: rem(32, 48, 32, 32);
+  border-left: 0.5px solid $border;
+  overflow-y: auto;
+}
+.product-header {
+  margin-bottom: rem(24);
+}
+.product-brand {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-widest);
+  text-transform: uppercase;
+  color: $txt-3;
+  margin-bottom: rem(8);
+}
+.product-name {
+  font-family: $ff-display;
+  font-size: rem($text-4xl);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: rem($ls-tight);
+  color: $txt;
+  margin-bottom: rem(8);
+}
+.product-name em {
+  font-style: italic;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+  margin-bottom: rem(16);
+}
+.stars {
+  display: flex;
+  gap: rem(2);
+}
+.star {
+  font-size: rem(12);
+  color: $gold;
+}
+.star.empty {
+  color: $border;
+}
+.rating-count {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  color: $txt-3;
+}
+
+/* PRICE */
+.price-block {
+  display: flex;
+  align-items: baseline;
+  gap: rem(12);
+  margin-bottom: rem(28);
+  padding-bottom: rem(28);
+  border-bottom: 0.5px solid $border;
+}
+.price-current {
+  font-family: $ff-display;
+  font-size: rem($text-3xl);
+  font-weight: 300;
+  color: $txt;
+}
+.price-old {
+  font-family: $ff-body;
+  font-size: rem($text-lg);
+  color: $txt-3;
+  text-decoration: line-through;
+}
+.price-badge {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  font-weight: 500;
+  letter-spacing: rem($ls-wide);
+  text-transform: uppercase;
+  padding: rem(4, 8);
+  background: $gold;
+  color: $bg;
+}
+
+/* SELECTORS */
+.selector-block {
+  margin-bottom: rem(24);
+}
+.selector-label {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  font-weight: 500;
+  letter-spacing: rem($ls-widest);
+  text-transform: uppercase;
+  color: $txt;
+  margin-bottom: rem(12);
+  display: flex;
+  justify-content: space-between;
+}
+.selector-value {
+  font-weight: 300;
+  color: $txt-2;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* COLOR */
+.color-options {
+  display: flex;
+  gap: rem(10);
+}
+.color-opt {
+  width: rem(28);
+  height: rem(28);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.15s;
+  position: relative;
+}
+.color-opt.selected {
+  border-color: $txt;
+}
+.color-opt.selected::after {
+  content: '';
+  position: absolute;
+  inset: rem(-4);
+  border-radius: 50%;
+  border: 1px solid $txt;
+}
+
+/* SIZE */
+.size-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem(8);
+}
+.size-opt {
+  min-width: rem(44);
+  height: rem(44);
+  border: 0.5px solid $border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wide);
+  cursor: pointer;
+  color: $txt-2;
+  transition: all 0.15s;
+  padding: rem(0, 8);
+}
+.size-opt:hover:not(.unavailable) {
+  border-color: $txt;
+  color: $txt;
+}
+.size-opt.selected {
+  background: $txt;
+  color: $bg;
+  border-color: $txt;
+}
+.size-opt.unavailable {
+  color: $txt-3;
+  cursor: not-allowed;
+  position: relative;
+}
+.size-opt.unavailable::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 0.5px;
+  background: $txt-3;
+  transform: rotate(-15deg);
+}
+.size-guide {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  color: $txt-3;
+  letter-spacing: rem($ls-wide);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: rem(10);
+  display: inline-block;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: rem(10);
+  margin: rem(28, 0);
+  padding-top: rem(28);
+  border-top: 0.5px solid $border;
+}
+.btn-cart {
+  background: $txt;
+  color: $bg;
+  border: none;
+  cursor: pointer;
+  font-family: $ff-body;
+  font-size: rem($text-sm);
+  font-weight: 400;
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  padding: rem(16, 32);
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(10);
+}
+.btn-cart:hover {
+  background: #333;
+}
+.btn-wish {
+  background: none;
+  border: 0.5px solid $border;
+  cursor: pointer;
+  font-family: $ff-body;
+  font-size: rem($text-sm);
+  font-weight: 400;
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  color: $txt-2;
+  padding: rem(16, 32);
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(10);
+}
+.btn-wish:hover {
+  border-color: $txt;
+  color: $txt;
+}
+
+/* PERKS */
+.perks {
+  display: flex;
+  flex-direction: column;
+  gap: rem(10);
+  margin-bottom: rem(28);
+}
+.perk {
+  display: flex;
+  align-items: center;
+  gap: rem(10);
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  color: $txt-2;
+  letter-spacing: rem($ls-wide);
+}
+.perk-icon {
+  font-size: rem(14);
+  color: $txt-3;
+}
+
+/* TABS */
+.tabs {
+  border-top: 0.5px solid $border;
+  padding-top: rem(24);
+}
+.tab-nav {
+  display: flex;
+  margin-bottom: rem(24);
+  border-bottom: 0.5px solid $border;
+}
+.tab-btn {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  font-weight: 400;
+  letter-spacing: rem($ls-widest);
+  text-transform: uppercase;
+  color: $txt-3;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: rem(12, 20);
+  border-bottom: 1.5px solid transparent;
+  margin-bottom: -0.5px;
+  transition: all 0.15s;
+}
+.tab-btn.active {
+  color: $txt;
+  border-bottom-color: $txt;
+}
+.tab-content {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  font-weight: 300;
+  color: $txt-2;
+  line-height: 1.9;
+}
+.tab-panel {
+  display: none;
+}
+.tab-panel.active {
+  display: block;
+}
+.detail-list {
+  display: flex;
+  flex-direction: column;
+  gap: rem(8);
+  list-style: none;
+}
+.detail-list li {
+  display: flex;
+  align-items: center;
+  gap: rem(10);
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt-2;
+}
+.detail-list li::before {
+  content: '—';
+  color: $txt-3;
+}
