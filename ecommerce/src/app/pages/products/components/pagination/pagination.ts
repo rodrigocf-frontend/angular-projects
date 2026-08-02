@@ -2,8 +2,8 @@ import { Component, computed, inject, input, signal } from '@angular/core';
 import { FiltersPagination } from '../../store/products/products.reducers';
 import { Store } from '@ngrx/store';
 import { changePage } from '../../store/products/products.actions';
-import { range } from 'rxjs';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { scrollBehaviorTo } from '../../../../shared/utils/scroller';
 
 @Component({
   selector: 'app-pagination',
@@ -48,12 +48,6 @@ export class Pagination {
 
   goTo(page: number) {
     this.store.dispatch(changePage({ page }));
-    const targetElement = document.querySelector('#products-list');
-
-    // Scroll to it smoothly
-    targetElement?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
+    scrollBehaviorTo('#products-list');
   }
 }

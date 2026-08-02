@@ -1,6 +1,6 @@
 <app-breadcrumb />
 <div class="page">
-  <app-sidebar />
+  <app-sidebar #sidebar />
   <main class="main" id="products-list">
     <div class="main-header">
       <h1 class="main-title">Coleções <em>SS26</em></h1>
@@ -9,9 +9,9 @@
           <span class="results-count">{{ pagination.items }} peças</span>
         }
         <select class="sort-select" #sortSelect (change)="onSelectOrder(sortSelect.value)">
-          @for (item of orderSelects; track item.label) {
-            <option [value]="item.value">
-              {{ item.label }}
+          @for (item of orderSelects; track item.name) {
+            <option [value]="item.type">
+              {{ item.name }}
             </option>
           }
         </select>
@@ -25,11 +25,11 @@
           </div>
         }
         @if (actives.length > 0) {
-          <button class="clear-all" (click)="clearFilter()">Limpar tudo</button>
+          <button class="clear-all" (click)="sidebar.clearFilter()">Limpar tudo</button>
         }
       }
     </div>
-    <app-products-list [orderedby]="orderedBy()" />
+    <app-products-list />
     @if (productsPagination$ | async; as pagination) {
       <app-pagination [pagination]="pagination" />
     }

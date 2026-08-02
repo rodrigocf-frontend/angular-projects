@@ -1,14 +1,14 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Breadcrumb } from './components/breadcrumb/breadcrumb';
 import { Sidebar } from './components/sidebar/sidebar';
-import { ListOrder, ProductsList } from './components/products-list/products-list';
+import { ProductsList } from './components/products-list/products-list';
 import { Pagination } from './components/pagination/pagination';
-import { isPriceFilter, ProductFilter } from './store/products/products.reducers';
+import { isPriceFilter, ProductFilter, SortFilter } from './store/products/products.reducers';
 import { AsyncPipe } from '@angular/common';
 import { ProductFilterService } from '../../core/services/product/product-filter.service';
-import { Product } from '../../shared/models/product.model';
-import { toNumber } from 'lodash-es';
 import { map } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { setSort } from './store/products/products.actions';
 
 @Component({
   selector: 'app-products',
@@ -18,6 +18,7 @@ import { map } from 'rxjs';
 })
 export default class Products implements OnInit {
   private productsFilterService = inject(ProductFilterService);
+  private store = inject(Store);
   filtersActives$ = this.productsFilterService.filtersActives$.pipe(
     map((value) =>
       value.map((i) => {
@@ -40,27 +41,22 @@ export default class Products implements OnInit {
 
   productsPagination$ = this.productsFilterService.productsPagination$;
 
-  readonly orderedBy = signal<ListOrder>(ListOrder.relevance);
-
-  readonly orderSelects: {
-    label: string;
-    value: ListOrder;
-  }[] = [
+  readonly orderSelects: SortFilter[] = [
     {
-      label: 'Relevância',
-      value: ListOrder.relevance,
+      name: 'Relevância',
+      type: 'relevance',
     },
     {
-      label: 'Menor Preço',
-      value: ListOrder.minor_price,
+      name: 'Menor Preço',
+      type: 'min-price',
     },
     {
-      label: 'Maior Preço',
-      value: ListOrder.major_price,
+      name: 'Maior Preço',
+      type: 'max-price',
     },
     {
-      label: 'Novidades',
-      value: ListOrder.newest,
+      name: 'Novidades',
+      type: 'newest',
     },
   ];
 
@@ -71,15 +67,15 @@ export default class Products implements OnInit {
   handleFilter(item: ProductFilter) {
     this.productsFilterService.startFilter(item);
   }
-  clearFilter() {
-    this.productsFilterService.clearFilter();
-  }
 
-  onSelectOrder(value: string) {
-    const valueToNumber = toNumber(value);
-    if (valueToNumber) {
-      const findedSelect = this.orderSelects.filter((_, index) => index === valueToNumber)[0];
-      this.orderedBy.set(findedSelect.value);
+  onSelectOrder(type: string) {
+    const sort = this.orderSelects.find((item) => item.type === type);
+    if (sort) {
+      this.store.dispatch(
+        setSort({
+          sort,
+        }),
+      );
     }
   }
 }

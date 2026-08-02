@@ -29,8 +29,8 @@
         <span class="price-current">{{ item.price | currency: 'BRL' : 'symbol' }}</span>
       </div>
       <div class="product-colors">
-        @for (variant of item.variants; track $index) {
-          <div class="dot" [style.background]="variant.color.hex"></div>
+        @for (color of item.colors.split(','); track color) {
+          <div class="dot" [style.background]="color"></div>
         }
       </div>
     </div>
