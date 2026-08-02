@@ -8,6 +8,7 @@ import {
   SizeFilter,
   SortFilter,
 } from '../../../pages/products/store/products/products.reducers';
+import { tap } from 'rxjs';
 
 interface Pagination<T> {
   first: number;
@@ -17,6 +18,16 @@ interface Pagination<T> {
   pages: number;
   items: number;
   data: T[];
+}
+
+export interface CategoryFilterFromApi extends Omit<CategoryFilter, 'checked'> {}
+export interface SizeFilterFromApi extends Omit<SizeFilter, 'checked'> {}
+export interface ColorFilterFromApi extends Omit<ColorFilter, 'checked'> {}
+
+export interface FiltersApiResponse {
+  categories: CategoryFilterFromApi[];
+  sizes: SizeFilterFromApi[];
+  colors: ColorFilter[];
 }
 
 @Injectable({ providedIn: 'root' })
@@ -83,6 +94,12 @@ export class ProductService {
         params,
       },
     );
+  }
+
+  getFilters() {
+    return this.http
+      .get<FiltersApiResponse>(`http://localhost:3000/filters`)
+      .pipe(tap((e) => console.log(e)));
   }
 
   slugify(str: string): string {
