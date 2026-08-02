@@ -12,12 +12,13 @@ import {
   SortFilter,
 } from './store/products/products.reducers';
 import { AsyncPipe } from '@angular/common';
-import { map } from 'rxjs';
+import { map, take } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { FilterType, loadProducts, setFilter, setSort } from './store/products/products.actions';
 import { LoadingListComponent } from './components/loading-list/loading-list.component';
 import {
   selectCheckedPagination,
+  selectCheckIsFetched,
   selectFiltersActives,
   selectIsLoading,
   selectProductsFiltereds,
@@ -33,6 +34,7 @@ export default class Products implements OnInit {
   private store = inject(Store);
 
   isLoading$ = this.store.select(selectIsLoading);
+  readonly productsPagination$ = this.store.select(selectCheckedPagination);
   readonly productsData$ = this.store.select(selectProductsFiltereds);
   readonly filtersActives$ = this.store.select(selectFiltersActives).pipe(
     map((value) =>
@@ -54,7 +56,16 @@ export default class Products implements OnInit {
     ),
   );
 
-  readonly productsPagination$ = this.store.select(selectCheckedPagination);
+  ngOnInit(): void {
+    this.store
+      .select(selectCheckIsFetched)
+      .pipe(take(1))
+      .subscribe(({ isFetched }) => {
+        if (!isFetched) {
+          this.store.dispatch(loadProducts({ page: 1 }));
+        }
+      });
+  }
 
   readonly orderSelects: SortFilter[] = [
     {
@@ -74,10 +85,6 @@ export default class Products implements OnInit {
       type: 'newest',
     },
   ];
-
-  ngOnInit(): void {
-    this.store.dispatch(loadProducts({ page: 1 }));
-  }
 
   handleFilter(filter: ProductFilter) {
     if (isColorFilter(filter)) {

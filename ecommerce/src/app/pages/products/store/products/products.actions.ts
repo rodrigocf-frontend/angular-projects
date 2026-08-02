@@ -86,3 +86,5 @@ export const setFilter = createAction(
     price?: PriceFilter;
   }>(),
 );
+
+export const setFetched = createAction('[Products Page] - set Fetched');

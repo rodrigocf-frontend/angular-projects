@@ -4,6 +4,7 @@ import { AppState, Filters, ProductFilter } from './products.reducers';
 export const selectFilters = (state: AppState) => state.products.filters;
 export const selectPagination = (state: AppState) => state.products.pagination;
 export const selectIsLoading = (state: AppState) => state.products.isLoading;
+export const selectIsFetched = (state: AppState) => state.products.isFetched;
 
 export const selectCheckedFilters = createSelector(selectFilters, (state) => {
   return {
@@ -18,6 +19,12 @@ export const selectCheckedFilters = createSelector(selectFilters, (state) => {
 
 export const selectCheckedPagination = createSelector(selectPagination, (pagination) => {
   return pagination;
+});
+
+export const selectCheckIsFetched = createSelector(selectIsFetched, (isFetched) => {
+  return {
+    isFetched,
+  };
 });
 
 //====

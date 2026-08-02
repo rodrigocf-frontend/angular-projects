@@ -11,6 +11,7 @@ import {
   setPagination,
   setSort,
   setLoading,
+  setFetched,
 } from './products.actions';
 import { forkJoin, switchMap } from 'rxjs';
 import { ProductService } from '../../../../core/services/product/products.service';
@@ -49,6 +50,7 @@ export class ProductsPageEffects {
               setLoading({
                 isLoading: false,
               }),
+              setFetched(),
             ],
           ),
         );

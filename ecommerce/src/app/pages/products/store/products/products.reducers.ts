@@ -11,6 +11,7 @@ import {
   setPagination,
   setSort,
   setLoading,
+  setFetched,
 } from './products.actions';
 import {
   CategoryFilterFromApi,
@@ -73,6 +74,7 @@ export interface ProductsState {
   filters: Filters;
   pagination: FiltersPagination;
   isLoading: boolean;
+  isFetched: boolean;
 }
 
 export interface AppState {
@@ -99,6 +101,7 @@ const initialState: ProductsState = {
     current: 0,
   },
   isLoading: true,
+  isFetched: false,
 };
 
 const setupFilters = (filters: FiltersApiResponse) => {
@@ -291,6 +294,12 @@ export const productsReducer = createReducer(
     return {
       ...state,
       isLoading,
+    };
+  }),
+  on(setFetched, (state) => {
+    return {
+      ...state,
+      isFetched: true,
     };
   }),
 );
