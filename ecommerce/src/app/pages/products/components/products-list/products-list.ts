@@ -13,7 +13,17 @@ import { RouterLink } from '@angular/router';
 export class ProductsList {
   data = input.required<Product[]>();
 
-  getSizes(product: Product): string[] {
-    return product.sizes.split(',');
+  getSizes(product: Product): { label: string; available: boolean }[] {
+    return product.sizes.split(',').map((entry) => {
+      const [label, available] = entry.split(':');
+      return { label, available: available === 'true' };
+    });
+  }
+
+  getColors(product: Product): { name: string; hex: string }[] {
+    return product.colors.split(',').map((entry) => {
+      const [name, hex] = entry.split(':');
+      return { name, hex };
+    });
   }
 }

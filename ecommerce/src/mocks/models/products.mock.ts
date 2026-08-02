@@ -1,7 +1,7 @@
 import { Product } from '../../app/shared/models/product.model';
 
-const SIZES_STANDARD = 'P,M,G,GG';
-const SIZES_NUMERIC = '36,38,40,42';
+const SIZES_STANDARD = 'P:true,M:true,G:true,GG:true';
+const SIZES_NUMERIC = '36:true,38:true,40:true,42:true';
 const SIZES_ALL = `${SIZES_STANDARD},${SIZES_NUMERIC}`;
 
 const COLOR_PALETTE = {
@@ -14,6 +14,9 @@ const COLOR_PALETTE = {
   pink: { name: 'Rosa Claro', hex: '#e8c4c4' },
   green: { name: 'Verde Escuro', hex: '#2c4a3e' },
 };
+
+const colorPair = (a: { name: string; hex: string }, b: { name: string; hex: string }) =>
+  `${a.name}:${a.hex},${b.name}:${b.hex}`;
 
 export const ALL_PRODUCTS_MOCK: Product[] = [
   // ==========================================
@@ -41,7 +44,9 @@ export const ALL_PRODUCTS_MOCK: Product[] = [
         },
       ],
       sizes: SIZES_ALL,
-      colors: `${COLOR_PALETTE.black.name},${isEven ? COLOR_PALETTE.beige.name : COLOR_PALETTE.green.name}`,
+      colors: colorPair(COLOR_PALETTE.black, isEven ? COLOR_PALETTE.beige : COLOR_PALETTE.green),
+      composition: ['100% Linho', 'Forro interno em viscose'],
+      careInstructions: ['Lavar a seco', 'Passar com ferro morno'],
       details: ['Tecido encorpado', 'Fechamento por zíper invisível', 'Lavar a seco'],
       tags: ['Vestidos', 'Maison', 'Feminino'],
       rating: 4.5 + (idNum % 5) / 10,
@@ -74,7 +79,9 @@ export const ALL_PRODUCTS_MOCK: Product[] = [
         },
       ],
       sizes: SIZES_ALL,
-      colors: `${COLOR_PALETTE.black.name},${COLOR_PALETTE.camel.name}`,
+      colors: colorPair(COLOR_PALETTE.black, COLOR_PALETTE.camel),
+      composition: ['100% Poliéster', 'Forro 100% viscose'],
+      careInstructions: ['Lavar a seco', 'Não usar secadora'],
       details: ['Corte de alfaiataria', 'Botões forrados', 'Forro 100% viscose'],
       tags: ['Blazers', 'Alfaiataria', 'Workwear'],
       rating: 4.8,
@@ -107,7 +114,9 @@ export const ALL_PRODUCTS_MOCK: Product[] = [
         },
       ],
       sizes: SIZES_ALL,
-      colors: `${COLOR_PALETTE.grey.name},${COLOR_PALETTE.white.name}`,
+      colors: colorPair(COLOR_PALETTE.grey, COLOR_PALETTE.white),
+      composition: ['98% Algodão, 2% Elastano'],
+      careInstructions: ['Lavagem a máquina em ciclo delicado', 'Passar com ferro morno'],
       details: ['Cintura alta', 'Passantes para cinto', 'Bolsos faca laterais'],
       tags: ['Calças', 'Casual', 'Elegante'],
       rating: 4.6,
@@ -140,7 +149,9 @@ export const ALL_PRODUCTS_MOCK: Product[] = [
         },
       ],
       sizes: SIZES_STANDARD,
-      colors: `${COLOR_PALETTE.pink.name},${COLOR_PALETTE.black.name}`,
+      colors: colorPair(COLOR_PALETTE.pink, COLOR_PALETTE.black),
+      composition: ['100% Viscose'],
+      careInstructions: ['Lavar à mão', 'Secar à sombra'],
       details: ['Modelagem fluida', 'Cós estruturado', 'Toque suave'],
       tags: ['Saias', 'Feminino'],
       rating: 4.7,
@@ -172,8 +183,10 @@ export const ALL_PRODUCTS_MOCK: Product[] = [
           alt: `Acessório ${idNum}`,
         },
       ],
-      sizes: 'Único',
-      colors: `${COLOR_PALETTE.brown.name},${COLOR_PALETTE.black.name}`,
+      sizes: 'Único:true',
+      colors: colorPair(COLOR_PALETTE.brown, COLOR_PALETTE.black),
+      composition: ['100% Couro sintético'],
+      careInstructions: ['Limpar com pano úmido'],
       details: ['Acabamento artesanal', 'Detalhes banhados', 'Design exclusivo'],
       tags: ['Acessórios', 'Moda'],
       rating: 4.9,

@@ -19,8 +19,8 @@
           </div>
           <button class="product-wish">♡</button>
           <div class="product-sizes">
-            @for (size of getSizes(item); track size) {
-              <span class="size-tag">{{ size }}</span>
+            @for (size of getSizes(item); track size.label) {
+              <span class="size-tag">{{ size.label }}</span>
             }
           </div>
         </div>
@@ -30,8 +30,8 @@
           <span class="price-current">{{ item.price | currency: 'BRL' : 'symbol' }}</span>
         </div>
         <div class="product-colors">
-          @for (color of item.colors.split(','); track color) {
-            <div class="dot" [style.background]="color"></div>
+          @for (color of getColors(item); track color.hex) {
+            <div class="dot" [style.background]="color.hex" [title]="color.name"></div>
           }
         </div>
       </article>

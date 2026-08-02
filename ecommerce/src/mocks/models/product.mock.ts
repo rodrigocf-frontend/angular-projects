@@ -24,8 +24,10 @@ export const MOCK_PRODUCT: Product = {
       alt: 'Costas da Jaqueta Oversized Denim Vintage',
     },
   ],
-  sizes: 'P,M,G,GG',
-  colors: 'Jeans Azul Vintage,Jeans Preto Desbotado',
+  sizes: 'P:true,M:true,G:true,GG:false',
+  colors: 'Jeans Azul Vintage:#3b5998,Jeans Preto Desbotado:#222222',
+  composition: ['100% Algodão de alta gramatura', 'Forro interno em viscose'],
+  careInstructions: ['Lavar à máquina com água fria', 'Não usar secadora'],
   details: [
     '100% Algodão de alta gramatura',
     'Fechamento frontal por botões metálicos personalizáveis',

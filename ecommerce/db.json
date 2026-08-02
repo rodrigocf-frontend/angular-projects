@@ -18,13 +18,32 @@
           "alt": "Vestido 1"
         }
       ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": [
+        "Tecido encorpado",
+        "Fechamento por zíper invisível",
+        "Lavar a seco"
+      ],
+      "tags": [
+        "Vestidos",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.6,
       "reviewCount": 11,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#111111,#2c4a3e",
-      "sizes": "P,M,G,GG,36,38,40,42"
+      "colors": "Preto:#111111,verdeescuro:#2c4a3e",
+      "sizes": "P:true,M:true,G:true,GG:true,36:true,38:true,40:true,42:true",
+      "composition": [
+        "80% Lã, 20% Poliamida",
+        "95% Viscose, 5% Elastano",
+        "100% Algodão"
+      ],
+      "careInstructions": [
+        "Lavar à mão",
+        "Lavar a seco",
+        "Passar com ferro morno",
+        "Secar à sombra"
+      ]
     },
     {
       "id": "vestido-2",
@@ -44,13 +63,31 @@
           "alt": "Vestido 2"
         }
       ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": [
+        "Tecido encorpado",
+        "Fechamento por zíper invisível",
+        "Lavar a seco"
+      ],
+      "tags": [
+        "Vestidos",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.7,
       "reviewCount": 12,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#111111,#c8a97e",
-      "sizes": "P,M,G,GG,36,38,40,42"
+      "colors": "Preto:#111111,Bege:#c8a97e",
+      "sizes": "P:true,M:true,G:false,GG:true,36:true,38:true,40:true,42:true",
+      "composition": [
+        "Zíper invisível lateral",
+        "Forro interno em viscose",
+        "100% Linho"
+      ],
+      "careInstructions": [
+        "Lavar à mão",
+        "Secar à sombra",
+        "Não usar secadora"
+      ]
     },
     {
       "id": "vestido-3",
@@ -70,13 +107,31 @@
           "alt": "Vestido 3"
         }
       ],
-      "details": ["Tecido fluido", "Decote V", "Lavar à mão"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": [
+        "Tecido fluido",
+        "Decote V",
+        "Lavar à mão"
+      ],
+      "tags": [
+        "Vestidos",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.8,
       "reviewCount": 13,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#1b263b,#8c2f2f",
-      "sizes": "P,M,G,38,40"
+      "colors": "Azul Marinho:#1b263b,Vermelho:#8c2f2f",
+      "sizes": "P:true,M:true,G:true,38:true,40:true",
+      "composition": [
+        "100% Algodão",
+        "Acabamento em ribana"
+      ],
+      "careInstructions": [
+        "Secar à sombra",
+        "Não usar secadora",
+        "Passar com ferro frio",
+        "Não usar alvejante"
+      ]
     },
     {
       "id": "vestido-4",
@@ -96,13 +151,31 @@
           "alt": "Vestido 4"
         }
       ],
-      "details": ["Saia plissada", "Acompanha cinto do mesmo tecido", "Zíper lateral"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": [
+        "Saia plissada",
+        "Acompanha cinto do mesmo tecido",
+        "Zíper lateral"
+      ],
+      "tags": [
+        "Vestidos",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.9,
       "reviewCount": 14,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#e8c4c4,#111111",
-      "sizes": "P,M,G,GG"
+      "colors": "Rosa Pastel:#e8c4c4,Preto:#111111",
+      "sizes": "P:true,M:true,G:true,GG:true",
+      "composition": [
+        "100% Couro sintético",
+        "95% Viscose, 5% Elastano",
+        "100% Algodão"
+      ],
+      "careInstructions": [
+        "Passar com ferro morno",
+        "Não usar alvejante",
+        "Não usar secadora"
+      ]
     },
     {
       "id": "vestido-5",
@@ -122,13 +195,31 @@
           "alt": "Vestido 5"
         }
       ],
-      "details": ["Modelo envelope", "Manga curta", "Tecido viscose"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": [
+        "Modelo envelope",
+        "Manga curta",
+        "Tecido viscose"
+      ],
+      "tags": [
+        "Vestidos",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.5,
       "reviewCount": 15,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#ffffff",
-      "sizes": "P,M,G"
+      "colors": "Branco:#ffffff",
+      "sizes": "P:true,M:true,G:true",
+      "composition": [
+        "Forro interno em viscose",
+        "100% Algodão",
+        "Zíper invisível lateral"
+      ],
+      "careInstructions": [
+        "Passar com ferro frio",
+        "Passar com ferro morno",
+        "Lavagem a máquina em ciclo delicado"
+      ]
     },
     {
       "id": "vestido-6",
@@ -148,13 +239,32 @@
           "alt": "Vestido 6"
         }
       ],
-      "details": ["Tricot modal", "Alta elasticidade", "Não possui forro"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": [
+        "Tricot modal",
+        "Alta elasticidade",
+        "Não possui forro"
+      ],
+      "tags": [
+        "Vestidos",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.6,
       "reviewCount": 16,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#666666,#4a3728",
-      "sizes": "Único"
+      "colors": "Cinza:#666666,Marrom:#4a3728",
+      "sizes": "Único:false",
+      "composition": [
+        "Forro interno em viscose",
+        "100% Seda",
+        "95% Viscose, 5% Elastano"
+      ],
+      "careInstructions": [
+        "Guardar em cabide",
+        "Passar com ferro morno",
+        "Passar com ferro frio",
+        "Lavagem a máquina em ciclo delicado"
+      ]
     },
     {
       "id": "vestido-7",
@@ -174,13 +284,31 @@
           "alt": "Vestido 7"
         }
       ],
-      "details": ["Fenda lateral", "Bojo estruturado", "Tecido lurex"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": [
+        "Fenda lateral",
+        "Bojo estruturado",
+        "Tecido lurex"
+      ],
+      "tags": [
+        "Vestidos",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.7,
       "reviewCount": 17,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#2d4a8a",
-      "sizes": "P,M,G"
+      "colors": "Azul Royal:#2d4a8a",
+      "sizes": "P:true,M:true,G:true",
+      "composition": [
+        "80% Lã, 20% Poliamida",
+        "100% Algodão",
+        "Forro interno em viscose"
+      ],
+      "careInstructions": [
+        "Não usar alvejante",
+        "Não torcer",
+        "Passar com ferro morno"
+      ]
     },
     {
       "id": "vestido-8",
@@ -200,13 +328,30 @@
           "alt": "Vestido 8"
         }
       ],
-      "details": ["100% Algodão", "Botões madreperola", "Bolsos utilitários"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": [
+        "100% Algodão",
+        "Botões madreperola",
+        "Bolsos utilitários"
+      ],
+      "tags": [
+        "Vestidos",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.8,
       "reviewCount": 18,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#a9c6e8",
-      "sizes": "36,38,40"
+      "colors": "Azul Claro:#a9c6e8",
+      "sizes": "36:true,38:true,40:true",
+      "composition": [
+        "70% Poliéster, 30% Viscose",
+        "Acabamento em ribana"
+      ],
+      "careInstructions": [
+        "Não torcer",
+        "Não usar alvejante",
+        "Não usar secadora"
+      ]
     },
     {
       "id": "camisa-9",
@@ -226,13 +371,32 @@
           "alt": "Camisa 9"
         }
       ],
-      "details": ["100% Algodão Egípcio", "Colarinho clássico", "Fácil de passar"],
-      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "details": [
+        "100% Algodão Egípcio",
+        "Colarinho clássico",
+        "Fácil de passar"
+      ],
+      "tags": [
+        "Camisas",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.7,
       "reviewCount": 20,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#ffffff,#a9c6e8",
-      "sizes": "P,M,G,GG"
+      "colors": "Branco:#ffffff,Azul Claro:#a9c6e8",
+      "sizes": "P:true,M:true,G:true,GG:true",
+      "composition": [
+        "95% Viscose, 5% Elastano",
+        "100% Linho",
+        "80% Lã, 20% Poliamida"
+      ],
+      "careInstructions": [
+        "Não usar secadora",
+        "Lavar à mão",
+        "Passar com ferro frio",
+        "Não usar alvejante"
+      ]
     },
     {
       "id": "camisa-10",
@@ -252,13 +416,31 @@
           "alt": "Camisa 10"
         }
       ],
-      "details": ["Mistura linho e algodão", "Modelagem comfort", "Botões de côco"],
-      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "details": [
+        "Mistura linho e algodão",
+        "Modelagem comfort",
+        "Botões de côco"
+      ],
+      "tags": [
+        "Camisas",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.8,
       "reviewCount": 22,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#c8a97e,#6b6d47",
-      "sizes": "M,G,GG,P"
+      "colors": "Bege:#c8a97e,Verde Oliva:#6b6d47",
+      "sizes": "M:true,G:true,GG:true,P:true",
+      "composition": [
+        "70% Poliéster, 30% Viscose",
+        "100% Couro sintético",
+        "Acabamento em ribana"
+      ],
+      "careInstructions": [
+        "Não usar secadora",
+        "Guardar em cabide",
+        "Passar com ferro frio"
+      ]
     },
     {
       "id": "camisa-11",
@@ -278,13 +460,31 @@
           "alt": "Camisa 11"
         }
       ],
-      "details": ["Malha piquet 50% algodão, 50% poliéster", "Gola reforceada", "Abertura lateral"],
-      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "details": [
+        "Malha piquet 50% algodão, 50% poliéster",
+        "Gola reforceada",
+        "Abertura lateral"
+      ],
+      "tags": [
+        "Camisas",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.5,
       "reviewCount": 30,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#111111,#1b263b",
-      "sizes": "P,M,G,GG"
+      "colors": "Preto:#111111,Azul Marinho:#1b263b",
+      "sizes": "P:true,M:true,G:true,GG:true",
+      "composition": [
+        "100% Linho",
+        "Zíper invisível lateral"
+      ],
+      "careInstructions": [
+        "Guardar dobrado",
+        "Lavar à mão",
+        "Passar com ferro morno",
+        "Não torcer"
+      ]
     },
     {
       "id": "camisa-12",
@@ -304,13 +504,30 @@
           "alt": "Camisa 12"
         }
       ],
-      "details": ["100% algodão flanelado", "Bolso único frontal", "Toque extremamente macio"],
-      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "details": [
+        "100% algodão flanelado",
+        "Bolso único frontal",
+        "Toque extremamente macio"
+      ],
+      "tags": [
+        "Camisas",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.9,
       "reviewCount": 11,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#8c2f2f",
-      "sizes": "M,G,GG"
+      "colors": "Vermelho:#8c2f2f",
+      "sizes": "M:true,G:true,GG:true",
+      "composition": [
+        "80% Lã, 20% Poliamida",
+        "95% Viscose, 5% Elastano"
+      ],
+      "careInstructions": [
+        "Não usar alvejante",
+        "Não usar secadora",
+        "Guardar dobrado"
+      ]
     },
     {
       "id": "camisa-13",
@@ -330,13 +547,32 @@
           "alt": "Camisa 13"
         }
       ],
-      "details": ["Jeans leve e lavado", "Botões de pressão", "Modelagem regular"],
-      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "details": [
+        "Jeans leve e lavado",
+        "Botões de pressão",
+        "Modelagem regular"
+      ],
+      "tags": [
+        "Camisas",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.6,
       "reviewCount": 19,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#16324f",
-      "sizes": "P,M,G"
+      "colors": "Azul Escuro:#16324f",
+      "sizes": "P:true,M:true,G:true",
+      "composition": [
+        "Forro interno em viscose",
+        "100% Linho",
+        "100% Algodão"
+      ],
+      "careInstructions": [
+        "Não torcer",
+        "Não usar alvejante",
+        "Lavagem a máquina em ciclo delicado",
+        "Lavar a seco"
+      ]
     },
     {
       "id": "camisa-14",
@@ -356,13 +592,32 @@
           "alt": "Camisa 14"
         }
       ],
-      "details": ["Tecido oxford 100% algodão", "Gola botão", "Punhos ajustáveis"],
-      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "details": [
+        "Tecido oxford 100% algodão",
+        "Gola botão",
+        "Punhos ajustáveis"
+      ],
+      "tags": [
+        "Camisas",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.7,
       "reviewCount": 14,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#e8c4c4,#a9c6e8",
-      "sizes": "P,M,G,GG"
+      "colors": "Rosa Pastel:#e8c4c4,Azul Claro:#a9c6e8",
+      "sizes": "P:true,M:true,G:true,GG:false",
+      "composition": [
+        "80% Lã, 20% Poliamida",
+        "100% Seda",
+        "70% Poliéster, 30% Viscose"
+      ],
+      "careInstructions": [
+        "Passar com ferro morno",
+        "Lavagem a máquina em ciclo delicado",
+        "Lavar a seco",
+        "Guardar em cabide"
+      ]
     },
     {
       "id": "camisa-15",
@@ -382,13 +637,31 @@
           "alt": "Camisa 15"
         }
       ],
-      "details": ["Viscose leve", "Modelagem relaxed", "Estampa digital rotativa"],
-      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "details": [
+        "Viscose leve",
+        "Modelagem relaxed",
+        "Estampa digital rotativa"
+      ],
+      "tags": [
+        "Camisas",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.8,
       "reviewCount": 9,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#2c4a3e",
-      "sizes": "P,M,G"
+      "colors": "verdeescuro:#2c4a3e",
+      "sizes": "P:false,M:true,G:true",
+      "composition": [
+        "Zíper invisível lateral",
+        "Acabamento em ribana"
+      ],
+      "careInstructions": [
+        "Guardar dobrado",
+        "Guardar em cabide",
+        "Não usar secadora",
+        "Passar com ferro frio"
+      ]
     },
     {
       "id": "camisa-16",
@@ -408,13 +681,32 @@
           "alt": "Camisa 16"
         }
       ],
-      "details": ["Malha flamê 100% algodão", "Toque rústico e leve", "Modelagem slim"],
-      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "details": [
+        "Malha flamê 100% algodão",
+        "Toque rústico e leve",
+        "Modelagem slim"
+      ],
+      "tags": [
+        "Camisas",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.5,
       "reviewCount": 12,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#666666",
-      "sizes": "P,M,G,GG"
+      "colors": "Cinza:#666666",
+      "sizes": "P:true,M:true,G:true,GG:true",
+      "composition": [
+        "70% Poliéster, 30% Viscose",
+        "100% Seda",
+        "80% Lã, 20% Poliamida"
+      ],
+      "careInstructions": [
+        "Não usar alvejante",
+        "Secar à sombra",
+        "Lavagem a máquina em ciclo delicado",
+        "Passar com ferro frio"
+      ]
     },
     {
       "id": "short-17",
@@ -434,13 +726,31 @@
           "alt": "Short 17"
         }
       ],
-      "details": ["Linho com viscose", "Bolsos laterais tipo faca", "Fechamento por zíper e botão"],
-      "tags": ["Shorts", "Maison", "Feminino"],
+      "details": [
+        "Linho com viscose",
+        "Bolsos laterais tipo faca",
+        "Fechamento por zíper e botão"
+      ],
+      "tags": [
+        "Shorts",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.7,
       "reviewCount": 16,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#c8a97e,#111111",
-      "sizes": "36,38,40,42"
+      "colors": "Bege:#c8a97e,Preto:#111111",
+      "sizes": "36:true,38:true,40:false,42:true",
+      "composition": [
+        "100% Couro sintético",
+        "100% Algodão",
+        "Botões metálicos personalizados"
+      ],
+      "careInstructions": [
+        "Lavar à mão",
+        "Passar com ferro morno",
+        "Guardar dobrado"
+      ]
     },
     {
       "id": "short-18",
@@ -460,13 +770,31 @@
           "alt": "Short 18"
         }
       ],
-      "details": ["100% Algodão", "Cintura alta", "Efeito destroyed artesanal"],
-      "tags": ["Shorts", "Urban Style", "Feminino"],
+      "details": [
+        "100% Algodão",
+        "Cintura alta",
+        "Efeito destroyed artesanal"
+      ],
+      "tags": [
+        "Shorts",
+        "Urban Style",
+        "Feminino"
+      ],
       "rating": 4.8,
       "reviewCount": 25,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#a9c6e8",
-      "sizes": "36,38,40,42"
+      "colors": "Azul Claro:#a9c6e8",
+      "sizes": "36:false,38:true,40:true,42:true",
+      "composition": [
+        "100% Algodão",
+        "80% Lã, 20% Poliamida"
+      ],
+      "careInstructions": [
+        "Guardar dobrado",
+        "Não usar alvejante",
+        "Lavar a seco",
+        "Lavar à mão"
+      ]
     },
     {
       "id": "short-19",
@@ -486,13 +814,31 @@
           "alt": "Short 19"
         }
       ],
-      "details": ["Algodão e poliéster", "Cós com elástico e cordão regulador", "Bolsos embutidos"],
-      "tags": ["Shorts", "Urban Style", "Unissex"],
+      "details": [
+        "Algodão e poliéster",
+        "Cós com elástico e cordão regulador",
+        "Bolsos embutidos"
+      ],
+      "tags": [
+        "Shorts",
+        "Urban Style",
+        "Unissex"
+      ],
       "rating": 4.6,
       "reviewCount": 31,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#666666,#111111",
-      "sizes": "P,M,G,GG"
+      "colors": "Cinza:#666666,Preto:#111111",
+      "sizes": "P:true,M:true,G:true,GG:true",
+      "composition": [
+        "70% Poliéster, 30% Viscose",
+        "95% Viscose, 5% Elastano"
+      ],
+      "careInstructions": [
+        "Guardar em cabide",
+        "Secar à sombra",
+        "Não usar secadora",
+        "Passar com ferro frio"
+      ]
     },
     {
       "id": "short-20",
@@ -517,12 +863,26 @@
         "Short por baixo, saia na frente",
         "Zíper invisível traseiro"
       ],
-      "tags": ["Shorts", "Maison", "Feminino"],
+      "tags": [
+        "Shorts",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.7,
       "reviewCount": 13,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#ffffff,#111111",
-      "sizes": "36,38,40"
+      "colors": "Branco:#ffffff,Preto:#111111",
+      "sizes": "36:true,38:true,40:true",
+      "composition": [
+        "Botões metálicos personalizados",
+        "80% Lã, 20% Poliamida",
+        "100% Algodão"
+      ],
+      "careInstructions": [
+        "Guardar em cabide",
+        "Passar com ferro frio",
+        "Guardar dobrado"
+      ]
     },
     {
       "id": "short-21",
@@ -542,13 +902,31 @@
           "alt": "Short 21"
         }
       ],
-      "details": ["100% algodão sarja", "Bolsos cargo com lapela", "Modelagem reta"],
-      "tags": ["Shorts", "Urban Style", "Masculino"],
+      "details": [
+        "100% algodão sarja",
+        "Bolsos cargo com lapela",
+        "Modelagem reta"
+      ],
+      "tags": [
+        "Shorts",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.5,
       "reviewCount": 10,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#6b6d47",
-      "sizes": "38,40,42,44"
+      "colors": "Verde Oliva:#6b6d47",
+      "sizes": "38:false,40:true,42:true,44:true",
+      "composition": [
+        "100% Algodão",
+        "Forro interno em viscose"
+      ],
+      "careInstructions": [
+        "Lavar a seco",
+        "Lavagem a máquina em ciclo delicado",
+        "Passar com ferro frio",
+        "Guardar em cabide"
+      ]
     },
     {
       "id": "short-22",
@@ -568,13 +946,32 @@
           "alt": "Short 22"
         }
       ],
-      "details": ["Crepe alfaiataria", "Passantes para cinto", "Bolsos traseiros falsos"],
-      "tags": ["Shorts", "Maison", "Feminino"],
+      "details": [
+        "Crepe alfaiataria",
+        "Passantes para cinto",
+        "Bolsos traseiros falsos"
+      ],
+      "tags": [
+        "Shorts",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.6,
       "reviewCount": 12,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#1b263b",
-      "sizes": "36,38,40"
+      "colors": "Azul Marinho:#1b263b",
+      "sizes": "36:true,38:true,40:true",
+      "composition": [
+        "95% Viscose, 5% Elastano",
+        "100% Algodão",
+        "Botões metálicos personalizados"
+      ],
+      "careInstructions": [
+        "Não usar secadora",
+        "Não torcer",
+        "Guardar em cabide",
+        "Não usar alvejante"
+      ]
     },
     {
       "id": "short-23",
@@ -594,13 +991,32 @@
           "alt": "Short 23"
         }
       ],
-      "details": ["100% poliéster dry-fit", "Bolso interno para chave", "Cós elástico"],
-      "tags": ["Shorts", "Urban Style", "Unissex"],
+      "details": [
+        "100% poliéster dry-fit",
+        "Bolso interno para chave",
+        "Cós elástico"
+      ],
+      "tags": [
+        "Shorts",
+        "Urban Style",
+        "Unissex"
+      ],
       "rating": 4.9,
       "reviewCount": 40,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#111111,#2d4a8a",
-      "sizes": "P,M,G,GG"
+      "colors": "Preto:#111111,Azul Royal:#2d4a8a",
+      "sizes": "P:true,M:true,G:true,GG:true",
+      "composition": [
+        "Forro interno em viscose",
+        "70% Poliéster, 30% Viscose",
+        "Acabamento em ribana"
+      ],
+      "careInstructions": [
+        "Não usar alvejante",
+        "Não usar secadora",
+        "Guardar dobrado",
+        "Lavagem a máquina em ciclo delicado"
+      ]
     },
     {
       "id": "short-24",
@@ -620,13 +1036,30 @@
           "alt": "Short 24"
         }
       ],
-      "details": ["100% Linho", "Cós alto com elástico embutido", "Leve e fresco"],
-      "tags": ["Shorts", "Maison", "Feminino"],
+      "details": [
+        "100% Linho",
+        "Cós alto com elástico embutido",
+        "Leve e fresco"
+      ],
+      "tags": [
+        "Shorts",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.7,
       "reviewCount": 15,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#c8a97e,#ffffff",
-      "sizes": "36,38,40"
+      "colors": "Bege:#c8a97e,Branco:#ffffff",
+      "sizes": "36:true,38:true,40:true",
+      "composition": [
+        "80% Lã, 20% Poliamida",
+        "Zíper invisível lateral"
+      ],
+      "careInstructions": [
+        "Secar à sombra",
+        "Não torcer",
+        "Guardar dobrado"
+      ]
     },
     {
       "id": "calca-25",
@@ -651,12 +1084,25 @@
         "Fechamento por colchete e zíper",
         "Passantes para cinto"
       ],
-      "tags": ["Calças", "Maison", "Feminino"],
+      "tags": [
+        "Calças",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.8,
       "reviewCount": 24,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#111111,#666666",
-      "sizes": "36,38,40,42"
+      "colors": "Preto:#111111,Cinza:#666666",
+      "sizes": "36:true,38:false,40:true,42:true",
+      "composition": [
+        "95% Viscose, 5% Elastano",
+        "70% Poliéster, 30% Viscose"
+      ],
+      "careInstructions": [
+        "Lavar a seco",
+        "Lavagem a máquina em ciclo delicado",
+        "Guardar em cabide"
+      ]
     },
     {
       "id": "calca-26",
@@ -676,13 +1122,30 @@
           "alt": "Calça 26"
         }
       ],
-      "details": ["Algodão com elastano", "Modelagem justa", "Cintura média"],
-      "tags": ["Calças", "Urban Style", "Feminino"],
+      "details": [
+        "Algodão com elastano",
+        "Modelagem justa",
+        "Cintura média"
+      ],
+      "tags": [
+        "Calças",
+        "Urban Style",
+        "Feminino"
+      ],
       "rating": 4.6,
       "reviewCount": 35,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#16324f,#111111",
-      "sizes": "36,38,40,42"
+      "colors": "Azul Escuro:#16324f,Preto:#111111",
+      "sizes": "36:true,38:true,40:true,42:true",
+      "composition": [
+        "100% Couro sintético",
+        "80% Lã, 20% Poliamida"
+      ],
+      "careInstructions": [
+        "Secar à sombra",
+        "Não torcer",
+        "Lavar a seco"
+      ]
     },
     {
       "id": "calca-27",
@@ -702,13 +1165,31 @@
           "alt": "Calça 27"
         }
       ],
-      "details": ["Tecido cetim fluido", "Cós alto com elástico traseiro", "Forro interno"],
-      "tags": ["Calças", "Maison", "Feminino"],
+      "details": [
+        "Tecido cetim fluido",
+        "Cós alto com elástico traseiro",
+        "Forro interno"
+      ],
+      "tags": [
+        "Calças",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.9,
       "reviewCount": 18,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#ffffff,#c8a97e",
-      "sizes": "36,38,40"
+      "colors": "Branco:#ffffff,Bege:#c8a97e",
+      "sizes": "36:true,38:true,40:true",
+      "composition": [
+        "100% Seda",
+        "70% Poliéster, 30% Viscose",
+        "100% Algodão"
+      ],
+      "careInstructions": [
+        "Secar à sombra",
+        "Lavagem a máquina em ciclo delicado",
+        "Não usar alvejante"
+      ]
     },
     {
       "id": "calca-28",
@@ -728,13 +1209,32 @@
           "alt": "Calça 28"
         }
       ],
-      "details": ["Moletom 3 cabos flanelado", "Cós com cordão de ajuste", "Bolsos laterais"],
-      "tags": ["Calças", "Urban Style", "Unissex"],
+      "details": [
+        "Moletom 3 cabos flanelado",
+        "Cós com cordão de ajuste",
+        "Bolsos laterais"
+      ],
+      "tags": [
+        "Calças",
+        "Urban Style",
+        "Unissex"
+      ],
       "rating": 4.7,
       "reviewCount": 29,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#666666,#111111",
-      "sizes": "P,M,G,GG"
+      "colors": "Cinza:#666666,Preto:#111111",
+      "sizes": "P:true,M:true,G:true,GG:false",
+      "composition": [
+        "100% Algodão",
+        "100% Seda",
+        "Forro interno em viscose"
+      ],
+      "careInstructions": [
+        "Passar com ferro frio",
+        "Passar com ferro morno",
+        "Não torcer",
+        "Lavagem a máquina em ciclo delicado"
+      ]
     },
     {
       "id": "calca-29",
@@ -754,13 +1254,31 @@
           "alt": "Calça 29"
         }
       ],
-      "details": ["Sarja com elastano", "Bolsos embutidos traseiros", "Modelagem slim fit"],
-      "tags": ["Calças", "Urban Style", "Masculino"],
+      "details": [
+        "Sarja com elastano",
+        "Bolsos embutidos traseiros",
+        "Modelagem slim fit"
+      ],
+      "tags": [
+        "Calças",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.8,
       "reviewCount": 21,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#c8a97e,#1b263b",
-      "sizes": "38,40,42,44"
+      "colors": "Bege:#c8a97e,Azul Marinho:#1b263b",
+      "sizes": "38:true,40:true,42:false,44:true",
+      "composition": [
+        "70% Poliéster, 30% Viscose",
+        "Forro interno em viscose"
+      ],
+      "careInstructions": [
+        "Lavar à mão",
+        "Não usar alvejante",
+        "Não usar secadora",
+        "Lavar a seco"
+      ]
     },
     {
       "id": "calca-30",
@@ -780,13 +1298,32 @@
           "alt": "Calça 30"
         }
       ],
-      "details": ["Sarja pesada 100% algodão", "Múltiplos bolsos funcionais", "Regulagem na barra"],
-      "tags": ["Calças", "Urban Style", "Unissex"],
+      "details": [
+        "Sarja pesada 100% algodão",
+        "Múltiplos bolsos funcionais",
+        "Regulagem na barra"
+      ],
+      "tags": [
+        "Calças",
+        "Urban Style",
+        "Unissex"
+      ],
       "rating": 4.7,
       "reviewCount": 15,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#6b6d47,#111111",
-      "sizes": "38,40,42,44"
+      "colors": "Verde Oliva:#6b6d47,Preto:#111111",
+      "sizes": "38:true,40:true,42:true,44:true",
+      "composition": [
+        "Acabamento em ribana",
+        "100% Algodão",
+        "Forro interno em viscose"
+      ],
+      "careInstructions": [
+        "Lavar à mão",
+        "Não usar alvejante",
+        "Lavagem a máquina em ciclo delicado",
+        "Guardar em cabide"
+      ]
     },
     {
       "id": "calca-31",
@@ -806,13 +1343,31 @@
           "alt": "Calça 31"
         }
       ],
-      "details": ["Jeans tradicional sem elastano", "Costuras reforçadas", "Cinco bolsos"],
-      "tags": ["Calças", "Urban Style", "Masculino"],
+      "details": [
+        "Jeans tradicional sem elastano",
+        "Costuras reforçadas",
+        "Cinco bolsos"
+      ],
+      "tags": [
+        "Calças",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.5,
       "reviewCount": 27,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#3b6ea5",
-      "sizes": "38,40,42,44"
+      "colors": "Azul Médio:#3b6ea5",
+      "sizes": "38:true,40:true,42:false,44:true",
+      "composition": [
+        "Acabamento em ribana",
+        "Forro interno em viscose",
+        "100% Linho"
+      ],
+      "careInstructions": [
+        "Guardar dobrado",
+        "Não torcer",
+        "Guardar em cabide"
+      ]
     },
     {
       "id": "calca-32",
@@ -832,13 +1387,30 @@
           "alt": "Calça 32"
         }
       ],
-      "details": ["Poliamida com elastano", "Zero transparência", "Cós alto anatômico"],
-      "tags": ["Calças", "Urban Style", "Feminino"],
+      "details": [
+        "Poliamida com elastano",
+        "Zero transparência",
+        "Cós alto anatômico"
+      ],
+      "tags": [
+        "Calças",
+        "Urban Style",
+        "Feminino"
+      ],
       "rating": 4.9,
       "reviewCount": 55,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#111111,#1b263b",
-      "sizes": "P,M,G,GG"
+      "colors": "Preto:#111111,Azul Marinho:#1b263b",
+      "sizes": "P:true,M:true,G:true,GG:false",
+      "composition": [
+        "80% Lã, 20% Poliamida",
+        "Forro interno em viscose"
+      ],
+      "careInstructions": [
+        "Não usar secadora",
+        "Lavar à mão",
+        "Guardar dobrado"
+      ]
     },
     {
       "id": "vestido-33",
@@ -858,13 +1430,30 @@
           "alt": "Vestido 33"
         }
       ],
-      "details": ["Tecido georgette", "Forro completo", "Zíper invisível"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": [
+        "Tecido georgette",
+        "Forro completo",
+        "Zíper invisível"
+      ],
+      "tags": [
+        "Vestidos",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.8,
       "reviewCount": 10,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#e8c4c4,#c8a97e",
-      "sizes": "P,M,G"
+      "colors": "Rosa Pastel:#e8c4c4,Bege:#c8a97e",
+      "sizes": "P:true,M:true,G:true",
+      "composition": [
+        "100% Couro sintético",
+        "95% Viscose, 5% Elastano"
+      ],
+      "careInstructions": [
+        "Passar com ferro frio",
+        "Não torcer",
+        "Secar à sombra"
+      ]
     },
     {
       "id": "vestido-34",
@@ -884,13 +1473,31 @@
           "alt": "Vestido 34"
         }
       ],
-      "details": ["Crepe alfaiataria com elastano", "Fenda traseira discreta", "Decote quadrado"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": [
+        "Crepe alfaiataria com elastano",
+        "Fenda traseira discreta",
+        "Decote quadrado"
+      ],
+      "tags": [
+        "Vestidos",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.7,
       "reviewCount": 16,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#111111,#8c2f2f",
-      "sizes": "P,M,G"
+      "colors": "Preto:#111111,Vermelho:#8c2f2f",
+      "sizes": "P:false,M:true,G:true",
+      "composition": [
+        "70% Poliéster, 30% Viscose",
+        "Forro interno em viscose",
+        "95% Viscose, 5% Elastano"
+      ],
+      "careInstructions": [
+        "Passar com ferro morno",
+        "Guardar em cabide",
+        "Lavar à mão"
+      ]
     },
     {
       "id": "camisa-35",
@@ -910,13 +1517,31 @@
           "alt": "Camisa 35"
         }
       ],
-      "details": ["100% Linho", "Modelagem ampla", "Ombro deslocado"],
-      "tags": ["Camisas", "Urban Style", "Unissex"],
+      "details": [
+        "100% Linho",
+        "Modelagem ampla",
+        "Ombro deslocado"
+      ],
+      "tags": [
+        "Camisas",
+        "Urban Style",
+        "Unissex"
+      ],
       "rating": 4.6,
       "reviewCount": 14,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#ffffff,#c8a97e",
-      "sizes": "P,M,G"
+      "colors": "Branco:#ffffff,Bege:#c8a97e",
+      "sizes": "P:true,M:true,G:false",
+      "composition": [
+        "Botões metálicos personalizados",
+        "100% Linho",
+        "Forro interno em cetim"
+      ],
+      "careInstructions": [
+        "Não usar alvejante",
+        "Passar com ferro morno",
+        "Lavagem a máquina em ciclo delicado"
+      ]
     },
     {
       "id": "camisa-36",
@@ -936,13 +1561,31 @@
           "alt": "Camisa 36"
         }
       ],
-      "details": ["100% Poliéster microfibra", "Secagem rápida", "Não necessita passar"],
-      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "details": [
+        "100% Poliéster microfibra",
+        "Secagem rápida",
+        "Não necessita passar"
+      ],
+      "tags": [
+        "Camisas",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.4,
       "reviewCount": 19,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#a9c6e8",
-      "sizes": "P,M,G,GG"
+      "colors": "Azul Claro:#a9c6e8",
+      "sizes": "P:true,M:true,G:true,GG:true",
+      "composition": [
+        "100% Algodão",
+        "Zíper invisível lateral",
+        "100% Linho"
+      ],
+      "careInstructions": [
+        "Lavar à mão",
+        "Passar com ferro morno",
+        "Passar com ferro frio"
+      ]
     },
     {
       "id": "short-37",
@@ -962,13 +1605,31 @@
           "alt": "Short 37"
         }
       ],
-      "details": ["Crepe alfaiataria leve", "Acompanha faixa", "Bolsos faca"],
-      "tags": ["Shorts", "Maison", "Feminino"],
+      "details": [
+        "Crepe alfaiataria leve",
+        "Acompanha faixa",
+        "Bolsos faca"
+      ],
+      "tags": [
+        "Shorts",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.7,
       "reviewCount": 11,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#2c4a3e,#4a3728",
-      "sizes": "36,38,40"
+      "colors": "verdeescuro:#2c4a3e,Marrom:#4a3728",
+      "sizes": "36:true,38:true,40:true",
+      "composition": [
+        "Acabamento em ribana",
+        "Botões metálicos personalizados",
+        "80% Lã, 20% Poliamida"
+      ],
+      "careInstructions": [
+        "Lavar a seco",
+        "Não usar alvejante",
+        "Lavar à mão"
+      ]
     },
     {
       "id": "short-38",
@@ -988,13 +1649,31 @@
           "alt": "Short 38"
         }
       ],
-      "details": ["100% algodão", "Cintura intermediária", "Barra desfiada"],
-      "tags": ["Shorts", "Urban Style", "Feminino"],
+      "details": [
+        "100% algodão",
+        "Cintura intermediária",
+        "Barra desfiada"
+      ],
+      "tags": [
+        "Shorts",
+        "Urban Style",
+        "Feminino"
+      ],
       "rating": 4.8,
       "reviewCount": 20,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#3b6ea5",
-      "sizes": "36,38,40,42"
+      "colors": "Azul Médio:#3b6ea5",
+      "sizes": "36:true,38:true,40:true,42:true",
+      "composition": [
+        "Forro interno em viscose",
+        "100% Couro sintético"
+      ],
+      "careInstructions": [
+        "Não usar alvejante",
+        "Lavar a seco",
+        "Guardar dobrado",
+        "Secar à sombra"
+      ]
     },
     {
       "id": "calca-39",
@@ -1014,13 +1693,32 @@
           "alt": "Calça 39"
         }
       ],
-      "details": ["Alfaiataria com elastano", "Fechamento frontal oculto", "Vinco marcado"],
-      "tags": ["Calças", "Maison", "Feminino"],
+      "details": [
+        "Alfaiataria com elastano",
+        "Fechamento frontal oculto",
+        "Vinco marcado"
+      ],
+      "tags": [
+        "Calças",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.9,
       "reviewCount": 23,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#1b263b,#111111",
-      "sizes": "36,38,40,42"
+      "colors": "Azul Marinho:#1b263b,Preto:#111111",
+      "sizes": "36:true,38:true,40:true,42:true",
+      "composition": [
+        "Zíper invisível lateral",
+        "70% Poliéster, 30% Viscose",
+        "100% Algodão"
+      ],
+      "careInstructions": [
+        "Lavar à mão",
+        "Guardar em cabide",
+        "Não torcer",
+        "Secar à sombra"
+      ]
     },
     {
       "id": "calca-40",
@@ -1040,13 +1738,31 @@
           "alt": "Calça 40"
         }
       ],
-      "details": ["Jeans 100% algodão", "Modelagem wide leg", "Cintura alta"],
-      "tags": ["Calças", "Urban Style", "Feminino"],
+      "details": [
+        "Jeans 100% algodão",
+        "Modelagem wide leg",
+        "Cintura alta"
+      ],
+      "tags": [
+        "Calças",
+        "Urban Style",
+        "Feminino"
+      ],
       "rating": 4.8,
       "reviewCount": 38,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#a9c6e8",
-      "sizes": "36,38,40,42"
+      "colors": "Azul Claro:#a9c6e8",
+      "sizes": "36:false,38:true,40:true,42:true",
+      "composition": [
+        "95% Viscose, 5% Elastano",
+        "Acabamento em ribana",
+        "Forro interno em viscose"
+      ],
+      "careInstructions": [
+        "Passar com ferro frio",
+        "Não usar secadora",
+        "Passar com ferro morno"
+      ]
     },
     {
       "id": "vestido-41",
@@ -1066,13 +1782,31 @@
           "alt": "Vestido 41"
         }
       ],
-      "details": ["Viscose encorpada", "Modelagem envelope", "Manga curta bufante"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": [
+        "Viscose encorpada",
+        "Modelagem envelope",
+        "Manga curta bufante"
+      ],
+      "tags": [
+        "Vestidos",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.6,
       "reviewCount": 17,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#2c4a3e,#1b263b",
-      "sizes": "P,M,G"
+      "colors": "verdeescuro:#2c4a3e,Azul Marinho:#1b263b",
+      "sizes": "P:false,M:true,G:true",
+      "composition": [
+        "100% Linho",
+        "100% Seda"
+      ],
+      "careInstructions": [
+        "Não usar secadora",
+        "Lavar à mão",
+        "Passar com ferro frio",
+        "Não torcer"
+      ]
     },
     {
       "id": "vestido-42",
@@ -1092,13 +1826,32 @@
           "alt": "Vestido 42"
         }
       ],
-      "details": ["Tecido modal leve", "Detalhes em renda", "Elástico na cintura"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": [
+        "Tecido modal leve",
+        "Detalhes em renda",
+        "Elástico na cintura"
+      ],
+      "tags": [
+        "Vestidos",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.7,
       "reviewCount": 12,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#4a3728",
-      "sizes": "P,M,G"
+      "colors": "Marrom:#4a3728",
+      "sizes": "P:true,M:true,G:true",
+      "composition": [
+        "100% Seda",
+        "Botões metálicos personalizados",
+        "70% Poliéster, 30% Viscose"
+      ],
+      "careInstructions": [
+        "Passar com ferro morno",
+        "Lavar a seco",
+        "Guardar em cabide",
+        "Lavagem a máquina em ciclo delicado"
+      ]
     },
     {
       "id": "camisa-43",
@@ -1118,13 +1871,31 @@
           "alt": "Camisa 43"
         }
       ],
-      "details": ["100% Algodão Pima", "Toque extremamente macio", "Alta durabilidade"],
-      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "details": [
+        "100% Algodão Pima",
+        "Toque extremamente macio",
+        "Alta durabilidade"
+      ],
+      "tags": [
+        "Camisas",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.9,
       "reviewCount": 28,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#ffffff,#1b263b",
-      "sizes": "P,M,G,GG"
+      "colors": "Branco:#ffffff,Azul Marinho:#1b263b",
+      "sizes": "P:true,M:true,G:true,GG:true",
+      "composition": [
+        "100% Algodão",
+        "100% Linho"
+      ],
+      "careInstructions": [
+        "Lavar à mão",
+        "Passar com ferro morno",
+        "Guardar dobrado",
+        "Passar com ferro frio"
+      ]
     },
     {
       "id": "camisa-44",
@@ -1144,13 +1915,32 @@
           "alt": "Camisa 44"
         }
       ],
-      "details": ["Jeans com elastano", "Botões de pressão perolados", "Modelagem slim"],
-      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "details": [
+        "Jeans com elastano",
+        "Botões de pressão perolados",
+        "Modelagem slim"
+      ],
+      "tags": [
+        "Camisas",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.7,
       "reviewCount": 16,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#16324f",
-      "sizes": "P,M,G,GG"
+      "colors": "Azul Escuro:#16324f",
+      "sizes": "P:true,M:true,G:true,GG:true",
+      "composition": [
+        "95% Viscose, 5% Elastano",
+        "100% Seda",
+        "Zíper invisível lateral"
+      ],
+      "careInstructions": [
+        "Passar com ferro frio",
+        "Lavagem a máquina em ciclo delicado",
+        "Lavar a seco",
+        "Não usar secadora"
+      ]
     },
     {
       "id": "short-45",
@@ -1170,13 +1960,32 @@
           "alt": "Short 45"
         }
       ],
-      "details": ["Sarja 100% algodão", "Confortável para o dia a dia", "Bolsos embutidos"],
-      "tags": ["Shorts", "Urban Style", "Masculino"],
+      "details": [
+        "Sarja 100% algodão",
+        "Confortável para o dia a dia",
+        "Bolsos embutidos"
+      ],
+      "tags": [
+        "Shorts",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.5,
       "reviewCount": 13,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#666666,#c8a97e",
-      "sizes": "P,M,G,GG"
+      "colors": "Cinza:#666666,Bege:#c8a97e",
+      "sizes": "P:true,M:true,G:true,GG:true",
+      "composition": [
+        "95% Viscose, 5% Elastano",
+        "100% Algodão",
+        "100% Linho"
+      ],
+      "careInstructions": [
+        "Não usar alvejante",
+        "Lavagem a máquina em ciclo delicado",
+        "Não torcer",
+        "Lavar a seco"
+      ]
     },
     {
       "id": "short-46",
@@ -1196,13 +2005,31 @@
           "alt": "Short 46"
         }
       ],
-      "details": ["Linho com viscose", "Cintura alta", "Zíper invisível lateral"],
-      "tags": ["Shorts", "Maison", "Feminino"],
+      "details": [
+        "Linho com viscose",
+        "Cintura alta",
+        "Zíper invisível lateral"
+      ],
+      "tags": [
+        "Shorts",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.8,
       "reviewCount": 14,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#ffffff",
-      "sizes": "38,40,42"
+      "colors": "Branco:#ffffff",
+      "sizes": "38:true,40:true,42:true",
+      "composition": [
+        "70% Poliéster, 30% Viscose",
+        "Forro interno em cetim",
+        "Zíper invisível lateral"
+      ],
+      "careInstructions": [
+        "Lavar à mão",
+        "Lavagem a máquina em ciclo delicado",
+        "Não usar secadora"
+      ]
     },
     {
       "id": "calca-47",
@@ -1222,13 +2049,32 @@
           "alt": "Calça 47"
         }
       ],
-      "details": ["Crepe alfaiataria", "Comprimento na altura do tornozelo", "Modelagem reta"],
-      "tags": ["Calças", "Maison", "Feminino"],
+      "details": [
+        "Crepe alfaiataria",
+        "Comprimento na altura do tornozelo",
+        "Modelagem reta"
+      ],
+      "tags": [
+        "Calças",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.7,
       "reviewCount": 21,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#c8a97e,#111111",
-      "sizes": "36,38,40"
+      "colors": "Bege:#c8a97e,Preto:#111111",
+      "sizes": "36:true,38:true,40:true",
+      "composition": [
+        "100% Algodão",
+        "Botões metálicos personalizados",
+        "Acabamento em ribana"
+      ],
+      "careInstructions": [
+        "Passar com ferro frio",
+        "Lavar a seco",
+        "Não usar alvejante",
+        "Passar com ferro morno"
+      ]
     },
     {
       "id": "calca-48",
@@ -1248,13 +2094,31 @@
           "alt": "Calça 48"
         }
       ],
-      "details": ["Sarja com elastano", "Punhos em elástico", "Bolsos cargo laterais"],
-      "tags": ["Calças", "Urban Style", "Masculino"],
+      "details": [
+        "Sarja com elastano",
+        "Punhos em elástico",
+        "Bolsos cargo laterais"
+      ],
+      "tags": [
+        "Calças",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.8,
       "reviewCount": 25,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#6b6d47,#111111",
-      "sizes": "38,40,42,44"
+      "colors": "Verde Oliva:#6b6d47,Preto:#111111",
+      "sizes": "38:true,40:true,42:true,44:true",
+      "composition": [
+        "100% Couro sintético",
+        "Zíper invisível lateral"
+      ],
+      "careInstructions": [
+        "Passar com ferro morno",
+        "Lavar a seco",
+        "Lavagem a máquina em ciclo delicado",
+        "Não usar secadora"
+      ]
     },
     {
       "id": "vestido-49",
@@ -1274,13 +2138,31 @@
           "alt": "Vestido 49"
         }
       ],
-      "details": ["Crepe de alta qualidade", "Fechamento por zíper invisível", "Modelagem evasê"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": [
+        "Crepe de alta qualidade",
+        "Fechamento por zíper invisível",
+        "Modelagem evasê"
+      ],
+      "tags": [
+        "Vestidos",
+        "Maison",
+        "Feminino"
+      ],
       "rating": 4.7,
       "reviewCount": 19,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#2d4a8a,#111111",
-      "sizes": "P,M,G"
+      "colors": "Azul Royal:#2d4a8a,Preto:#111111",
+      "sizes": "P:true,M:true,G:true",
+      "composition": [
+        "95% Viscose, 5% Elastano",
+        "70% Poliéster, 30% Viscose"
+      ],
+      "careInstructions": [
+        "Secar à sombra",
+        "Passar com ferro frio",
+        "Não usar secadora",
+        "Guardar dobrado"
+      ]
     },
     {
       "id": "camisa-50",
@@ -1300,13 +2182,31 @@
           "alt": "Camisa 50"
         }
       ],
-      "details": ["100% Viscose", "Estampa geométrica exclusiva", "Modelagem confortável"],
-      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "details": [
+        "100% Viscose",
+        "Estampa geométrica exclusiva",
+        "Modelagem confortável"
+      ],
+      "tags": [
+        "Camisas",
+        "Urban Style",
+        "Masculino"
+      ],
       "rating": 4.6,
       "reviewCount": 15,
       "createdAt": "2026-07-01T10:00:00.000Z",
-      "colors": "#1b263b",
-      "sizes": "P,M,G,GG"
+      "colors": "Azul Marinho:#1b263b",
+      "sizes": "P:true,M:true,G:true,GG:true",
+      "composition": [
+        "100% Couro sintético",
+        "95% Viscose, 5% Elastano"
+      ],
+      "careInstructions": [
+        "Guardar em cabide",
+        "Não usar alvejante",
+        "Lavar a seco",
+        "Secar à sombra"
+      ]
     }
   ],
   "filters": {

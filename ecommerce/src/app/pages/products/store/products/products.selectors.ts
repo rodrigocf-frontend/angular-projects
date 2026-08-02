@@ -71,11 +71,13 @@ export const selectProductsFiltereds = createSelector(
 
       const matchesColor =
         selectedColorHexes.length === 0 ||
-        product.colors.split(',').some((hex) => selectedColorHexes.includes(hex));
+        product.colors
+          .split(',')
+          .some((entry) => selectedColorHexes.includes(entry.split(':')[1]));
 
       const matchesSize =
         selectedSizeNames.length === 0 ||
-        product.sizes.split(',').some((size) => selectedSizeNames.includes(size));
+        product.sizes.split(',').some((entry) => selectedSizeNames.includes(entry.split(':')[0]));
 
       const matchesFromPrice =
         fromPrice.length === 0 ||
