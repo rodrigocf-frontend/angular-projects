@@ -7,7 +7,7 @@ import { productsReducer } from './pages/products/store/products/products.reduce
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./pages/home/home'),
+    loadComponent: () => import('./pages/home/home.component'),
   },
   {
     path: 'product',
@@ -26,7 +26,7 @@ export const routes: Routes = [
       {
         path: 'all',
         providers: [provideEffects(ProductsPageEffects)],
-        loadComponent: () => import('./pages/products/products'),
+        loadComponent: () => import('./pages/products/products.component'),
       },
       {
         path: 'details/:id',

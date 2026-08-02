@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-breadcrumb',
   imports: [],
-  templateUrl: './breadcrumb.html',
-  styleUrl: './breadcrumb.scss',
+  templateUrl: './breadcrumb.component.html',
+  styleUrl: './breadcrumb.component.scss',
 })
-export class Breadcrumb {
+export class BreadcrumbComponent {
   route = inject(Router);
   data = input.required<string[]>();
 }

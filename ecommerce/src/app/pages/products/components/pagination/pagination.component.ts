@@ -7,11 +7,11 @@ import { scrollBehaviorTo } from '../../../../shared/utils/scroller';
 
 @Component({
   selector: 'app-pagination',
-  templateUrl: './pagination.html',
-  styleUrl: './pagination.scss',
+  templateUrl: './pagination.component.html',
+  styleUrl: './pagination.component.scss',
   imports: [ScrollingModule],
 })
-export class Pagination {
+export class PaginationComponent {
   pagination = input.required<FiltersPagination>();
   private readonly store = inject(Store);
   readonly firstFiveButtons = signal<number[]>([]);

@@ -7,10 +7,10 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-products-list',
   imports: [CurrencyPipe, EmptyListComponent, RouterLink],
-  templateUrl: './products-list.html',
-  styleUrl: './products-list.scss',
+  templateUrl: './products-list.component.html',
+  styleUrl: './products-list.component.scss',
 })
-export class ProductsList {
+export class ProductsListComponent {
   data = input.required<Product[]>();
 
   getSizes(product: Product): { label: string; available: boolean }[] {

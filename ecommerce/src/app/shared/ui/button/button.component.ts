@@ -3,14 +3,14 @@ import { Attribute, Component, signal } from '@angular/core';
 @Component({
   selector: 'button[primary], button[ghost]',
   imports: [],
-  templateUrl: './button.html',
-  styleUrl: './button.scss',
+  templateUrl: './button.component.html',
+  styleUrl: './button.component.scss',
   host: {
     '[class.btn-primary]': 'isPrimary()',
     '[class.btn-ghost]': 'isGhost()',
   },
 })
-export class Button {
+export class ButtonComponent {
   isPrimary = signal<boolean>(false);
   isGhost = signal<boolean>(false);
 

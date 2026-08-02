@@ -22,10 +22,10 @@ import { cleanDigits } from '../../../../shared/utils/currency';
 @Component({
   selector: 'app-sidebar',
   imports: [AsyncPipe, ReactiveFormsModule, CurrencyMaskDirective],
-  templateUrl: './sidebar.html',
-  styleUrl: './sidebar.scss',
+  templateUrl: './sidebar.component.html',
+  styleUrl: './sidebar.component.scss',
 })
-export class Sidebar implements OnInit {
+export class SidebarComponent implements OnInit {
   private store = inject(Store);
 
   readonly categories$: Observable<{

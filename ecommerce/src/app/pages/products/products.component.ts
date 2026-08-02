@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Breadcrumb } from '../../shared/components/breadcrumb/breadcrumb';
-import { Sidebar } from './components/sidebar/sidebar';
-import { ProductsList } from './components/products-list/products-list';
-import { Pagination } from './components/pagination/pagination';
+import { BreadcrumbComponent } from '../../shared/components/breadcrumb/breadcrumb.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ProductsListComponent } from './components/products-list/products-list.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 import {
   isCategoryFilter,
   isColorFilter,
@@ -26,11 +26,18 @@ import {
 
 @Component({
   selector: 'app-products',
-  imports: [Breadcrumb, Sidebar, AsyncPipe, LoadingListComponent, ProductsList, Pagination],
-  templateUrl: './products.html',
-  styleUrl: './products.scss',
+  imports: [
+    BreadcrumbComponent,
+    SidebarComponent,
+    AsyncPipe,
+    LoadingListComponent,
+    ProductsListComponent,
+    PaginationComponent,
+  ],
+  templateUrl: './products.component.html',
+  styleUrl: './products.component.scss',
 })
-export default class Products implements OnInit {
+export default class ProductsComponent implements OnInit {
   private store = inject(Store);
 
   isLoading$ = this.store.select(selectIsLoading);
