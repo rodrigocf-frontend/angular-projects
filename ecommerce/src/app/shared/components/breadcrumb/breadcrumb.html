@@ -1,0 +1,7 @@
+<div class="breadcrumb">
+  <a href="#">Home</a>
+  @for (path of data(); track $index) {
+    <span class="breadcrumb-sep">—</span>
+    <span class="breadcrumb-current">{{ path }}</span>
+  }
+</div>

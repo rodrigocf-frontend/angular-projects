@@ -1,4 +1,4 @@
-@use '../../../../../themes/styles.scss' as *;
+@use '../../../../themes/styles.scss' as *;
 
 .breadcrumb {
   padding: rem(16, 48);
@@ -16,6 +16,16 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.breadcrumb-inner {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wide);
+  text-transform: uppercase;
+  color: $txt-3;
+  text-decoration: none;
+}
+
 .breadcrumb a:hover {
   color: $txt;
 }

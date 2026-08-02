@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Breadcrumb } from './components/breadcrumb/breadcrumb';
+import { Breadcrumb } from '../../shared/components/breadcrumb/breadcrumb';
 import { Sidebar } from './components/sidebar/sidebar';
 import { ProductsList } from './components/products-list/products-list';
 import { Pagination } from './components/pagination/pagination';
