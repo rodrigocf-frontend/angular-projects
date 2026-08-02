@@ -1,18 +1,8 @@
 import { Product } from '../../app/shared/models/product.model';
 
-const SIZES_STANDARD = [
-  { label: 'P', stock: 5 },
-  { label: 'M', stock: 8 },
-  { label: 'G', stock: 3 },
-  { label: 'GG', stock: 2 },
-];
-
-const SIZES_NUMERIC = [
-  { label: '36', stock: 4 },
-  { label: '38', stock: 6 },
-  { label: '40', stock: 3 },
-  { label: '42', stock: 1 },
-];
+const SIZES_STANDARD = 'P,M,G,GG';
+const SIZES_NUMERIC = '36,38,40,42';
+const SIZES_ALL = `${SIZES_STANDARD},${SIZES_NUMERIC}`;
 
 const COLOR_PALETTE = {
   black: { name: 'Preto', hex: '#111111' },
@@ -50,18 +40,8 @@ export const ALL_PRODUCTS_MOCK: Product[] = [
           alt: `Vestido ${idNum}`,
         },
       ],
-      variants: [
-        {
-          id: `var-v-${idNum}-1`,
-          color: COLOR_PALETTE.black,
-          sizes: SIZES_STANDARD,
-        },
-        {
-          id: `var-v-${idNum}-2`,
-          color: isEven ? COLOR_PALETTE.beige : COLOR_PALETTE.green,
-          sizes: SIZES_NUMERIC,
-        },
-      ],
+      sizes: SIZES_ALL,
+      colors: `${COLOR_PALETTE.black.name},${isEven ? COLOR_PALETTE.beige.name : COLOR_PALETTE.green.name}`,
       details: ['Tecido encorpado', 'Fechamento por zíper invisível', 'Lavar a seco'],
       tags: ['Vestidos', 'Maison', 'Feminino'],
       rating: 4.5 + (idNum % 5) / 10,
@@ -93,18 +73,8 @@ export const ALL_PRODUCTS_MOCK: Product[] = [
           alt: `Blazer ${idNum}`,
         },
       ],
-      variants: [
-        {
-          id: `var-b-${idNum}-1`,
-          color: COLOR_PALETTE.black,
-          sizes: SIZES_STANDARD,
-        },
-        {
-          id: `var-b-${idNum}-2`,
-          color: COLOR_PALETTE.camel,
-          sizes: SIZES_NUMERIC,
-        },
-      ],
+      sizes: SIZES_ALL,
+      colors: `${COLOR_PALETTE.black.name},${COLOR_PALETTE.camel.name}`,
       details: ['Corte de alfaiataria', 'Botões forrados', 'Forro 100% viscose'],
       tags: ['Blazers', 'Alfaiataria', 'Workwear'],
       rating: 4.8,
@@ -136,18 +106,8 @@ export const ALL_PRODUCTS_MOCK: Product[] = [
           alt: `Calça ${idNum}`,
         },
       ],
-      variants: [
-        {
-          id: `var-c-${idNum}-1`,
-          color: COLOR_PALETTE.grey,
-          sizes: SIZES_NUMERIC,
-        },
-        {
-          id: `var-c-${idNum}-2`,
-          color: COLOR_PALETTE.white,
-          sizes: SIZES_STANDARD,
-        },
-      ],
+      sizes: SIZES_ALL,
+      colors: `${COLOR_PALETTE.grey.name},${COLOR_PALETTE.white.name}`,
       details: ['Cintura alta', 'Passantes para cinto', 'Bolsos faca laterais'],
       tags: ['Calças', 'Casual', 'Elegante'],
       rating: 4.6,
@@ -179,18 +139,8 @@ export const ALL_PRODUCTS_MOCK: Product[] = [
           alt: `Saia ${idNum}`,
         },
       ],
-      variants: [
-        {
-          id: `var-s-${idNum}-1`,
-          color: COLOR_PALETTE.pink,
-          sizes: SIZES_STANDARD,
-        },
-        {
-          id: `var-s-${idNum}-2`,
-          color: COLOR_PALETTE.black,
-          sizes: SIZES_STANDARD,
-        },
-      ],
+      sizes: SIZES_STANDARD,
+      colors: `${COLOR_PALETTE.pink.name},${COLOR_PALETTE.black.name}`,
       details: ['Modelagem fluida', 'Cós estruturado', 'Toque suave'],
       tags: ['Saias', 'Feminino'],
       rating: 4.7,
@@ -222,18 +172,8 @@ export const ALL_PRODUCTS_MOCK: Product[] = [
           alt: `Acessório ${idNum}`,
         },
       ],
-      variants: [
-        {
-          id: `var-a-${idNum}-1`,
-          color: COLOR_PALETTE.brown,
-          sizes: [{ label: 'Único', stock: 15 }],
-        },
-        {
-          id: `var-a-${idNum}-2`,
-          color: COLOR_PALETTE.black,
-          sizes: [{ label: 'Único', stock: 20 }],
-        },
-      ],
+      sizes: 'Único',
+      colors: `${COLOR_PALETTE.brown.name},${COLOR_PALETTE.black.name}`,
       details: ['Acabamento artesanal', 'Detalhes banhados', 'Design exclusivo'],
       tags: ['Acessórios', 'Moda'],
       rating: 4.9,

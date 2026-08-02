@@ -24,34 +24,8 @@ export const MOCK_PRODUCT: Product = {
       alt: 'Costas da Jaqueta Oversized Denim Vintage',
     },
   ],
-  variants: [
-    {
-      id: 'var-blue',
-      color: {
-        name: 'Jeans Azul Vintage',
-        hex: '#3b5998',
-      },
-      sizes: [
-        { label: 'P', stock: 5 },
-        { label: 'M', stock: 12 },
-        { label: 'G', stock: 0 },
-        { label: 'GG', stock: 3 },
-      ],
-    },
-    {
-      id: 'var-black',
-      color: {
-        name: 'Jeans Preto Desbotado',
-        hex: '#222222',
-      },
-      sizes: [
-        { label: 'P', stock: 2 },
-        { label: 'M', stock: 8 },
-        { label: 'G', stock: 4 },
-        { label: 'GG', stock: 1 },
-      ],
-    },
-  ],
+  sizes: 'P,M,G,GG',
+  colors: 'Jeans Azul Vintage,Jeans Preto Desbotado',
   details: [
     '100% Algodão de alta gramatura',
     'Fechamento frontal por botões metálicos personalizáveis',

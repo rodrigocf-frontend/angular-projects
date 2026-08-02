@@ -4,22 +4,6 @@ type ProductImage = {
   alt: string;
 };
 
-export type ProductColor = {
-  name: string;
-  hex: string;
-};
-
-export type ProductSize = {
-  label: string;
-  stock: number;
-};
-
-type ProductVariant = {
-  id: string;
-  color: ProductColor;
-  sizes: ProductSize[];
-};
-
 export type Product = {
   id: string;
   name: string;
@@ -32,7 +16,8 @@ export type Product = {
   isSale: boolean;
   category: string;
   images: ProductImage[];
-  variants: ProductVariant[];
+  sizes: string;
+  colors: string;
   details: string[];
   tags: string[];
   rating: number;

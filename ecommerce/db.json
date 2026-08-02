@@ -18,63 +18,13 @@
           "alt": "Vestido 1"
         }
       ],
-      "variants": [
-        {
-          "id": "var-v-1-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-1-2",
-          "color": {
-            "name": "Verde Escuro",
-            "hex": "#2c4a3e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
       "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
       "tags": ["Vestidos", "Maison", "Feminino"],
       "rating": 4.6,
       "reviewCount": 11,
-      "createdAt": "2026-07-01T10:00:00.000Z"
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#111111,#2c4a3e",
+      "sizes": "P,M,G,GG,36,38,40,42"
     },
     {
       "id": "vestido-2",
@@ -94,63 +44,13 @@
           "alt": "Vestido 2"
         }
       ],
-      "variants": [
-        {
-          "id": "var-v-2-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-2-2",
-          "color": {
-            "name": "Bege",
-            "hex": "#c8a97e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
       "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
       "tags": ["Vestidos", "Maison", "Feminino"],
       "rating": 4.7,
       "reviewCount": 12,
-      "createdAt": "2026-07-01T10:00:00.000Z"
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#111111,#c8a97e",
+      "sizes": "P,M,G,GG,36,38,40,42"
     },
     {
       "id": "vestido-3",
@@ -170,69 +70,19 @@
           "alt": "Vestido 3"
         }
       ],
-      "variants": [
-        {
-          "id": "var-v-3-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-3-2",
-          "color": {
-            "name": "Verde Escuro",
-            "hex": "#2c4a3e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
+      "details": ["Tecido fluido", "Decote V", "Lavar à mão"],
       "tags": ["Vestidos", "Maison", "Feminino"],
       "rating": 4.8,
       "reviewCount": 13,
-      "createdAt": "2026-07-01T10:00:00.000Z"
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#1b263b,#8c2f2f",
+      "sizes": "P,M,G,38,40"
     },
     {
       "id": "vestido-4",
-      "name": "Vestido Assimétrico 4",
+      "name": "Vestido Midi Plissado 4",
       "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
+      "description": "Vestido midi com saia plissada e excelente caimento para ocasiões especiais.",
       "price": 298,
       "originalPrice": 348,
       "discount": 15,
@@ -246,69 +96,19 @@
           "alt": "Vestido 4"
         }
       ],
-      "variants": [
-        {
-          "id": "var-v-4-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-4-2",
-          "color": {
-            "name": "Bege",
-            "hex": "#c8a97e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
+      "details": ["Saia plissada", "Acompanha cinto do mesmo tecido", "Zíper lateral"],
       "tags": ["Vestidos", "Maison", "Feminino"],
       "rating": 4.9,
       "reviewCount": 14,
-      "createdAt": "2026-07-01T10:00:00.000Z"
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#e8c4c4,#111111",
+      "sizes": "P,M,G,GG"
     },
     {
       "id": "vestido-5",
-      "name": "Vestido Slip Cetim 5",
+      "name": "Vestido Envelope Floral 5",
       "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
+      "description": "Vestido estilo envelope com estampa exclusiva e tecido leve.",
       "price": 310,
       "originalPrice": null,
       "discount": null,
@@ -322,69 +122,19 @@
           "alt": "Vestido 5"
         }
       ],
-      "variants": [
-        {
-          "id": "var-v-5-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-5-2",
-          "color": {
-            "name": "Verde Escuro",
-            "hex": "#2c4a3e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
+      "details": ["Modelo envelope", "Manga curta", "Tecido viscose"],
       "tags": ["Vestidos", "Maison", "Feminino"],
       "rating": 4.5,
       "reviewCount": 15,
-      "createdAt": "2026-07-01T10:00:00.000Z"
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#ffffff",
+      "sizes": "P,M,G"
     },
     {
       "id": "vestido-6",
-      "name": "Vestido Chemise 6",
+      "name": "Vestido Tricot Midi 6",
       "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
+      "description": "Vestido em tricot modal encorpado, modelagem ajustada ao corpo.",
       "price": 322,
       "originalPrice": 372,
       "discount": 15,
@@ -398,69 +148,19 @@
           "alt": "Vestido 6"
         }
       ],
-      "variants": [
-        {
-          "id": "var-v-6-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-6-2",
-          "color": {
-            "name": "Bege",
-            "hex": "#c8a97e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
+      "details": ["Tricot modal", "Alta elasticidade", "Não possui forro"],
       "tags": ["Vestidos", "Maison", "Feminino"],
       "rating": 4.6,
       "reviewCount": 16,
-      "createdAt": "2026-07-01T10:00:00.000Z"
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#666666,#4a3728",
+      "sizes": "Único"
     },
     {
       "id": "vestido-7",
-      "name": "Vestido Midi Linho 7",
+      "name": "Vestido Festa Longo 7",
       "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
+      "description": "Vestido longo elegante para eventos formais e festas.",
       "price": 334,
       "originalPrice": null,
       "discount": null,
@@ -474,72 +174,22 @@
           "alt": "Vestido 7"
         }
       ],
-      "variants": [
-        {
-          "id": "var-v-7-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-7-2",
-          "color": {
-            "name": "Verde Escuro",
-            "hex": "#2c4a3e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
+      "details": ["Fenda lateral", "Bojo estruturado", "Tecido lurex"],
       "tags": ["Vestidos", "Maison", "Feminino"],
       "rating": 4.7,
       "reviewCount": 17,
-      "createdAt": "2026-07-01T10:00:00.000Z"
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#2d4a8a",
+      "sizes": "P,M,G"
     },
     {
       "id": "vestido-8",
-      "name": "Vestido Evasê Seda 8",
+      "name": "Vestido Casual Jeans 8",
       "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
-      "price": 346,
-      "originalPrice": 396,
-      "discount": 15,
+      "description": "Vestido chemise em jeans leve com botões frontais e cinto.",
+      "price": 240,
+      "originalPrice": 280,
+      "discount": 14,
       "isNew": false,
       "isSale": true,
       "category": "vestidos",
@@ -550,793 +200,1113 @@
           "alt": "Vestido 8"
         }
       ],
-      "variants": [
-        {
-          "id": "var-v-8-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-8-2",
-          "color": {
-            "name": "Bege",
-            "hex": "#c8a97e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
+      "details": ["100% Algodão", "Botões madreperola", "Bolsos utilitários"],
       "tags": ["Vestidos", "Maison", "Feminino"],
       "rating": 4.8,
       "reviewCount": 18,
-      "createdAt": "2026-07-01T10:00:00.000Z"
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#a9c6e8",
+      "sizes": "36,38,40"
     },
     {
-      "id": "vestido-9",
-      "name": "Vestido Longo Crepe 9",
-      "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
-      "price": 358,
+      "id": "camisa-9",
+      "name": "Camisa Social Slim 9",
+      "brand": "Urban Style",
+      "description": "Camisa social masculina de algodão egípcio com modelagem slim fit.",
+      "price": 180,
       "originalPrice": null,
       "discount": null,
       "isNew": true,
       "isSale": false,
-      "category": "vestidos",
+      "category": "camisas",
       "images": [
         {
-          "id": "img-v-9",
-          "url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
-          "alt": "Vestido 9"
+          "id": "img-c-9",
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
+          "alt": "Camisa 9"
         }
       ],
-      "variants": [
-        {
-          "id": "var-v-9-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-9-2",
-          "color": {
-            "name": "Verde Escuro",
-            "hex": "#2c4a3e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
-      "rating": 4.9,
-      "reviewCount": 19,
-      "createdAt": "2026-07-01T10:00:00.000Z"
-    },
-    {
-      "id": "vestido-10",
-      "name": "Vestido Assimétrico 10",
-      "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
-      "price": 370,
-      "originalPrice": 420,
-      "discount": 15,
-      "isNew": false,
-      "isSale": true,
-      "category": "vestidos",
-      "images": [
-        {
-          "id": "img-v-10",
-          "url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
-          "alt": "Vestido 10"
-        }
-      ],
-      "variants": [
-        {
-          "id": "var-v-10-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-10-2",
-          "color": {
-            "name": "Bege",
-            "hex": "#c8a97e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
-      "rating": 4.5,
-      "reviewCount": 20,
-      "createdAt": "2026-07-01T10:00:00.000Z"
-    },
-    {
-      "id": "vestido-11",
-      "name": "Vestido Slip Cetim 11",
-      "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
-      "price": 382,
-      "originalPrice": null,
-      "discount": null,
-      "isNew": false,
-      "isSale": false,
-      "category": "vestidos",
-      "images": [
-        {
-          "id": "img-v-11",
-          "url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
-          "alt": "Vestido 11"
-        }
-      ],
-      "variants": [
-        {
-          "id": "var-v-11-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-11-2",
-          "color": {
-            "name": "Verde Escuro",
-            "hex": "#2c4a3e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
-      "rating": 4.6,
-      "reviewCount": 21,
-      "createdAt": "2026-07-01T10:00:00.000Z"
-    },
-    {
-      "id": "vestido-12",
-      "name": "Vestido Chemise 12",
-      "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
-      "price": 394,
-      "originalPrice": 444,
-      "discount": 15,
-      "isNew": true,
-      "isSale": true,
-      "category": "vestidos",
-      "images": [
-        {
-          "id": "img-v-12",
-          "url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
-          "alt": "Vestido 12"
-        }
-      ],
-      "variants": [
-        {
-          "id": "var-v-12-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-12-2",
-          "color": {
-            "name": "Bege",
-            "hex": "#c8a97e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
+      "details": ["100% Algodão Egípcio", "Colarinho clássico", "Fácil de passar"],
+      "tags": ["Camisas", "Urban Style", "Masculino"],
       "rating": 4.7,
-      "reviewCount": 22,
-      "createdAt": "2026-07-01T10:00:00.000Z"
+      "reviewCount": 20,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#ffffff,#a9c6e8",
+      "sizes": "P,M,G,GG"
     },
     {
-      "id": "vestido-13",
-      "name": "Vestido Midi Linho 13",
-      "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
-      "price": 406,
+      "id": "camisa-10",
+      "name": "Camisa Linho Casual 10",
+      "brand": "Urban Style",
+      "description": "Camisa manga longa em mistura de linho e algodão, ideal para dias quentes.",
+      "price": 210,
+      "originalPrice": 250,
+      "discount": 16,
+      "isNew": false,
+      "isSale": true,
+      "category": "camisas",
+      "images": [
+        {
+          "id": "img-c-10",
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
+          "alt": "Camisa 10"
+        }
+      ],
+      "details": ["Mistura linho e algodão", "Modelagem comfort", "Botões de côco"],
+      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "rating": 4.8,
+      "reviewCount": 22,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#c8a97e,#6b6d47",
+      "sizes": "M,G,GG,P"
+    },
+    {
+      "id": "camisa-11",
+      "name": "Camisa Polo Piquet 11",
+      "brand": "Urban Style",
+      "description": "Camisa polo clássica em malha piquet com alta durabilidade.",
+      "price": 130,
       "originalPrice": null,
       "discount": null,
       "isNew": false,
       "isSale": false,
+      "category": "camisas",
+      "images": [
+        {
+          "id": "img-c-11",
+          "url": "https://images.unsplash.com/photo-1625910603759-a9c5409395f1?w=800",
+          "alt": "Camisa 11"
+        }
+      ],
+      "details": ["Malha piquet 50% algodão, 50% poliéster", "Gola reforceada", "Abertura lateral"],
+      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "rating": 4.5,
+      "reviewCount": 30,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#111111,#1b263b",
+      "sizes": "P,M,G,GG"
+    },
+    {
+      "id": "camisa-12",
+      "name": "Camisa Flanela Xadrez 12",
+      "brand": "Urban Style",
+      "description": "Camisa flanelada macia com estampa xadrez tradicional.",
+      "price": 195,
+      "originalPrice": 230,
+      "discount": 15,
+      "isNew": true,
+      "isSale": true,
+      "category": "camisas",
+      "images": [
+        {
+          "id": "img-c-12",
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
+          "alt": "Camisa 12"
+        }
+      ],
+      "details": ["100% algodão flanelado", "Bolso único frontal", "Toque extremamente macio"],
+      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "rating": 4.9,
+      "reviewCount": 11,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#8c2f2f",
+      "sizes": "M,G,GG"
+    },
+    {
+      "id": "camisa-13",
+      "name": "Camisa Jeans Comfort 13",
+      "brand": "Urban Style",
+      "description": "Camisa em jeans amaciado de gramatura leve.",
+      "price": 205,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "camisas",
+      "images": [
+        {
+          "id": "img-c-13",
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
+          "alt": "Camisa 13"
+        }
+      ],
+      "details": ["Jeans leve e lavado", "Botões de pressão", "Modelagem regular"],
+      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "rating": 4.6,
+      "reviewCount": 19,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#16324f",
+      "sizes": "P,M,G"
+    },
+    {
+      "id": "camisa-14",
+      "name": "Camisa Oxford Premium 14",
+      "brand": "Urban Style",
+      "description": "Camisa em tecido oxford de alta resistência e caimento estruturado.",
+      "price": 190,
+      "originalPrice": 220,
+      "discount": 13,
+      "isNew": false,
+      "isSale": true,
+      "category": "camisas",
+      "images": [
+        {
+          "id": "img-c-14",
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
+          "alt": "Camisa 14"
+        }
+      ],
+      "details": ["Tecido oxford 100% algodão", "Gola botão", "Punhos ajustáveis"],
+      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "rating": 4.7,
+      "reviewCount": 14,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#e8c4c4,#a9c6e8",
+      "sizes": "P,M,G,GG"
+    },
+    {
+      "id": "camisa-15",
+      "name": "Camisa Estampada Tropical 15",
+      "brand": "Urban Style",
+      "description": "Camisa manga curta com estampa inspirada em folhagens tropicais.",
+      "price": 160,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": true,
+      "isSale": false,
+      "category": "camisas",
+      "images": [
+        {
+          "id": "img-c-15",
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
+          "alt": "Camisa 15"
+        }
+      ],
+      "details": ["Viscose leve", "Modelagem relaxed", "Estampa digital rotativa"],
+      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "rating": 4.8,
+      "reviewCount": 9,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#2c4a3e",
+      "sizes": "P,M,G"
+    },
+    {
+      "id": "camisa-16",
+      "name": "Camisa Básica Malha 16",
+      "brand": "Urban Style",
+      "description": "Camisa casual de manga longa em malha flamê macia.",
+      "price": 140,
+      "originalPrice": 170,
+      "discount": 17,
+      "isNew": false,
+      "isSale": true,
+      "category": "camisas",
+      "images": [
+        {
+          "id": "img-c-16",
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
+          "alt": "Camisa 16"
+        }
+      ],
+      "details": ["Malha flamê 100% algodão", "Toque rústico e leve", "Modelagem slim"],
+      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "rating": 4.5,
+      "reviewCount": 12,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#666666",
+      "sizes": "P,M,G,GG"
+    },
+    {
+      "id": "short-17",
+      "name": "Short Alfaiataria Linho 17",
+      "brand": "Maison",
+      "description": "Short de alfaiataria feminino com pregas frontais e cinto embutido.",
+      "price": 150,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": true,
+      "isSale": false,
+      "category": "shorts",
+      "images": [
+        {
+          "id": "img-s-17",
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
+          "alt": "Short 17"
+        }
+      ],
+      "details": ["Linho com viscose", "Bolsos laterais tipo faca", "Fechamento por zíper e botão"],
+      "tags": ["Shorts", "Maison", "Feminino"],
+      "rating": 4.7,
+      "reviewCount": 16,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#c8a97e,#111111",
+      "sizes": "36,38,40,42"
+    },
+    {
+      "id": "short-18",
+      "name": "Short Jeans Destroyed 18",
+      "brand": "Urban Style",
+      "description": "Short jeans com lavagem estonada e detalhes desfiados na barra.",
+      "price": 120,
+      "originalPrice": 150,
+      "discount": 20,
+      "isNew": false,
+      "isSale": true,
+      "category": "shorts",
+      "images": [
+        {
+          "id": "img-s-18",
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
+          "alt": "Short 18"
+        }
+      ],
+      "details": ["100% Algodão", "Cintura alta", "Efeito destroyed artesanal"],
+      "tags": ["Shorts", "Urban Style", "Feminino"],
+      "rating": 4.8,
+      "reviewCount": 25,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#a9c6e8",
+      "sizes": "36,38,40,42"
+    },
+    {
+      "id": "short-19",
+      "name": "Short Moletom Comfort 19",
+      "brand": "Urban Style",
+      "description": "Short em moletom leve ideal para momentos de lazer e descanso.",
+      "price": 90,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "shorts",
+      "images": [
+        {
+          "id": "img-s-19",
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
+          "alt": "Short 19"
+        }
+      ],
+      "details": ["Algodão e poliéster", "Cós com elástico e cordão regulador", "Bolsos embutidos"],
+      "tags": ["Shorts", "Urban Style", "Unissex"],
+      "rating": 4.6,
+      "reviewCount": 31,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#666666,#111111",
+      "sizes": "P,M,G,GG"
+    },
+    {
+      "id": "short-20",
+      "name": "Short Saia Transpasse 20",
+      "brand": "Maison",
+      "description": "Short saia moderno com transpasse frontal e acabamento impecável.",
+      "price": 145,
+      "originalPrice": 175,
+      "discount": 17,
+      "isNew": true,
+      "isSale": true,
+      "category": "shorts",
+      "images": [
+        {
+          "id": "img-s-20",
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
+          "alt": "Short 20"
+        }
+      ],
+      "details": [
+        "Tecido crepe alfaiataria",
+        "Short por baixo, saia na frente",
+        "Zíper invisível traseiro"
+      ],
+      "tags": ["Shorts", "Maison", "Feminino"],
+      "rating": 4.7,
+      "reviewCount": 13,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#ffffff,#111111",
+      "sizes": "36,38,40"
+    },
+    {
+      "id": "short-21",
+      "name": "Short Sarja Cargo 21",
+      "brand": "Urban Style",
+      "description": "Short utilitário em sarja com múltiplos bolsos laterais.",
+      "price": 155,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "shorts",
+      "images": [
+        {
+          "id": "img-s-21",
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
+          "alt": "Short 21"
+        }
+      ],
+      "details": ["100% algodão sarja", "Bolsos cargo com lapela", "Modelagem reta"],
+      "tags": ["Shorts", "Urban Style", "Masculino"],
+      "rating": 4.5,
+      "reviewCount": 10,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#6b6d47",
+      "sizes": "38,40,42,44"
+    },
+    {
+      "id": "short-22",
+      "name": "Short Alfaiataria Clássico 22",
+      "brand": "Maison",
+      "description": "Short de alfaiataria com corte reto e caimento elegante.",
+      "price": 135,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "shorts",
+      "images": [
+        {
+          "id": "img-s-22",
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
+          "alt": "Short 22"
+        }
+      ],
+      "details": ["Crepe alfaiataria", "Passantes para cinto", "Bolsos traseiros falsos"],
+      "tags": ["Shorts", "Maison", "Feminino"],
+      "rating": 4.6,
+      "reviewCount": 12,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#1b263b",
+      "sizes": "36,38,40"
+    },
+    {
+      "id": "short-23",
+      "name": "Short Esportivo Running 23",
+      "brand": "Urban Style",
+      "description": "Short leve para corrida com tecido de secagem rápida.",
+      "price": 85,
+      "originalPrice": 110,
+      "discount": 22,
+      "isNew": true,
+      "isSale": true,
+      "category": "shorts",
+      "images": [
+        {
+          "id": "img-s-23",
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
+          "alt": "Short 23"
+        }
+      ],
+      "details": ["100% poliéster dry-fit", "Bolso interno para chave", "Cós elástico"],
+      "tags": ["Shorts", "Urban Style", "Unissex"],
+      "rating": 4.9,
+      "reviewCount": 40,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#111111,#2d4a8a",
+      "sizes": "P,M,G,GG"
+    },
+    {
+      "id": "short-24",
+      "name": "Short Linho Cós Alto 24",
+      "brand": "Maison",
+      "description": "Short soltinho em linho puro com cordão de ajuste na cintura.",
+      "price": 165,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "shorts",
+      "images": [
+        {
+          "id": "img-s-24",
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
+          "alt": "Short 24"
+        }
+      ],
+      "details": ["100% Linho", "Cós alto com elástico embutido", "Leve e fresco"],
+      "tags": ["Shorts", "Maison", "Feminino"],
+      "rating": 4.7,
+      "reviewCount": 15,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#c8a97e,#ffffff",
+      "sizes": "36,38,40"
+    },
+    {
+      "id": "calca-25",
+      "name": "Calça Alfaiataria Reta 25",
+      "brand": "Maison",
+      "description": "Calça de alfaiataria com corte reto, pregas discretas e acabamento impecável.",
+      "price": 320,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": true,
+      "isSale": false,
+      "category": "calcas",
+      "images": [
+        {
+          "id": "img-cl-25",
+          "url": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800",
+          "alt": "Calça 25"
+        }
+      ],
+      "details": [
+        "Crepe alfaiataria premium",
+        "Fechamento por colchete e zíper",
+        "Passantes para cinto"
+      ],
+      "tags": ["Calças", "Maison", "Feminino"],
+      "rating": 4.8,
+      "reviewCount": 24,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#111111,#666666",
+      "sizes": "36,38,40,42"
+    },
+    {
+      "id": "calca-26",
+      "name": "Calça Jeans Skinny 26",
+      "brand": "Urban Style",
+      "description": "Calça jeans skinny com elastano para maior conforto e ajuste perfeito.",
+      "price": 230,
+      "originalPrice": 280,
+      "discount": 17,
+      "isNew": false,
+      "isSale": true,
+      "category": "calcas",
+      "images": [
+        {
+          "id": "img-cl-26",
+          "url": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800",
+          "alt": "Calça 26"
+        }
+      ],
+      "details": ["Algodão com elastano", "Modelagem justa", "Cintura média"],
+      "tags": ["Calças", "Urban Style", "Feminino"],
+      "rating": 4.6,
+      "reviewCount": 35,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#16324f,#111111",
+      "sizes": "36,38,40,42"
+    },
+    {
+      "id": "calca-27",
+      "name": "Calça Pantalona Fluida 27",
+      "brand": "Maison",
+      "description": "Calça pantalona ampla em tecido fluido de excelente caimento.",
+      "price": 290,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "calcas",
+      "images": [
+        {
+          "id": "img-cl-27",
+          "url": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800",
+          "alt": "Calça 27"
+        }
+      ],
+      "details": ["Tecido cetim fluido", "Cós alto com elástico traseiro", "Forro interno"],
+      "tags": ["Calças", "Maison", "Feminino"],
+      "rating": 4.9,
+      "reviewCount": 18,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#ffffff,#c8a97e",
+      "sizes": "36,38,40"
+    },
+    {
+      "id": "calca-28",
+      "name": "Calça Jogger Moletom 28",
+      "brand": "Urban Style",
+      "description": "Calça jogger em moletom premium com punhos ajustados.",
+      "price": 180,
+      "originalPrice": 210,
+      "discount": 14,
+      "isNew": true,
+      "isSale": true,
+      "category": "calcas",
+      "images": [
+        {
+          "id": "img-cl-28",
+          "url": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800",
+          "alt": "Calça 28"
+        }
+      ],
+      "details": ["Moletom 3 cabos flanelado", "Cós com cordão de ajuste", "Bolsos laterais"],
+      "tags": ["Calças", "Urban Style", "Unissex"],
+      "rating": 4.7,
+      "reviewCount": 29,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#666666,#111111",
+      "sizes": "P,M,G,GG"
+    },
+    {
+      "id": "calca-29",
+      "name": "Calça Sarja Chino 29",
+      "brand": "Urban Style",
+      "description": "Calça chino em sarja de algodão com elastano, corte slim.",
+      "price": 240,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "calcas",
+      "images": [
+        {
+          "id": "img-cl-29",
+          "url": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800",
+          "alt": "Calça 29"
+        }
+      ],
+      "details": ["Sarja com elastano", "Bolsos embutidos traseiros", "Modelagem slim fit"],
+      "tags": ["Calças", "Urban Style", "Masculino"],
+      "rating": 4.8,
+      "reviewCount": 21,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#c8a97e,#1b263b",
+      "sizes": "38,40,42,44"
+    },
+    {
+      "id": "calca-30",
+      "name": "Calça Cargo Utilitária 30",
+      "brand": "Urban Style",
+      "description": "Calça cargo moderna com bolsos utilitários e tecido resistente.",
+      "price": 260,
+      "originalPrice": 310,
+      "discount": 16,
+      "isNew": true,
+      "isSale": true,
+      "category": "calcas",
+      "images": [
+        {
+          "id": "img-cl-30",
+          "url": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800",
+          "alt": "Calça 30"
+        }
+      ],
+      "details": ["Sarja pesada 100% algodão", "Múltiplos bolsos funcionais", "Regulagem na barra"],
+      "tags": ["Calças", "Urban Style", "Unissex"],
+      "rating": 4.7,
+      "reviewCount": 15,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#6b6d47,#111111",
+      "sizes": "38,40,42,44"
+    },
+    {
+      "id": "calca-31",
+      "name": "Calça Jeans Reta 31",
+      "brand": "Urban Style",
+      "description": "Calça jeans com lavagem clássica e modelagem reta tradicional.",
+      "price": 220,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "calcas",
+      "images": [
+        {
+          "id": "img-cl-31",
+          "url": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800",
+          "alt": "Calça 31"
+        }
+      ],
+      "details": ["Jeans tradicional sem elastano", "Costuras reforçadas", "Cinco bolsos"],
+      "tags": ["Calças", "Urban Style", "Masculino"],
+      "rating": 4.5,
+      "reviewCount": 27,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#3b6ea5",
+      "sizes": "38,40,42,44"
+    },
+    {
+      "id": "calca-32",
+      "name": "Calça Legging Sport 32",
+      "brand": "Urban Style",
+      "description": "Calça legging de alta performance com tecido zero transparência.",
+      "price": 140,
+      "originalPrice": 170,
+      "discount": 17,
+      "isNew": false,
+      "isSale": true,
+      "category": "calcas",
+      "images": [
+        {
+          "id": "img-cl-32",
+          "url": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800",
+          "alt": "Calça 32"
+        }
+      ],
+      "details": ["Poliamida com elastano", "Zero transparência", "Cós alto anatômico"],
+      "tags": ["Calças", "Urban Style", "Feminino"],
+      "rating": 4.9,
+      "reviewCount": 55,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#111111,#1b263b",
+      "sizes": "P,M,G,GG"
+    },
+    {
+      "id": "vestido-33",
+      "name": "Vestido Midi Plissado Luxo 33",
+      "brand": "Maison",
+      "description": "Vestido midi com detalhes plissados e acabamento de alta costura.",
+      "price": 380,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": true,
+      "isSale": false,
       "category": "vestidos",
       "images": [
         {
-          "id": "img-v-13",
+          "id": "img-v-33",
           "url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
-          "alt": "Vestido 13"
+          "alt": "Vestido 33"
         }
       ],
-      "variants": [
-        {
-          "id": "var-v-13-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-13-2",
-          "color": {
-            "name": "Verde Escuro",
-            "hex": "#2c4a3e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
+      "details": ["Tecido georgette", "Forro completo", "Zíper invisível"],
       "tags": ["Vestidos", "Maison", "Feminino"],
       "rating": 4.8,
-      "reviewCount": 23,
-      "createdAt": "2026-07-01T10:00:00.000Z"
+      "reviewCount": 10,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#e8c4c4,#c8a97e",
+      "sizes": "P,M,G"
     },
     {
-      "id": "vestido-14",
-      "name": "Vestido Evasê Seda 14",
+      "id": "vestido-34",
+      "name": "Vestido Tubinho Elegance 34",
       "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
-      "price": 418,
-      "originalPrice": 468,
+      "description": "Vestido tubinho clássico que valoriza a silhueta com extrema sofisticação.",
+      "price": 295,
+      "originalPrice": 350,
       "discount": 15,
       "isNew": false,
       "isSale": true,
       "category": "vestidos",
       "images": [
         {
-          "id": "img-v-14",
+          "id": "img-v-34",
           "url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
-          "alt": "Vestido 14"
+          "alt": "Vestido 34"
         }
       ],
-      "variants": [
-        {
-          "id": "var-v-14-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-14-2",
-          "color": {
-            "name": "Bege",
-            "hex": "#c8a97e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
-      "rating": 4.9,
-      "reviewCount": 24,
-      "createdAt": "2026-07-01T10:00:00.000Z"
-    },
-    {
-      "id": "vestido-15",
-      "name": "Vestido Longo Crepe 15",
-      "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
-      "price": 430,
-      "originalPrice": null,
-      "discount": null,
-      "isNew": true,
-      "isSale": false,
-      "category": "vestidos",
-      "images": [
-        {
-          "id": "img-v-15",
-          "url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
-          "alt": "Vestido 15"
-        }
-      ],
-      "variants": [
-        {
-          "id": "var-v-15-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-15-2",
-          "color": {
-            "name": "Verde Escuro",
-            "hex": "#2c4a3e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
-      "rating": 4.5,
-      "reviewCount": 25,
-      "createdAt": "2026-07-01T10:00:00.000Z"
-    },
-    {
-      "id": "vestido-16",
-      "name": "Vestido Assimétrico 16",
-      "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
-      "price": 442,
-      "originalPrice": 492,
-      "discount": 15,
-      "isNew": false,
-      "isSale": true,
-      "category": "vestidos",
-      "images": [
-        {
-          "id": "img-v-16",
-          "url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
-          "alt": "Vestido 16"
-        }
-      ],
-      "variants": [
-        {
-          "id": "var-v-16-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-16-2",
-          "color": {
-            "name": "Bege",
-            "hex": "#c8a97e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
-      "tags": ["Vestidos", "Maison", "Feminino"],
-      "rating": 4.6,
-      "reviewCount": 26,
-      "createdAt": "2026-07-01T10:00:00.000Z"
-    },
-    {
-      "id": "vestido-17",
-      "name": "Vestido Slip Cetim 17",
-      "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
-      "price": 454,
-      "originalPrice": null,
-      "discount": null,
-      "isNew": false,
-      "isSale": false,
-      "category": "vestidos",
-      "images": [
-        {
-          "id": "img-v-17",
-          "url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
-          "alt": "Vestido 17"
-        }
-      ],
-      "variants": [
-        {
-          "id": "var-v-17-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
-        },
-        {
-          "id": "var-v-17-2",
-          "color": {
-            "name": "Verde Escuro",
-            "hex": "#2c4a3e"
-          },
-          "sizes": [
-            {
-              "label": "36",
-              "stock": 4
-            },
-            {
-              "label": "38",
-              "stock": 6
-            },
-            {
-              "label": "40",
-              "stock": 3
-            },
-            {
-              "label": "42",
-              "stock": 1
-            }
-          ]
-        }
-      ],
-      "details": ["Tecido encorpado", "Fechamento por zíper invisível", "Lavar a seco"],
+      "details": ["Crepe alfaiataria com elastano", "Fenda traseira discreta", "Decote quadrado"],
       "tags": ["Vestidos", "Maison", "Feminino"],
       "rating": 4.7,
-      "reviewCount": 27,
-      "createdAt": "2026-07-01T10:00:00.000Z"
+      "reviewCount": 16,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#111111,#8c2f2f",
+      "sizes": "P,M,G"
     },
     {
-      "id": "vestido-18",
-      "name": "Vestido Chemise 18",
-      "brand": "Maison",
-      "description": "Vestido sofisticado com corte impecável e tecido nobre de altíssima qualidade.",
-      "price": 466,
-      "originalPrice": 516,
+      "id": "camisa-35",
+      "name": "Camisa Linho Oversized 35",
+      "brand": "Urban Style",
+      "description": "Camisa em linho com modelagem oversized moderna e despojada.",
+      "price": 225,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": true,
+      "isSale": false,
+      "category": "camisas",
+      "images": [
+        {
+          "id": "img-c-35",
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
+          "alt": "Camisa 35"
+        }
+      ],
+      "details": ["100% Linho", "Modelagem ampla", "Ombro deslocado"],
+      "tags": ["Camisas", "Urban Style", "Unissex"],
+      "rating": 4.6,
+      "reviewCount": 14,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#ffffff,#c8a97e",
+      "sizes": "P,M,G"
+    },
+    {
+      "id": "camisa-36",
+      "name": "Camisa Social Microfibra 36",
+      "brand": "Urban Style",
+      "description": "Camisa social em microfibra que não amassa com facilidade.",
+      "price": 170,
+      "originalPrice": 200,
       "discount": 15,
+      "isNew": false,
+      "isSale": true,
+      "category": "camisas",
+      "images": [
+        {
+          "id": "img-c-36",
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
+          "alt": "Camisa 36"
+        }
+      ],
+      "details": ["100% Poliéster microfibra", "Secagem rápida", "Não necessita passar"],
+      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "rating": 4.4,
+      "reviewCount": 19,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#a9c6e8",
+      "sizes": "P,M,G,GG"
+    },
+    {
+      "id": "short-37",
+      "name": "Short Alfaiataria Cinto 37",
+      "brand": "Maison",
+      "description": "Short de alfaiataria acompanhado de cinto faixa do mesmo tecido.",
+      "price": 155,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "shorts",
+      "images": [
+        {
+          "id": "img-s-37",
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
+          "alt": "Short 37"
+        }
+      ],
+      "details": ["Crepe alfaiataria leve", "Acompanha faixa", "Bolsos faca"],
+      "tags": ["Shorts", "Maison", "Feminino"],
+      "rating": 4.7,
+      "reviewCount": 11,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#2c4a3e,#4a3728",
+      "sizes": "36,38,40"
+    },
+    {
+      "id": "short-38",
+      "name": "Short Jeans Boyfriend 38",
+      "brand": "Urban Style",
+      "description": "Short jeans com modelagem soltinha estilo boyfriend e lavagem estonada.",
+      "price": 130,
+      "originalPrice": 160,
+      "discount": 18,
+      "isNew": true,
+      "isSale": true,
+      "category": "shorts",
+      "images": [
+        {
+          "id": "img-s-38",
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
+          "alt": "Short 38"
+        }
+      ],
+      "details": ["100% algodão", "Cintura intermediária", "Barra desfiada"],
+      "tags": ["Shorts", "Urban Style", "Feminino"],
+      "rating": 4.8,
+      "reviewCount": 20,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#3b6ea5",
+      "sizes": "36,38,40,42"
+    },
+    {
+      "id": "calca-39",
+      "name": "Calça Alfaiataria Slim 39",
+      "brand": "Maison",
+      "description": "Calça de alfaiataria feminina com modelagem slim e vinco frontal.",
+      "price": 310,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "calcas",
+      "images": [
+        {
+          "id": "img-cl-39",
+          "url": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800",
+          "alt": "Calça 39"
+        }
+      ],
+      "details": ["Alfaiataria com elastano", "Fechamento frontal oculto", "Vinco marcado"],
+      "tags": ["Calças", "Maison", "Feminino"],
+      "rating": 4.9,
+      "reviewCount": 23,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#1b263b,#111111",
+      "sizes": "36,38,40,42"
+    },
+    {
+      "id": "calca-40",
+      "name": "Calça Jeans Wide Leg 40",
+      "brand": "Urban Style",
+      "description": "Calça jeans com pernas amplas e cintura alta, super tendência.",
+      "price": 270,
+      "originalPrice": 320,
+      "discount": 15,
+      "isNew": true,
+      "isSale": true,
+      "category": "calcas",
+      "images": [
+        {
+          "id": "img-cl-40",
+          "url": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800",
+          "alt": "Calça 40"
+        }
+      ],
+      "details": ["Jeans 100% algodão", "Modelagem wide leg", "Cintura alta"],
+      "tags": ["Calças", "Urban Style", "Feminino"],
+      "rating": 4.8,
+      "reviewCount": 38,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#a9c6e8",
+      "sizes": "36,38,40,42"
+    },
+    {
+      "id": "vestido-41",
+      "name": "Vestido Midi Transpasse 41",
+      "brand": "Maison",
+      "description": "Vestido midi com decote envelope e amarração lateral.",
+      "price": 315,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "vestidos",
+      "images": [
+        {
+          "id": "img-v-41",
+          "url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
+          "alt": "Vestido 41"
+        }
+      ],
+      "details": ["Viscose encorpada", "Modelagem envelope", "Manga curta bufante"],
+      "tags": ["Vestidos", "Maison", "Feminino"],
+      "rating": 4.6,
+      "reviewCount": 17,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#2c4a3e,#1b263b",
+      "sizes": "P,M,G"
+    },
+    {
+      "id": "vestido-42",
+      "name": "Vestido Longo Boho 42",
+      "brand": "Maison",
+      "description": "Vestido longo com estampa exclusiva e estilo boêmio romântico.",
+      "price": 350,
+      "originalPrice": 400,
+      "discount": 12,
       "isNew": true,
       "isSale": true,
       "category": "vestidos",
       "images": [
         {
-          "id": "img-v-18",
+          "id": "img-v-42",
           "url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
-          "alt": "Vestido 18"
+          "alt": "Vestido 42"
         }
       ],
-      "variants": [
+      "details": ["Tecido modal leve", "Detalhes em renda", "Elástico na cintura"],
+      "tags": ["Vestidos", "Maison", "Feminino"],
+      "rating": 4.7,
+      "reviewCount": 12,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#4a3728",
+      "sizes": "P,M,G"
+    },
+    {
+      "id": "camisa-43",
+      "name": "Camisa Polo Algodão Pima 43",
+      "brand": "Urban Style",
+      "description": "Camisa polo confeccionada em nobre algodão Pima peruano.",
+      "price": 210,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "camisas",
+      "images": [
         {
-          "id": "var-v-18-1",
-          "color": {
-            "name": "Preto",
-            "hex": "#111111"
-          },
-          "sizes": [
-            {
-              "label": "P",
-              "stock": 5
-            },
-            {
-              "label": "M",
-              "stock": 8
-            },
-            {
-              "label": "G",
-              "stock": 3
-            },
-            {
-              "label": "GG",
-              "stock": 2
-            }
-          ]
+          "id": "img-c-43",
+          "url": "https://images.unsplash.com/photo-1625910603759-a9c5409395f1?w=800",
+          "alt": "Camisa 43"
         }
-      ]
+      ],
+      "details": ["100% Algodão Pima", "Toque extremamente macio", "Alta durabilidade"],
+      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "rating": 4.9,
+      "reviewCount": 28,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#ffffff,#1b263b",
+      "sizes": "P,M,G,GG"
+    },
+    {
+      "id": "camisa-44",
+      "name": "Camisa Jeans Slim Fit 44",
+      "brand": "Urban Style",
+      "description": "Camisa jeans com modelagem slim e lavagem escura elegante.",
+      "price": 215,
+      "originalPrice": 250,
+      "discount": 14,
+      "isNew": false,
+      "isSale": true,
+      "category": "camisas",
+      "images": [
+        {
+          "id": "img-c-44",
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
+          "alt": "Camisa 44"
+        }
+      ],
+      "details": ["Jeans com elastano", "Botões de pressão perolados", "Modelagem slim"],
+      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "rating": 4.7,
+      "reviewCount": 16,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#16324f",
+      "sizes": "P,M,G,GG"
+    },
+    {
+      "id": "short-45",
+      "name": "Short Sarja Cordão 45",
+      "brand": "Urban Style",
+      "description": "Short em sarja leve com cós de elástico e cordão para ajuste.",
+      "price": 135,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "shorts",
+      "images": [
+        {
+          "id": "img-s-45",
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
+          "alt": "Short 45"
+        }
+      ],
+      "details": ["Sarja 100% algodão", "Confortável para o dia a dia", "Bolsos embutidos"],
+      "tags": ["Shorts", "Urban Style", "Masculino"],
+      "rating": 4.5,
+      "reviewCount": 13,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#666666,#c8a97e",
+      "sizes": "P,M,G,GG"
+    },
+    {
+      "id": "short-46",
+      "name": "Short Alfaiataria Linho Plus 46",
+      "brand": "Maison",
+      "description": "Short em linho misto com modelagem confortável e elegante.",
+      "price": 160,
+      "originalPrice": 195,
+      "discount": 17,
+      "isNew": true,
+      "isSale": true,
+      "category": "shorts",
+      "images": [
+        {
+          "id": "img-s-46",
+          "url": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
+          "alt": "Short 46"
+        }
+      ],
+      "details": ["Linho com viscose", "Cintura alta", "Zíper invisível lateral"],
+      "tags": ["Shorts", "Maison", "Feminino"],
+      "rating": 4.8,
+      "reviewCount": 14,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#ffffff",
+      "sizes": "38,40,42"
+    },
+    {
+      "id": "calca-47",
+      "name": "Calça Alfaiataria Cropped 47",
+      "brand": "Maison",
+      "description": "Calça de alfaiataria com comprimento cropped moderno e elegante.",
+      "price": 280,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "calcas",
+      "images": [
+        {
+          "id": "img-cl-47",
+          "url": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800",
+          "alt": "Calça 47"
+        }
+      ],
+      "details": ["Crepe alfaiataria", "Comprimento na altura do tornozelo", "Modelagem reta"],
+      "tags": ["Calças", "Maison", "Feminino"],
+      "rating": 4.7,
+      "reviewCount": 21,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#c8a97e,#111111",
+      "sizes": "36,38,40"
+    },
+    {
+      "id": "calca-48",
+      "name": "Calça Jogger Sarja 48",
+      "brand": "Urban Style",
+      "description": "Calça jogger em sarja resistente com estilo urbano e descolado.",
+      "price": 235,
+      "originalPrice": 275,
+      "discount": 14,
+      "isNew": true,
+      "isSale": true,
+      "category": "calcas",
+      "images": [
+        {
+          "id": "img-cl-48",
+          "url": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=800",
+          "alt": "Calça 48"
+        }
+      ],
+      "details": ["Sarja com elastano", "Punhos em elástico", "Bolsos cargo laterais"],
+      "tags": ["Calças", "Urban Style", "Masculino"],
+      "rating": 4.8,
+      "reviewCount": 25,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#6b6d47,#111111",
+      "sizes": "38,40,42,44"
+    },
+    {
+      "id": "vestido-49",
+      "name": "Vestido Longuete Evase 49",
+      "brand": "Maison",
+      "description": "Vestido longuete evasê com caimento impecável para diversas ocasiões.",
+      "price": 340,
+      "originalPrice": null,
+      "discount": null,
+      "isNew": false,
+      "isSale": false,
+      "category": "vestidos",
+      "images": [
+        {
+          "id": "img-v-49",
+          "url": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
+          "alt": "Vestido 49"
+        }
+      ],
+      "details": ["Crepe de alta qualidade", "Fechamento por zíper invisível", "Modelagem evasê"],
+      "tags": ["Vestidos", "Maison", "Feminino"],
+      "rating": 4.7,
+      "reviewCount": 19,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#2d4a8a,#111111",
+      "sizes": "P,M,G"
+    },
+    {
+      "id": "camisa-50",
+      "name": "Camisa Casual Estampada 50",
+      "brand": "Urban Style",
+      "description": "Camisa casual de manga curta com estampa geométrica contemporânea.",
+      "price": 175,
+      "originalPrice": 210,
+      "discount": 16,
+      "isNew": true,
+      "isSale": true,
+      "category": "camisas",
+      "images": [
+        {
+          "id": "img-c-50",
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
+          "alt": "Camisa 50"
+        }
+      ],
+      "details": ["100% Viscose", "Estampa geométrica exclusiva", "Modelagem confortável"],
+      "tags": ["Camisas", "Urban Style", "Masculino"],
+      "rating": 4.6,
+      "reviewCount": 15,
+      "createdAt": "2026-07-01T10:00:00.000Z",
+      "colors": "#1b263b",
+      "sizes": "P,M,G,GG"
     }
   ],
   "filters": {
@@ -1344,44 +1314,49 @@
       {
         "name": "vestidos",
         "slug": "vestidos",
-        "count": 18
-      },
-      {
-        "name": "blusas",
-        "slug": "blusas",
-        "count": 0
+        "count": 8
       },
       {
         "name": "calças",
         "slug": "calcas",
-        "count": 0
+        "count": 1
+      },
+      {
+        "name": "camisas",
+        "slug": "camisas",
+        "count": 8
+      },
+      {
+        "name": "shorts",
+        "slug": "shorts",
+        "count": 1
       }
     ],
     "colors": [
       {
         "name": "Preto",
         "hex": "#111111",
-        "count": 16
-      },
-      {
-        "name": "Verde Escuro",
-        "hex": "#2c4a3e",
-        "count": 8
-      },
-      {
-        "name": "Bege",
-        "hex": "#c8a97e",
-        "count": 8
+        "count": 450
       },
       {
         "name": "Branco",
         "hex": "#ffffff",
-        "count": 10
+        "count": 200
+      },
+      {
+        "name": "Verde Escuro",
+        "hex": "#2c4a3e",
+        "count": 150
+      },
+      {
+        "name": "Bege",
+        "hex": "#c8a97e",
+        "count": 120
       },
       {
         "name": "Azul Marinho",
         "hex": "#1b263b",
-        "count": 10
+        "count": 80
       }
     ],
     "sizes": [
@@ -1408,6 +1383,9 @@
       },
       {
         "name": "42"
+      },
+      {
+        "name": "Único"
       }
     ]
   }
