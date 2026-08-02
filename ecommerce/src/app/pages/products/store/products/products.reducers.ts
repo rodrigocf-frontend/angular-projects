@@ -10,13 +10,14 @@ import {
   configPagination,
   setPagination,
   setSort,
+  setLoading,
 } from './products.actions';
 import {
   CategoryFilterFromApi,
   ColorFilterFromApi,
   FiltersApiResponse,
   SizeFilterFromApi,
-} from '../../../../core/services/product/product-filter.service';
+} from '../../../../core/services/product/products.service';
 
 export interface ProductFilterCheck {
   checked: boolean;
@@ -71,6 +72,7 @@ export interface ProductsState {
   list: Product[];
   filters: Filters;
   pagination: FiltersPagination;
+  isLoading: boolean;
 }
 
 export interface AppState {
@@ -96,6 +98,7 @@ const initialState: ProductsState = {
     items: 0,
     current: 0,
   },
+  isLoading: true,
 };
 
 const setupFilters = (filters: FiltersApiResponse) => {
@@ -282,6 +285,12 @@ export const productsReducer = createReducer(
         ...state.filters,
         sort: [sort],
       },
+    };
+  }),
+  on(setLoading, (state, { isLoading }) => {
+    return {
+      ...state,
+      isLoading,
     };
   }),
 );

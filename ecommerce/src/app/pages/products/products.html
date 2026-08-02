@@ -29,9 +29,13 @@
         }
       }
     </div>
-    <app-products-list />
-    @if (productsPagination$ | async; as pagination) {
-      <app-pagination [pagination]="pagination" />
+    @if (isLoading$ | async) {
+      <app-loading-list />
+    } @else if (productsData$ | async; as products) {
+      <app-products-list [data]="products" />
+      @if (products.length > 0 && (productsPagination$ | async); as pagination) {
+        <app-pagination [pagination]="pagination" />
+      }
     }
   </main>
 </div>

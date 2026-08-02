@@ -1,5 +1,5 @@
-<div class="products-grid">
-  @for (item of products(); track item.id) {
+<div class="products-grid" [class.empty-grid]="data().length <= 0">
+  @for (item of data(); track item.id) {
     <div class="product-card">
       <div class="product-img">
         <div
@@ -34,5 +34,7 @@
         }
       </div>
     </div>
+  } @empty {
+    <app-empty-list />
   }
 </div>

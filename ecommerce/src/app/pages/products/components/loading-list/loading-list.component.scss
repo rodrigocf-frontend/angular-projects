@@ -1,0 +1,72 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: rem(24);
+  padding: 0 rem(40) rem(40);
+}
+
+.skeleton-card {
+  display: flex;
+  flex-direction: column;
+  gap: rem(14);
+}
+
+.skeleton-img {
+  aspect-ratio: 3/4;
+  width: 100%;
+  border-radius: 0;
+}
+
+.skeleton-body {
+  display: flex;
+  flex-direction: column;
+  gap: rem(8);
+}
+
+.skeleton-line {
+  height: rem(12);
+  border-radius: 2px;
+  width: 100%;
+
+  &.short {
+    width: 40%;
+    height: rem(10);
+  }
+}
+
+.skeleton-price {
+  height: rem(13);
+  width: 35%;
+  border-radius: 2px;
+  margin-top: rem(2);
+}
+
+.skeleton-colors {
+  display: flex;
+  gap: rem(6);
+  margin-top: rem(4);
+}
+
+.skeleton-dot {
+  width: rem(12);
+  height: rem(12);
+  border-radius: 50%;
+}
+
+// shimmer animation
+.shimmer {
+  background: linear-gradient(90deg, $warm 0%, darken($warm, 4%) 50%, $warm 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

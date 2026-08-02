@@ -1,19 +1,16 @@
-import { Component, computed, inject } from '@angular/core';
-import { ProductFilterService } from '../../../../core/services/product/product-filter.service';
+import { Component, input } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { Product } from '../../../../shared/models/product.model';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { EmptyListComponent } from '../empty-list/empty-list.component';
 
 @Component({
   selector: 'app-products-list',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, EmptyListComponent],
   templateUrl: './products-list.html',
   styleUrl: './products-list.scss',
 })
 export class ProductsList {
-  private productsFilterService = inject(ProductFilterService);
-  products = toSignal(this.productsFilterService.productsFiltered$);
-  p = computed(() => this.products());
+  data = input.required<Product[]>();
 
   getSizes(product: Product): string[] {
     return product.sizes.split(',');

@@ -5,6 +5,11 @@
   grid-template-columns: repeat(3, 1fr);
   gap: rem(24);
 }
+
+.empty-grid {
+  grid-template-columns: unset;
+}
+
 .product-card {
   cursor: pointer;
 }

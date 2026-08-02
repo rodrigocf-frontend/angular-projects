@@ -3,23 +3,38 @@ import { Breadcrumb } from './components/breadcrumb/breadcrumb';
 import { Sidebar } from './components/sidebar/sidebar';
 import { ProductsList } from './components/products-list/products-list';
 import { Pagination } from './components/pagination/pagination';
-import { isPriceFilter, ProductFilter, SortFilter } from './store/products/products.reducers';
+import {
+  isCategoryFilter,
+  isColorFilter,
+  isPriceFilter,
+  isSizeFilter,
+  ProductFilter,
+  SortFilter,
+} from './store/products/products.reducers';
 import { AsyncPipe } from '@angular/common';
-import { ProductFilterService } from '../../core/services/product/product-filter.service';
 import { map } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { setSort } from './store/products/products.actions';
+import { FilterType, loadProducts, setFilter, setSort } from './store/products/products.actions';
+import { LoadingListComponent } from './components/loading-list/loading-list.component';
+import {
+  selectCheckedPagination,
+  selectFiltersActives,
+  selectIsLoading,
+  selectProductsFiltereds,
+} from './store/products/products.selectors';
 
 @Component({
   selector: 'app-products',
-  imports: [Breadcrumb, Sidebar, ProductsList, Pagination, AsyncPipe],
+  imports: [Breadcrumb, Sidebar, AsyncPipe, LoadingListComponent, ProductsList, Pagination],
   templateUrl: './products.html',
   styleUrl: './products.scss',
 })
 export default class Products implements OnInit {
-  private productsFilterService = inject(ProductFilterService);
   private store = inject(Store);
-  filtersActives$ = this.productsFilterService.filtersActives$.pipe(
+
+  isLoading$ = this.store.select(selectIsLoading);
+  readonly productsData$ = this.store.select(selectProductsFiltereds);
+  readonly filtersActives$ = this.store.select(selectFiltersActives).pipe(
     map((value) =>
       value.map((i) => {
         if (isPriceFilter(i)) {
@@ -39,7 +54,7 @@ export default class Products implements OnInit {
     ),
   );
 
-  productsPagination$ = this.productsFilterService.productsPagination$;
+  readonly productsPagination$ = this.store.select(selectCheckedPagination);
 
   readonly orderSelects: SortFilter[] = [
     {
@@ -61,11 +76,23 @@ export default class Products implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.productsFilterService.syncProducts();
+    this.store.dispatch(loadProducts({ page: 1 }));
   }
 
-  handleFilter(item: ProductFilter) {
-    this.productsFilterService.startFilter(item);
+  handleFilter(filter: ProductFilter) {
+    if (isColorFilter(filter)) {
+      this.store.dispatch(setFilter({ page: 1, filterType: FilterType.color, color: filter }));
+    }
+
+    if (isCategoryFilter(filter)) {
+      this.store.dispatch(
+        setFilter({ page: 1, filterType: FilterType.category, category: filter }),
+      );
+    }
+
+    if (isSizeFilter(filter)) {
+      this.store.dispatch(setFilter({ page: 1, filterType: FilterType.size, size: filter }));
+    }
   }
 
   onSelectOrder(type: string) {

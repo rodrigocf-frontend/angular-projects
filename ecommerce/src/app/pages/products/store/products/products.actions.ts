@@ -9,7 +9,7 @@ import {
   SortFilter,
 } from './products.reducers';
 import { Product } from '../../../../shared/models/product.model';
-import { FiltersApiResponse } from '../../../../core/services/product/product-filter.service';
+import { FiltersApiResponse } from '../../../../core/services/product/products.service';
 
 export const loadProducts = createAction(
   '[Page Products] - Load Products',
@@ -63,12 +63,9 @@ export const setSort = createAction(
   props<{ sort: SortFilter }>(),
 );
 
-export const setFiltersSections = createAction(
-  '[Page Products] - Set setFiltersSections Sucess',
-  props<{
-    pagination: FiltersPagination;
-    products: Product[];
-  }>(),
+export const setLoading = createAction(
+  '[Products Page] - Set Loading',
+  props<{ isLoading: boolean }>(),
 );
 
 export enum FilterType {

@@ -10,19 +10,18 @@ import {
   configPagination,
   setPagination,
   setSort,
+  setLoading,
 } from './products.actions';
 import { forkJoin, switchMap } from 'rxjs';
 import { ProductService } from '../../../../core/services/product/products.service';
 import { Store } from '@ngrx/store';
 import { selectCheckedFilters, selectCheckedPagination } from './products.selectors';
-import { ProductFilterService } from '../../../../core/services/product/product-filter.service';
 import { concatLatestFrom } from '@ngrx/operators';
 
 @Injectable()
 export class ProductsPageEffects {
   private action$ = inject(Actions);
   private productsService = inject(ProductService);
-  private productsFilterService = inject(ProductFilterService);
 
   private store = inject(Store);
 
@@ -31,7 +30,7 @@ export class ProductsPageEffects {
       switchMap(({ page }) => {
         return forkJoin({
           products: this.productsService.getProducts({ page }),
-          filters: this.productsFilterService.getFilters(),
+          filters: this.productsService.getFilters(),
         }).pipe(
           switchMap(
             ({ products: { data, ...pagination }, filters: { categories, colors, sizes } }) => [
@@ -46,6 +45,9 @@ export class ProductsPageEffects {
               }),
               configPagination({
                 pagination,
+              }),
+              setLoading({
+                isLoading: false,
               }),
             ],
           ),
@@ -73,9 +75,22 @@ export class ProductsPageEffects {
                   current: page,
                 },
               }),
+              setLoading({
+                isLoading: false,
+              }),
             ]),
           );
       }),
+    );
+  });
+
+  private readonly isLoadingFilter$ = createEffect(() => {
+    return this.action$.pipe(ofType(setFilter, changePage, setSort)).pipe(
+      switchMap(() => [
+        setLoading({
+          isLoading: true,
+        }),
+      ]),
     );
   });
 }
