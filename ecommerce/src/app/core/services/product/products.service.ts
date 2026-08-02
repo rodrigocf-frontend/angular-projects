@@ -1,7 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Product } from '../../../shared/models/product.model';
-import { CategoryFilter } from '../../../pages/products/store/products/products.reducers';
+import {
+  CategoryFilter,
+  ColorFilter,
+  PriceFilter,
+  SizeFilter,
+  SortFilter,
+} from '../../../pages/products/store/products/products.reducers';
 
 interface Pagination<T> {
   first: number;
@@ -17,16 +23,60 @@ interface Pagination<T> {
 export class ProductService {
   private http = inject(HttpClient);
 
-  getProducts({ page = 0, categories }: { page?: number; categories?: CategoryFilter[] }) {
+  getProducts({
+    page = 0,
+    categories = [],
+    colors = [],
+    sizes = [],
+    fromPrice = [],
+    toPrice = [],
+    sort = [],
+  }: {
+    page?: number;
+    categories?: CategoryFilter[];
+    sizes?: SizeFilter[];
+    colors?: ColorFilter[];
+    fromPrice?: PriceFilter[];
+    toPrice?: PriceFilter[];
+    sort?: SortFilter[];
+  }) {
     let params = new HttpParams();
 
-    if (categories) {
-      categories.forEach((category) => {
-        params = params.append('category', this.slugify(category.name));
-      });
-    }
+    categories.forEach((category) => {
+      const currentParams = params.get('category_in');
+      if (currentParams) {
+        params = params.set('category_in', `${currentParams},${this.slugify(category.name)}`);
+      } else {
+        params = params.append('category_in', this.slugify(category.name));
+      }
+    });
 
-    console.log(params, 'categorieas');
+    colors.forEach((color) => {
+      params = params.append('colors_contains', color.hex);
+    });
+
+    sizes.forEach((size) => {
+      params = params.append('sizes_contains', size.name);
+    });
+
+    fromPrice.forEach((price) => {
+      params = params.append('price_gte', this.slugify(`${price.value}`));
+    });
+
+    toPrice.forEach((price) => {
+      params = params.append('price_lte', this.slugify(`${price.value}`));
+    });
+
+    sort.forEach((sort) => {
+      if (sort.type === 'min-price') {
+        params = params.append('_sort', 'price');
+      } else if (sort.type === 'max-price') {
+        params = params.append('_sort', '-price');
+      } else if (sort.type === 'newest') {
+        params = params.append('_sort', 'isNew');
+      }
+    });
+
     return this.http.get<Pagination<Product>>(
       `http://localhost:3000/products?_page=${page}&_per_page=9`,
       {

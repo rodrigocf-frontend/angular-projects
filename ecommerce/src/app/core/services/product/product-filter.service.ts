@@ -20,7 +20,7 @@ import {
   selectFilters,
   selectFiltersActives,
   selectProductsFiltereds,
-  selectProductsPagination,
+  selectCheckedPagination,
 } from '../../../pages/products/store/products/products.selectors';
 import { HttpClient } from '@angular/common/http';
 
@@ -40,7 +40,7 @@ export class ProductFilterService {
   private readonly http = inject(HttpClient);
   readonly filtersActives$ = this.store.select(selectFiltersActives);
   readonly productsFiltered$ = this.store.select(selectProductsFiltereds);
-  readonly productsPagination$ = this.store.select(selectProductsPagination);
+  readonly productsPagination$ = this.store.select(selectCheckedPagination);
 
   readonly categories$: Observable<{
     sizes: SizeFilter[];
@@ -54,23 +54,27 @@ export class ProductFilterService {
 
   startFilter(filter: ProductFilter) {
     if (isColorFilter(filter)) {
-      this.store.dispatch(setFilter({ filterType: FilterType.color, color: filter }));
+      this.store.dispatch(setFilter({ page: 1, filterType: FilterType.color, color: filter }));
     }
 
     if (isCategoryFilter(filter)) {
-      this.store.dispatch(setFilter({ filterType: FilterType.category, category: filter }));
+      this.store.dispatch(
+        setFilter({ page: 1, filterType: FilterType.category, category: filter }),
+      );
     }
 
     if (isSizeFilter(filter)) {
-      this.store.dispatch(setFilter({ filterType: FilterType.size, size: filter }));
+      this.store.dispatch(setFilter({ page: 1, filterType: FilterType.size, size: filter }));
     }
   }
 
   getFilters() {
-    return this.http.get<FiltersApiResponse>(`http://localhost:3000/filters`);
+    return this.http
+      .get<FiltersApiResponse>(`http://localhost:3000/filters`)
+      .pipe(tap((e) => console.log(e)));
   }
 
   clearFilter() {
-    this.store.dispatch(clearFilter());
+    this.store.dispatch(clearFilter({ page: 1 }));
   }
 }

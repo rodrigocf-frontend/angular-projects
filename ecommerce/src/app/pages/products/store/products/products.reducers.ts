@@ -6,9 +6,11 @@ import {
   FilterType,
   setFilter,
   setProducts,
-  setupProductsFilter,
+  configFilters,
+  configPagination,
+  setPagination,
+  setSort,
 } from './products.actions';
-import { countBy, entries } from 'lodash-es';
 import {
   CategoryFilterFromApi,
   ColorFilterFromApi,
@@ -16,48 +18,59 @@ import {
   SizeFilterFromApi,
 } from '../../../../core/services/product/product-filter.service';
 
-export interface ProductFilter {
-  name: string;
+export interface ProductFilterCheck {
   checked: boolean;
 }
 
-export interface CategoryFilter extends ProductFilter {
+export interface ProductFilter {
+  name: string;
+}
+
+export interface CategoryFilter extends ProductFilter, ProductFilterCheck {
   count: number;
 }
 
-export interface SizeFilter extends ProductFilter {}
+export interface SizeFilter extends ProductFilter, ProductFilterCheck {}
 
-export interface ColorFilter extends ProductFilter {
+export interface ColorFilter extends ProductFilter, ProductFilterCheck {
   hex: string;
 }
 
 export interface PriceFilter extends ProductFilter {
   type: 'fromPrice' | 'toPrice';
-  value: number;
+  value: number | null;
 }
 
-export interface FiltersPagination {
+export interface SortFilter extends ProductFilter {
+  type: 'relevance' | 'min-price' | 'max-price' | 'newest';
+}
+
+export interface Pagination {
   first: number;
   prev: number;
   next: number;
   last: number;
   pages: number;
   items: number;
+}
+
+export interface FiltersPagination extends Pagination {
   current: number;
 }
 
 export interface Filters {
-  pagination: FiltersPagination;
   categories: CategoryFilter[];
   sizes: SizeFilter[];
   colors: ColorFilter[];
-  fromPrice: PriceFilter;
-  toPrice: PriceFilter;
+  fromPrice: PriceFilter[];
+  toPrice: PriceFilter[];
+  sort: SortFilter[];
 }
 
 export interface ProductsState {
   list: Product[];
   filters: Filters;
+  pagination: FiltersPagination;
 }
 
 export interface AppState {
@@ -67,30 +80,21 @@ export interface AppState {
 const initialState: ProductsState = {
   list: [],
   filters: {
-    pagination: {
-      first: 1,
-      prev: 0,
-      next: 0,
-      last: 0,
-      pages: 0,
-      items: 0,
-      current: 1,
-    },
     categories: [],
     sizes: [],
     colors: [],
-    toPrice: {
-      type: 'toPrice',
-      value: 0,
-      name: '',
-      checked: false,
-    },
-    fromPrice: {
-      type: 'fromPrice',
-      value: 0,
-      name: '',
-      checked: false,
-    },
+    toPrice: [],
+    fromPrice: [],
+    sort: [],
+  },
+  pagination: {
+    first: 0,
+    prev: 0,
+    next: 0,
+    last: 0,
+    pages: 0,
+    items: 0,
+    current: 0,
   },
 };
 
@@ -126,7 +130,10 @@ const setupColors = (colors: ColorFilterFromApi[]): ColorFilter[] => {
   }));
 };
 
-const checkFilter = <T extends ProductFilter>(filters: T[], productFilter?: T) => {
+const checkFilter = <T extends ProductFilter & ProductFilterCheck>(
+  filters: T[],
+  productFilter?: T,
+) => {
   return filters.map((item) => {
     if (item.name === productFilter?.name) {
       if (item.checked) {
@@ -170,16 +177,33 @@ export const productsReducer = createReducer(
       list: products,
     };
   }),
-  on(setupProductsFilter, (state, { filters, pagination }) => {
+  on(configFilters, (state, { filters }) => {
     const { categories, colors, sizes } = setupFilters(filters);
     return {
       ...state,
       filters: {
         ...state.filters,
-        pagination,
         categories,
         colors,
         sizes,
+      },
+    };
+  }),
+  on(configPagination, (state, { pagination }) => {
+    return {
+      ...state,
+      pagination: {
+        ...pagination,
+        current: 1,
+      },
+    };
+  }),
+  on(setPagination, (state, { pagination }) => {
+    return {
+      ...state,
+      pagination: {
+        ...state.pagination,
+        ...pagination,
       },
     };
   }),
@@ -215,7 +239,11 @@ export const productsReducer = createReducer(
             ...state,
             filters: {
               ...state.filters,
-              fromPrice: { ...price, name: `A partir de R$ ${price.value}` },
+              fromPrice: [
+                {
+                  ...price,
+                },
+              ],
             },
           };
         } else if (price?.type === 'toPrice') {
@@ -223,7 +251,7 @@ export const productsReducer = createReducer(
             ...state,
             filters: {
               ...state.filters,
-              toPrice: { ...price, name: `Até R$ ${price.value}` },
+              toPrice: [{ ...price }],
             },
           };
         }
@@ -235,36 +263,25 @@ export const productsReducer = createReducer(
   on(changePage, (state, { page }) => {
     return {
       ...state,
-      filters: {
-        ...state.filters,
-        pagination: {
-          ...state.filters.pagination,
-          current: page,
-        },
+      pagination: {
+        ...state.pagination,
+        current: page,
       },
     };
   }),
-  // on(clearFilter, (state) => {
-  //   const { categories, colors, sizes } = setupFilters(state.list);
-
-  //   return {
-  //     ...state,
-  //     filters: {
-  //       ...state.filters,
-  //       categories,
-  //       colors,
-  //       sizes,
-  //       toPrice: {
-  //         ...state.filters.toPrice,
-  //         value: 0,
-  //         checked: false,
-  //       },
-  //       fromPrice: {
-  //         ...state.filters.fromPrice,
-  //         value: 0,
-  //         checked: false,
-  //       },
-  //     },
-  //   };
-  // }),
+  on(clearFilter, (state) => {
+    return {
+      ...state,
+      ...initialState,
+    };
+  }),
+  on(setSort, (state, { sort }) => {
+    return {
+      ...state,
+      filters: {
+        ...state.filters,
+        sort: [sort],
+      },
+    };
+  }),
 );

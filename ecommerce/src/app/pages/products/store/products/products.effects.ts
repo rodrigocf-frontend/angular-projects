@@ -2,15 +2,19 @@ import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import {
   changePage,
+  clearFilter,
   loadProducts,
   setFilter,
   setProducts,
-  setupProductsFilter,
+  configFilters,
+  configPagination,
+  setPagination,
+  setSort,
 } from './products.actions';
 import { forkJoin, switchMap } from 'rxjs';
 import { ProductService } from '../../../../core/services/product/products.service';
 import { Store } from '@ngrx/store';
-import { selectCheckedCategories } from './products.selectors';
+import { selectCheckedFilters, selectCheckedPagination } from './products.selectors';
 import { ProductFilterService } from '../../../../core/services/product/product-filter.service';
 import { concatLatestFrom } from '@ngrx/operators';
 
@@ -23,7 +27,7 @@ export class ProductsPageEffects {
   private store = inject(Store);
 
   private readonly loadProducts$ = createEffect(() => {
-    return this.action$.pipe(ofType(loadProducts)).pipe(
+    return this.action$.pipe(ofType(loadProducts, clearFilter)).pipe(
       switchMap(({ page }) => {
         return forkJoin({
           products: this.productsService.getProducts({ page }),
@@ -32,17 +36,16 @@ export class ProductsPageEffects {
           switchMap(
             ({ products: { data, ...pagination }, filters: { categories, colors, sizes } }) => [
               setProducts({ products: data }),
-              setupProductsFilter({
+              configFilters({
                 products: data,
-                pagination: {
-                  ...pagination,
-                  current: page,
-                },
                 filters: {
                   categories,
                   colors,
                   sizes,
                 },
+              }),
+              configPagination({
+                pagination,
               }),
             ],
           ),
@@ -52,23 +55,26 @@ export class ProductsPageEffects {
   });
 
   private readonly loadFilter$ = createEffect(() => {
-    return this.action$.pipe(ofType(setFilter)).pipe(
-      concatLatestFrom(() => this.store.select(selectCheckedCategories)),
-      switchMap(([_, categories]) => {
+    return this.action$.pipe(ofType(setFilter, changePage, setSort)).pipe(
+      concatLatestFrom(() => [
+        this.store.select(selectCheckedFilters),
+        this.store.select(selectCheckedPagination),
+      ]),
+      switchMap(([action, { categories, colors, sizes, fromPrice, toPrice, sort }]) => {
+        const page = action.type === changePage.type ? action.page : 1;
         return this.productsService
-          .getProducts({ page: 1, categories })
-          .pipe(switchMap(({ data }) => [setProducts({ products: data })]));
-      }),
-    );
-  });
-
-  private readonly changePage$ = createEffect(() => {
-    return this.action$.pipe(ofType(changePage)).pipe(
-      concatLatestFrom(() => this.store.select(selectCheckedCategories)),
-      switchMap(([{ page }, categories]) => {
-        return this.productsService
-          .getProducts({ page, categories })
-          .pipe(switchMap(({ data }) => [setProducts({ products: data })]));
+          .getProducts({ page, categories, colors, sizes, fromPrice, toPrice, sort })
+          .pipe(
+            switchMap(({ data, ...pagination }) => [
+              setProducts({ products: data }),
+              setPagination({
+                pagination: {
+                  ...pagination,
+                  current: page,
+                },
+              }),
+            ]),
+          );
       }),
     );
   });
