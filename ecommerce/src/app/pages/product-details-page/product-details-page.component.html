@@ -1,6 +1,8 @@
 <app-breadcrumb [data]="['produtos', 'produto-1']" />
 <main class="product-page">
-  <app-product-details-gallery />
-  <app-product-details-info />
+  @if (data$ | async; as product) {
+    <app-product-details-gallery [images]="product.images" />
+    <app-product-details-info [data]="product" />
+  }
 </main>
 <app-product-details-related />

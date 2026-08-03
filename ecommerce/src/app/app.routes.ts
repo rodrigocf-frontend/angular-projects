@@ -3,6 +3,8 @@ import { provideEffects } from '@ngrx/effects';
 import { ProductsPageEffects } from './pages/products/store/products/products.effects';
 import { provideState } from '@ngrx/store';
 import { productsReducer } from './pages/products/store/products/products.reducers';
+import { productsDetailsReducer } from './pages/product-details-page/store/product-details.reducers';
+import { ProductsDetailsPageEffects } from './pages/product-details-page/store/product-details.effects';
 
 export const routes: Routes = [
   {
@@ -15,6 +17,11 @@ export const routes: Routes = [
       provideState({
         name: 'products',
         reducer: productsReducer,
+      }),
+
+      provideState({
+        name: 'productDetails',
+        reducer: productsDetailsReducer,
       }),
     ],
     children: [
@@ -30,6 +37,7 @@ export const routes: Routes = [
       },
       {
         path: 'details/:id',
+        providers: [provideEffects(ProductsDetailsPageEffects)],
         loadComponent: () => import('./pages/product-details-page/product-details-page.component'),
       },
       {

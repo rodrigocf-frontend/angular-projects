@@ -102,6 +102,10 @@ export class ProductService {
       .pipe(tap((e) => console.log(e)));
   }
 
+  getProduct(id: string) {
+    return this.http.get<Product>(`http://localhost:3000/products/${id}`);
+  }
+
   slugify(str: string): string {
     return str
       .normalize('NFD') // Separa os acentos das letras (ex: 'á' vira 'a' + ´)

@@ -1,7 +1,7 @@
 <div class="product-info">
   <div class="product-header">
-    <p class="product-brand">Maison</p>
-    <h1 class="product-name">Vestido Midi <em>Linho</em></h1>
+    <p class="product-brand">{{ data().brand }}</p>
+    <h1 class="product-name">{{ nameParts().title }} <em>{{ nameParts().emphasis }}</em></h1>
     <div class="rating">
       <div class="stars">
         <span class="star">★</span>
@@ -10,14 +10,18 @@
         <span class="star">★</span>
         <span class="star empty">★</span>
       </div>
-      <span class="rating-count">4.8 (24 avaliações)</span>
+      <span class="rating-count">{{ data().rating }} ({{ data().reviewCount }} avaliações)</span>
     </div>
   </div>
 
   <div class="price-block">
-    <span class="price-current">R$ 589,00</span>
-    <span class="price-old">R$ 736,00</span>
-    <span class="price-badge">−20%</span>
+    <span class="price-current">{{ data().price | currency: 'BRL' }}</span>
+    @if (data().isSale) {
+      <span class="price-old">{{ data().originalPrice | currency: 'BRL' }}</span>
+    }
+    @if (data().isSale) {
+      <span class="price-badge">−{{ data().discount }}%</span>
+    }
   </div>
 
   <!-- COLOR -->

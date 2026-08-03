@@ -30,6 +30,7 @@
   height: 100%;
   transition: transform 0.3s;
 }
+
 .thumb:hover .thumb-bg {
   transform: scale(1.05);
 }
@@ -41,6 +42,11 @@
   width: 100%;
   height: 100%;
 }
+
+.product-imgs {
+  max-width: 100%;
+}
+
 .img-nav {
   position: absolute;
   bottom: rem(16);
