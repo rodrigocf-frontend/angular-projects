@@ -17,6 +17,7 @@ export class ProductDetailsGalleryComponent {
       const currentImages = this.images();
       if (currentImages.length > 0) {
         this.currentBg.set(this.images()[0]);
+        this.indexImage.set(0);
       }
     });
   }

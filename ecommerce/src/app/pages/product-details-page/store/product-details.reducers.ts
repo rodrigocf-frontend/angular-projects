@@ -1,13 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
 import { Product } from '../../../shared/models/product.model';
-import { setProduct } from './product-details.actions';
+import { setProduct, setRelatedProducts } from './product-details.actions';
 
 export type ProductDetailsState = {
   product: Product;
-};
-
-export type ProductDetailsFeatures = {
-  productDetails: ProductDetailsState;
+  relatedProducts: Product[];
 };
 
 const initialState: ProductDetailsState = {
@@ -33,6 +30,7 @@ const initialState: ProductDetailsState = {
     sizes: '',
     tags: [],
   },
+  relatedProducts: [],
 };
 
 export const productsDetailsReducer = createReducer(
@@ -41,6 +39,12 @@ export const productsDetailsReducer = createReducer(
     return {
       ...state,
       product,
+    };
+  }),
+  on(setRelatedProducts, (state, { products }) => {
+    return {
+      ...state,
+      relatedProducts: products,
     };
   }),
 );

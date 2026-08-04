@@ -4,7 +4,7 @@ import { ProductDetailsGalleryComponent } from './components/product-details-gal
 import { ProductDetailsInfoComponent } from './components/product-details-info/product-details-info.component';
 import { ProductDetailsRelatedComponent } from './components/product-details-related/product-details-related.component';
 import { Store } from '@ngrx/store';
-import { selectProduct } from './store/product-details.selectors';
+import { selectProduct, selectRelatedProducts } from './store/product-details.selectors';
 import { AsyncPipe } from '@angular/common';
 import { loadProduct } from './store/product-details.actions';
 import { ActivatedRoute } from '@angular/router';
@@ -27,6 +27,7 @@ export default class ProductDetailsPageComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
 
   data$ = this.store.select(selectProduct);
+  dataRelatedProducts$ = this.store.select(selectRelatedProducts);
 
   ngOnInit(): void {
     this.route.paramMap

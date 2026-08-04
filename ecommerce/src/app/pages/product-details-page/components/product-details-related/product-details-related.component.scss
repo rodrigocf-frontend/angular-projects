@@ -32,6 +32,12 @@
   width: 100%;
   height: 100%;
   transition: transform 0.4s;
+  background-position: center;
+  background-size: cover;
+}
+
+.img-product {
+  max-width: 100%;
 }
 .rel-card:hover .rel-img-bg {
   transform: scale(1.03);

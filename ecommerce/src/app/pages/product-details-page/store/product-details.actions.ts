@@ -10,3 +10,8 @@ export const setProduct = createAction(
   '[Product Details Page] - set product',
   props<{ product: Product }>(),
 );
+
+export const setRelatedProducts = createAction(
+  '[Product Details Page] - set related products',
+  props<{ products: Product[] }>(),
+);

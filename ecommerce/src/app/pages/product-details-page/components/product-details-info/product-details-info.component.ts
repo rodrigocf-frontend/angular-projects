@@ -63,6 +63,12 @@ export class ProductDetailsInfoComponent {
     return this.tabIndex.set(tab);
   }
 
+  resetState() {
+    this.tabIndex.set(0);
+    this.sizeIndex.set(0);
+    this.colorIndex.set(0);
+  }
+
   getColors = getProductColors;
 
   getSizes = getProductsSizes;

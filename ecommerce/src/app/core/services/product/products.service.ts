@@ -106,6 +106,12 @@ export class ProductService {
     return this.http.get<Product>(`http://localhost:3000/products/${id}`);
   }
 
+  getRelatedProducts(product: Product) {
+    return this.http.get<Pagination<Product>>(
+      `http://localhost:3000/products?category=${product.category}&id:ne=${product.id}&_page=0&_per_page=4`,
+    );
+  }
+
   slugify(str: string): string {
     return str
       .normalize('NFD') // Separa os acentos das letras (ex: 'á' vira 'a' + ´)

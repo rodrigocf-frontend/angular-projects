@@ -1,8 +1,10 @@
-<app-breadcrumb [data]="['produtos', 'produto-1']" />
-<main class="product-page">
-  @if (data$ | async; as product) {
+@if (data$ | async; as product) {
+  <app-breadcrumb [data]="['produto', product.name]" id="product-details" />
+  <main class="product-page">
     <app-product-details-gallery [images]="product.images" />
-    <app-product-details-info [data]="product" />
+    <app-product-details-info [data]="product" #info />
+  </main>
+  @if (dataRelatedProducts$ | async; as relatedProducts) {
+    <app-product-details-related [data]="relatedProducts" (onClickCardReset)="info.resetState()" />
   }
-</main>
-<app-product-details-related />
+}
