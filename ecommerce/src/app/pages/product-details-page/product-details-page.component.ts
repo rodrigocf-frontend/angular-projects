@@ -4,11 +4,17 @@ import { ProductDetailsGalleryComponent } from './components/product-details-gal
 import { ProductDetailsInfoComponent } from './components/product-details-info/product-details-info.component';
 import { ProductDetailsRelatedComponent } from './components/product-details-related/product-details-related.component';
 import { Store } from '@ngrx/store';
-import { selectProduct, selectRelatedProducts } from './store/product-details.selectors';
+import {
+  selectDetailsPageLoading,
+  selectProduct,
+  selectRelatedProducts,
+} from './store/product-details.selectors';
 import { AsyncPipe } from '@angular/common';
 import { loadProduct } from './store/product-details.actions';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs';
+import { ProductDetailsSkeletonComponent } from './components/product-details-skeleton/product-details-skeleton.component';
+import { ProductDetailsNotFoundComponent } from './components/product-details-not-found/product-details-not-found.component';
 
 @Component({
   selector: 'app-product-details-page',
@@ -18,6 +24,8 @@ import { tap } from 'rxjs';
     ProductDetailsInfoComponent,
     ProductDetailsRelatedComponent,
     AsyncPipe,
+    ProductDetailsSkeletonComponent,
+    ProductDetailsNotFoundComponent,
   ],
   templateUrl: './product-details-page.component.html',
   styleUrl: './product-details-page.component.scss',
@@ -28,6 +36,7 @@ export default class ProductDetailsPageComponent implements OnInit {
 
   data$ = this.store.select(selectProduct);
   dataRelatedProducts$ = this.store.select(selectRelatedProducts);
+  isLoadingPage$ = this.store.select(selectDetailsPageLoading);
 
   ngOnInit(): void {
     this.route.paramMap

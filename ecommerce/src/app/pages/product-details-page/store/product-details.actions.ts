@@ -15,3 +15,8 @@ export const setRelatedProducts = createAction(
   '[Product Details Page] - set related products',
   props<{ products: Product[] }>(),
 );
+
+export const setIsLoading = createAction(
+  '[Product Details Page] - set Loading',
+  props<{ isLoading: boolean }>(),
+);

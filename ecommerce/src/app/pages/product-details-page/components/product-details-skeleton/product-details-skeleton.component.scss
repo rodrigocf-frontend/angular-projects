@@ -1,0 +1,148 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.skeleton-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: calc(100vh - 113px);
+}
+
+// GALLERY
+.skeleton-gallery {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: rem(12);
+  padding: rem(32, 24, 32, 48);
+}
+
+.skeleton-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: rem(8);
+}
+
+.skeleton-thumb {
+  aspect-ratio: 3/4;
+  width: 100%;
+}
+
+.skeleton-main-img {
+  aspect-ratio: 3/4;
+  width: 100%;
+}
+
+// INFO
+.skeleton-info {
+  padding: rem(32, 48, 32, 32);
+  border-left: 0.5px solid $border;
+  display: flex;
+  flex-direction: column;
+  gap: rem(16);
+}
+
+.skeleton-brand {
+  height: rem(10);
+  width: 15%;
+  border-radius: 2px;
+}
+
+.skeleton-name {
+  height: rem(44);
+  width: 90%;
+  border-radius: 2px;
+
+  &.short {
+    width: 60%;
+    height: rem(44);
+    margin-top: rem(-8);
+  }
+}
+
+.skeleton-rating {
+  height: rem(12);
+  width: 30%;
+  border-radius: 2px;
+}
+
+.skeleton-price {
+  height: rem(36);
+  width: 40%;
+  border-radius: 2px;
+  margin: rem(4, 0, 12);
+  padding-bottom: rem(28);
+  border-bottom: 0.5px solid $border;
+}
+
+.skeleton-section {
+  display: flex;
+  flex-direction: column;
+  gap: rem(12);
+  margin-bottom: rem(8);
+}
+
+.skeleton-label {
+  height: rem(10);
+  width: 20%;
+  border-radius: 2px;
+}
+
+.skeleton-colors {
+  display: flex;
+  gap: rem(10);
+}
+
+.skeleton-color-dot {
+  width: rem(28);
+  height: rem(28);
+  border-radius: 50%;
+}
+
+.skeleton-sizes {
+  display: flex;
+  gap: rem(8);
+  flex-wrap: wrap;
+}
+
+.skeleton-size {
+  width: rem(44);
+  height: rem(44);
+  border-radius: 2px;
+}
+
+.skeleton-btn {
+  height: rem(50);
+  width: 100%;
+  border-radius: 2px;
+
+  &.ghost {
+    opacity: 0.5;
+  }
+}
+
+.skeleton-perks {
+  display: flex;
+  flex-direction: column;
+  gap: rem(10);
+  margin-top: rem(8);
+}
+
+.skeleton-perk {
+  height: rem(10);
+  width: 55%;
+  border-radius: 2px;
+}
+
+// shimmer
+.shimmer {
+  background: linear-gradient(90deg, $warm 0%, darken($warm, 4%) 50%, $warm 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

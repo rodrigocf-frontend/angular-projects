@@ -1,10 +1,17 @@
-@if (data$ | async; as product) {
+@if (isLoadingPage$ | async) {
+  <app-product-details-skeleton />
+} @else if (data$ | async; as product) {
   <app-breadcrumb [data]="['produto', product.name]" id="product-details" />
   <main class="product-page">
     <app-product-details-gallery [images]="product.images" />
     <app-product-details-info [data]="product" #info />
   </main>
   @if (dataRelatedProducts$ | async; as relatedProducts) {
-    <app-product-details-related [data]="relatedProducts" (onClickCardReset)="info.resetState()" />
+    <app-product-details-related
+      [data]="relatedProducts"
+      (onClickCardReset)="info.resetState()"
+    />
   }
+} @else {
+  <app-product-details-not-found />
 }

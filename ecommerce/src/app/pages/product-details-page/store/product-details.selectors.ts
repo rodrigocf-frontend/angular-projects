@@ -12,3 +12,8 @@ export const selectRelatedProducts = createSelector(
   selectFeature,
   (state: ProductDetailsState) => state.relatedProducts,
 );
+
+export const selectDetailsPageLoading = createSelector(
+  selectFeature,
+  (state: ProductDetailsState) => state.isLoading,
+);

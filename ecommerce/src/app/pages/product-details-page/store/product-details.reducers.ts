@@ -1,36 +1,17 @@
 import { createReducer, on } from '@ngrx/store';
 import { Product } from '../../../shared/models/product.model';
-import { setProduct, setRelatedProducts } from './product-details.actions';
+import { setIsLoading, setProduct, setRelatedProducts } from './product-details.actions';
 
 export type ProductDetailsState = {
-  product: Product;
+  product: Product | null;
   relatedProducts: Product[];
+  isLoading: boolean;
 };
 
 const initialState: ProductDetailsState = {
-  product: {
-    brand: '',
-    careInstructions: [],
-    category: '',
-    colors: '',
-    composition: [],
-    createdAt: '',
-    description: '',
-    details: [],
-    discount: 0,
-    id: '',
-    images: [],
-    isNew: false,
-    isSale: false,
-    name: '',
-    originalPrice: 0,
-    price: 0,
-    rating: 0,
-    reviewCount: 0,
-    sizes: '',
-    tags: [],
-  },
+  product: null,
   relatedProducts: [],
+  isLoading: true,
 };
 
 export const productsDetailsReducer = createReducer(
@@ -45,6 +26,13 @@ export const productsDetailsReducer = createReducer(
     return {
       ...state,
       relatedProducts: products,
+    };
+  }),
+
+  on(setIsLoading, (state, { isLoading }) => {
+    return {
+      ...state,
+      isLoading,
     };
   }),
 );
