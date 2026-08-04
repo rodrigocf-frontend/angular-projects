@@ -12,9 +12,11 @@
     <div class="main-bg" style="background: linear-gradient(160deg, #e8e3dc, #d4cfc8)">
       <img [src]="currentBg()?.url" class="product-imgs" [alt]="currentBg()?.alt" />
     </div>
-    <div class="img-nav">
-      <button (click)="onPreviousImage()">←</button>
-      <button (click)="onNextImage()">→</button>
-    </div>
+    @if (images().length > 1) {
+      <div class="img-nav">
+        <button (click)="onPreviousImage()">←</button>
+        <button (click)="onNextImage()">→</button>
+      </div>
+    }
   </div>
 </div>

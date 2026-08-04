@@ -1,14 +1,12 @@
 <div class="product-info">
   <div class="product-header">
     <p class="product-brand">{{ data().brand }}</p>
-    <h1 class="product-name">{{ nameParts().title }} <em>{{ nameParts().emphasis }}</em></h1>
+    <h1 class="product-name">
+      {{ nameParts().title }} <em>{{ nameParts().emphasis }}</em>
+    </h1>
     <div class="rating">
       <div class="stars">
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star">★</span>
-        <span class="star empty">★</span>
+        <span class="star">{{ renderStars(data().rating) }}</span>
       </div>
       <span class="rating-count">{{ data().rating }} ({{ data().reviewCount }} avaliações)</span>
     </div>
@@ -26,31 +24,47 @@
 
   <!-- COLOR -->
   <div class="selector-block">
-    <div class="selector-label">Cor <span class="selector-value">Off White</span></div>
+    <div class="selector-label">
+      Cor <span class="selector-value">{{ selectedColor().name }}</span>
+    </div>
     <div class="color-options">
-      <div class="color-opt selected" style="background: #f5f0e8" title="Off White"></div>
-      <div class="color-opt" style="background: #2c2c2c" title="Preto"></div>
-      <div class="color-opt" style="background: #c4a882" title="Bege"></div>
+      @for (color of getColors(data()); track $index) {
+        <div
+          class="color-opt"
+          [class.selected]="color.hex === selectedColor().hex"
+          [style.background]="color.hex"
+          [title]="color.name"
+          (click)="onClickColor($index)"
+        ></div>
+      }
     </div>
   </div>
 
   <!-- SIZE -->
   <div class="selector-block">
-    <div class="selector-label">Tamanho <span class="selector-value">P</span></div>
-    <div class="size-options">
-      <div class="size-opt">PP</div>
-      <div class="size-opt selected">P</div>
-      <div class="size-opt">M</div>
-      <div class="size-opt">G</div>
-      <div class="size-opt unavailable">GG</div>
+    <div class="selector-label">
+      Tamanho <span class="selector-value">{{ selectedSize().label }}</span>
     </div>
-    <span class="size-guide">Guia de tamanhos</span>
+    <div class="size-options">
+      @for (size of getSizes(data()); track $index) {
+        <div
+          class="size-opt"
+          [class]="{
+            selected: selectedSize().label === size.label,
+            unavailable: !size.available,
+          }"
+          (click)="onClickSize($index)"
+        >
+          {{ size.label }}
+        </div>
+      }
+    </div>
   </div>
 
   <!-- ACTIONS -->
   <div class="actions">
-    <button class="btn-cart">Adicionar à sacola</button>
-    <button class="btn-wish">♡ &nbsp; Salvar na lista de desejos</button>
+    <button primary>Adicionar à sacola</button>
+    <button secondary>♡ &nbsp; Salvar na lista de desejos</button>
   </div>
 
   <!-- PERKS -->
@@ -63,33 +77,42 @@
   <!-- TABS -->
   <div class="tabs">
     <div class="tab-nav">
-      <button class="tab-btn active" data-tab="descricao">Descrição</button>
-      <button class="tab-btn" data-tab="composicao">Composição</button>
-      <button class="tab-btn" data-tab="cuidados">Cuidados</button>
+      @for (tab of tabs; track $index) {
+        <button
+          class="tab-btn"
+          [class.active]="tabIndex() === tab.index"
+          (click)="onClickTab(tab.index)"
+        >
+          {{ tab.label }}
+        </button>
+      }
     </div>
     <div class="tab-content">
-      <div class="tab-panel active" id="descricao">
+      <div
+        class="tab-panel"
+        [class.active]="tabIndex() === DetailsTabEnum.description"
+        id="descricao"
+      >
         <p>
-          Vestido midi confeccionado em linho puro, com caimento fluido e leveza incomparável. Corte
-          reto com abertura lateral discreta, ideal para ocasiões que pedem elegância sem esforço. O
-          linho natural proporciona frescor no calor e um visual atemporal que transcende
-          tendências.
+          {{ data().description }}
         </p>
       </div>
-      <div class="tab-panel" id="composicao">
+      <div
+        class="tab-panel"
+        [class.active]="tabIndex() === DetailsTabEnum.composition"
+        id="composicao"
+      >
         <ul class="detail-list">
-          <li>100% Linho</li>
-          <li>Forro interno em viscose</li>
-          <li>Abertura lateral com zíper oculto</li>
-          <li>Comprimento midi (abaixo do joelho)</li>
+          @for (composition of data().composition; track $index) {
+            <li>{{ composition }}</li>
+          }
         </ul>
       </div>
-      <div class="tab-panel" id="cuidados">
+      <div class="tab-panel" [class.active]="tabIndex() === DetailsTabEnum.care" id="cuidados">
         <ul class="detail-list">
-          <li>Lavagem a mão ou a seco</li>
-          <li>Não torcer</li>
-          <li>Secar à sombra</li>
-          <li>Passar com ferro morno</li>
+          @for (careInstruction of data().careInstructions; track $index) {
+            <li>{{ careInstruction }}</li>
+          }
         </ul>
       </div>
     </div>

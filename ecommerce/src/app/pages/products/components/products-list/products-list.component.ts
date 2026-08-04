@@ -3,6 +3,7 @@ import { CurrencyPipe } from '@angular/common';
 import { Product } from '../../../../shared/models/product.model';
 import { EmptyListComponent } from '../empty-list/empty-list.component';
 import { RouterLink } from '@angular/router';
+import { getProductColors, getProductsSizes } from '../../../../shared/utils/product';
 
 @Component({
   selector: 'app-products-list',
@@ -13,17 +14,7 @@ import { RouterLink } from '@angular/router';
 export class ProductsListComponent {
   data = input.required<Product[]>();
 
-  getSizes(product: Product): { label: string; available: boolean }[] {
-    return product.sizes.split(',').map((entry) => {
-      const [label, available] = entry.split(':');
-      return { label, available: available === 'true' };
-    });
-  }
+  getColors = getProductColors;
 
-  getColors(product: Product): { name: string; hex: string }[] {
-    return product.colors.split(',').map((entry) => {
-      const [name, hex] = entry.split(':');
-      return { name, hex };
-    });
-  }
+  getSizes = getProductsSizes;
 }

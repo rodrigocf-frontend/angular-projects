@@ -38,3 +38,26 @@
   content: '→';
   font-size: rem($text-md);
 }
+
+:host(.btn-secondary) {
+  background: none;
+  border: 0.5px solid $border;
+  cursor: pointer;
+  font-family: $ff-body;
+  font-size: rem($text-sm);
+  font-weight: 400;
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  color: $txt-2;
+  padding: rem(16, 32);
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(10);
+}
+
+:host(.btn-secondary):hover {
+  border-color: $txt;
+  color: $txt;
+}

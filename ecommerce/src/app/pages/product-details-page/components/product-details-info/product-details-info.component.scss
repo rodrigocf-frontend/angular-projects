@@ -43,9 +43,7 @@
   font-size: rem(12);
   color: $gold;
 }
-.star.empty {
-  color: $border;
-}
+
 .rating-count {
   font-family: $ff-body;
   font-size: rem($text-xs);
@@ -136,6 +134,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: rem(8);
+  overflow: hidden;
 }
 .size-opt {
   min-width: rem(44);
@@ -161,20 +160,23 @@
   color: $bg;
   border-color: $txt;
 }
+
 .size-opt.unavailable {
   color: $txt-3;
   cursor: not-allowed;
   position: relative;
+  pointer-events: none;
 }
 .size-opt.unavailable::after {
   content: '';
   position: absolute;
   top: 50%;
-  left: 0;
+  left: rem(-13);
   right: 0;
   height: 0.5px;
+  width: rem(67.5);
   background: $txt-3;
-  transform: rotate(-15deg);
+  transform: rotate(-45deg);
 }
 .size-guide {
   font-family: $ff-body;
@@ -196,46 +198,9 @@
   padding-top: rem(28);
   border-top: 0.5px solid $border;
 }
-.btn-cart {
-  background: $txt;
-  color: $bg;
-  border: none;
-  cursor: pointer;
-  font-family: $ff-body;
-  font-size: rem($text-sm);
-  font-weight: 400;
-  letter-spacing: rem($ls-wider);
-  text-transform: uppercase;
-  padding: rem(16, 32);
-  transition: background 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: rem(10);
-}
-.btn-cart:hover {
-  background: #333;
-}
-.btn-wish {
-  background: none;
-  border: 0.5px solid $border;
-  cursor: pointer;
-  font-family: $ff-body;
-  font-size: rem($text-sm);
-  font-weight: 400;
-  letter-spacing: rem($ls-wider);
-  text-transform: uppercase;
-  color: $txt-2;
-  padding: rem(16, 32);
-  transition: all 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: rem(10);
-}
-.btn-wish:hover {
-  border-color: $txt;
-  color: $txt;
+
+button[primary] {
+  padding: rem(16) rem(32);
 }
 
 /* PERKS */
