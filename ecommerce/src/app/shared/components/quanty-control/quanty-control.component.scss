@@ -1,0 +1,37 @@
+@use '../../../../themes/styles.scss' as *;
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.qty-btn {
+  width: rem(28);
+  height: rem(28);
+  border: 0.5px solid $border;
+  background: none;
+  cursor: pointer;
+  font-family: $ff-body;
+  font-size: rem($text-md);
+  color: $txt-2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.qty-btn:hover {
+  border-color: $txt;
+  color: $txt;
+}
+.qty-value {
+  width: rem(32);
+  height: rem(28);
+  border-top: 0.5px solid $border;
+  border-bottom: 0.5px solid $border;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  color: $txt;
+}

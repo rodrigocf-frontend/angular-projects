@@ -61,3 +61,20 @@
   border-color: $txt;
   color: $txt;
 }
+
+:host(.btn-underline) {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  color: $txt-3;
+  letter-spacing: rem($ls-wide);
+  text-decoration: underline;
+  padding: 0;
+  margin-top: rem(6);
+  text-align: left;
+}
+:host(.btn-underline):hover {
+  color: $txt;
+}

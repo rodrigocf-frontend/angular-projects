@@ -1,0 +1,225 @@
+@use '../../../themes/styles.scss' as *;
+
+.cart-page-tabs {
+  padding: rem(32, 48, 0);
+}
+
+.cart-page {
+  padding: rem(48);
+  display: grid;
+  grid-template-columns: 1fr rem(360);
+  gap: rem(48);
+  align-items: start;
+}
+.cart-page-title {
+  font-family: $ff-display;
+  font-size: rem($text-4xl);
+  font-weight: 300;
+  letter-spacing: rem($ls-tight);
+  color: $txt;
+  margin-bottom: rem(8);
+}
+.cart-page-title em {
+  font-style: italic;
+}
+.cart-page-count {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt-3;
+  margin-bottom: rem(32);
+}
+
+// CART PAGE ITEMS
+.cart-page-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.cart-page-item {
+  display: flex;
+  gap: rem(24);
+  padding: rem(24, 0);
+  border-bottom: 0.5px solid $border;
+}
+.cart-page-item:first-child {
+  border-top: 0.5px solid $border;
+}
+.cart-page-img {
+  width: rem(120);
+  height: rem(150);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.cart-page-img-bg {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+.cart-page-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: rem(6);
+}
+.cart-page-brand {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  color: $txt-3;
+}
+.cart-page-name {
+  font-family: $ff-display;
+  font-size: rem($text-2xl);
+  font-weight: 400;
+  color: $txt;
+  line-height: 1.2;
+}
+.cart-page-variants {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  color: $txt-2;
+  letter-spacing: rem($ls-wide);
+}
+.cart-page-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: rem(12);
+}
+.cart-page-price {
+  font-family: $ff-display;
+  font-size: rem($text-xl);
+  font-weight: 300;
+  color: $txt;
+}
+
+// ORDER SUMMARY
+.order-summary {
+  background: $surface;
+  border: 0.5px solid $border;
+  padding: rem(28);
+  display: flex;
+  flex-direction: column;
+  gap: rem(16);
+  position: sticky;
+  top: rem(80);
+}
+.order-title {
+  font-family: $ff-display;
+  font-size: rem($text-xl);
+  font-weight: 300;
+  color: $txt;
+  margin-bottom: rem(8);
+}
+.order-rows {
+  display: flex;
+  flex-direction: column;
+  gap: rem(10);
+}
+.order-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-label {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wide);
+  text-transform: uppercase;
+  color: $txt-2;
+}
+.order-value {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt;
+}
+.order-divider {
+  border: none;
+  border-top: 0.5px solid $border;
+}
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.order-total-label {
+  font-family: $ff-body;
+  font-size: rem($text-sm);
+  font-weight: 500;
+  letter-spacing: rem($ls-wide);
+  text-transform: uppercase;
+  color: $txt;
+}
+.order-total-value {
+  font-family: $ff-display;
+  font-size: rem($text-3xl);
+  font-weight: 300;
+  color: $txt;
+}
+.order-shipping {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  color: $txt-3;
+  letter-spacing: rem($ls-wide);
+  text-align: center;
+}
+.coupon-input {
+  display: flex;
+  gap: 0;
+}
+.coupon-field {
+  flex: 1;
+  border: 0.5px solid $border;
+  padding: rem(10, 14);
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt;
+  background: $bg;
+  outline: none;
+}
+.coupon-field:focus {
+  border-color: $txt;
+}
+.coupon-field::placeholder {
+  color: $txt-3;
+}
+.coupon-btn {
+  background: $txt;
+  color: $bg;
+  border: none;
+  cursor: pointer;
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  padding: rem(10, 16);
+  white-space: nowrap;
+}
+
+// TABS
+.tabs {
+  display: flex;
+  border-bottom: 0.5px solid $border;
+  margin-bottom: rem(32);
+}
+.tab-btn {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-widest);
+  text-transform: uppercase;
+  color: $txt-3;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: rem(12, 0);
+  margin-right: rem(28);
+  border-bottom: 1.5px solid transparent;
+  margin-bottom: -0.5px;
+}
+.tab-btn.active {
+  color: $txt;
+  border-bottom-color: $txt;
+}

@@ -1,1 +1,88 @@
+<main class="cart-page-tabs">
+  <div class="tabs">
+    @if (totalItems$ | async; as totalItems) {
+      <button class="tab-btn active">Sacola ({{ totalItems }})</button>
+    }
+    <button class="tab-btn">Lista de desejos</button>
+  </div>
+</main>
 
+<div class="cart-page">
+  <div>
+    <h1 class="cart-page-title">Minha <em>sacola</em></h1>
+    @if (totalItems$ | async; as totalItems) {
+      <p class="cart-page-count">{{ totalItems }} itens selecionado(s)</p>
+    }
+
+    <div class="cart-page-items">
+      @for (item of items$ | async; track $index) {
+        <div class="cart-page-item">
+          <div class="cart-page-img">
+            <div
+              class="cart-page-img-bg"
+              [style]="{
+                'background-image': 'url(' + item.product.images[0]?.url + ')',
+              }"
+            ></div>
+          </div>
+          <div class="cart-page-info">
+            <p class="cart-page-brand">{{ item.product.brand }}</p>
+            <p class="cart-page-name">{{ item.product.name }}</p>
+            <div class="cart-page-footer">
+              <app-quanty-control
+                (onAdd)="updateQuantity(item.product, item.count + 1)"
+                (onRemove)="updateQuantity(item.product, item.count - 1)"
+                [value]="item.count"
+              />
+              <span class="cart-page-price">{{
+                item.product.price * item.count | currency: 'BRL'
+              }}</span>
+            </div>
+            <button underline (click)="updateQuantity(item.product, 0)">Remover</button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- ORDER SUMMARY -->
+  @if (totalValue$ | async; as total) {
+    <div class="order-summary">
+      <h3 class="order-title">Resumo do pedido</h3>
+      <div class="order-rows">
+        <div class="order-row">
+          <span class="order-label"
+            >Subtotal
+            @if (totalItems$ | async; as totalItems) {
+              @if (totalItems > 0) {
+                {{ totalItems }} itens
+              } @else {
+                {{ totalItems }} item
+              }
+            }
+          </span>
+          <span class="order-value">{{ total | currency: 'BRL' }}</span>
+        </div>
+        <div class="order-row">
+          <span class="order-label">Frete</span>
+          <span class="order-value" style="color: #22c55e">Grátis</span>
+        </div>
+        <div class="order-row">
+          <span class="order-label">Desconto</span>
+          <span class="order-value" style="color: #22c55e">− R$ 0,00</span>
+        </div>
+      </div>
+      <hr class="order-divider" />
+      <div class="order-total">
+        <span class="order-total-label">Total</span>
+        <span class="order-total-value">{{ total | currency: 'BRL' }}</span>
+      </div>
+      <p class="order-shipping">Frete grátis — compra acima de R$ 300</p>
+      <div class="coupon-input">
+        <input class="coupon-field" type="text" placeholder="Código de cupom" />
+        <button class="coupon-btn">Aplicar</button>
+      </div>
+      <button primary>Finalizar compra</button>
+    </div>
+  }
+</div>

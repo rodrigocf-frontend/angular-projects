@@ -155,20 +155,3 @@
   font-size: rem($text-xs);
   color: $txt-3;
 }
-
-.filter-clear {
-  font-family: $ff-body;
-  font-size: rem($text-xs);
-  letter-spacing: rem($ls-wider);
-  text-transform: uppercase;
-  color: $txt-3;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  text-decoration: underline;
-  margin-top: rem(8);
-}
-.filter-clear:hover {
-  color: $txt;
-}

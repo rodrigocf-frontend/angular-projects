@@ -11,14 +11,14 @@ import {
   setItemsInCart,
   toogleCart,
 } from '../../../pages/product-cart-page/store/product-cart.actions';
-import { tap } from 'rxjs';
 import { ButtonComponent } from '../../ui/button/button.component';
 import { Router, RouterLink } from '@angular/router';
 import { Product } from '../../models/product.model';
+import { QuantyControlComponent } from '../quanty-control/quanty-control.component';
 
 @Component({
   selector: 'app-drawer-cart',
-  imports: [AsyncPipe, ButtonComponent, RouterLink, CurrencyPipe],
+  imports: [AsyncPipe, ButtonComponent, RouterLink, CurrencyPipe, QuantyControlComponent],
   templateUrl: './drawer-cart.component.html',
   styleUrl: './drawer-cart.component.scss',
 })
@@ -41,6 +41,11 @@ export class DrawerCartComponent {
 
   navigateToProducts() {
     this.router.navigate(['/product/all']);
+    this.toggleDrawer();
+  }
+
+  navigateToCart() {
+    this.router.navigate(['/cart']);
     this.toggleDrawer();
   }
 }

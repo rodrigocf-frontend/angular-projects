@@ -1,7 +1,7 @@
 import { Attribute, Component, signal } from '@angular/core';
 
 @Component({
-  selector: 'button[primary], button[ghost], button[secondary], a[primary]',
+  selector: 'button[primary], button[ghost], button[secondary], button[underline] ,a[primary]',
   imports: [],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
@@ -9,17 +9,20 @@ import { Attribute, Component, signal } from '@angular/core';
     '[class.btn-primary]': 'isPrimary()',
     '[class.btn-ghost]': 'isGhost()',
     '[class.btn-secondary]': 'isSecondary()',
+    '[class.btn-underline]': 'isUnderline()',
   },
 })
 export class ButtonComponent {
   isPrimary = signal<boolean>(false);
   isSecondary = signal<boolean>(false);
   isGhost = signal<boolean>(false);
+  isUnderline = signal<boolean>(false);
 
   constructor(
     @Attribute('primary') primary: boolean,
     @Attribute('ghost') ghost: boolean,
     @Attribute('secondary') secondary: boolean,
+    @Attribute('underline') underline: boolean,
   ) {
     if (primary !== null) {
       this.isPrimary.set(true);
@@ -33,6 +36,10 @@ export class ButtonComponent {
 
     if (ghost !== null) {
       this.isGhost.set(true);
+      return;
+    }
+    if (underline !== null) {
+      this.isUnderline.set(true);
       return;
     }
   }

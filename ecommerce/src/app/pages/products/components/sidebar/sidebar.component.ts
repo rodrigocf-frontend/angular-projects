@@ -18,10 +18,11 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, Observable, switchMap } from 'rxjs';
 import { CurrencyMaskDirective } from '../../../../shared/directives/mask.directive';
 import { cleanDigits } from '../../../../shared/utils/currency';
+import { ButtonComponent } from '../../../../shared/ui/button/button.component';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [AsyncPipe, ReactiveFormsModule, CurrencyMaskDirective],
+  imports: [AsyncPipe, ReactiveFormsModule, CurrencyMaskDirective, ButtonComponent],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })

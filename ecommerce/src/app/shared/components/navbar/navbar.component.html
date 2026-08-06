@@ -9,7 +9,10 @@
     <button>Buscar</button>
     <button>Conta</button>
     <button (click)="toggleDrawer()" class="header__cart-btn">
-      Sacola<span class="header__cart-badge">2</span>
+      Sacola
+      @if (totalItems$ | async; as items) {
+        <span class="header__cart-badge">{{ items }}</span>
+      }
     </button>
   </div>
 </header>
