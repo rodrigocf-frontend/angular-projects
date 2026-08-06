@@ -45,6 +45,25 @@
               </button>
             </div>
           </div>
+        } @empty {
+          <div class="empty">
+            <div class="empty-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                <path
+                  d="M6 6H8.5L11.5 24H30L33 12H9"
+                  stroke="currentColor"
+                  stroke-width="1"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <circle cx="15" cy="30" r="2" stroke="currentColor" stroke-width="1" />
+                <circle cx="27" cy="30" r="2" stroke="currentColor" stroke-width="1" />
+              </svg>
+            </div>
+            <h3 class="empty-title">Sua sacola está <em>vazia</em></h3>
+            <p class="empty-desc">Explore nossas coleções e adicione peças que você amar.</p>
+            <button primary (click)="navigateToProducts()">Ver coleções</button>
+          </div>
         }
       }
     </div>

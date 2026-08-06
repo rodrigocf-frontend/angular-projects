@@ -13,7 +13,7 @@ import {
 } from '../../../pages/product-cart-page/store/product-cart.actions';
 import { tap } from 'rxjs';
 import { ButtonComponent } from '../../ui/button/button.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Product } from '../../models/product.model';
 
 @Component({
@@ -24,6 +24,7 @@ import { Product } from '../../models/product.model';
 })
 export class DrawerCartComponent {
   private readonly store = inject(Store);
+  private readonly router = inject(Router);
 
   items$ = this.store.select(selectCartItems);
   open$ = this.store.select(selectDrawerOpen);
@@ -36,5 +37,10 @@ export class DrawerCartComponent {
 
   updateQuantity(product: Product, count: number) {
     this.store.dispatch(setItemsInCart({ product, count }));
+  }
+
+  navigateToProducts() {
+    this.router.navigate(['/product/all']);
+    this.toggleDrawer();
   }
 }

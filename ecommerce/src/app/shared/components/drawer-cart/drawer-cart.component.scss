@@ -226,23 +226,6 @@
   letter-spacing: rem($ls-wide);
   text-align: center;
 }
-.btn-checkout {
-  background: $txt;
-  color: $bg;
-  border: none;
-  cursor: pointer;
-  font-family: $ff-body;
-  font-size: rem($text-sm);
-  font-weight: 400;
-  letter-spacing: rem($ls-wider);
-  text-transform: uppercase;
-  padding: rem(16, 32);
-  transition: background 0.15s;
-  width: 100%;
-}
-.btn-checkout:hover {
-  background: #333;
-}
 .btn-continue {
   background: none;
   border: none;
@@ -257,4 +240,43 @@
 }
 .btn-continue:hover {
   color: $txt;
+}
+
+.empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: rem(40, 28);
+  text-align: center;
+  gap: rem(14);
+}
+
+.empty-icon {
+  color: $txt-3;
+  margin-bottom: rem(8);
+}
+
+.empty-title {
+  font-family: $ff-display;
+  font-size: rem(24);
+  font-weight: 300;
+  color: $txt;
+  letter-spacing: rem($ls-tight);
+  line-height: 1.1;
+
+  em {
+    font-style: italic;
+    color: $txt-2;
+  }
+}
+
+.empty-desc {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  font-weight: 300;
+  color: $txt-2;
+  line-height: 1.8;
+  max-width: rem(240);
 }
