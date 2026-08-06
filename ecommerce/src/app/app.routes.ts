@@ -47,6 +47,10 @@ export const routes: Routes = [
     ],
   },
   {
+    path: 'cart',
+    loadComponent: () => import('./pages/product-cart-page/product-cart-page.component'),
+  },
+  {
     path: '**',
     redirectTo: '',
     pathMatch: 'full',

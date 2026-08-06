@@ -1,8 +1,10 @@
-import { Component, computed, effect, input, signal } from '@angular/core';
+import { Component, computed, effect, inject, input, signal } from '@angular/core';
 import { Product } from '../../../../shared/models/product.model';
 import { CurrencyPipe } from '@angular/common';
 import { getProductColors, getProductsSizes, ProductColor } from '../../../../shared/utils/product';
 import { ButtonComponent } from '../../../../shared/ui/button/button.component';
+import { Store } from '@ngrx/store';
+import { addProductInCart } from '../../../product-cart-page/store/product-cart.actions';
 
 enum DetailsTabEnum {
   description,
@@ -18,6 +20,7 @@ enum DetailsTabEnum {
 })
 export class ProductDetailsInfoComponent {
   data = input.required<Product>();
+  private readonly store = inject(Store);
 
   private readonly colorIndex = signal(0);
   selectedColor = computed(() => this.getColors(this.data())[this.colorIndex()]);
@@ -49,6 +52,10 @@ export class ProductDetailsInfoComponent {
     const emptyStars = '☆'.repeat(maxStars - roundedRating);
 
     return fullStars + emptyStars;
+  }
+
+  addOnCart() {
+    this.store.dispatch(addProductInCart({ id: this.data().id }));
   }
 
   onClickColor(index: number) {

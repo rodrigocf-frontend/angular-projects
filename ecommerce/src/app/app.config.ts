@@ -4,7 +4,13 @@ import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 
 import { environment } from '../environments/environment';
-import { provideStore } from '@ngrx/store';
+import { provideState, provideStore } from '@ngrx/store';
+import {
+  cartReducers,
+  PRODUCT_CART_STORE_KEY,
+} from './pages/product-cart-page/store/product-cart.reducers';
+import { provideEffects } from '@ngrx/effects';
+import { ProductCartEffects } from './pages/product-cart-page/store/product-cart.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +18,11 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
+    provideState({
+      name: PRODUCT_CART_STORE_KEY,
+      reducer: cartReducers,
+    }),
+    provideEffects(ProductCartEffects),
     ...environment.providers,
   ],
 };

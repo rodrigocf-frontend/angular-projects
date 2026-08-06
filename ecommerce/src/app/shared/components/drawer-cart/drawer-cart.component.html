@@ -1,0 +1,77 @@
+@if (open$ | async) {
+  <div class="drawer-overlay" id="drawer" style="display: flex" (click)="toggleDrawer()"></div>
+  <div class="drawer">
+    <div class="drawer-head">
+      <div>
+        <h2 class="drawer-title">Minha <em>sacola</em></h2>
+        @if (totalItems$ | async; as totalItems) {
+          <span class="drawer-count">{{ totalItems }} itens</span>
+        }
+      </div>
+      <button class="drawer-close" (click)="toggleDrawer()">×</button>
+    </div>
+
+    <div class="drawer-items">
+      @if (items$ | async; as cartItems) {
+        @for (item of cartItems; track $index) {
+          <div class="cart-item">
+            <div class="cart-item-img">
+              <div
+                class="cart-item-img-bg"
+                [style]="{
+                  'background-image': 'url(' + item.product.images[0]?.url + ')',
+                }"
+              ></div>
+            </div>
+            <div class="cart-item-info">
+              <p class="cart-item-brand">{{ item.product.brand }}</p>
+              <p class="cart-item-name">{{ item.product.name }}</p>
+              <div class="cart-item-footer">
+                <div class="qty-control">
+                  <button class="qty-btn" (click)="updateQuantity(item.product, item.count - 1)">
+                    −
+                  </button>
+                  <div class="qty-value">{{ item.count }}</div>
+                  <button class="qty-btn" (click)="updateQuantity(item.product, item.count + 1)">
+                    +
+                  </button>
+                </div>
+                <span class="cart-item-price">{{
+                  item.product.price * item.count | currency: 'BRL'
+                }}</span>
+              </div>
+              <button class="cart-item-remove" (click)="updateQuantity(item.product, 0)">
+                Remover
+              </button>
+            </div>
+          </div>
+        }
+      }
+    </div>
+
+    <div class="drawer-footer">
+      @if (totalValue$ | async; as total) {
+        <div class="drawer-summary">
+          <div class="summary-row">
+            <span class="summary-label">Subtotal</span>
+            <span class="summary-value">{{ total | currency: 'BRL' }}</span>
+          </div>
+          <div class="summary-row">
+            <span class="summary-label">Frete</span>
+            <span class="summary-value" style="color: #22c55e">Grátis</span>
+          </div>
+          <hr class="cart-divider" style="margin: 4px 0" />
+          <div class="summary-row summary-total">
+            <span class="summary-label">Total</span>
+            <span class="summary-value">{{ total | currency: 'BRL' }}</span>
+          </div>
+        </div>
+        <p class="drawer-shipping">Frete grátis para compras acima de R$ 300</p>
+        <button primary>Finalizar compra</button>
+        <a class="btn-continue" [routerLink]="['/product/all']" (click)="toggleDrawer()"
+          >Continuar comprando</a
+        >
+      }
+    </div>
+  </div>
+}

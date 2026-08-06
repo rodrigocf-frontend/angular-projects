@@ -1,0 +1,13 @@
+import { createAction, props } from '@ngrx/store';
+import { Product } from '../../../shared/models/product.model';
+
+export const toogleCart = createAction('[Drawer Cart] - toogle');
+export const addProductInCart = createAction(
+  '[Cart] - get and add product on cart',
+  props<{ id: string; count?: number }>(),
+);
+
+export const setItemsInCart = createAction(
+  '[Cart] - set product on cart itens',
+  props<{ product: Product; count?: number }>(),
+);
