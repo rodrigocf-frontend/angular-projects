@@ -1,12 +1,15 @@
 import { createReducer, on } from '@ngrx/store';
 import { Product } from '../../../shared/models/product.model';
 import { setItemsInCart, toogleCart } from './product-cart.actions';
+import { ProductColor, ProductSize } from '../../../shared/utils/product';
 
 export const PRODUCT_CART_STORE_KEY = 'cart';
 
 export type CartProductItem = {
   count: number;
   product: Product;
+  color: ProductColor;
+  size: ProductSize;
 };
 
 export interface CartState {
@@ -27,8 +30,8 @@ export const cartReducers = createReducer(
       open: !state.open,
     };
   }),
-  on(setItemsInCart, (state, { product, count }) => {
-    const cartItem = searchProductOnCart(state, product);
+  on(setItemsInCart, (state, { product, count, color, size }) => {
+    const cartItem = searchProductOnCart(state, product, color, size);
 
     if (!cartItem) {
       return {
@@ -38,6 +41,8 @@ export const cartReducers = createReducer(
           {
             product: product,
             count: 1,
+            color,
+            size,
           },
         ],
       };
@@ -49,15 +54,22 @@ export const cartReducers = createReducer(
   }),
 );
 
-const searchProductOnCart = (state: CartState, product: Product) =>
-  state.items.find((i) => i.product.id === product.id);
+const searchProductOnCart = (
+  state: CartState,
+  product: Product,
+  color: ProductColor,
+  size: ProductSize,
+) =>
+  state.items.find(
+    (i) => i.product.id === product.id && i.color.hex === color.hex && i.size.label === size.label,
+  );
 
 const updateCartItemCount = (state: CartState, cartItem: CartProductItem, count?: number) => {
   if (count === 0) {
-    return state.items.filter((i) => i.product.id !== cartItem.product.id);
+    return state.items.filter((i) => !isMatchCartItem(i, cartItem));
   }
   return state.items.map((i) => {
-    if (i.product.id === cartItem.product.id) {
+    if (isMatchCartItem(i, cartItem)) {
       return {
         ...i,
         count: count ? count : i.count + 1,
@@ -67,3 +79,8 @@ const updateCartItemCount = (state: CartState, cartItem: CartProductItem, count?
     }
   });
 };
+
+export const isMatchCartItem = (cartItem: CartProductItem, comparaCartItem: CartProductItem) =>
+  cartItem.product.id === comparaCartItem.product.id &&
+  cartItem.color.hex === comparaCartItem.color.hex &&
+  cartItem.size.label === comparaCartItem.size.label;

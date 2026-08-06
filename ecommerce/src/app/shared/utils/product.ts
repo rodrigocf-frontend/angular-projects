@@ -12,12 +12,12 @@ export function getProductColors(product: Product): ProductColor[] {
   });
 }
 
-export interface ProductSizes {
+export interface ProductSize {
   label: string;
   available: boolean;
 }
 
-export function getProductsSizes(product: Product): ProductSizes[] {
+export function getProductsSizes(product: Product): ProductSize[] {
   return product.sizes.split(',').map((entry) => {
     const [label, available] = entry.split(':');
     return { label, available: available === 'true' };

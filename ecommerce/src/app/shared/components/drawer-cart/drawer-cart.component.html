@@ -26,17 +26,22 @@
             <div class="cart-item-info">
               <p class="cart-item-brand">{{ item.product.brand }}</p>
               <p class="cart-item-name">{{ item.product.name }}</p>
+              <p class="cart-item-variants">
+                {{ item.color.name }} · Tamanho {{ item.size.label }}
+              </p>
               <div class="cart-item-footer">
                 <app-quanty-control
-                  (onAdd)="updateQuantity(item.product, item.count + 1)"
-                  (onRemove)="updateQuantity(item.product, item.count - 1)"
+                  (onAdd)="updateQuantity(item.product, item.count + 1, item.size, item.color)"
+                  (onRemove)="updateQuantity(item.product, item.count - 1, item.size, item.color)"
                   [value]="item.count"
                 />
                 <span class="cart-item-price">{{
                   item.product.price * item.count | currency: 'BRL'
                 }}</span>
               </div>
-              <button underline (click)="updateQuantity(item.product, 0)">Remover</button>
+              <button underline (click)="updateQuantity(item.product, 0, item.size, item.color)">
+                Remover
+              </button>
             </div>
           </div>
         } @empty {

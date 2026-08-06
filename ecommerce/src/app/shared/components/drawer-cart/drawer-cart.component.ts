@@ -15,6 +15,7 @@ import { ButtonComponent } from '../../ui/button/button.component';
 import { Router, RouterLink } from '@angular/router';
 import { Product } from '../../models/product.model';
 import { QuantyControlComponent } from '../quanty-control/quanty-control.component';
+import { ProductColor, ProductSize } from '../../utils/product';
 
 @Component({
   selector: 'app-drawer-cart',
@@ -35,8 +36,8 @@ export class DrawerCartComponent {
     this.store.dispatch(toogleCart());
   }
 
-  updateQuantity(product: Product, count: number) {
-    this.store.dispatch(setItemsInCart({ product, count }));
+  updateQuantity(product: Product, count: number, size: ProductSize, color: ProductColor) {
+    this.store.dispatch(setItemsInCart({ product, count, color, size }));
   }
 
   navigateToProducts() {

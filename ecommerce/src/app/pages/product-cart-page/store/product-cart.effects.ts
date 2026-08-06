@@ -13,10 +13,10 @@ export class ProductCartEffects {
     this.actions$
       .pipe(ofType(addProductInCart))
       .pipe(
-        switchMap(({ id, count }) =>
+        switchMap(({ id, count, color, size }) =>
           this.productService
             .getProduct(id)
-            .pipe(switchMap((product) => [setItemsInCart({ product, count })])),
+            .pipe(switchMap((product) => [setItemsInCart({ product, count, color, size })])),
         ),
       ),
   );

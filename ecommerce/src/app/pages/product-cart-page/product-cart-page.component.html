@@ -28,17 +28,20 @@
           <div class="cart-page-info">
             <p class="cart-page-brand">{{ item.product.brand }}</p>
             <p class="cart-page-name">{{ item.product.name }}</p>
+            <p class="cart-page-variants">{{ item.color.name }} · Tamanho {{ item.size.label }}</p>
             <div class="cart-page-footer">
               <app-quanty-control
-                (onAdd)="updateQuantity(item.product, item.count + 1)"
-                (onRemove)="updateQuantity(item.product, item.count - 1)"
+                (onAdd)="updateQuantity(item.product, item.count + 1, item.color, item.size)"
+                (onRemove)="updateQuantity(item.product, item.count - 1, item.color, item.size)"
                 [value]="item.count"
               />
               <span class="cart-page-price">{{
                 item.product.price * item.count | currency: 'BRL'
               }}</span>
             </div>
-            <button underline (click)="updateQuantity(item.product, 0)">Remover</button>
+            <button underline (click)="updateQuantity(item.product, 0, item.color, item.size)">
+              Remover
+            </button>
           </div>
         </div>
       }

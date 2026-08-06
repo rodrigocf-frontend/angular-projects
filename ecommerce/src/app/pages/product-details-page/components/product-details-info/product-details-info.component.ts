@@ -55,7 +55,13 @@ export class ProductDetailsInfoComponent {
   }
 
   addOnCart() {
-    this.store.dispatch(addProductInCart({ id: this.data().id }));
+    this.store.dispatch(
+      addProductInCart({
+        id: this.data().id,
+        color: this.selectedColor(),
+        size: this.selectedSize(),
+      }),
+    );
   }
 
   onClickColor(index: number) {

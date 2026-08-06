@@ -3,13 +3,10 @@ import { QuantyControlComponent } from '../../shared/components/quanty-control/q
 import { Product } from '../../shared/models/product.model';
 import { setItemsInCart } from './store/product-cart.actions';
 import { Store } from '@ngrx/store';
-import {
-  selectCartItems,
-  selectCartTotal,
-  selectTotalItems,
-} from './store/product-cart.selectors';
+import { selectCartItems, selectCartTotal, selectTotalItems } from './store/product-cart.selectors';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { ButtonComponent } from '../../shared/ui/button/button.component';
+import { ProductColor, ProductSize } from '../../shared/utils/product';
 
 @Component({
   selector: 'app-product-cart-page',
@@ -24,7 +21,7 @@ export default class ProductCartPageComponent {
   totalItems$ = this.store.select(selectTotalItems);
   totalValue$ = this.store.select(selectCartTotal);
 
-  updateQuantity(product: Product, count: number) {
-    this.store.dispatch(setItemsInCart({ product, count }));
+  updateQuantity(product: Product, count: number, color: ProductColor, size: ProductSize) {
+    this.store.dispatch(setItemsInCart({ product, count, color, size }));
   }
 }
