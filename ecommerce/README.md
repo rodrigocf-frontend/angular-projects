@@ -36,24 +36,31 @@ Maison lets you browse a product catalog by category, filter and sort listings, 
 ## Architecture Decisions
 
 ### NgRx scoped per feature, not one global store
+
 Each route owns its own slice — `products`, `productDetails` and `cart` — registered via `provideState`/`provideEffects` at the route level (cart is provided at the root config since the drawer is mounted globally). There's no shared "app" reducer; state stays close to the feature that owns it.
 
 ### Derived values live in selectors, not duplicated state
+
 Cart total and item count are `createSelector`s computed from `items` (`selectCartTotal`, `selectTotalItems`), not separate state fields updated by their own actions. A derived value stored alongside its source is a state-sync bug waiting to happen; a memoized selector can't drift out of sync because it has nothing to sync.
 
 ### Cart lines are keyed by product + color + size
+
 `CartProductItem` equality checks `product.id`, `color.hex` and `size.label` together, so the same product in two variants becomes two independent cart lines instead of merging into one incorrect count.
 
 ### Attribute-selector `Button` component
+
 `selector: 'button[primary], button[ghost], button[secondary], button[underline], a[primary]'` enhances the native `<button>`/`<a>` element directly rather than wrapping it in a custom tag — no extra DOM node, native focus/keyboard semantics preserved for free.
 
 ### Delimited-string variant fields instead of nested arrays
+
 `Product.sizes` / `Product.colors` are stored as comma-separated `"Label:isAvailable"` / `"Nome:#hex"` strings rather than nested arrays of objects. json-server's `_contains` filter doesn't reliably match against nested array-of-object fields, but does match cleanly against a flat string — the parsing trade-off (`getProductColors` / `getProductsSizes` in `shared/utils/product.ts`) was chosen to keep filtering reliable.
 
 ### Shared form styles as a global Sass partial, not per-component
+
 `themes/_forms.scss` holds the checkout form's shared classes (`.form-grid`, `.field`, `.input`, `.select`, `.error-msg`) and is `@forward`ed from `themes/styles.scss`, the single stylesheet registered in `angular.json`. Per-component `styleUrl` styles don't cascade into sibling or child components under Angular's view encapsulation, so classes meant to be reused across the address/contact/payment step components have to live in truly global CSS.
 
 ### Cart drawer mounted at the root
+
 `DrawerCartComponent` sits in `AppComponent`, outside the router outlet, and is toggled from anywhere via a `toogleCart` NgRx action (dispatched from the navbar, from the empty-cart CTA, etc.). It can overlay any route without being nested inside that route's component tree.
 
 ## Running Locally
@@ -75,13 +82,13 @@ Open `http://localhost:4200` in your browser. The API will be available at `http
 
 ## Scripts
 
-| Command         | Description                             |
-| --------------- | ---------------------------------------- |
-| `pnpm start`     | Angular dev server                       |
-| `pnpm db:start`  | json-server locally (port 3000)          |
-| `pnpm build`     | Production build                         |
-| `pnpm watch`     | Development build in watch mode          |
-| `pnpm test`      | Unit tests with Vitest                   |
+| Command         | Description                     |
+| --------------- | ------------------------------- |
+| `pnpm start`    | Angular dev server              |
+| `pnpm db:start` | json-server locally (port 3000) |
+| `pnpm build`    | Production build                |
+| `pnpm watch`    | Development build in watch mode |
+| `pnpm test`     | Unit tests with Vitest          |
 
 ## Project Structure
 
@@ -131,5 +138,5 @@ src/
 
 ## Author
 
-**Rodrigo Cunha** — Mid-level Developer
+**Rodrigo Cunha** — Developer
 [GitHub](https://github.com/rodrigocf-frontend)
