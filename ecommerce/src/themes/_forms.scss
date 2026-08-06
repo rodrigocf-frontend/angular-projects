@@ -1,0 +1,73 @@
+@use './utils' as *;
+@use './tokens' as *;
+
+.form-section {
+  margin-bottom: rem(36);
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: rem(12);
+}
+.form-grid.full {
+  grid-template-columns: 1fr;
+}
+.form-grid.triple {
+  grid-template-columns: 2fr 1fr 1fr;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: rem(6);
+}
+.field.full {
+  grid-column: 1/-1;
+}
+.label {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  font-weight: 500;
+  letter-spacing: rem($ls-widest);
+  text-transform: uppercase;
+  color: $txt;
+}
+.label .req {
+  color: $gold;
+}
+.input {
+  border: 0.5px solid $border;
+  padding: rem(10, 12);
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt;
+  background: $surface;
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+.input:focus {
+  border-color: $txt;
+}
+.input.error {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+.input::placeholder {
+  color: $txt-3;
+}
+.select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'%3E%3Cpath fill='%23A0A0A0' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right rem(12) center;
+  padding-right: rem(32);
+  cursor: pointer;
+}
+.error-msg {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  color: #ef4444;
+  display: flex;
+  align-items: center;
+  gap: rem(4);
+}

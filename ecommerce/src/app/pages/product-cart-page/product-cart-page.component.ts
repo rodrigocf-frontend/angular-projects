@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { QuantyControlComponent } from '../../shared/components/quanty-control/quanty-control.component';
+import { QuantyControlComponent } from '../../shared/components/quanty-control.component/quanty-control.component';
 import { Product } from '../../shared/models/product.model';
 import { setItemsInCart } from './store/product-cart.actions';
 import { Store } from '@ngrx/store';

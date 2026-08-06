@@ -1,18 +1,24 @@
 <header class="header">
-  <nav class="header__nav">
-    <a href="#">Coleções</a>
-    <a href="#">Novidades</a>
-    <a href="#">Sale</a>
-  </nav>
-  <div class="header__logo">Maison</div>
-  <div class="header__actions">
-    <button>Buscar</button>
-    <button>Conta</button>
-    <button (click)="toggleDrawer()" class="header__cart-btn">
-      Sacola
-      @if (totalItems$ | async; as items) {
-        <span class="header__cart-badge">{{ items }}</span>
-      }
-    </button>
-  </div>
+  @if (currentRoute() !== '/checkout') {
+    <nav class="header__nav">
+      <a href="#">Coleções</a>
+      <a href="#">Novidades</a>
+      <a href="#">Sale</a>
+    </nav>
+    <div class="header__logo">Maison</div>
+    <div class="header__actions">
+      <button>Buscar</button>
+      <button>Conta</button>
+      <button (click)="toggleDrawer()" class="header__cart-btn">
+        Sacola
+        @if (totalItems$ | async; as items) {
+          <span class="header__cart-badge">{{ items }}</span>
+        }
+      </button>
+    </div>
+  } @else {
+    <button class="header-back">← Voltar</button>
+    <div class="header__logo">Maison</div>
+    <div class="header-secure">🔒 Compra segura</div>
+  }
 </header>

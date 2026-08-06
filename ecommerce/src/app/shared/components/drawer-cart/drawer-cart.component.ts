@@ -14,7 +14,7 @@ import {
 import { ButtonComponent } from '../../ui/button/button.component';
 import { Router, RouterLink } from '@angular/router';
 import { Product } from '../../models/product.model';
-import { QuantyControlComponent } from '../quanty-control/quanty-control.component';
+import { QuantyControlComponent } from '../quanty-control.component/quanty-control.component';
 import { ProductColor, ProductSize } from '../../utils/product';
 
 @Component({

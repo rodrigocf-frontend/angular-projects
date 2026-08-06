@@ -1,0 +1,164 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.summary-bg {
+  background: $surface;
+  width: 100%;
+}
+
+.order-side {
+  padding: rem(40, 40);
+  background: $surface;
+  border-left: 0.5px solid $border;
+}
+.order-items {
+  display: flex;
+  flex-direction: column;
+  gap: rem(16);
+  margin-bottom: rem(24);
+}
+.order-item {
+  display: flex;
+  gap: rem(14);
+  align-items: center;
+}
+.order-img {
+  width: rem(60);
+  height: rem(75);
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+.order-img-bg {
+  width: 100%;
+  height: 100%;
+}
+.order-qty {
+  position: absolute;
+  top: rem(-6);
+  right: rem(-6);
+  width: rem(18);
+  height: rem(18);
+  border-radius: 50%;
+  background: $txt-2;
+  color: #fff;
+  font-size: rem(9);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.order-info {
+  flex: 1;
+}
+.order-brand {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  color: $txt-3;
+  margin-bottom: rem(2);
+}
+.order-name {
+  font-family: $ff-display;
+  font-size: rem($text-md);
+  font-weight: 400;
+  color: $txt;
+  line-height: 1.2;
+}
+.order-variant {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  color: $txt-2;
+  margin-top: rem(2);
+}
+.order-price {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.order-divider {
+  border: none;
+  border-top: 0.5px solid $border;
+  margin: rem(20, 0);
+}
+.order-rows {
+  display: flex;
+  flex-direction: column;
+  gap: rem(10);
+  margin-bottom: rem(16);
+}
+.order-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-label {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wide);
+  text-transform: uppercase;
+  color: $txt-2;
+}
+.order-value {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt;
+}
+.order-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-top: rem(16);
+  border-top: 0.5px solid $border;
+}
+.order-total-label {
+  font-family: $ff-body;
+  font-size: rem($text-sm);
+  font-weight: 500;
+  letter-spacing: rem($ls-wide);
+  text-transform: uppercase;
+  color: $txt;
+}
+.order-total-value {
+  font-family: $ff-display;
+  font-size: rem($text-3xl);
+  font-weight: 300;
+  color: $txt;
+}
+
+.coupon-wrap {
+  display: flex;
+  gap: 0;
+  margin-top: rem(16);
+}
+.coupon-input {
+  flex: 1;
+  border: 0.5px solid $border;
+  padding: rem(10, 14);
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt;
+  background: $bg;
+  outline: none;
+}
+.coupon-input:focus {
+  border-color: $txt;
+}
+.coupon-input::placeholder {
+  color: $txt-3;
+}
+.coupon-btn {
+  background: $txt;
+  color: $bg;
+  border: none;
+  cursor: pointer;
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  padding: rem(10, 16);
+  white-space: nowrap;
+}

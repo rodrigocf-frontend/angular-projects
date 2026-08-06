@@ -87,3 +87,31 @@
   align-items: center;
   justify-content: center;
 }
+
+.header-secure {
+  display: flex;
+  align-items: center;
+  gap: rem(6);
+  justify-content: flex-end;
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  color: $txt-3;
+  letter-spacing: rem($ls-wide);
+}
+
+.header-back {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wide);
+  text-transform: uppercase;
+  color: $txt-3;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: rem(6);
+}
+.header-back:hover {
+  color: $txt;
+}

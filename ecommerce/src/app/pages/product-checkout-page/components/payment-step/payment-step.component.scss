@@ -1,0 +1,82 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: rem(8);
+  margin-bottom: rem(20);
+}
+.payment-opt {
+  border: 0.5px solid $border;
+  padding: rem(14, 16);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: rem(12);
+  transition: border-color 0.15s;
+}
+.payment-opt.selected {
+  border-color: $txt;
+}
+.payment-opt:hover {
+  border-color: $txt;
+}
+.payment-radio {
+  width: rem(16);
+  height: rem(16);
+  border-radius: 50%;
+  border: 1.5px solid $border;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+.payment-opt.selected .payment-radio {
+  border-color: $txt;
+}
+.payment-radio::after {
+  content: '';
+  width: rem(8);
+  height: rem(8);
+  border-radius: 50%;
+  background: $txt;
+  display: none;
+}
+.payment-opt.selected .payment-radio::after {
+  display: block;
+}
+.payment-label {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt;
+}
+.payment-icons {
+  margin-left: auto;
+  display: flex;
+  gap: rem(6);
+}
+.payment-icon {
+  width: rem(32);
+  height: rem(20);
+  border: 0.5px solid $border;
+  border-radius: 2px;
+  background: $surface;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: rem(8);
+  color: $txt-3;
+  font-weight: 600;
+  letter-spacing: rem(0.5);
+}
+
+.card-fields {
+  display: flex;
+  flex-direction: column;
+  gap: rem(12);
+  padding: rem(16);
+  background: $bg;
+  border: 0.5px solid $border;
+  margin-top: rem(8);
+}
