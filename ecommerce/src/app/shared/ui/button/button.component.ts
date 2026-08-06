@@ -1,7 +1,7 @@
 import { Attribute, Component, signal } from '@angular/core';
 
 @Component({
-  selector: 'button[primary], button[ghost], button[secondary]',
+  selector: 'button[primary], button[ghost], button[secondary], a[primary]',
   imports: [],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss',
