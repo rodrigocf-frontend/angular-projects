@@ -5,6 +5,7 @@ import { provideState } from '@ngrx/store';
 import { productsReducer } from './pages/products/store/products/products.reducers';
 import { productsDetailsReducer } from './pages/product-details-page/store/product-details.reducers';
 import { ProductsDetailsPageEffects } from './pages/product-details-page/store/product-details.effects';
+import { emptyCartGuard } from './pages/product-checkout-page/product-checkout-page.guard';
 
 export const routes: Routes = [
   {
@@ -55,6 +56,7 @@ export const routes: Routes = [
       },
       {
         path: 'checkout',
+        canActivate: [emptyCartGuard],
         loadComponent: () =>
           import('./pages/product-checkout-page/product-checkout-page.component'),
       },
