@@ -1,0 +1,50 @@
+<div class="form-side">
+  <div class="steps-grid">
+    <div class="steps">
+      @for (item of stepsCheckout(); track $index) {
+        <div
+          [class.active]="selectedIndex === $index"
+          [class.done]="item.checked"
+          class="step done"
+        >
+          <div class="step-num done">
+            @if (item.checked) {
+              ✓
+            } @else {
+              {{ $index + 1 }}
+            }
+          </div>
+          {{ item.label }}
+        </div>
+      }
+    </div>
+  </div>
+  <div [ngTemplateOutlet]="selected ? selected.content : null"></div>
+  <div class="actions">
+    @if (selectedIndex === 0) {
+      <span></span>
+      <div class="submit-block">
+        <button primary (click)="selectStepByIndex(0)">Confirmar endereço</button>
+      </div>
+    }
+    @if (selectedIndex === 1) {
+      <div class="submit-block">
+        <button ghost cdkStepperPrevious>Voltar</button>
+      </div>
+      <div class="submit-block">
+        <button primary (click)="selectStepByIndex(1)">
+          &nbsp;Confirmar informações de contato
+        </button>
+      </div>
+    }
+    @if (selectedIndex === 2) {
+      <div class="submit-block">
+        <button ghost cdkStepperPrevious>Voltar</button>
+      </div>
+      <div class="submit-block" (click)="selectStepByIndex(2)">
+        <button primary>🔒 &nbsp; Confirmar pedido — R$ 2.474,00</button>
+        <p class="submit-secure">Seus dados estão protegidos com criptografia SSL</p>
+      </div>
+    }
+  </div>
+</div>

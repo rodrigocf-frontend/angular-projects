@@ -1,0 +1,167 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.confirmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: rem(64, 48);
+  text-align: center;
+  gap: rem(16);
+}
+
+.confirmation-icon {
+  width: rem(64);
+  height: rem(64);
+  border-radius: 50%;
+  background: #f0fdf4;
+  border: 0.5px solid #22c55e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: rem(24);
+  color: #22c55e;
+  margin-bottom: rem(8);
+}
+
+.confirmation-eyebrow {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  font-weight: 400;
+  letter-spacing: rem($ls-widest);
+  text-transform: uppercase;
+  color: $gold;
+}
+
+.confirmation-title {
+  font-family: $ff-display;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: rem($ls-tight);
+  color: $txt;
+
+  em {
+    font-style: italic;
+    color: $txt-2;
+  }
+}
+
+.confirmation-desc {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  font-weight: 300;
+  color: $txt-2;
+  line-height: 1.8;
+  max-width: rem(360);
+}
+
+.confirmation-order {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  font-weight: 500;
+  letter-spacing: rem($ls-widest);
+  text-transform: uppercase;
+  color: $txt-3;
+  border: 0.5px solid $border;
+  padding: rem(8, 20);
+}
+
+.confirmation-divider {
+  width: rem(48);
+  height: 0.5px;
+  background: $border;
+  margin: rem(8, 0);
+}
+
+.confirmation-summary {
+  display: flex;
+  flex-direction: column;
+  gap: rem(6);
+  text-align: left;
+  width: 100%;
+  max-width: rem(360);
+  background: $surface;
+  border: 0.5px solid $border;
+  padding: rem(20, 24);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-label {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wide);
+  text-transform: uppercase;
+  color: $txt-2;
+}
+
+.summary-value {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  color: $txt;
+}
+
+.summary-total {
+  border-top: 0.5px solid $border;
+  padding-top: rem(12);
+  margin-top: rem(6);
+
+  .summary-label {
+    font-weight: 500;
+    color: $txt;
+  }
+
+  .summary-value {
+    font-family: $ff-display;
+    font-size: rem($text-2xl);
+    font-weight: 300;
+  }
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: rem(10);
+  margin-top: rem(8);
+}
+
+.btn-primary {
+  background: $txt;
+  color: $bg;
+  border: none;
+  cursor: pointer;
+  font-family: $ff-body;
+  font-size: rem($text-sm);
+  font-weight: 400;
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  padding: rem(14, 28);
+  transition: background 0.15s;
+
+  &:hover {
+    background: #333;
+  }
+}
+
+.btn-ghost {
+  background: none;
+  border: 0.5px solid $border;
+  cursor: pointer;
+  font-family: $ff-body;
+  font-size: rem($text-sm);
+  font-weight: 400;
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  color: $txt-2;
+  padding: rem(14, 28);
+  transition: all 0.15s;
+
+  &:hover {
+    border-color: $txt;
+    color: $txt;
+  }
+}

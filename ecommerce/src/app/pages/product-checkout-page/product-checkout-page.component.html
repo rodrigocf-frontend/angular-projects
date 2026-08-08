@@ -1,49 +1,31 @@
-<div class="steps-grid">
-  <div class="steps">
-    <div class="step done">
-      <div class="step-num">✓</div>
-      Sacola
-    </div>
-    <div class="step-sep"></div>
-    <div class="step active">
-      <div class="step-num">2</div>
-      Entrega
-    </div>
-    <div class="step-sep"></div>
-    <div class="step">
-      <div class="step-num">3</div>
-      Pagamento
-    </div>
-    <div class="step-sep"></div>
-    <div class="step">
-      <div class="step-num">4</div>
-      Confirmação
-    </div>
-  </div>
-</div>
-
 <main class="checkout-layout">
-  <!-- FORM -->
-  <div class="form-side">
+  <app-checkout-stepper>
     <!-- ENDEREÇO -->
-    <app-address-step />
+    <cdk-step>
+      <app-address-step />
+    </cdk-step>
 
     <hr class="section-divider" />
 
     <!-- CONTATO -->
-    <app-contact-step />
+    <cdk-step>
+      <app-contact-step />
+    </cdk-step>
     <hr class="section-divider" />
 
     <!-- PAGAMENTO -->
-    <app-payment-step />
+    <cdk-step>
+      <app-payment-step />
+    </cdk-step>
 
     <!-- SUBMIT -->
-    <div class="submit-block">
-      <button class="btn-submit">🔒 &nbsp; Confirmar pedido — R$ 2.474,00</button>
-      <p class="submit-secure">Seus dados estão protegidos com criptografia SSL</p>
-    </div>
-  </div>
 
-  <!-- ORDER SUMMARY -->
+    <!-- FORM -->
+    <cdk-step label="Confirmação">
+      <app-order-confirmation />
+    </cdk-step>
+
+    <!-- ORDER SUMMARY -->
+  </app-checkout-stepper>
   <app-order-summary />
 </main>

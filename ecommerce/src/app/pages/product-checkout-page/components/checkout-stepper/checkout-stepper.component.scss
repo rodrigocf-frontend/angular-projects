@@ -1,0 +1,65 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: rem(48);
+  gap: 0;
+  padding: rem(35) 0;
+}
+.step {
+  display: flex;
+  align-items: center;
+  gap: rem(8);
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  letter-spacing: rem($ls-wide);
+  text-transform: uppercase;
+  color: $txt-3;
+  padding: rem(24);
+}
+.step.active {
+  color: $txt;
+}
+.step.done {
+  color: $txt-3;
+}
+.step-num {
+  width: rem(20);
+  height: rem(20);
+  border-radius: 50%;
+  border: 0.5px solid currentColor;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: rem(9);
+  flex-shrink: 0;
+}
+.step.active .step-num {
+  background: $txt;
+  color: $bg;
+  border-color: $txt;
+}
+.step.done .step-num {
+  background: #22c55e;
+  border-color: #22c55e;
+  color: #fff;
+}
+.step-sep {
+  width: rem(32);
+  height: 0.5px;
+  background: $border;
+  margin-right: rem(24);
+}
+
+.form-side {
+  padding: rem(48) rem(48) rem(48) 0;
+  border-top: 0.5px solid $border;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
