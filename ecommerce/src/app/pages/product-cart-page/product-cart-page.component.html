@@ -1,18 +1,14 @@
 <main class="cart-page-tabs">
   <div class="tabs">
-    @if (totalItems$ | async; as totalItems) {
-      <button class="tab-btn active">Sacola ({{ totalItems }})</button>
-    }
+    <button class="tab-btn active">Sacola ({{ totalItems$ | async }})</button>
     <button class="tab-btn">Lista de desejos</button>
   </div>
 </main>
 
-<div class="cart-page">
+<div class="cart-page" [class.cart-page-grid]="!(cartIsEmpty$ | async)">
   <div>
     <h1 class="cart-page-title">Minha <em>sacola</em></h1>
-    @if (totalItems$ | async; as totalItems) {
-      <p class="cart-page-count">{{ totalItems }} itens selecionado(s)</p>
-    }
+    <p class="cart-page-count">{{ totalItems$ | async }} itens selecionado(s)</p>
 
     <div class="cart-page-items">
       @for (item of items$ | async; track $index) {
@@ -42,6 +38,31 @@
             <button underline (click)="updateQuantity(item.product, 0, item.color, item.size)">
               Remover
             </button>
+          </div>
+        </div>
+      } @empty {
+        <div class="empty-page">
+          <div class="empty-icon">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <path
+                d="M8 12H10.5L14 32H36L39 18H12"
+                stroke="currentColor"
+                stroke-width="1"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <circle cx="18" cy="38" r="2" stroke="currentColor" stroke-width="1" />
+              <circle cx="32" cy="38" r="2" stroke="currentColor" stroke-width="1" />
+            </svg>
+          </div>
+          <p class="empty-eyebrow">Sacola vazia</p>
+          <h1 class="empty-title">Nada por <em>aqui ainda</em></h1>
+          <p class="empty-desc">
+            Explore nossas coleções e adicione as peças que você amar à sua sacola.
+          </p>
+          <div class="empty-actions">
+            <a primary [routerLink]="['/product/all']">Ver coleções</a>
+            <button ghost>Ver novidades</button>
           </div>
         </div>
       }
@@ -85,7 +106,7 @@
         <input class="coupon-field" type="text" placeholder="Código de cupom" />
         <button class="coupon-btn">Aplicar</button>
       </div>
-      <button primary>Finalizar compra</button>
+      <a primary [routerLink]="['checkout']">Finalizar compra</a>
     </div>
   }
 </div>

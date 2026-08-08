@@ -48,11 +48,17 @@ export const routes: Routes = [
   },
   {
     path: 'cart',
-    loadComponent: () => import('./pages/product-cart-page/product-cart-page.component'),
-  },
-  {
-    path: 'checkout',
-    loadComponent: () => import('./pages/product-checkout-page/product-checkout-page.component'),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./pages/product-cart-page/product-cart-page.component'),
+      },
+      {
+        path: 'checkout',
+        loadComponent: () =>
+          import('./pages/product-checkout-page/product-checkout-page.component'),
+      },
+    ],
   },
   {
     path: '**',

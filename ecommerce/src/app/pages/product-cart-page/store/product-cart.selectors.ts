@@ -11,3 +11,8 @@ export const selectTotalItems = createSelector(selectCartFeature, (state) => sta
 export const selectCartTotal = createSelector(selectCartItems, (items) =>
   items.reduce((total, item) => total + item.product.price * item.count, 0),
 );
+
+export const selectCartIsEmpty = createSelector(
+  selectCartFeature,
+  (state) => state.items.length <= 0,
+);

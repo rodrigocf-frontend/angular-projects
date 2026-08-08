@@ -15,6 +15,7 @@
   color: $bg;
   padding: rem(14, 32);
   transition: background 0.15s;
+  text-align: center;
 }
 
 :host(.btn-primary):hover {

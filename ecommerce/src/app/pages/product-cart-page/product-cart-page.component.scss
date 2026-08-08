@@ -5,12 +5,16 @@
 }
 
 .cart-page {
-  padding: rem(48);
+  padding: rem(0, 48, 48, 48);
   display: grid;
-  grid-template-columns: 1fr rem(360);
   gap: rem(48);
   align-items: start;
 }
+
+.cart-page-grid {
+  grid-template-columns: 1fr rem(360);
+}
+
 .cart-page-title {
   font-family: $ff-display;
   font-size: rem($text-4xl);
@@ -35,6 +39,7 @@
   flex-direction: column;
   gap: 0;
 }
+
 .cart-page-item {
   display: flex;
   gap: rem(24);
@@ -94,6 +99,51 @@
   font-size: rem($text-xl);
   font-weight: 300;
   color: $txt;
+}
+
+.empty-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(16);
+}
+
+.empty-icon {
+  color: $txt-3;
+  margin-bottom: rem(8);
+}
+.empty-eyebrow {
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  font-weight: 400;
+  letter-spacing: rem($ls-widest);
+  text-transform: uppercase;
+  color: $gold;
+}
+.empty-title {
+  font-family: $ff-display;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: rem($ls-tight);
+  color: $txt;
+}
+.empty-title em {
+  font-style: italic;
+  color: $txt-2;
+}
+.empty-desc {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  font-weight: 300;
+  color: $txt-2;
+  line-height: 1.8;
+  max-width: rem(320);
+}
+.empty-actions {
+  display: flex;
+  gap: rem(10);
+  margin-top: rem(8);
 }
 
 // ORDER SUMMARY
