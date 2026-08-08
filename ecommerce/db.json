@@ -1588,22 +1588,22 @@
       {
         "name": "vestidos",
         "slug": "vestidos",
-        "count": 8
+        "count": 13
       },
       {
         "name": "calças",
         "slug": "calcas",
-        "count": 1
+        "count": 12
       },
       {
         "name": "camisas",
         "slug": "camisas",
-        "count": 8
+        "count": 13
       },
       {
         "name": "shorts",
         "slug": "shorts",
-        "count": 1
+        "count": 12
       }
     ],
     "colors": [
