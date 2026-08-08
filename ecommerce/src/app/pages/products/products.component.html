@@ -8,13 +8,15 @@
         @if (productsPagination$ | async; as pagination) {
           <span class="results-count">{{ pagination.items }} peças</span>
         }
-        <select class="sort-select" #sortSelect (change)="onSelectOrder(sortSelect.value)">
-          @for (item of orderSelects; track item.name) {
-            <option [value]="item.type">
-              {{ item.name }}
-            </option>
-          }
-        </select>
+        @if (currentSortType$ | async; as currentSortType) {
+          <select class="sort-select" #sortSelect (change)="onSelectOrder(sortSelect.value)">
+            @for (item of orderSelects; track item.name) {
+              <option [value]="item.type" [selected]="item.type === currentSortType">
+                {{ item.name }}
+              </option>
+            }
+          </select>
+        }
       </div>
     </div>
     <div class="active-filters">

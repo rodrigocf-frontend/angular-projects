@@ -13,7 +13,7 @@ import { FiltersApiResponse } from '../../../../core/services/product/products.s
 
 export const loadProducts = createAction(
   '[Page Products] - Load Products',
-  props<{ page: number }>(),
+  props<{ page: number; sort?: SortFilter[] }>(),
 );
 
 export const setProducts = createAction(
@@ -55,7 +55,7 @@ export const changePage = createAction(
 
 export const clearFilter = createAction(
   '[Products Page] - Clear Filters',
-  props<{ page: number }>(),
+  props<{ page: number; sort?: SortFilter[] }>(),
 );
 
 export const setSort = createAction(

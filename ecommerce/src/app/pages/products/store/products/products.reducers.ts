@@ -4,6 +4,7 @@ import {
   changePage,
   clearFilter,
   FilterType,
+  loadProducts,
   setFilter,
   setProducts,
   configFilters,
@@ -44,7 +45,7 @@ export interface PriceFilter extends ProductFilter {
 }
 
 export interface SortFilter extends ProductFilter {
-  type: 'relevance' | 'min-price' | 'max-price' | 'newest';
+  type: 'relevance' | 'min-price' | 'max-price' | 'newest' | 'sale';
 }
 
 export interface Pagination {
@@ -279,6 +280,16 @@ export const productsReducer = createReducer(
     return {
       ...state,
       ...initialState,
+    };
+  }),
+  on(loadProducts, (state, { sort }) => {
+    if (!sort || sort.length === 0) return state;
+    return {
+      ...state,
+      filters: {
+        ...state.filters,
+        sort,
+      },
     };
   }),
   on(setSort, (state, { sort }) => {

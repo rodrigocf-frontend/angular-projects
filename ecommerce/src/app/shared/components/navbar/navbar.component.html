@@ -1,9 +1,21 @@
 <header class="header">
   @if (currentRoute() !== '/checkout') {
     <nav class="header__nav">
-      <a href="#">Coleções</a>
-      <a href="#">Novidades</a>
-      <a href="#">Sale</a>
+      <a [routerLink]="['/product/all']">Coleções</a>
+      <a
+        [routerLink]="['/product/all']"
+        [queryParams]="{
+          new: true,
+        }"
+        >Novidades</a
+      >
+      <a
+        [routerLink]="['/product/all']"
+        [queryParams]="{
+          sale: true,
+        }"
+        >Sale</a
+      >
     </nav>
     <div class="header__logo">Maison</div>
     <div class="header__actions">

@@ -84,7 +84,9 @@ export class ProductService {
       } else if (sort.type === 'max-price') {
         params = params.append('_sort', '-price');
       } else if (sort.type === 'newest') {
-        params = params.append('_sort', 'isNew');
+        params = params.append('isNew', 'true');
+      } else if (sort.type === 'sale') {
+        params = params.append('isSale', 'true');
       }
     });
 

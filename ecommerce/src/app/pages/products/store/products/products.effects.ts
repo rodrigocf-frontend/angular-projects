@@ -28,9 +28,9 @@ export class ProductsPageEffects {
 
   private readonly loadProducts$ = createEffect(() => {
     return this.action$.pipe(ofType(loadProducts, clearFilter)).pipe(
-      switchMap(({ page }) => {
+      switchMap(({ page, sort }) => {
         return forkJoin({
-          products: this.productsService.getProducts({ page }),
+          products: this.productsService.getProducts({ page, sort }),
           filters: this.productsService.getFilters(),
         }).pipe(
           switchMap(

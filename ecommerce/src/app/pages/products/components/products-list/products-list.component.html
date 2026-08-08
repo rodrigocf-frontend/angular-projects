@@ -5,7 +5,9 @@
         <div class="product-img">
           <div
             class="product-img-placeholder"
-            style="background: linear-gradient(160deg, #e8e3dc, #d4cfc8)"
+            [style]="{
+              'background-image': 'url(' + item.images[0]?.url + ')',
+            }"
           >
             <span>{{ item.name }}</span>
           </div>
@@ -13,8 +15,8 @@
             @if (item.isNew) {
               <span class="product-badge badge-new">Novo</span>
             }
-            @if (!item.isNew && item.isSale) {
-              <span class="product-badge badge-sale">−{{ item.discount }}</span>
+            @if (item.isSale) {
+              <span class="product-badge badge-sale">−{{ item.discount }}%</span>
             }
           </div>
           <button class="product-wish">♡</button>
