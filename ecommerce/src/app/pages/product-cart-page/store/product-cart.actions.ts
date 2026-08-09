@@ -12,3 +12,5 @@ export const setItemsInCart = createAction(
   '[Cart] - set product on cart itens',
   props<{ product: Product; count?: number; color: ProductColor; size: ProductSize }>(),
 );
+
+export const clearCart = createAction('[Cart] - clear products on cart');

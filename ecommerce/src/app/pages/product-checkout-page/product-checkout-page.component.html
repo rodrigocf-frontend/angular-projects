@@ -1,31 +1,38 @@
 <main class="checkout-layout">
-  <app-checkout-stepper>
+  <app-checkout-stepper
+    [addressForm]="addressForm"
+    [contactForm]="contactForm"
+    [paymentForm]="paymentForm"
+    (onAddressFormSubmit)="onAddressFormSubmit()"
+    (onContactFormSubmit)="onContactFormSubmit()"
+    (onPaymentFormSubmit)="onPaymentFormSubmit()"
+  >
     <!-- ENDEREÇO -->
     <cdk-step>
-      <app-address-step />
+      <app-address-step [addressForm]="addressForm" />
     </cdk-step>
 
     <hr class="section-divider" />
 
     <!-- CONTATO -->
     <cdk-step>
-      <app-contact-step />
+      <app-contact-step [contactForm]="contactForm" />
     </cdk-step>
     <hr class="section-divider" />
 
     <!-- PAGAMENTO -->
     <cdk-step>
-      <app-payment-step />
+      <app-payment-step [paymentForm]="paymentForm" />
     </cdk-step>
 
     <!-- SUBMIT -->
 
     <!-- FORM -->
     <cdk-step label="Confirmação">
-      <app-order-confirmation />
+      <app-order-confirmation [addressFormat]="addressFormat()" />
     </cdk-step>
 
     <!-- ORDER SUMMARY -->
   </app-checkout-stepper>
-  <app-order-summary />
+  <app-order-summary [isSubmitted]="isSubmitted()" />
 </main>

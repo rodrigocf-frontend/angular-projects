@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Product } from '../../../shared/models/product.model';
-import { setItemsInCart, toogleCart } from './product-cart.actions';
+import { clearCart, setItemsInCart, toogleCart } from './product-cart.actions';
 import { ProductColor, ProductSize } from '../../../shared/utils/product';
 
 export const PRODUCT_CART_STORE_KEY = 'cart';
@@ -50,6 +50,12 @@ export const cartReducers = createReducer(
     return {
       ...state,
       items: [...updateCartItemCount(state, cartItem, count)],
+    };
+  }),
+  on(clearCart, (state) => {
+    return {
+      ...state,
+      items: [],
     };
   }),
 );

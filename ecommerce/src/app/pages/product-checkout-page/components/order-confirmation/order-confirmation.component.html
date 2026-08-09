@@ -7,7 +7,7 @@
     Obrigada pela sua compra. Você receberá um e-mail com os detalhes e o rastreamento da entrega.
   </p>
 
-  <div class="confirmation-order">#MSN-</div>
+  <div class="confirmation-order">#MSN-847291-</div>
 
   <div class="confirmation-divider"></div>
 
@@ -18,7 +18,7 @@
     </div>
     <div class="summary-row">
       <span class="summary-label">Endereço</span>
-      <span class="summary-value"></span>
+      <span class="summary-value">{{ addressFormat() }}</span>
     </div>
     <div class="summary-row">
       <span class="summary-label">Pagamento</span>
@@ -26,12 +26,14 @@
     </div>
     <div class="summary-row summary-total">
       <span class="summary-label">Total</span>
-      <span class="summary-value">asfds</span>
+      @if (totalValue$ | async; as total) {
+        <span class="summary-value">{{ total | currency: 'BRL' }}</span>
+      }
     </div>
   </div>
 
   <div class="confirmation-actions">
-    <a primary [routerLink]="['/product/all']">Continuar comprando</a>
-    <a ghost [routerLink]="['/']">Voltar ao início</a>
+    <a primary [routerLink]="['/product/all']" (click)="cleanCart()">Continuar comprando</a>
+    <a ghost [routerLink]="['/']" (click)="cleanCart()">Voltar ao início</a>
   </div>
 </div>
