@@ -1,4 +1,4 @@
-<main class="checkout-layout">
+<main class="checkout-layout" [class.cart-has-product]="cartIsEmpty$ | async">
   <app-checkout-stepper
     [addressForm]="addressForm"
     [contactForm]="contactForm"
@@ -34,5 +34,8 @@
 
     <!-- ORDER SUMMARY -->
   </app-checkout-stepper>
-  <app-order-summary [isSubmitted]="isSubmitted()" />
+
+  @if (!(cartIsEmpty$ | async)) {
+    <app-order-summary />
+  }
 </main>

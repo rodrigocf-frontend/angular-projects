@@ -2,9 +2,13 @@
 
 .checkout-layout {
   display: grid;
-  grid-template-columns: rem(720) rem(400);
   justify-content: center;
+  grid-template-columns: rem(720) rem(400);
   min-height: calc(100vh - 112px);
+}
+
+.cart-has-product {
+  grid-template-columns: unset;
 }
 
 .section-divider {
@@ -23,41 +27,4 @@
 }
 .section-title em {
   font-style: italic;
-}
-
-.submit-block {
-  display: flex;
-  flex-direction: column;
-  gap: rem(12);
-}
-.btn-submit {
-  background: $txt;
-  color: $bg;
-  border: none;
-  cursor: pointer;
-  font-family: $ff-body;
-  font-size: rem($text-sm);
-  font-weight: 400;
-  letter-spacing: rem($ls-wider);
-  text-transform: uppercase;
-  padding: rem(18, 32);
-  transition: background 0.15s;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: rem(10);
-}
-.btn-submit:hover {
-  background: #333;
-}
-.submit-secure {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: rem(6);
-  font-family: $ff-body;
-  font-size: rem($text-xs);
-  color: $txt-3;
-  letter-spacing: rem($ls-wide);
 }

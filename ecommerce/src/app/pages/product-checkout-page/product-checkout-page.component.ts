@@ -1,4 +1,4 @@
-import { Component, computed, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { AddressStepComponent } from './components/address-step/address-step.component';
 import { ContactStepComponent } from './components/contact-step/contact-step.component';
 import { PaymentStepComponent } from './components/payment-step/payment-step.component';
@@ -8,6 +8,9 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
 import { OrderConfirmationComponent } from './components/order-confirmation/order-confirmation.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Store } from '@ngrx/store';
+import { selectCartIsEmpty } from '../product-cart-page/store/product-cart.selectors';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-checkout-page',
@@ -20,12 +23,16 @@ import { toSignal } from '@angular/core/rxjs-interop';
     CdkStepperModule,
     OrderConfirmationComponent,
     ReactiveFormsModule,
+    AsyncPipe,
   ],
   templateUrl: './product-checkout-page.component.html',
   styleUrl: './product-checkout-page.component.scss',
 })
 export default class ProductCheckoutPageComponent implements OnInit {
   isSubmitted = signal<boolean>(false);
+  private readonly store = inject(Store);
+
+  cartIsEmpty$ = this.store.select(selectCartIsEmpty);
 
   addressForm = new FormGroup({
     cep: new FormControl('', [Validators.required, Validators.pattern(/^\d{5}-?\d{3}$/)]),

@@ -14,7 +14,6 @@ import {
   styleUrl: './order-summary.component.scss',
 })
 export class OrderSummaryComponent {
-  isSubmitted = input.required<boolean>();
   private readonly store = inject(Store);
 
   items$ = this.store.select(selectCartItems);
