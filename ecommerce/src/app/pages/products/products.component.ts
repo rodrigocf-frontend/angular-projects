@@ -57,13 +57,13 @@ export default class ProductsComponent implements OnInit {
   readonly filtersActives$ = this.store.select(selectFiltersActives).pipe(
     map((value) =>
       value.map((i) => {
-        if (isPriceFilter(i)) {
+        if (isPriceFilter(i) && i.type === 'fromPrice') {
           return {
             ...i,
             name: `Min. R$${i.value}`,
           };
         }
-        if (isPriceFilter(i)) {
+        if (isPriceFilter(i) && i.type === 'toPrice') {
           return {
             ...i,
             name: `Máx. R$ ${i.value}`,
@@ -146,8 +146,10 @@ export default class ProductsComponent implements OnInit {
     if (sizes) params['size'] = sizes;
     const colors = filters.colors.map((c: any) => c.name).join(',');
     if (colors) params['color'] = colors;
-    if (filters.fromPrice.value > 0) params['priceMin'] = filters.fromPrice.value;
-    if (filters.toPrice.value > 0) params['priceMax'] = filters.toPrice.value;
+    const fromPriceValue = filters.fromPrice[0]?.value;
+    if (fromPriceValue > 0) params['priceMin'] = fromPriceValue;
+    const toPriceValue = filters.toPrice[0]?.value;
+    if (toPriceValue > 0) params['priceMax'] = toPriceValue;
 
     this.router.navigate([], {
       relativeTo: this.route,

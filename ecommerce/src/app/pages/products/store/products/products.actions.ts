@@ -41,7 +41,7 @@ export const configPagination = createAction(
 );
 
 export const setPagination = createAction(
-  '[Page Products] - Configuration Pagination',
+  '[Page Products] - Set Pagination',
   props<{
     pagination: Partial<FiltersPagination>;
   }>(),
@@ -90,7 +90,4 @@ export const setFilter = createAction(
 
 export const setFetched = createAction('[Products Page] - set Fetched');
 
-export const setError = createAction(
-  '[Products Page] - Set Error',
-  props<{ hasError: boolean }>(),
-);
+export const setError = createAction('[Products Page] - Set Error', props<{ hasError: boolean }>());

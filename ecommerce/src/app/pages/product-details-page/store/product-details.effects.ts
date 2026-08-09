@@ -33,9 +33,9 @@ export class ProductsDetailsPageEffects {
               ]),
             ),
           ),
+          catchError(() => of(setIsLoading({ isLoading: false }))),
         ),
       ),
-      catchError(() => of(setIsLoading({ isLoading: false }))),
     ),
   );
 
