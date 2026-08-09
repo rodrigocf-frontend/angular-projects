@@ -1,4 +1,4 @@
-<div class="form-section">
+<div class="form-section" [formGroup]="paymentForm()">
   <h2 class="section-title">Forma de <em>pagamento</em></h2>
 
   <div class="payment-options">
@@ -14,31 +14,76 @@
 
     <div class="card-fields">
       <div class="field">
-        <label class="label">Número do cartão <span class="req">*</span></label>
-        <input class="input" type="text" placeholder="0000 0000 0000 0000" maxlength="19" />
+        @let cardNumberControl = paymentForm().get('cardNumber');
+        <label class="label" for="cardNumber">Número do cartão <span class="req">*</span></label>
+        <input
+          class="input"
+          [class.error]="cardNumberControl?.invalid && cardNumberControl?.touched"
+          formControlName="cardNumber"
+          appCardNumberMask
+          type="text"
+          placeholder="0000 0000 0000 0000"
+          maxlength="19"
+        />
+        @if (cardNumberControl?.invalid && cardNumberControl?.touched) {
+          <span class="error-msg">⚠ Número do cartão inválido</span>
+        }
       </div>
       <div class="field">
-        <label class="label">Nome no cartão <span class="req">*</span></label>
-        <input class="input" type="text" placeholder="Como aparece no cartão" />
+        @let cardNameControl = paymentForm().get('cardName');
+        <label class="label" for="cardName">Nome no cartão <span class="req">*</span></label>
+        <input
+          class="input"
+          [class.error]="cardNameControl?.invalid && cardNameControl?.touched"
+          formControlName="cardName"
+          type="text"
+          placeholder="Como aparece no cartão"
+        />
+        @if (cardNameControl?.invalid && cardNameControl?.touched) {
+          <span class="error-msg">⚠ Nome no cartão obrigatório</span>
+        }
       </div>
       <div class="form-grid">
         <div class="field">
-          <label class="label">Validade <span class="req">*</span></label>
-          <input class="input" type="text" placeholder="MM/AA" maxlength="5" />
+          @let expiryControl = paymentForm().get('expiry');
+          <label class="label" for="expiry">Validade <span class="req">*</span></label>
+          <input
+            class="input"
+            [class.error]="expiryControl?.invalid && expiryControl?.touched"
+            formControlName="expiry"
+            appCardExpiryMask
+            type="text"
+            placeholder="MM/AA"
+            maxlength="5"
+          />
+          @if (expiryControl?.invalid && expiryControl?.touched) {
+            <span class="error-msg">⚠ Validade inválida</span>
+          }
         </div>
         <div class="field">
-          <label class="label">CVV <span class="req">*</span></label>
-          <input class="input" type="text" placeholder="000" maxlength="3" />
+          @let cvvControl = paymentForm().get('cvv');
+          <label class="label" for="cvv">CVV <span class="req">*</span></label>
+          <input
+            class="input"
+            [class.error]="cvvControl?.invalid && cvvControl?.touched"
+            formControlName="cvv"
+            type="text"
+            placeholder="000"
+            maxlength="3"
+          />
+          @if (cvvControl?.invalid && cvvControl?.touched) {
+            <span class="error-msg">⚠ CVV inválido</span>
+          }
         </div>
       </div>
       <div class="field">
-        <label class="label">Parcelas</label>
-        <select class="input select">
-          <option>1x de R$ 2.474,00 sem juros</option>
-          <option>2x de R$ 1.237,00 sem juros</option>
-          <option>3x de R$ 824,67 sem juros</option>
-          <option>6x de R$ 412,33 sem juros</option>
-          <option>12x de R$ 206,17 sem juros</option>
+        <label class="label" for="installments">Parcelas</label>
+        <select class="input select" formControlName="installments">
+          <option value="1">1x de R$ 2.474,00 sem juros</option>
+          <option value="2">2x de R$ 1.237,00 sem juros</option>
+          <option value="3">3x de R$ 824,67 sem juros</option>
+          <option value="6">6x de R$ 412,33 sem juros</option>
+          <option value="12">12x de R$ 206,17 sem juros</option>
         </select>
       </div>
     </div>

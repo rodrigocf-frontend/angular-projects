@@ -1,33 +1,90 @@
-<div class="form-section">
+<div class="form-section" [formGroup]="addressForm()">
   <h2 class="section-title">Endereço de <em>entrega</em></h2>
   <div class="form-grid">
     <div class="field full">
-      <label class="label">CEP <span class="req">*</span></label>
-      <input class="input" type="text" placeholder="00000-000" maxlength="9" />
+      @let cepControl = addressForm().get('cep');
+      <label class="label" for="cep">CEP <span class="req">*</span></label>
+      <input
+        class="input"
+        [class.error]="cepControl?.invalid && cepControl?.touched"
+        formControlName="cep"
+        appCepMask
+        type="text"
+        placeholder="00000-000"
+        maxlength="9"
+      />
+      @if (cepControl?.invalid && cepControl?.touched) {
+        <span class="error-msg">⚠ CEP inválido</span>
+      }
     </div>
     <div class="field full">
-      <label class="label">Endereço <span class="req">*</span></label>
-      <input class="input" type="text" placeholder="Rua, Avenida..." />
+      @let addressControl = addressForm().get('address');
+      <label class="label" for="address">Endereço <span class="req">*</span></label>
+      <input
+        class="input"
+        [class.error]="addressControl?.invalid && addressControl?.touched"
+        formControlName="address"
+        type="text"
+        placeholder="Rua, Avenida..."
+      />
+      @if (addressControl?.invalid && addressControl?.touched) {
+        <span class="error-msg">⚠ Endereço inválido</span>
+      }
     </div>
     <div class="field">
-      <label class="label">Número <span class="req">*</span></label>
-      <input class="input" type="text" placeholder="123" />
+      @let numberControl = addressForm().get('number');
+      <label class="label" for="number">Número <span class="req">*</span></label>
+      <input
+        class="input"
+        [class.error]="numberControl?.invalid && numberControl?.touched"
+        formControlName="number"
+        type="text"
+        placeholder="123"
+      />
+      @if (numberControl?.invalid && numberControl?.touched) {
+        <span class="error-msg">⚠ Número obrigatório</span>
+      }
     </div>
     <div class="field">
-      <label class="label">Complemento</label>
-      <input class="input" type="text" placeholder="Apto, Bloco..." />
+      <label class="label" for="complement">Complemento</label>
+      <input class="input" formControlName="complement" type="text" placeholder="Apto, Bloco..." />
     </div>
     <div class="field">
-      <label class="label">Bairro <span class="req">*</span></label>
-      <input class="input" type="text" placeholder="Bairro" />
+      @let neighborhoodControl = addressForm().get('neighborhood');
+      <label class="label" for="neighborhood">Bairro <span class="req">*</span></label>
+      <input
+        class="input"
+        [class.error]="neighborhoodControl?.invalid && neighborhoodControl?.touched"
+        formControlName="neighborhood"
+        type="text"
+        placeholder="Bairro"
+      />
+      @if (neighborhoodControl?.invalid && neighborhoodControl?.touched) {
+        <span class="error-msg">⚠ Bairro obrigatório</span>
+      }
     </div>
     <div class="field">
-      <label class="label">Cidade <span class="req">*</span></label>
-      <input class="input" type="text" placeholder="Cidade" />
+      @let cityControl = addressForm().get('city');
+      <label class="label" for="city">Cidade <span class="req">*</span></label>
+      <input
+        class="input"
+        [class.error]="cityControl?.invalid && cityControl?.touched"
+        formControlName="city"
+        type="text"
+        placeholder="Cidade"
+      />
+      @if (cityControl?.invalid && cityControl?.touched) {
+        <span class="error-msg">⚠ Cidade obrigatória</span>
+      }
     </div>
     <div class="field">
-      <label class="label">Estado <span class="req">*</span></label>
-      <select class="input select">
+      @let stateControl = addressForm().get('state');
+      <label class="label" for="state">Estado <span class="req">*</span></label>
+      <select
+        class="input select"
+        [class.error]="stateControl?.invalid && stateControl?.touched"
+        formControlName="state"
+      >
         <option value="">Selecione</option>
         <option>SP</option>
         <option>RJ</option>
@@ -35,6 +92,9 @@
         <option>RS</option>
         <option>PR</option>
       </select>
+      @if (stateControl?.invalid && stateControl?.touched) {
+        <span class="error-msg">⚠ Selecione um estado</span>
+      }
     </div>
   </div>
 </div>

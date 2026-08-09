@@ -12,11 +12,10 @@ import {
 import { Store } from '@ngrx/store';
 import { clearFilter, FilterType, setFilter } from '../../store/products/products.actions';
 import { selectFilters } from '../../store/products/products.selectors';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { scrollBehaviorTo } from '../../../../shared/utils/scroller';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, Observable, switchMap } from 'rxjs';
-import { CurrencyMaskDirective } from '../../../../shared/directives/mask.directive';
+import { CurrencyMaskDirective } from '../../../../shared/directives/currency-mask.directive';
 import { cleanDigits } from '../../../../shared/utils/currency';
 import { ButtonComponent } from '../../../../shared/ui/button/button.component';
 
@@ -37,10 +36,6 @@ export class SidebarComponent implements OnInit {
 
   fromPrice = new FormControl<string>('');
   toPrice = new FormControl<string>('');
-
-  constructor() {
-    this.store.select(selectFilters).pipe(takeUntilDestroyed());
-  }
 
   ngOnInit(): void {
     this.fromPrice.valueChanges
