@@ -17,10 +17,9 @@
         >Sale</a
       >
     </nav>
-    <div class="header__logo">Maison</div>
+
+    <div class="header__logo"><a [routerLink]="['/']">Maison</a></div>
     <div class="header__actions">
-      <button>Buscar</button>
-      <button>Conta</button>
       <button (click)="toggleDrawer()" class="header__cart-btn">
         Sacola
         @if (totalItems$ | async; as items) {
@@ -30,7 +29,7 @@
     </div>
   } @else {
     <button class="header-back">← Voltar</button>
-    <div class="header__logo">Maison</div>
+    <div class="header__logo"><a [routerLink]="['/']"> Maison</a></div>
     <div class="header-secure">🔒 Compra segura</div>
   }
 </header>

@@ -34,7 +34,7 @@
   color: $txt;
 }
 
-.header__logo {
+.header__logo a {
   font-family: $ff-display;
   font-size: rem($text-xl);
   font-weight: 300;
