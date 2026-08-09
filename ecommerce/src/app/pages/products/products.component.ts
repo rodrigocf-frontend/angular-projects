@@ -1,5 +1,5 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { BreadcrumbComponent } from '../../shared/components/breadcrumb/breadcrumb.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
@@ -13,18 +13,19 @@ import {
   SortFilter,
 } from './store/products/products.reducers';
 import { AsyncPipe } from '@angular/common';
-import { map } from 'rxjs';
+import { debounceTime, map, skip } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { FilterType, loadProducts, setFilter, setSort } from './store/products/products.actions';
 import { LoadingListComponent } from './components/loading-list/loading-list.component';
 import {
+  selectCheckedFilters,
   selectCheckedPagination,
   selectFilters,
   selectFiltersActives,
   selectIsLoading,
   selectProductsFiltereds,
 } from './store/products/products.selectors';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { getRouteParams } from '../../shared/utils/filters';
 
 @Component({
@@ -46,6 +47,7 @@ export default class ProductsComponent implements OnInit {
   isLoading$ = this.store.select(selectIsLoading);
   readonly productsPagination$ = this.store.select(selectCheckedPagination);
   readonly productsData$ = this.store.select(selectProductsFiltereds);
+  private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);
 
   readonly filtersActives$ = this.store.select(selectFiltersActives).pipe(
@@ -79,6 +81,12 @@ export default class ProductsComponent implements OnInit {
       const { sort, categories } = getRouteParams(this.route);
       this.store.dispatch(loadProducts({ page: 1, sort, categories }));
     });
+
+    // toObservable(this.store.selectSignal(selectCheckedFilters))
+    //   .pipe(skip(1), debounceTime(300))
+    //   .subscribe((filters) => {
+    //     this.updateQueryParams(filters);
+    //   });
   }
 
   readonly orderSelects: SortFilter[] = [
@@ -126,7 +134,6 @@ export default class ProductsComponent implements OnInit {
       );
     }
   }
-
   private updateQueryParams(filters: any) {
     const params: Record<string, string> = {};
 
@@ -140,14 +147,13 @@ export default class ProductsComponent implements OnInit {
     if (colors) params['color'] = colors;
 
     if (filters.fromPrice.value > 0) params['priceMin'] = filters.fromPrice.value;
-    if (filters.toPrice.value > 0)   params['priceMax'] = filters.toPrice.value;
+    if (filters.toPrice.value > 0) params['priceMax'] = filters.toPrice.value;
 
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: params,
       queryParamsHandling: 'replace', // substitui os params atuais
-      replaceUrl: true // não cria entrada no histórico a cada filtro
+      replaceUrl: true, // não cria entrada no histórico a cada filtro
     });
   }
-}
 }
