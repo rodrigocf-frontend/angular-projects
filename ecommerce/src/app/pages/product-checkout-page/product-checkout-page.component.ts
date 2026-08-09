@@ -1,4 +1,4 @@
-import { Component, computed, OnInit, signal, ViewEncapsulation } from '@angular/core';
+import { Component, computed, OnInit, signal } from '@angular/core';
 import { AddressStepComponent } from './components/address-step/address-step.component';
 import { ContactStepComponent } from './components/contact-step/contact-step.component';
 import { PaymentStepComponent } from './components/payment-step/payment-step.component';
@@ -23,7 +23,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
   ],
   templateUrl: './product-checkout-page.component.html',
   styleUrl: './product-checkout-page.component.scss',
-  encapsulation: ViewEncapsulation.ShadowDom,
 })
 export default class ProductCheckoutPageComponent implements OnInit {
   isSubmitted = signal<boolean>(false);
