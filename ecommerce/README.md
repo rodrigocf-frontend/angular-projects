@@ -17,7 +17,7 @@ Maison lets you browse a product catalog by category, filter and sort listings, 
 - **Reactive Forms** — price range filters (`FormControl`, `debounceTime`, `distinctUntilChanged`) and the full checkout form (address/contact/payment), each with validators and a matching input mask directive (currency, phone, CEP, card number, card expiry)
 - **SCSS** — numeric design tokens converted through a shared `rem()` function, partials forwarded from a single global stylesheet
 - **json-server** (v1 beta) — fake REST API for local development
-- **Vitest** — unit testing via Angular's `@angular/build:unit-test` builder
+- **Vitest** — unit testing via Angular's `@angular/build:unit-test` builder, `@vitest/coverage-v8` for coverage, `@ngrx/store/testing` + `@ngrx/effects/testing` for store/effects tests
 - **Prettier** — formatting
 - **pnpm** — package management
 
@@ -78,6 +78,10 @@ Each masked field (currency, phone, CEP, card number, card expiry) is its own di
 
 Every NgRx effect wraps its `catchError` around the request's own inner `switchMap`, not around the outer `action$.pipe(ofType(...))`. An effect is a long-lived stream: letting an inner request's error propagate up to the outer pipe would terminate the whole effect after the first failure, silently killing it for every future dispatch of that action.
 
+### Lenis instantiated lazily, not at module load
+
+`shared/utils/scroller.ts` creates its single `Lenis` instance the first time `scrollBehaviorTo`/`scrollToTop` is actually called, memoized after that, rather than eagerly when the module is imported. Constructing it at import time meant every file that merely imported the module — directly or transitively through a component — paid for a real `Lenis` instance (and its `requestAnimationFrame` loop) whether or not a scroll ever happened, which is both wasteful at runtime and made the module non-deterministic to import under test.
+
 ## Running Locally
 
 **Prerequisites:** Node.js 20+, pnpm
@@ -97,13 +101,33 @@ Open `http://localhost:4200` in your browser. The API will be available at `http
 
 ## Scripts
 
-| Command         | Description                     |
-| --------------- | ------------------------------- |
-| `pnpm start`    | Angular dev server              |
-| `pnpm db:start` | json-server locally (port 3000) |
-| `pnpm build`    | Production build                |
-| `pnpm watch`    | Development build in watch mode |
-| `pnpm test`     | Unit tests with Vitest          |
+| Command              | Description                       |
+| -------------------- | --------------------------------- |
+| `pnpm start`         | Angular dev server                |
+| `pnpm db:start`      | json-server locally (port 3000)   |
+| `pnpm build`         | Production build                  |
+| `pnpm watch`         | Development build in watch mode   |
+| `pnpm test`          | Unit tests with Vitest            |
+| `pnpm test:coverage` | Unit tests with a coverage report |
+
+## Testing
+
+470 unit tests across all 59 components, directives, services, guards, utils and NgRx store slices (actions/reducers/selectors/effects), run with Vitest through Angular's `@angular/build:unit-test` builder.
+
+```bash
+pnpm test              # run once
+pnpm test -- --watch   # watch mode
+pnpm test:coverage     # run with a coverage report (text + html + lcov, written to coverage/)
+```
+
+Coverage sits at ~99% statements / ~96% branches / ~97% functions / ~99% lines project-wide. `angular.json`'s `test` target enforces an 80% floor on all four metrics (`coverageThresholds`) — `pnpm test:coverage` exits non-zero if a change drops below it. Config-only files with no real logic (`app.config.ts`, `app.routes.ts`, `main.ts`, `environments/`, model type files, test fixtures under `mocks/`) are excluded from the report via `coverageExclude` rather than padding the numbers with untestable boilerplate.
+
+Two support files, wired in via the builder's `setupFiles`/`providersFile` options, keep the test environment consistent with the real app:
+
+- `src/test-setup.ts` — registers `pt-BR` locale data (so `CurrencyPipe` formats the same way under test as in the browser) and polyfills `window.matchMedia`/`ResizeObserver`, which jsdom doesn't implement but Lenis's constructor touches.
+- `src/test-providers.ts` — provides `LOCALE_ID: 'pt-BR'` globally for every spec, mirroring `app.config.ts`.
+
+The `test` target also runs with `isolate: true` (Vitest's default for this builder is `false`, shared modules across all spec files in a run). Isolation was turned on deliberately: `scroller.ts` memoizes a single lazily-created `Lenis` instance at module scope, and with a shared module registry, whichever spec file happened to construct it first would "leak" that instance into every other file's assertions, making `vi.mock('lenis', ...)`-based tests order-dependent and flaky.
 
 ## Project Structure
 
@@ -150,12 +174,18 @@ src/
 │       └── product-checkout-page/
 │           ├── product-checkout-page.guard.ts  # Redirects /cart/checkout away when the cart is empty
 │           └── components/             # checkout-stepper, address/contact/payment-step, order-summary, order-confirmation
-└── themes/
-    ├── _tokens.scss                    # Design tokens (colors, type scale, letter-spacing)
-    ├── _utils.scss                     # rem() conversion function
-    ├── _forms.scss                     # Shared form styles, forwarded globally
-    └── styles.scss                     # Global stylesheet, entry point
+├── mocks/
+│   └── models/                         # Shared Product fixtures reused across specs (product.mock.ts, products.mock.ts)
+├── themes/
+│   ├── _tokens.scss                    # Design tokens (colors, type scale, letter-spacing)
+│   ├── _utils.scss                     # rem() conversion function
+│   ├── _forms.scss                     # Shared form styles, forwarded globally
+│   └── styles.scss                     # Global stylesheet, entry point
+├── test-setup.ts                       # Global Vitest setup: pt-BR locale data, matchMedia/ResizeObserver polyfills
+└── test-providers.ts                   # Global Vitest DI providers (LOCALE_ID), mirrors app.config.ts
 ```
+
+Every component, directive, service, guard and store file has a co-located `<name>.spec.ts`.
 
 ## Author
 
