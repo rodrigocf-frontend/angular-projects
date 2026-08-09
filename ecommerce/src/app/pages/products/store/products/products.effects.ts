@@ -13,7 +13,7 @@ import {
   setLoading,
   setFetched,
 } from './products.actions';
-import { forkJoin, switchMap } from 'rxjs';
+import { forkJoin, of, switchMap } from 'rxjs';
 import { ProductService } from '../../../../core/services/product/products.service';
 import { Store } from '@ngrx/store';
 import { selectCheckedFilters, selectCheckedPagination } from './products.selectors';
@@ -28,13 +28,18 @@ export class ProductsPageEffects {
 
   private readonly loadProducts$ = createEffect(() => {
     return this.action$.pipe(ofType(loadProducts, clearFilter)).pipe(
-      switchMap(({ page, sort }) => {
+      switchMap(({ page, sort, categories }) => {
         return forkJoin({
-          products: this.productsService.getProducts({ page, sort }),
+          products: this.productsService.getProducts({ page, sort, categories }),
           filters: this.productsService.getFilters(),
+          categoriesFromQueryParams: of(categories),
         }).pipe(
           switchMap(
-            ({ products: { data, ...pagination }, filters: { categories, colors, sizes } }) => [
+            ({
+              products: { data, ...pagination },
+              filters: { categories, colors, sizes },
+              categoriesFromQueryParams,
+            }) => [
               setProducts({ products: data }),
               configFilters({
                 products: data,
@@ -43,6 +48,7 @@ export class ProductsPageEffects {
                   colors,
                   sizes,
                 },
+                categoriesFromQueryParams,
               }),
               configPagination({
                 pagination,

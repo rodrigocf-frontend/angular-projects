@@ -56,9 +56,9 @@ export class ProductService {
     categories.forEach((category) => {
       const currentParams = params.get('category_in');
       if (currentParams) {
-        params = params.set('category_in', `${currentParams},${this.slugify(category.name)}`);
+        params = params.set('category_in', `${currentParams},${this.slugify(category.slug)}`);
       } else {
-        params = params.append('category_in', this.slugify(category.name));
+        params = params.append('category_in', this.slugify(category.slug));
       }
     });
 

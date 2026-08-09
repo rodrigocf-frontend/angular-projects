@@ -76,8 +76,8 @@ export default class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
-      const sort: SortFilter[] = getRouteParams(this.route);
-      this.store.dispatch(loadProducts({ page: 1, sort }));
+      const { sort, categories } = getRouteParams(this.route);
+      this.store.dispatch(loadProducts({ page: 1, sort, categories }));
     });
   }
 
@@ -126,4 +126,28 @@ export default class ProductsComponent implements OnInit {
       );
     }
   }
+
+  private updateQueryParams(filters: any) {
+    const params: Record<string, string> = {};
+
+    const categories = filters.categories.map((c: any) => c.name).join(',');
+    if (categories) params['category'] = categories;
+
+    const sizes = filters.sizes.map((s: any) => s.name).join(',');
+    if (sizes) params['size'] = sizes;
+
+    const colors = filters.colors.map((c: any) => c.name).join(',');
+    if (colors) params['color'] = colors;
+
+    if (filters.fromPrice.value > 0) params['priceMin'] = filters.fromPrice.value;
+    if (filters.toPrice.value > 0)   params['priceMax'] = filters.toPrice.value;
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: params,
+      queryParamsHandling: 'replace', // substitui os params atuais
+      replaceUrl: true // não cria entrada no histórico a cada filtro
+    });
+  }
+}
 }

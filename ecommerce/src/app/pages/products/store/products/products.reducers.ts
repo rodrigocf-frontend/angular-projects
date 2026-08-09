@@ -31,6 +31,8 @@ export interface ProductFilter {
 
 export interface CategoryFilter extends ProductFilter, ProductFilterCheck {
   count: number;
+  img: string;
+  slug: string;
 }
 
 export interface SizeFilter extends ProductFilter, ProductFilterCheck {}
@@ -105,8 +107,11 @@ const initialState: ProductsState = {
   isFetched: false,
 };
 
-const setupFilters = (filters: FiltersApiResponse) => {
-  const categories = setupCategories(filters.categories);
+const setupFilters = (
+  filters: FiltersApiResponse,
+  categoriesFromQueryParams?: CategoryFilter[],
+) => {
+  const categories = setupCategories(filters.categories, categoriesFromQueryParams);
   const sizes = setupSizes(filters.sizes);
   const colors = setupColors(filters.colors);
   return {
@@ -116,11 +121,29 @@ const setupFilters = (filters: FiltersApiResponse) => {
   };
 };
 
-const setupCategories = (categories: CategoryFilterFromApi[]): CategoryFilter[] => {
-  return categories.map((c) => ({
-    ...c,
-    checked: false,
-  }));
+const setupCategories = (
+  categories: CategoryFilterFromApi[],
+  categoriesFromQueryParams?: CategoryFilter[],
+): CategoryFilter[] => {
+  if (!categoriesFromQueryParams) {
+    return categories.map((c) => ({
+      ...c,
+      checked: false,
+    }));
+  } else {
+    return categories.map((c) => {
+      if (c.slug === categoriesFromQueryParams[0]?.slug) {
+        return {
+          ...c,
+          checked: true,
+        };
+      }
+      return {
+        ...c,
+        checked: false,
+      };
+    });
+  }
 };
 
 const setupSizes = (sizes: SizeFilterFromApi[]): SizeFilter[] => {
@@ -184,8 +207,9 @@ export const productsReducer = createReducer(
       list: products,
     };
   }),
-  on(configFilters, (state, { filters }) => {
-    const { categories, colors, sizes } = setupFilters(filters);
+  on(configFilters, (state, { filters, categoriesFromQueryParams }) => {
+    const { categories, colors, sizes } = setupFilters(filters, categoriesFromQueryParams);
+
     return {
       ...state,
       filters: {

@@ -1,6 +1,8 @@
 <app-hero />
 <app-marquee />
-<app-categories />
+@if (productsCategories$ | async; as data) {
+  <app-categories [data]="data" />
+}
 <app-highlight-products />
 <app-banner />
 <app-newsletter />

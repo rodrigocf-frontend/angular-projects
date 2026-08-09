@@ -328,7 +328,7 @@
       "images": [
         {
           "id": "img-c-11",
-          "url": "https://images.unsplash.com/photo-1625910603759-a9c5409395f1?w=800",
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
           "alt": "Camisa 11"
         }
       ],
@@ -1329,7 +1329,7 @@
       "images": [
         {
           "id": "img-c-43",
-          "url": "https://images.unsplash.com/photo-1625910603759-a9c5409395f1?w=800",
+          "url": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
           "alt": "Camisa 43"
         }
       ],
@@ -1588,21 +1588,25 @@
       {
         "name": "vestidos",
         "slug": "vestidos",
+        "img": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=800",
         "count": 13
       },
       {
         "name": "calças",
         "slug": "calcas",
+        "img": "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=800",
         "count": 12
       },
       {
         "name": "camisas",
         "slug": "camisas",
+        "img": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=800",
         "count": 13
       },
       {
         "name": "shorts",
         "slug": "shorts",
+        "img": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?w=800",
         "count": 12
       }
     ],

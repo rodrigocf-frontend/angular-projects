@@ -1,5 +1,5 @@
 import { createSelector } from '@ngrx/store';
-import { AppState, Filters, ProductFilter } from './products.reducers';
+import { AppState, CategoryFilter, Filters, ProductFilter } from './products.reducers';
 
 export const selectFilters = (state: AppState) => state.products.filters;
 export const selectPagination = (state: AppState) => state.products.pagination;
@@ -57,11 +57,18 @@ export const selectFiltersActives = createSelector(
   },
 );
 
+export const selectCategoriesActive = createSelector(
+  selectCheckedFiltersV1,
+  ({ categories }): CategoryFilter[] => {
+    return categories;
+  },
+);
+
 export const selectProductsFiltereds = createSelector(
   selectAllProducts,
   selectCheckedFiltersV1,
   (list, { categories, colors, sizes, fromPrice, toPrice }) => {
-    const selectedCategoryNames = categories.map((c) => c.name);
+    const selectedCategoryNames = categories.map((c) => c.slug);
     const selectedColorHexes = colors.map((c) => c.hex);
     const selectedSizeNames = sizes.map((s) => s.name);
 
@@ -71,9 +78,7 @@ export const selectProductsFiltereds = createSelector(
 
       const matchesColor =
         selectedColorHexes.length === 0 ||
-        product.colors
-          .split(',')
-          .some((entry) => selectedColorHexes.includes(entry.split(':')[1]));
+        product.colors.split(',').some((entry) => selectedColorHexes.includes(entry.split(':')[1]));
 
       const matchesSize =
         selectedSizeNames.length === 0 ||
