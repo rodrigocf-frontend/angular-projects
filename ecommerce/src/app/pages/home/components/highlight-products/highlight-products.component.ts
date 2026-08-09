@@ -5,6 +5,7 @@ import { Pagination } from '../../../../core/services/product/products.service';
 import { getProductColors } from '../../../../shared/utils/product';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { scrollToTop } from '../../../../shared/utils/scroller';
 
 @Component({
   selector: 'app-highlight-products',
@@ -16,4 +17,6 @@ export class HighlightProductsComponent {
   data = input.required<Pagination<Product>>();
 
   getColors = getProductColors;
+
+  scrollTo = scrollToTop;
 }

@@ -3,7 +3,7 @@
 
   <div class="hightlight-products-grid">
     @for (item of data()?.data; track $index) {
-      <a [routerLink]="['/product/details', item.id]">
+      <a [routerLink]="['/product/details', item.id]" (click)="scrollTo()">
         <article class="product-card">
           <div class="product-img">
             <div
