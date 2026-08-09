@@ -13,7 +13,7 @@ vi.mock('lenis', () => ({
 }));
 
 import Lenis from 'lenis';
-import { scrollBehaviorTo, scrollToTop } from './scroller';
+import { scrollToTop } from './scroller';
 
 describe('scroller', () => {
   beforeEach(() => {
@@ -45,26 +45,6 @@ describe('scroller', () => {
       expect(target).toBe(0);
       expect(options.duration).toBe(2.0);
       expect(typeof options.easing).toBe('function');
-    });
-  });
-
-  describe('scrollBehaviorTo', () => {
-    it('calls scrollTo with the resolved DOM element when the selector matches', () => {
-      document.body.innerHTML = '<div id="foo"></div>';
-
-      scrollBehaviorTo('#foo');
-
-      expect(scrollToMock).toHaveBeenCalledTimes(1);
-      const [target, options] = scrollToMock.mock.calls[0];
-      expect(target).toBe(document.querySelector('#foo'));
-      expect(options.duration).toBe(2.0);
-      expect(typeof options.easing).toBe('function');
-    });
-
-    it('does nothing when the selector does not match any element', () => {
-      scrollBehaviorTo('#does-not-exist');
-
-      expect(scrollToMock).not.toHaveBeenCalled();
     });
   });
 });

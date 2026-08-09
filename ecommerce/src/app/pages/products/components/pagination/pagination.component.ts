@@ -3,7 +3,7 @@ import { FiltersPagination } from '../../store/products/products.reducers';
 import { Store } from '@ngrx/store';
 import { changePage } from '../../store/products/products.actions';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { scrollBehaviorTo } from '../../../../shared/utils/scroller';
+import { scrollToTop } from '../../../../shared/utils/scroller';
 
 @Component({
   selector: 'app-pagination',
@@ -48,6 +48,6 @@ export class PaginationComponent {
 
   goTo(page: number) {
     this.store.dispatch(changePage({ page }));
-    scrollBehaviorTo('#products-list');
+    scrollToTop();
   }
 }

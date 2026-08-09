@@ -12,12 +12,12 @@ import {
 import { Store } from '@ngrx/store';
 import { clearFilter, FilterType, setFilter } from '../../store/products/products.actions';
 import { selectFilters } from '../../store/products/products.selectors';
-import { scrollBehaviorTo } from '../../../../shared/utils/scroller';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged, Observable, switchMap } from 'rxjs';
 import { CurrencyMaskDirective } from '../../../../shared/directives/currency-mask.directive';
 import { cleanDigits } from '../../../../shared/utils/currency';
 import { ButtonComponent } from '../../../../shared/ui/button/button.component';
+import { scrollToTop } from '../../../../shared/utils/scroller';
 
 @Component({
   selector: 'app-sidebar',
@@ -103,13 +103,13 @@ export class SidebarComponent implements OnInit {
     if (isSizeFilter(filter)) {
       this.store.dispatch(setFilter({ page: 1, filterType: FilterType.size, size: filter }));
     }
-    scrollBehaviorTo('#products-list');
+    scrollToTop();
   }
 
   clearFilter() {
     this.store.dispatch(clearFilter({ page: 1 }));
     this.fromPrice.reset(null);
     this.toPrice.reset(null);
-    scrollBehaviorTo('#products-list');
+    scrollToTop();
   }
 }

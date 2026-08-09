@@ -1,6 +1,6 @@
 // Neither vi.mock on a relative import nor vi.spyOn on a namespace import is supported by the
 // Angular Vitest integration, so the 'lenis' package itself (a bare specifier) is mocked instead,
-// letting the real scrollBehaviorTo run and asserting on the underlying Lenis.scrollTo call.
+// letting the real scrollToTop run and asserting on the underlying Lenis.scrollTo call.
 const scrollToMock = vi.fn();
 
 vi.mock('lenis', () => ({
@@ -35,8 +35,6 @@ describe('PaginationComponent', () => {
   let store: MockStore;
 
   beforeEach(async () => {
-    document.body.innerHTML = '<div id="products-list"></div>';
-
     await TestBed.configureTestingModule({
       imports: [PaginationComponent],
       providers: [provideMockStore()],
@@ -104,10 +102,7 @@ describe('PaginationComponent', () => {
     pageTwoButton?.click();
 
     expect(dispatchSpy).toHaveBeenCalledWith(changePage({ page: 2 }));
-    expect(scrollToMock).toHaveBeenCalledWith(
-      document.querySelector('#products-list'),
-      expect.anything(),
-    );
+    expect(scrollToMock).toHaveBeenCalledWith(0, expect.anything());
   });
 
   it('goTo should dispatch changePage directly', async () => {
@@ -117,9 +112,6 @@ describe('PaginationComponent', () => {
     component.goTo(4);
 
     expect(dispatchSpy).toHaveBeenCalledWith(changePage({ page: 4 }));
-    expect(scrollToMock).toHaveBeenCalledWith(
-      document.querySelector('#products-list'),
-      expect.anything(),
-    );
+    expect(scrollToMock).toHaveBeenCalledWith(0, expect.anything());
   });
 });

@@ -1,6 +1,6 @@
 // Neither vi.mock on a relative import nor vi.spyOn on a namespace import is supported by the
 // Angular Vitest integration, so the 'lenis' package itself (a bare specifier) is mocked instead,
-// letting the real scrollBehaviorTo run and asserting on the underlying Lenis.scrollTo call.
+// letting the real scrollToTop run and asserting on the underlying Lenis.scrollTo call.
 const scrollToMock = vi.fn();
 
 vi.mock('lenis', () => ({
@@ -40,8 +40,6 @@ describe('SidebarComponent', () => {
   let store: MockStore;
 
   beforeEach(async () => {
-    document.body.innerHTML = '<div id="products-list"></div>';
-
     await TestBed.configureTestingModule({
       imports: [SidebarComponent],
       providers: [
@@ -103,10 +101,7 @@ describe('SidebarComponent', () => {
     expect(dispatchSpy).toHaveBeenCalledWith(
       setFilter({ page: 1, filterType: FilterType.category, category: CATEGORY }),
     );
-    expect(scrollToMock).toHaveBeenCalledWith(
-      document.querySelector('#products-list'),
-      expect.anything(),
-    );
+    expect(scrollToMock).toHaveBeenCalledWith(0, expect.anything());
   });
 
   it('should dispatch setFilter with size filter type when a size option is clicked', () => {
@@ -145,10 +140,7 @@ describe('SidebarComponent', () => {
     expect(dispatchSpy).toHaveBeenCalledWith(clearFilter({ page: 1 }));
     expect(component.fromPrice.value).toBeNull();
     expect(component.toPrice.value).toBeNull();
-    expect(scrollToMock).toHaveBeenCalledWith(
-      document.querySelector('#products-list'),
-      expect.anything(),
-    );
+    expect(scrollToMock).toHaveBeenCalledWith(0, expect.anything());
   });
 
   it('clearFilter() should be callable directly (used via #sidebar template ref in ProductsComponent)', () => {

@@ -14,16 +14,6 @@ const getLenis = () => {
   return lenis;
 };
 
-export const scrollBehaviorTo = (id: string) => {
-  const target = document.querySelector(id);
-  if (target) {
-    getLenis().scrollTo(target as HTMLElement, {
-      duration: 2.0, // Duração em segundos (deixa mais lento)
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // curva de aceleração opcional
-    });
-  }
-};
-
 export const scrollToTop = () => {
   getLenis().scrollTo(0, {
     duration: 2.0,
