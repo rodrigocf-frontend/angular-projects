@@ -76,17 +76,15 @@ export default class ProductsComponent implements OnInit {
 
   private readonly destroyRef = inject(DestroyRef);
 
-  ngOnInit(): void {
-    this.route.queryParams.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
-      const { sort, categories } = getRouteParams(this.route);
-      this.store.dispatch(loadProducts({ page: 1, sort, categories }));
+  p = toObservable(this.store.selectSignal(selectCheckedFilters))
+    .pipe(skip(1), debounceTime(100))
+    .subscribe((filters) => {
+      this.updateQueryParams(filters);
     });
 
-    // toObservable(this.store.selectSignal(selectCheckedFilters))
-    //   .pipe(skip(1), debounceTime(300))
-    //   .subscribe((filters) => {
-    //     this.updateQueryParams(filters);
-    //   });
+  ngOnInit(): void {
+    const { categories, sort } = getRouteParams(this.route);
+    this.store.dispatch(loadProducts({ page: 1, categories, sort }));
   }
 
   readonly orderSelects: SortFilter[] = [
@@ -136,16 +134,12 @@ export default class ProductsComponent implements OnInit {
   }
   private updateQueryParams(filters: any) {
     const params: Record<string, string> = {};
-
     const categories = filters.categories.map((c: any) => c.name).join(',');
     if (categories) params['category'] = categories;
-
     const sizes = filters.sizes.map((s: any) => s.name).join(',');
     if (sizes) params['size'] = sizes;
-
     const colors = filters.colors.map((c: any) => c.name).join(',');
     if (colors) params['color'] = colors;
-
     if (filters.fromPrice.value > 0) params['priceMin'] = filters.fromPrice.value;
     if (filters.toPrice.value > 0) params['priceMax'] = filters.toPrice.value;
 
