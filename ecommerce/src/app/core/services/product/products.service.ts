@@ -8,7 +8,7 @@ import {
   SizeFilter,
   SortFilter,
 } from '../../../pages/products/store/products/products.reducers';
-import { tap } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 export interface Pagination<T> {
   first: number;
@@ -95,7 +95,7 @@ export class ProductService {
     });
 
     return this.http.get<Pagination<Product>>(
-      `http://localhost:3000/products?_page=${page}&_per_page=${perPage}`,
+      `${environment.apiUrl}/products?_page=${page}&_per_page=${perPage}`,
       {
         params,
       },
@@ -103,16 +103,16 @@ export class ProductService {
   }
 
   getFilters() {
-    return this.http.get<FiltersApiResponse>(`http://localhost:3000/filters`);
+    return this.http.get<FiltersApiResponse>(`${environment.apiUrl}/filters`);
   }
 
   getProduct(id: string) {
-    return this.http.get<Product>(`http://localhost:3000/products/${id}`);
+    return this.http.get<Product>(`${environment.apiUrl}/products/${id}`);
   }
 
   getRelatedProducts(product: Product) {
     return this.http.get<Pagination<Product>>(
-      `http://localhost:3000/products?category=${product.category}&id:ne=${product.id}&_page=0&_per_page=4`,
+      `${environment.apiUrl}/products?category=${product.category}&id:ne=${product.id}&_page=0&_per_page=4`,
     );
   }
 
