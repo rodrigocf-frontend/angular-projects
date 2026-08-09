@@ -2,6 +2,8 @@
 
 A fashion e-commerce storefront built as a portfolio project, focused on modern Angular + NgRx patterns.
 
+![Maison walkthrough](docs/ecommerce.gif)
+
 ## Overview
 
 Maison lets you browse a product catalog by category, filter and sort listings, open a product's details page to pick a color/size and add it to a cart, and follow the flow through a cart drawer, a full cart page, and a multi-step checkout (address, contact, payment, confirmation). Product data is served locally through json-server, with filtering, sorting and pagination handled server-side via query params.
@@ -80,7 +82,7 @@ Every NgRx effect wraps its `catchError` around the request's own inner `switchM
 
 ### Lenis instantiated lazily, not at module load
 
-`shared/utils/scroller.ts` creates its single `Lenis` instance the first time `scrollBehaviorTo`/`scrollToTop` is actually called, memoized after that, rather than eagerly when the module is imported. Constructing it at import time meant every file that merely imported the module — directly or transitively through a component — paid for a real `Lenis` instance (and its `requestAnimationFrame` loop) whether or not a scroll ever happened, which is both wasteful at runtime and made the module non-deterministic to import under test.
+`shared/utils/scroller.ts` creates its single `Lenis` instance the first time `scrollToTop` is actually called, memoized after that, rather than eagerly when the module is imported. Constructing it at import time meant every file that merely imported the module — directly or transitively through a component — paid for a real `Lenis` instance (and its `requestAnimationFrame` loop) whether or not a scroll ever happened, which is both wasteful at runtime and made the module non-deterministic to import under test.
 
 ## Running Locally
 
