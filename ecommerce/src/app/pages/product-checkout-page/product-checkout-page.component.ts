@@ -9,7 +9,11 @@ import { OrderConfirmationComponent } from './components/order-confirmation/orde
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { Store } from '@ngrx/store';
-import { selectCartIsEmpty } from '../product-cart-page/store/product-cart.selectors';
+import {
+  selectCartIsEmpty,
+  selectCartTotal,
+} from '../product-cart-page/store/product-cart.selectors';
+import { clearCart } from '../product-cart-page/store/product-cart.actions';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -33,6 +37,8 @@ export default class ProductCheckoutPageComponent implements OnInit {
   private readonly store = inject(Store);
 
   cartIsEmpty$ = this.store.select(selectCartIsEmpty);
+  private readonly cartTotalSignal = this.store.selectSignal(selectCartTotal);
+  orderTotal = signal(0);
 
   addressForm = new FormGroup({
     cep: new FormControl('', [Validators.required, Validators.pattern(/^\d{5}-?\d{3}$/)]),
@@ -103,6 +109,8 @@ export default class ProductCheckoutPageComponent implements OnInit {
   }
 
   onPaymentFormSubmit() {
+    this.orderTotal.set(this.cartTotalSignal());
+    this.store.dispatch(clearCart());
     this.deleteProgress();
     this.isSubmitted.set(true);
   }

@@ -29,7 +29,7 @@
     }
     @if (selectedIndex === 1) {
       <div class="submit-block">
-        <button ghost cdkStepperPrevious>Voltar</button>
+        <button ghost cdkStepperPrevious>← Voltar</button>
       </div>
       <div class="submit-block">
         <button primary (click)="selectStepByIndex(1)">
@@ -39,7 +39,7 @@
     }
     @if (selectedIndex === 2) {
       <div class="submit-block">
-        <button ghost cdkStepperPrevious [disabled]="isSubmittingPayment()">Voltar</button>
+        <button ghost cdkStepperPrevious [disabled]="isSubmittingPayment()">← Voltar</button>
       </div>
       <div class="submit-block" (click)="selectStepByIndex(2)">
         <button primary [disabled]="isSubmittingPayment()">

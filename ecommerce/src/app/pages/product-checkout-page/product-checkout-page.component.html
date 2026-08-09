@@ -29,7 +29,7 @@
 
     <!-- FORM -->
     <cdk-step label="Confirmação">
-      <app-order-confirmation [addressFormat]="addressFormat()" />
+      <app-order-confirmation [addressFormat]="addressFormat()" [total]="orderTotal()" />
     </cdk-step>
 
     <!-- ORDER SUMMARY -->

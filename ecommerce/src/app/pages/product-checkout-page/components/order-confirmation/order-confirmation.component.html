@@ -26,14 +26,12 @@
     </div>
     <div class="summary-row summary-total">
       <span class="summary-label">Total</span>
-      @if (totalValue$ | async; as total) {
-        <span class="summary-value">{{ total | currency: 'BRL' }}</span>
-      }
+      <span class="summary-value">{{ total() | currency: 'BRL' }}</span>
     </div>
   </div>
 
   <div class="confirmation-actions">
-    <a primary [routerLink]="['/product/all']" (click)="cleanCart()">Continuar comprando</a>
-    <a ghost [routerLink]="['/']" (click)="cleanCart()">Voltar ao início</a>
+    <a primary [routerLink]="['/product/all']">Continuar comprando</a>
+    <a ghost [routerLink]="['/']">Voltar ao início</a>
   </div>
 </div>
