@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { SectionHeaderComponent } from '../../../../shared/components/section-header/section-header.component';
+import { Product } from '../../../../shared/models/product.model';
+import { Pagination } from '../../../../core/services/product/products.service';
+import { getProductColors } from '../../../../shared/utils/product';
+import { CurrencyPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-highlight-products',
-  imports: [SectionHeaderComponent],
+  imports: [SectionHeaderComponent, CurrencyPipe, RouterLink],
   templateUrl: './highlight-products.component.html',
   styleUrl: './highlight-products.component.scss',
 })
-export class HighlightProductsComponent {}
+export class HighlightProductsComponent {
+  data = input.required<Pagination<Product>>();
+
+  getColors = getProductColors;
+}

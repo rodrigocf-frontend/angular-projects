@@ -3,7 +3,9 @@
 @if (productsCategories$ | async; as data) {
   <app-categories [data]="data" />
 }
-<app-highlight-products />
+@if (productsFeatured$ | async; as data) {
+  <app-highlight-products [data]="data" />
+}
 <app-banner />
 <app-newsletter />
 <app-footer />

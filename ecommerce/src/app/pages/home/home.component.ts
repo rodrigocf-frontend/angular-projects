@@ -29,4 +29,14 @@ export default class HomeComponent {
   private readonly productService = inject(ProductService);
 
   productsCategories$ = this.productService.getFilters();
+  productsFeatured$ = this.productService.getProducts({
+    page: 1,
+    sort: [
+      {
+        name: 'Featured',
+        type: 'featured',
+      },
+    ],
+    perPage: 4,
+  });
 }

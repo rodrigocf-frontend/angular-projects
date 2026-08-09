@@ -10,7 +10,7 @@ import {
 } from '../../../pages/products/store/products/products.reducers';
 import { tap } from 'rxjs';
 
-interface Pagination<T> {
+export interface Pagination<T> {
   first: number;
   prev: number;
   next: number;
@@ -42,6 +42,7 @@ export class ProductService {
     fromPrice = [],
     toPrice = [],
     sort = [],
+    perPage = 9,
   }: {
     page?: number;
     categories?: CategoryFilter[];
@@ -50,6 +51,7 @@ export class ProductService {
     fromPrice?: PriceFilter[];
     toPrice?: PriceFilter[];
     sort?: SortFilter[];
+    perPage?: number;
   }) {
     let params = new HttpParams();
 
@@ -87,11 +89,13 @@ export class ProductService {
         params = params.append('isNew', 'true');
       } else if (sort.type === 'sale') {
         params = params.append('isSale', 'true');
+      } else if (sort.type === 'featured') {
+        params = params.append('featured', 'true');
       }
     });
 
     return this.http.get<Pagination<Product>>(
-      `http://localhost:3000/products?_page=${page}&_per_page=9`,
+      `http://localhost:3000/products?_page=${page}&_per_page=${perPage}`,
       {
         params,
       },
@@ -99,9 +103,7 @@ export class ProductService {
   }
 
   getFilters() {
-    return this.http
-      .get<FiltersApiResponse>(`http://localhost:3000/filters`)
-      .pipe(tap((e) => console.log(e)));
+    return this.http.get<FiltersApiResponse>(`http://localhost:3000/filters`);
   }
 
   getProduct(id: string) {
