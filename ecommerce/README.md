@@ -64,7 +64,7 @@ Cart total and item count are `createSelector`s computed from `items` (`selectCa
 
 ### Cart drawer mounted at the root
 
-`DrawerCartComponent` sits in `AppComponent`, outside the router outlet, and is toggled from anywhere via a `toogleCart` NgRx action (dispatched from the navbar, from the empty-cart CTA, etc.). It can overlay any route without being nested inside that route's component tree.
+`DrawerCartComponent` sits in `AppComponent`, outside the router outlet, and is toggled from anywhere via a `toggleCart` NgRx action (dispatched from the navbar, from the empty-cart CTA, etc.). It can overlay any route without being nested inside that route's component tree.
 
 ### Checkout stepper owns validity gating, forms stay with the page
 

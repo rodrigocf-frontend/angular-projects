@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Product } from '../../../shared/models/product.model';
-import { clearCart, setItemsInCart, toogleCart } from './product-cart.actions';
+import { clearCart, setItemsInCart, toggleCart } from './product-cart.actions';
 import { ProductColor, ProductSize } from '../../../shared/utils/product';
 
 export const PRODUCT_CART_STORE_KEY = 'cart';
@@ -24,7 +24,7 @@ const initialCartState: CartState = {
 
 export const cartReducers = createReducer(
   initialCartState,
-  on(toogleCart, (state) => {
+  on(toggleCart, (state) => {
     return {
       ...state,
       open: !state.open,

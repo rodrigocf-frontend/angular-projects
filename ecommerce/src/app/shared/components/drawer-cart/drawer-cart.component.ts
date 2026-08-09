@@ -9,7 +9,7 @@ import {
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import {
   setItemsInCart,
-  toogleCart,
+  toggleCart,
 } from '../../../pages/product-cart-page/store/product-cart.actions';
 import { ButtonComponent } from '../../ui/button/button.component';
 import { Router, RouterLink } from '@angular/router';
@@ -33,7 +33,7 @@ export class DrawerCartComponent {
   totalValue$ = this.store.select(selectCartTotal);
 
   toggleDrawer() {
-    this.store.dispatch(toogleCart());
+    this.store.dispatch(toggleCart());
   }
 
   updateQuantity(product: Product, count: number, size: ProductSize, color: ProductColor) {

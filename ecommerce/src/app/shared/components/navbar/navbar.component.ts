@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { toogleCart } from '../../../pages/product-cart-page/store/product-cart.actions';
+import { toggleCart } from '../../../pages/product-cart-page/store/product-cart.actions';
 import { selectTotalItems } from '../../../pages/product-cart-page/store/product-cart.selectors';
 import { AsyncPipe } from '@angular/common';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
@@ -26,6 +26,6 @@ export class NavbarComponent {
   }
 
   toggleDrawer() {
-    this.store.dispatch(toogleCart());
+    this.store.dispatch(toggleCart());
   }
 }
