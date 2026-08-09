@@ -1,4 +1,4 @@
-import { Component, input, output, signal } from '@angular/core';
+import { Component, DestroyRef, inject, input, output, signal } from '@angular/core';
 import { CdkStepper, CdkStepperModule } from '@angular/cdk/stepper';
 import { NgTemplateOutlet } from '@angular/common';
 import { ButtonComponent } from '../../../../shared/ui/button/button.component';
@@ -17,6 +17,8 @@ interface StepCheckoutI {
   imports: [NgTemplateOutlet, CdkStepperModule, ButtonComponent, ReactiveFormsModule],
 })
 export class CheckoutStepperComponent extends CdkStepper {
+  private readonly destroyRef = inject(DestroyRef);
+
   addressForm = input.required<FormGroup<any>>();
   contactForm = input.required<FormGroup<any>>();
   paymentForm = input.required<FormGroup<any>>();
@@ -24,6 +26,8 @@ export class CheckoutStepperComponent extends CdkStepper {
   onAddressFormSubmit = output();
   onContactFormSubmit = output();
   onPaymentFormSubmit = output();
+
+  isSubmittingPayment = signal(false);
 
   stepsCheckout = signal<StepCheckoutI[]>([
     {
@@ -64,14 +68,26 @@ export class CheckoutStepperComponent extends CdkStepper {
       return;
     }
     if (index === 2) {
+      if (this.isSubmittingPayment()) return;
       if (this.paymentForm().valid) {
-        this.onPaymentFormSubmit.emit();
-        this.nextStep(index);
+        this.submitPayment(index);
       } else {
         this.paymentForm().markAllAsTouched();
       }
       return;
     }
+  }
+
+  private submitPayment(index: number) {
+    this.isSubmittingPayment.set(true);
+
+    const timeoutId = setTimeout(() => {
+      this.isSubmittingPayment.set(false);
+      this.onPaymentFormSubmit.emit();
+      this.nextStep(index);
+    }, 2000);
+
+    this.destroyRef.onDestroy(() => clearTimeout(timeoutId));
   }
 
   nextStep(index: number) {

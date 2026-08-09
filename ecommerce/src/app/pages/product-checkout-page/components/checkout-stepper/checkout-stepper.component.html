@@ -39,10 +39,16 @@
     }
     @if (selectedIndex === 2) {
       <div class="submit-block">
-        <button ghost cdkStepperPrevious>Voltar</button>
+        <button ghost cdkStepperPrevious [disabled]="isSubmittingPayment()">Voltar</button>
       </div>
       <div class="submit-block" (click)="selectStepByIndex(2)">
-        <button primary>🔒 &nbsp; Confirmar pedido — R$ 2.474,00</button>
+        <button primary [disabled]="isSubmittingPayment()">
+          @if (isSubmittingPayment()) {
+            Processando pagamento…
+          } @else {
+            🔒 &nbsp; Confirmar pedido — R$ 2.474,00
+          }
+        </button>
         <p class="submit-secure">Seus dados estão protegidos com criptografia SSL</p>
       </div>
     }

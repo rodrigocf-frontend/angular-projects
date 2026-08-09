@@ -63,3 +63,20 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.submit-block {
+  display: flex;
+  flex-direction: column;
+  gap: rem(12);
+}
+
+.submit-secure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: rem(6);
+  font-family: $ff-body;
+  font-size: rem($text-xs);
+  color: $txt-3;
+  letter-spacing: rem($ls-wide);
+}
