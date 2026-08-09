@@ -27,7 +27,7 @@ export class ProductsPageEffects {
 
   private store = inject(Store);
 
-  private readonly loadProducts$ = createEffect(() => {
+  loadProducts$ = createEffect(() => {
     return this.action$.pipe(ofType(loadProducts, clearFilter)).pipe(
       switchMap(({ page, sort, categories }) => {
         return forkJoin({
@@ -60,15 +60,13 @@ export class ProductsPageEffects {
               setFetched(),
             ],
           ),
-          catchError(() =>
-            of(setLoading({ isLoading: false }), setError({ hasError: true })),
-          ),
+          catchError(() => of(setLoading({ isLoading: false }), setError({ hasError: true }))),
         );
       }),
     );
   });
 
-  private readonly loadFilter$ = createEffect(() => {
+  loadFilter$ = createEffect(() => {
     return this.action$.pipe(ofType(setFilter, changePage, setSort)).pipe(
       concatLatestFrom(() => [
         this.store.select(selectCheckedFilters),
@@ -91,15 +89,13 @@ export class ProductsPageEffects {
                 isLoading: false,
               }),
             ]),
-            catchError(() =>
-              of(setLoading({ isLoading: false }), setError({ hasError: true })),
-            ),
+            catchError(() => of(setLoading({ isLoading: false }), setError({ hasError: true }))),
           );
       }),
     );
   });
 
-  private readonly isLoadingFilter$ = createEffect(() => {
+  isLoadingFilter$ = createEffect(() => {
     return this.action$.pipe(ofType(setFilter, changePage, setSort)).pipe(
       switchMap(() => [
         setLoading({
