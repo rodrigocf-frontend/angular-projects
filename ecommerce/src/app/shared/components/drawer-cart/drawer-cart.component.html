@@ -86,7 +86,7 @@
         </div>
         <p class="drawer-shipping">Frete grátis para compras acima de R$ 300</p>
         <button secondary (click)="navigateToCart()">Ver sacola completa</button>
-        <a primary [routerLink]="['cart/checkout']">Finalizar compra</a>
+        <a primary [routerLink]="['cart/checkout']" (click)="toggleDrawer()">Finalizar compra</a>
         <a class="btn-continue" [routerLink]="['/product/all']" (click)="toggleDrawer()"
           >Continuar comprando</a
         >
