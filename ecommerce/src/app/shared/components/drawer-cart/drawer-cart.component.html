@@ -1,96 +1,93 @@
-@if (open$ | async) {
-  <div class="drawer-overlay" id="drawer" style="display: flex" (click)="toggleDrawer()"></div>
-  <div class="drawer">
-    <div class="drawer-head">
-      <div>
-        <h2 class="drawer-title">Minha <em>sacola</em></h2>
-        @if (totalItems$ | async; as totalItems) {
-          <span class="drawer-count">{{ totalItems }} itens</span>
-        }
-      </div>
-      <button class="drawer-close" (click)="toggleDrawer()">×</button>
-    </div>
-
-    <div class="drawer-items">
-      @if (items$ | async; as cartItems) {
-        @for (item of cartItems; track $index) {
-          <div class="cart-item">
-            <div class="cart-item-img">
-              <div
-                class="cart-item-img-bg"
-                [style]="{
-                  'background-image': 'url(' + item.product.images[0]?.url + ')',
-                }"
-              ></div>
-            </div>
-            <div class="cart-item-info">
-              <p class="cart-item-brand">{{ item.product.brand }}</p>
-              <p class="cart-item-name">{{ item.product.name }}</p>
-              <p class="cart-item-variants">
-                {{ item.color.name }} · Tamanho {{ item.size.label }}
-              </p>
-              <div class="cart-item-footer">
-                <app-quanty-control
-                  (onAdd)="updateQuantity(item.product, item.count + 1, item.size, item.color)"
-                  (onRemove)="updateQuantity(item.product, item.count - 1, item.size, item.color)"
-                  [value]="item.count"
-                />
-                <span class="cart-item-price">{{
-                  item.product.price * item.count | currency: 'BRL'
-                }}</span>
-              </div>
-              <button underline (click)="updateQuantity(item.product, 0, item.size, item.color)">
-                Remover
-              </button>
-            </div>
-          </div>
-        } @empty {
-          <div class="empty">
-            <div class="empty-icon">
-              <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
-                <path
-                  d="M6 6H8.5L11.5 24H30L33 12H9"
-                  stroke="currentColor"
-                  stroke-width="1"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <circle cx="15" cy="30" r="2" stroke="currentColor" stroke-width="1" />
-                <circle cx="27" cy="30" r="2" stroke="currentColor" stroke-width="1" />
-              </svg>
-            </div>
-            <h3 class="empty-title">Sua sacola está <em>vazia</em></h3>
-            <p class="empty-desc">Explore nossas coleções e adicione peças que você amar.</p>
-            <button primary (click)="navigateToProducts()">Ver coleções</button>
-          </div>
-        }
+@let isOpen = open$ | async;
+<div class="drawer-overlay" [class.open]="isOpen" (click)="toggleDrawer()"></div>
+<div class="drawer" [class.open]="isOpen">
+  <div class="drawer-head">
+    <div>
+      <h2 class="drawer-title">Minha <em>sacola</em></h2>
+      @if (totalItems$ | async; as totalItems) {
+        <span class="drawer-count">{{ totalItems }} itens</span>
       }
     </div>
+    <button class="drawer-close" (click)="toggleDrawer()">×</button>
+  </div>
 
-    <div class="drawer-footer">
-      @if (totalValue$ | async; as total) {
-        <div class="drawer-summary">
-          <div class="summary-row">
-            <span class="summary-label">Subtotal</span>
-            <span class="summary-value">{{ total | currency: 'BRL' }}</span>
+  <div class="drawer-items">
+    @if (items$ | async; as cartItems) {
+      @for (item of cartItems; track $index) {
+        <div class="cart-item">
+          <div class="cart-item-img">
+            <div
+              class="cart-item-img-bg"
+              [style]="{
+                'background-image': 'url(' + item.product.images[0]?.url + ')',
+              }"
+            ></div>
           </div>
-          <div class="summary-row">
-            <span class="summary-label">Frete</span>
-            <span class="summary-value" style="color: #22c55e">Grátis</span>
-          </div>
-          <hr class="cart-divider" style="margin: 4px 0" />
-          <div class="summary-row summary-total">
-            <span class="summary-label">Total</span>
-            <span class="summary-value">{{ total | currency: 'BRL' }}</span>
+          <div class="cart-item-info">
+            <p class="cart-item-brand">{{ item.product.brand }}</p>
+            <p class="cart-item-name">{{ item.product.name }}</p>
+            <p class="cart-item-variants">{{ item.color.name }} · Tamanho {{ item.size.label }}</p>
+            <div class="cart-item-footer">
+              <app-quanty-control
+                (onAdd)="updateQuantity(item.product, item.count + 1, item.size, item.color)"
+                (onRemove)="updateQuantity(item.product, item.count - 1, item.size, item.color)"
+                [value]="item.count"
+              />
+              <span class="cart-item-price">{{
+                item.product.price * item.count | currency: 'BRL'
+              }}</span>
+            </div>
+            <button underline (click)="updateQuantity(item.product, 0, item.size, item.color)">
+              Remover
+            </button>
           </div>
         </div>
-        <p class="drawer-shipping">Frete grátis para compras acima de R$ 300</p>
-        <button secondary (click)="navigateToCart()">Ver sacola completa</button>
-        <a primary [routerLink]="['cart/checkout']" (click)="toggleDrawer()">Finalizar compra</a>
-        <a class="btn-continue" [routerLink]="['/product/all']" (click)="toggleDrawer()"
-          >Continuar comprando</a
-        >
+      } @empty {
+        <div class="empty">
+          <div class="empty-icon">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <path
+                d="M6 6H8.5L11.5 24H30L33 12H9"
+                stroke="currentColor"
+                stroke-width="1"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <circle cx="15" cy="30" r="2" stroke="currentColor" stroke-width="1" />
+              <circle cx="27" cy="30" r="2" stroke="currentColor" stroke-width="1" />
+            </svg>
+          </div>
+          <h3 class="empty-title">Sua sacola está <em>vazia</em></h3>
+          <p class="empty-desc">Explore nossas coleções e adicione peças que você amar.</p>
+          <button primary (click)="navigateToProducts()">Ver coleções</button>
+        </div>
       }
-    </div>
+    }
   </div>
-}
+
+  <div class="drawer-footer">
+    @if (totalValue$ | async; as total) {
+      <div class="drawer-summary">
+        <div class="summary-row">
+          <span class="summary-label">Subtotal</span>
+          <span class="summary-value">{{ total | currency: 'BRL' }}</span>
+        </div>
+        <div class="summary-row">
+          <span class="summary-label">Frete</span>
+          <span class="summary-value" style="color: #22c55e">Grátis</span>
+        </div>
+        <hr class="cart-divider" style="margin: 4px 0" />
+        <div class="summary-row summary-total">
+          <span class="summary-label">Total</span>
+          <span class="summary-value">{{ total | currency: 'BRL' }}</span>
+        </div>
+      </div>
+      <p class="drawer-shipping">Frete grátis para compras acima de R$ 300</p>
+      <button secondary (click)="navigateToCart()">Ver sacola completa</button>
+      <a primary [routerLink]="['cart/checkout']" (click)="toggleDrawer()">Finalizar compra</a>
+      <a class="btn-continue" [routerLink]="['/product/all']" (click)="toggleDrawer()"
+        >Continuar comprando</a
+      >
+    }
+  </div>
+</div>
