@@ -12,8 +12,9 @@ import {
   setSort,
   setLoading,
   setFetched,
+  setError,
 } from './products.actions';
-import { forkJoin, of, switchMap } from 'rxjs';
+import { catchError, forkJoin, of, switchMap } from 'rxjs';
 import { ProductService } from '../../../../core/services/product/products.service';
 import { Store } from '@ngrx/store';
 import { selectCheckedFilters, selectCheckedPagination } from './products.selectors';
@@ -59,6 +60,9 @@ export class ProductsPageEffects {
               setFetched(),
             ],
           ),
+          catchError(() =>
+            of(setLoading({ isLoading: false }), setError({ hasError: true })),
+          ),
         );
       }),
     );
@@ -87,6 +91,9 @@ export class ProductsPageEffects {
                 isLoading: false,
               }),
             ]),
+            catchError(() =>
+              of(setLoading({ isLoading: false }), setError({ hasError: true })),
+            ),
           );
       }),
     );

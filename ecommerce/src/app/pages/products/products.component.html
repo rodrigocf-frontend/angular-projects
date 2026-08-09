@@ -33,6 +33,8 @@
     </div>
     @if (isLoading$ | async) {
       <app-loading-list />
+    } @else if (hasError$ | async) {
+      <app-list-error (retry)="loadInitialProducts()" />
     } @else if (productsData$ | async; as products) {
       <app-products-list [data]="products" />
       @if (products.length > 0 && (productsPagination$ | async); as pagination) {

@@ -5,6 +5,7 @@ export const selectFilters = (state: AppState) => state.products.filters;
 export const selectPagination = (state: AppState) => state.products.pagination;
 export const selectIsLoading = (state: AppState) => state.products.isLoading;
 export const selectIsFetched = (state: AppState) => state.products.isFetched;
+export const selectHasError = (state: AppState) => state.products.hasError;
 
 export const selectCheckedFilters = createSelector(selectFilters, (state) => {
   return {

@@ -1,0 +1,58 @@
+@use '../../../../../themes/styles.scss' as *;
+
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: rem(80, 40);
+  text-align: center;
+  gap: rem(16);
+}
+
+.error-icon {
+  color: $txt-3;
+  margin-bottom: rem(8);
+}
+
+.error-title {
+  font-family: $ff-display;
+  font-size: rem(28);
+  font-weight: 300;
+  color: $txt;
+  letter-spacing: rem($ls-tight);
+
+  em {
+    font-style: italic;
+    color: $txt-2;
+  }
+}
+
+.error-desc {
+  font-family: $ff-body;
+  font-size: rem($text-base);
+  font-weight: 300;
+  color: $txt-2;
+  line-height: 1.8;
+  max-width: rem(280);
+}
+
+.error-btn {
+  margin-top: rem(8);
+  background: none;
+  border: 0.5px solid $txt;
+  font-family: $ff-body;
+  font-size: rem($text-sm);
+  font-weight: 400;
+  letter-spacing: rem($ls-wider);
+  text-transform: uppercase;
+  color: $txt;
+  padding: rem(12, 28);
+  cursor: pointer;
+  transition: all 0.15s;
+
+  &:hover {
+    background: $txt;
+    color: $bg;
+  }
+}

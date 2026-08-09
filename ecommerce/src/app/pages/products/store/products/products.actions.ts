@@ -89,3 +89,8 @@ export const setFilter = createAction(
 );
 
 export const setFetched = createAction('[Products Page] - set Fetched');
+
+export const setError = createAction(
+  '[Products Page] - Set Error',
+  props<{ hasError: boolean }>(),
+);

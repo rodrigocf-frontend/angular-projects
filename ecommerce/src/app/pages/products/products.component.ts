@@ -22,11 +22,13 @@ import {
   selectCheckedPagination,
   selectFilters,
   selectFiltersActives,
+  selectHasError,
   selectIsLoading,
   selectProductsFiltereds,
 } from './store/products/products.selectors';
 import { ActivatedRoute, Router } from '@angular/router';
 import { getRouteParams } from '../../shared/utils/filters';
+import { ListErrorComponent } from './components/list-error/list-error.component';
 
 @Component({
   selector: 'app-products',
@@ -37,6 +39,7 @@ import { getRouteParams } from '../../shared/utils/filters';
     LoadingListComponent,
     ProductsListComponent,
     PaginationComponent,
+    ListErrorComponent,
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
@@ -45,6 +48,7 @@ export default class ProductsComponent implements OnInit {
   private store = inject(Store);
 
   isLoading$ = this.store.select(selectIsLoading);
+  readonly hasError$ = this.store.select(selectHasError);
   readonly productsPagination$ = this.store.select(selectCheckedPagination);
   readonly productsData$ = this.store.select(selectProductsFiltereds);
   private readonly router = inject(Router);
@@ -74,15 +78,17 @@ export default class ProductsComponent implements OnInit {
     .select(selectFilters)
     .pipe(map((filters) => filters.sort[0]?.type ?? 'relevance'));
 
-  private readonly destroyRef = inject(DestroyRef);
-
-  p = toObservable(this.store.selectSignal(selectCheckedFilters))
+  verifyFilterQueryParams$ = toObservable(this.store.selectSignal(selectCheckedFilters))
     .pipe(skip(1), debounceTime(100))
     .subscribe((filters) => {
       this.updateQueryParams(filters);
     });
 
   ngOnInit(): void {
+    this.loadInitialProducts();
+  }
+
+  loadInitialProducts(): void {
     const { categories, sort } = getRouteParams(this.route);
     this.store.dispatch(loadProducts({ page: 1, categories, sort }));
   }

@@ -13,6 +13,7 @@ import {
   setSort,
   setLoading,
   setFetched,
+  setError,
 } from './products.actions';
 import {
   CategoryFilterFromApi,
@@ -47,7 +48,7 @@ export interface PriceFilter extends ProductFilter {
 }
 
 export interface SortFilter extends ProductFilter {
-  type: 'relevance' | 'min-price' | 'max-price' | 'newest' | 'sale';
+  type: 'relevance' | 'min-price' | 'max-price' | 'newest' | 'sale' | 'featured';
 }
 
 export interface Pagination {
@@ -78,6 +79,7 @@ export interface ProductsState {
   pagination: FiltersPagination;
   isLoading: boolean;
   isFetched: boolean;
+  hasError: boolean;
 }
 
 export interface AppState {
@@ -105,6 +107,7 @@ const initialState: ProductsState = {
   },
   isLoading: true,
   isFetched: false,
+  hasError: false,
 };
 
 const setupFilters = (
@@ -205,6 +208,7 @@ export const productsReducer = createReducer(
     return {
       ...state,
       list: products,
+      hasError: false,
     };
   }),
   on(configFilters, (state, { filters, categoriesFromQueryParams }) => {
@@ -335,6 +339,12 @@ export const productsReducer = createReducer(
     return {
       ...state,
       isFetched: true,
+    };
+  }),
+  on(setError, (state, { hasError }) => {
+    return {
+      ...state,
+      hasError,
     };
   }),
 );
