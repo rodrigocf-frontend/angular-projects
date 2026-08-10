@@ -38,6 +38,14 @@
   transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1);
   will-change: transform;
 
+  @include tablet {
+    width: min(#{rem(380)}, 90vw);
+  }
+
+  @include mobile {
+    width: 100vw;
+  }
+
   &.open {
     transform: translateX(0);
   }
@@ -48,6 +56,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include mobile {
+    padding: rem(18, 20);
+  }
 }
 .drawer-title {
   font-family: $ff-display;
@@ -85,6 +97,11 @@
   display: flex;
   flex-direction: column;
   gap: rem(20);
+
+  @include mobile {
+    padding: rem(20);
+    gap: rem(16);
+  }
 }
 .cart-item {
   display: flex;
@@ -96,6 +113,11 @@
   flex-shrink: 0;
   background: $warm;
   overflow: hidden;
+
+  @include mobile {
+    width: rem(64);
+    height: rem(80);
+  }
 }
 .cart-item-img-bg {
   width: 100%;
@@ -155,6 +177,10 @@
   display: flex;
   flex-direction: column;
   gap: rem(12);
+
+  @include mobile {
+    padding: rem(18, 20);
+  }
 }
 .drawer-summary {
   display: flex;

@@ -9,6 +9,10 @@
   text-align: center;
   gap: rem(16);
   margin-top: 5%;
+
+  @include mobile {
+    padding: rem(48) rem(16);
+  }
 }
 
 .empty-icon {

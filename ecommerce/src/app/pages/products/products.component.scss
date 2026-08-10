@@ -4,10 +4,22 @@
   display: grid;
   grid-template-columns: 15rem 1fr;
   min-height: calc(100vh - 7.0625rem);
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
 }
 
 .main {
   padding: rem(32, 40);
+
+  @include laptop {
+    padding: rem(28, 24);
+  }
+
+  @include mobile {
+    padding: rem(20, 16);
+  }
 }
 
 .main-header {
@@ -15,6 +27,13 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: rem(32);
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem(12);
+    margin-bottom: rem(20);
+  }
 }
 .main-title {
   font-family: $ff-display;
@@ -22,6 +41,10 @@
   font-weight: 300;
   letter-spacing: rem($ls-tight);
   color: $txt;
+
+  @include mobile {
+    font-size: rem($text-2xl);
+  }
 }
 .main-title em {
   font-style: italic;
@@ -30,6 +53,11 @@
   display: flex;
   align-items: center;
   gap: rem(20);
+
+  @include mobile {
+    width: 100%;
+    justify-content: space-between;
+  }
 }
 .results-count {
   font-family: $ff-body;

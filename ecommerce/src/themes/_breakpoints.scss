@@ -1,0 +1,40 @@
+// _breakpoints.scss
+// Design é desktop-first (os valores base já refletem telas grandes), então os
+// mixins abaixo aplicam @media (max-width: ...) em cascata pra baixo, exceto
+// `wide`, que trava o conteúdo em telas muito largas (min-width).
+
+$bp-mobile: 425px;
+$bp-tablet: 768px;
+$bp-laptop: 1024px;
+$bp-desktop: 1366px;
+$bp-wide: 2048px;
+
+@mixin mobile {
+  @media (max-width: $bp-mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: $bp-laptop) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: $bp-desktop) {
+    @content;
+  }
+}
+
+@mixin wide {
+  @media (min-width: $bp-wide) {
+    @content;
+  }
+}

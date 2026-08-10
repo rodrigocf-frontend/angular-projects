@@ -8,6 +8,23 @@
   grid-template-columns: 1fr 1fr;
   gap: rem(48);
   align-items: center;
+
+  @include laptop {
+    margin: rem(0, 32, 64);
+    padding: rem(48, 40);
+  }
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    gap: rem(32);
+    margin: rem(0, 24, 48);
+    padding: rem(40, 32);
+  }
+
+  @include mobile {
+    margin: rem(0, 16, 40);
+    padding: rem(32, 20);
+  }
 }
 .banner-eyebrow {
   font-family: $ff-body;
@@ -24,6 +41,10 @@
   line-height: 1;
   color: $bg;
   margin-bottom: rem(20);
+
+  @include mobile {
+    font-size: rem($text-3xl);
+  }
 }
 .banner-title em {
   font-style: italic;
@@ -53,6 +74,10 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: rem(32);
+
+  @include mobile {
+    gap: rem(16);
+  }
 }
 .stat-n {
   font-family: $ff-display;
@@ -61,6 +86,10 @@
   color: $bg;
   letter-spacing: rem($ls-tight);
   line-height: 1;
+
+  @include mobile {
+    font-size: rem(28);
+  }
 }
 .stat-label {
   font-family: $ff-body;

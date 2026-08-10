@@ -4,6 +4,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: calc(100vh - 113px);
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
 }
 
 // GALLERY
@@ -12,12 +17,21 @@
   grid-template-columns: 80px 1fr;
   gap: rem(12);
   padding: rem(32, 24, 32, 48);
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    padding: rem(24, 16);
+  }
 }
 
 .skeleton-thumbs {
   display: flex;
   flex-direction: column;
   gap: rem(8);
+
+  @include tablet {
+    display: none;
+  }
 }
 
 .skeleton-thumb {
@@ -37,6 +51,12 @@
   display: flex;
   flex-direction: column;
   gap: rem(16);
+
+  @include tablet {
+    border-left: none;
+    border-top: 0.5px solid $border;
+    padding: rem(24, 16);
+  }
 }
 
 .skeleton-brand {

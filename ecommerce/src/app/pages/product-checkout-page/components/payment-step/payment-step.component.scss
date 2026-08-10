@@ -79,4 +79,8 @@
   background: $bg;
   border: 0.5px solid $border;
   margin-top: rem(8);
+
+  @include mobile {
+    padding: rem(12);
+  }
 }

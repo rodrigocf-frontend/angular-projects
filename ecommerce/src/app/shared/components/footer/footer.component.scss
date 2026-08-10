@@ -3,12 +3,40 @@
 .footer {
   background: $txt;
   padding: rem(64, 48, 32);
+
+  @include laptop {
+    padding: rem(48, 32, 24);
+  }
+
+  @include tablet {
+    padding: rem(40, 24, 24);
+  }
+
+  @include mobile {
+    padding: rem(32, 16, 20);
+  }
 }
 .footer-top {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: rem(48);
   margin-bottom: rem(48);
+
+  @include laptop {
+    gap: rem(24);
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(32);
+    margin-bottom: rem(32);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: rem(28);
+    margin-bottom: rem(28);
+  }
 }
 .footer-brand {
   font-family: $ff-display;
@@ -59,6 +87,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: rem(16);
+  }
 }
 .footer-copy {
   font-family: $ff-body;

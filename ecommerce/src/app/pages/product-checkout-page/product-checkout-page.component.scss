@@ -5,6 +5,16 @@
   justify-content: center;
   grid-template-columns: rem(720) rem(400);
   min-height: calc(100vh - 112px);
+
+  @include laptop {
+    grid-template-columns: 1fr;
+    justify-content: stretch;
+    padding: 0 rem(24);
+  }
+
+  @include mobile {
+    padding: 0 rem(16);
+  }
 }
 
 .cart-has-product {

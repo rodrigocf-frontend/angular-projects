@@ -7,6 +7,13 @@
   overflow: hidden;
   display: flex;
   align-items: flex-end;
+
+  @include tablet {
+    height: auto;
+    min-height: 70vh;
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .hero-bg {
@@ -25,6 +32,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @include tablet {
+    position: static;
+    width: 100%;
+    height: rem(220);
+    flex-shrink: 0;
+  }
 }
 
 .hero-img-placeholder span {
@@ -40,6 +54,15 @@
   z-index: 2;
   padding: rem(0, 48, 64);
   max-width: rem(580);
+
+  @include tablet {
+    padding: rem(32, 24, 40);
+    max-width: 100%;
+  }
+
+  @include mobile {
+    padding: rem(28, 20, 36);
+  }
 }
 
 .hero-eyebrow {
@@ -60,6 +83,10 @@
   letter-spacing: rem($ls-tight);
   color: $txt;
   margin-bottom: rem(24);
+
+  @include mobile {
+    font-size: clamp(36px, 12vw, 52px);
+  }
 }
 
 .hero-title em {
@@ -81,6 +108,12 @@
   display: flex;
   gap: rem(16);
   align-items: center;
+
+  @include mobile {
+    flex-direction: column;
+    align-items: stretch;
+    gap: rem(12);
+  }
 }
 
 .hero-scroll {
@@ -96,6 +129,10 @@
   display: flex;
   align-items: center;
   gap: rem(12);
+
+  @include tablet {
+    display: none;
+  }
 }
 
 .hero-scroll::before {

@@ -8,6 +8,10 @@
   padding: rem(64, 48);
   text-align: center;
   gap: rem(16);
+
+  @include mobile {
+    padding: rem(40, 16);
+  }
 }
 
 .confirmation-icon {
@@ -128,6 +132,13 @@
   display: flex;
   gap: rem(10);
   margin-top: rem(8);
+  width: 100%;
+  max-width: rem(360);
+
+  @include mobile {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .btn-primary {

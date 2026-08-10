@@ -44,4 +44,9 @@ export class ProductDetailsGalleryComponent {
       this.indexImage.update((prevState) => prevState - 1);
     }
   }
+
+  onClickSetImage(index: number) {
+    this.currentBg.set(this.images()[index]);
+    this.indexImage.set(index);
+  }
 }

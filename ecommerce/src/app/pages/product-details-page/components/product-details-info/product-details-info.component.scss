@@ -4,6 +4,12 @@
   padding: rem(32, 48, 32, 32);
   border-left: 0.5px solid $border;
   overflow-y: auto;
+
+  @include tablet {
+    border-left: none;
+    border-top: 0.5px solid $border;
+    padding: rem(24, 16);
+  }
 }
 .product-header {
   margin-bottom: rem(24);
@@ -24,6 +30,10 @@
   letter-spacing: rem($ls-tight);
   color: $txt;
   margin-bottom: rem(8);
+
+  @include mobile {
+    font-size: rem($text-3xl);
+  }
 }
 .product-name em {
   font-style: italic;
@@ -233,6 +243,10 @@ button[primary] {
   display: flex;
   margin-bottom: rem(24);
   border-bottom: 0.5px solid $border;
+
+  @include mobile {
+    overflow-x: auto;
+  }
 }
 .tab-btn {
   font-family: $ff-body;
@@ -248,6 +262,11 @@ button[primary] {
   border-bottom: 1.5px solid transparent;
   margin-bottom: -0.5px;
   transition: all 0.15s;
+
+  @include mobile {
+    padding: rem(10, 12);
+    white-space: nowrap;
+  }
 }
 .tab-btn.active {
   color: $txt;

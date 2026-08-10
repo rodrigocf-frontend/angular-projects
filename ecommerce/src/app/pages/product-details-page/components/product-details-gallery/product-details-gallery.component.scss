@@ -8,11 +8,25 @@
   position: sticky;
   top: rem(113);
   height: calc(100vh - 113px);
+
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    position: static;
+    height: auto;
+    padding: rem(24, 16);
+  }
 }
 .thumbnails {
   display: flex;
   flex-direction: column;
   gap: rem(8);
+
+  @include tablet {
+    flex-direction: row;
+    order: 2;
+    overflow-x: auto;
+  }
 }
 
 .thumb {
@@ -21,6 +35,11 @@
   overflow: hidden;
   border: 0.5px solid transparent;
   transition: border-color 0.15s;
+
+  @include tablet {
+    width: rem(64);
+    flex-shrink: 0;
+  }
 }
 .thumb.active {
   border-color: $txt;
@@ -39,6 +58,11 @@
 .main-img {
   overflow: hidden;
   position: relative;
+
+  @include tablet {
+    order: 1;
+    aspect-ratio: 3/4;
+  }
 }
 .main-bg {
   width: 100%;

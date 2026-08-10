@@ -8,6 +8,10 @@
   padding: rem(80, 40);
   text-align: center;
   gap: rem(16);
+
+  @include mobile {
+    padding: rem(48, 16);
+  }
 }
 
 .error-icon {

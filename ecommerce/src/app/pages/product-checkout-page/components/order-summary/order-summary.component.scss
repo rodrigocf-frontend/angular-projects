@@ -9,6 +9,16 @@
   padding: rem(40, 40);
   background: $surface;
   border-left: 0.5px solid $border;
+
+  @include laptop {
+    border-left: none;
+    border-top: 0.5px solid $border;
+    padding: rem(32, 24);
+  }
+
+  @include mobile {
+    padding: rem(24, 16);
+  }
 }
 .order-items {
   display: flex;

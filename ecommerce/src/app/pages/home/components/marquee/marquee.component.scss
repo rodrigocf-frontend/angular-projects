@@ -13,6 +13,10 @@
   gap: rem(48);
   animation: marquee 20s linear infinite;
   white-space: nowrap;
+
+  @include tablet {
+    gap: rem(28);
+  }
 }
 
 .marquee-item {
@@ -25,6 +29,15 @@
   display: flex;
   align-items: center;
   gap: rem(48);
+
+  @include tablet {
+    gap: rem(28);
+  }
+
+  @include mobile {
+    font-size: rem($text-sm);
+    letter-spacing: rem($ls-wider);
+  }
 }
 
 .marquee-dot {

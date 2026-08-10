@@ -6,6 +6,15 @@
   align-items: center;
   gap: rem(8);
   border-bottom: 0.5px solid $border;
+  flex-wrap: wrap;
+
+  @include laptop {
+    padding: rem(14, 24);
+  }
+
+  @include mobile {
+    padding: rem(12, 16);
+  }
 }
 .breadcrumb a {
   font-family: $ff-body;

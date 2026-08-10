@@ -2,6 +2,18 @@
 
 .section {
   padding: rem(80, 48);
+
+  @include laptop {
+    padding: rem(64, 32);
+  }
+
+  @include tablet {
+    padding: rem(48, 24);
+  }
+
+  @include mobile {
+    padding: rem(40, 16);
+  }
 }
 
 /* CATEGORIES */
@@ -9,6 +21,18 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: rem(12);
+
+  @include laptop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
 }
 .cat-card {
   position: relative;

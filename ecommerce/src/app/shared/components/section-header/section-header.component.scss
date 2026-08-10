@@ -5,6 +5,10 @@
   align-items: baseline;
   justify-content: space-between;
   margin-bottom: rem(40);
+
+  @include mobile {
+    margin-bottom: rem(24);
+  }
 }
 
 .section-header h2 {
@@ -13,6 +17,10 @@
   font-weight: 300;
   letter-spacing: rem($ls-tight);
   color: $txt;
+
+  @include mobile {
+    font-size: rem($text-2xl);
+  }
 }
 
 .section-header em {

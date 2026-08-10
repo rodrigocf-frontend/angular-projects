@@ -3,12 +3,37 @@
 .hightlight-products-section {
   padding: rem(0, 48, 80);
   background: $bg;
+
+  @include laptop {
+    padding: rem(0, 32, 64);
+  }
+
+  @include tablet {
+    padding: rem(0, 24, 48);
+  }
+
+  @include mobile {
+    padding: rem(0, 16, 40);
+  }
 }
 
 .hightlight-products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: rem(24);
+
+  @include laptop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(16);
+  }
+
+  @include mobile {
+    gap: rem(12);
+  }
 }
 
 .product-card {

@@ -4,6 +4,15 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: rem(24);
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(16);
+  }
+
+  @include mobile {
+    gap: rem(12);
+  }
 }
 
 .empty-grid {

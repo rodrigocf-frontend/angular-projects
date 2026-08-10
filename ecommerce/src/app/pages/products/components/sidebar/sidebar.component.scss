@@ -8,10 +8,23 @@
   top: rem(113);
   height: calc(100vh - 7.0625rem);
   overflow-y: auto;
+
+  @include tablet {
+    position: static;
+    height: auto;
+    overflow-y: visible;
+    border-right: none;
+    border-bottom: 0.5px solid $border;
+    padding: rem(24, 16);
+  }
 }
 
 .filter-group {
   margin-bottom: rem(32);
+
+  @include mobile {
+    margin-bottom: rem(24);
+  }
 }
 
 .filter-title {

@@ -3,6 +3,14 @@
 .related {
   padding: rem(64, 48);
   border-top: 0.5px solid $border;
+
+  @include laptop {
+    padding: rem(48, 24);
+  }
+
+  @include mobile {
+    padding: rem(40, 16);
+  }
 }
 .related-title {
   font-family: $ff-display;
@@ -11,6 +19,11 @@
   letter-spacing: rem($ls-tight);
   color: $txt;
   margin-bottom: rem(32);
+
+  @include mobile {
+    font-size: rem($text-2xl);
+    margin-bottom: rem(20);
+  }
 }
 .related-title em {
   font-style: italic;
@@ -19,6 +32,15 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: rem(20);
+
+  @include laptop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(16);
+  }
 }
 .rel-card {
   cursor: pointer;

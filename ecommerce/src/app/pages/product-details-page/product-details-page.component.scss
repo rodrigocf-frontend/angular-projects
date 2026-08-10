@@ -1,6 +1,13 @@
+@use '../../../themes/styles.scss' as *;
+
 .product-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
   min-height: calc(100vh - 113px);
+
+  @include tablet {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
 }
