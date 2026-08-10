@@ -78,14 +78,31 @@ export default class ProductsComponent implements OnInit {
     .select(selectFilters)
     .pipe(map((filters) => filters.sort[0]?.type ?? 'relevance'));
 
+  private readonly destroyRef = inject(DestroyRef);
+
   verifyFilterQueryParams$ = toObservable(this.store.selectSignal(selectCheckedFilters))
-    .pipe(skip(1), debounceTime(100))
+    .pipe(skip(1), debounceTime(100), takeUntilDestroyed())
     .subscribe((filters) => {
       this.updateQueryParams(filters);
     });
 
+  // Quando updateQueryParams() escreve a URL a partir do estado, essa navegação também
+  // emite em route.queryParams - sem essa flag, isso disparava um novo loadProducts, que
+  // reconstrói toda a lista de filtros a partir da API via configFilters() e, como
+  // getRouteParams só entende new/sale/category, apagava tamanho/cor/preço já marcados.
+  private isSyncingUrlFromState = false;
+
   ngOnInit(): void {
-    this.loadInitialProducts();
+    // Angular reusa a mesma instância do componente quando só os query params mudam
+    // (ex: clicar em Novidades/Sale/Coleções na navbar já estando em /product/all),
+    // então um snapshot único no ngOnInit não reagiria a essas trocas.
+    this.route.queryParams.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
+      if (this.isSyncingUrlFromState) {
+        this.isSyncingUrlFromState = false;
+        return;
+      }
+      this.loadInitialProducts();
+    });
   }
 
   loadInitialProducts(): void {
@@ -140,7 +157,8 @@ export default class ProductsComponent implements OnInit {
   }
   private updateQueryParams(filters: any) {
     const params: Record<string, string> = {};
-    const categories = filters.categories.map((c: any) => c.name).join(',');
+    // getRouteParams reads `category` back as a slug, so it must be written as one too.
+    const categories = filters.categories.map((c: any) => c.slug).join(',');
     if (categories) params['category'] = categories;
     const sizes = filters.sizes.map((s: any) => s.name).join(',');
     if (sizes) params['size'] = sizes;
@@ -150,7 +168,11 @@ export default class ProductsComponent implements OnInit {
     if (fromPriceValue > 0) params['priceMin'] = fromPriceValue;
     const toPriceValue = filters.toPrice[0]?.value;
     if (toPriceValue > 0) params['priceMax'] = toPriceValue;
+    // Mirrors getRouteParams, which is the only thing reading `new`/`sale` back out of the URL.
+    if (filters.sort.some((s: any) => s.type === 'newest')) params['new'] = 'true';
+    if (filters.sort.some((s: any) => s.type === 'sale')) params['sale'] = 'true';
 
+    this.isSyncingUrlFromState = true;
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: params,
