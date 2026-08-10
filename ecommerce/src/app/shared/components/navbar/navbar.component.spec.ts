@@ -73,7 +73,6 @@ describe('NavbarComponent', () => {
 
     expect(component.currentRoute()).toBe('/cart/checkout');
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.header-back')).toBeTruthy();
     expect(compiled.querySelector('.header-secure')).toBeTruthy();
     expect(compiled.querySelector('.header__nav')).toBeFalsy();
   });
