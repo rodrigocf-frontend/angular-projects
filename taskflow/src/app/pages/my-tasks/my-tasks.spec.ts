@@ -5,7 +5,7 @@ import { provideRouter } from '@angular/router';
 import { MyTasks } from './my-tasks';
 import { Task } from '../../shared/dto/task.dto';
 
-const API = 'http://localhost:3000';
+const API = 'http://localhost:3000/api';
 
 const mockTasks: Task[] = [
   { id: '1', title: 'Task A', description: null, dueDate: null, overdue: false, priority: 'high', status: 'todo', tag: 'Feature', projectId: 1, userId: 1 },
@@ -29,7 +29,7 @@ describe('MyTasks', () => {
     fixture = TestBed.createComponent(MyTasks);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    httpMock.expectOne(`${API}/tasks?userId=1&_expand=project`).flush(mockTasks);
+    httpMock.expectOne(`${API}/v1/tasks?userId=1&_expand=project`).flush(mockTasks);
     await fixture.whenStable();
   });
 

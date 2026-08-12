@@ -5,7 +5,7 @@ import { provideRouter } from '@angular/router';
 import { SidebarComponent } from './sidebar';
 import { Project } from '../../../shared/dto/project.dto';
 
-const API = 'http://localhost:3000';
+const API = 'http://localhost:3000/api';
 
 const mockProjects: Project[] = [
   { id: 1, name: 'Project A', description: '', color: '#5b6af0', deadline: null, total: 5 },
@@ -28,9 +28,9 @@ describe('SidebarComponent', () => {
     httpMock = TestBed.inject(HttpTestingController);
 
     fixture.detectChanges();
-    httpMock.expectOne(`${API}/projects?sort=id`).flush(mockProjects);
+    httpMock.expectOne(`${API}/v1/projects`).flush(mockProjects);
     TestBed.flushEffects();
-    httpMock.expectOne(`${API}/tasks?projectId=1`).flush([]);
+    httpMock.expectOne(`${API}/v1/tasks?projectId=1`).flush([]);
   });
 
   afterEach(() => {
@@ -61,7 +61,7 @@ describe('SidebarComponent', () => {
   it('onSelect should update selected project', () => {
     component.onSelect(1);
     TestBed.flushEffects();
-    httpMock.expectOne(`${API}/tasks?projectId=2`).flush([]);
+    httpMock.expectOne(`${API}/v1/tasks?projectId=2`).flush([]);
     expect(component.currentProject()?.id).toBe(2);
   });
 

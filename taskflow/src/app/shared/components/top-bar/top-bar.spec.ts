@@ -3,6 +3,10 @@ import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { TopBar } from './top-bar';
+import { ProjectService } from '../../../core/services/project-service/project-service';
+import { Project } from '../../dto/project.dto';
+
+const mockProject: Project = { id: 1, name: 'Test', description: '', color: '#5b6af0', deadline: null, total: 0 };
 
 describe('TopBar', () => {
   let component: TopBar;
@@ -16,6 +20,8 @@ describe('TopBar', () => {
 
     fixture = TestBed.createComponent(TopBar);
     component = fixture.componentInstance;
+    TestBed.inject(ProjectService).setProjects([mockProject]);
+    fixture.detectChanges();
     await fixture.whenStable();
   });
 

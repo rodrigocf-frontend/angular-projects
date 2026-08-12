@@ -6,7 +6,7 @@ import { SidebarService } from '../sidebar-service/sidebar-service';
 import { Task } from '../../../shared/dto/task.dto';
 import { Project } from '../../../shared/dto/project.dto';
 
-const API = 'http://localhost:3000';
+const API = 'http://localhost:3000/api';
 
 const mockProject: Project = {
   id: 1,
@@ -89,20 +89,20 @@ describe('TaskService', () => {
 
     it('should update allTasks after fetch', () => {
       service.readTasks().subscribe();
-      httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
+      httpMock.expectOne(`${API}/v1/tasks?projectId=1`).flush(mockTasks);
       expect(service.allTasks().length).toBe(4);
     });
 
     it('should use projectId from SidebarService in the URL', () => {
       service.readTasks().subscribe();
-      const req = httpMock.expectOne(`${API}/tasks?projectId=1`);
+      const req = httpMock.expectOne(`${API}/v1/tasks?projectId=1`);
       expect(req.request.method).toBe('GET');
       req.flush([]);
     });
 
     it('allTasks should reflect tasks by status after fetch', () => {
       service.readTasks().subscribe();
-      httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
+      httpMock.expectOne(`${API}/v1/tasks?projectId=1`).flush(mockTasks);
       const todos = service.allTasks().filter((t) => t.status === 'todo');
       const dones = service.allTasks().filter((t) => t.status === 'done');
       expect(todos.length).toBe(2);
@@ -111,7 +111,7 @@ describe('TaskService', () => {
 
     it('allTasks should include overdue tasks', () => {
       service.readTasks().subscribe();
-      httpMock.expectOne(`${API}/tasks?projectId=1`).flush(mockTasks);
+      httpMock.expectOne(`${API}/v1/tasks?projectId=1`).flush(mockTasks);
       const overdue = service.allTasks().filter((t) => t.overdue);
       expect(overdue.length).toBe(1);
     });
@@ -122,7 +122,7 @@ describe('TaskService', () => {
       const payload = { title: 'New Task', status: 'todo', priority: 'low', projectId: 1 } as any;
       service.createTask(payload).subscribe();
 
-      const req = httpMock.expectOne(`${API}/tasks`);
+      const req = httpMock.expectOne(`${API}/v1/tasks`);
       expect(req.request.method).toBe('POST');
       expect(req.request.body).toMatchObject(payload);
       req.flush({ id: '99', ...payload });
@@ -133,7 +133,7 @@ describe('TaskService', () => {
       let emitted = false;
       service.createTask(payload).subscribe(() => (emitted = true));
 
-      httpMock.expectOne(`${API}/tasks`).flush({ id: '99', ...payload });
+      httpMock.expectOne(`${API}/v1/tasks`).flush({ id: '99', ...payload });
       expect(emitted).toBe(true);
     });
   });
@@ -143,7 +143,7 @@ describe('TaskService', () => {
       const payload = { id: '1', status: 'progress' } as any;
       service.updateTask(payload).subscribe();
 
-      const req = httpMock.expectOne(`${API}/tasks/1`);
+      const req = httpMock.expectOne(`${API}/v1/tasks/1`);
       expect(req.request.method).toBe('PATCH');
       req.flush({ ...mockTasks[0], ...payload });
     });
@@ -153,7 +153,7 @@ describe('TaskService', () => {
       let emitted = false;
       service.updateTask(payload).subscribe(() => (emitted = true));
 
-      httpMock.expectOne(`${API}/tasks/1`).flush({ ...mockTasks[0], ...payload });
+      httpMock.expectOne(`${API}/v1/tasks/1`).flush({ ...mockTasks[0], ...payload });
       expect(emitted).toBe(true);
     });
   });
@@ -163,14 +163,14 @@ describe('TaskService', () => {
       let result: Task[] = [];
       service.readMyTask().subscribe((data) => (result = data));
 
-      httpMock.expectOne(`${API}/tasks?userId=1&_expand=project`).flush(mockTasks);
+      httpMock.expectOne(`${API}/v1/tasks?userId=1&_expand=project`).flush(mockTasks);
 
       expect(result.length).toBe(4);
     });
 
     it('should make a GET request to the correct endpoint', () => {
       service.readMyTask().subscribe();
-      const req = httpMock.expectOne(`${API}/tasks?userId=1&_expand=project`);
+      const req = httpMock.expectOne(`${API}/v1/tasks?userId=1&_expand=project`);
       expect(req.request.method).toBe('GET');
       req.flush([]);
     });

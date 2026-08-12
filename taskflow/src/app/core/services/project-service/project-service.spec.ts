@@ -4,7 +4,7 @@ import { TestBed } from '@angular/core/testing';
 import { ProjectService } from './project-service';
 import { Project } from '../../../shared/dto/project.dto';
 
-const API = 'http://localhost:3000';
+const API = 'http://localhost:3000/api';
 
 const mockProjects: Project[] = [
   { id: 1, name: 'Project A', description: 'Desc A', color: '#5b6af0', deadline: null, total: 5 },
@@ -55,7 +55,7 @@ describe('ProjectService', () => {
       let result: Project[] = [];
       service.getAll().subscribe((projects) => (result = projects));
 
-      httpMock.expectOne(`${API}/projects?sort=id`).flush(mockProjects);
+      httpMock.expectOne(`${API}/v1/projects`).flush(mockProjects);
 
       expect(result.length).toBe(2);
       expect(result[0].name).toBe('Project A');
@@ -63,14 +63,14 @@ describe('ProjectService', () => {
 
     it('should update projectsList signal via tap', () => {
       service.getAll().subscribe();
-      httpMock.expectOne(`${API}/projects?sort=id`).flush(mockProjects);
+      httpMock.expectOne(`${API}/v1/projects`).flush(mockProjects);
       expect(service.projectsList().length).toBe(2);
       expect(service.projectsList()[0].name).toBe('Project A');
     });
 
     it('should make a GET request to the correct endpoint', () => {
       service.getAll().subscribe();
-      const req = httpMock.expectOne(`${API}/projects?sort=id`);
+      const req = httpMock.expectOne(`${API}/v1/projects`);
       expect(req.request.method).toBe('GET');
       req.flush(mockProjects);
     });
@@ -81,7 +81,7 @@ describe('ProjectService', () => {
       const payload = { name: 'Novo Projeto', color: '#5b6af0', description: '', deadline: null };
       service.create({ payload }).subscribe();
 
-      const req = httpMock.expectOne(`${API}/projects`);
+      const req = httpMock.expectOne(`${API}/v1/projects`);
       expect(req.request.method).toBe('POST');
       expect(req.request.body).toMatchObject({ ...payload, total: 0 });
       req.flush({ id: 3, ...payload, total: 0 });
@@ -92,7 +92,7 @@ describe('ProjectService', () => {
       let emitted = false;
       service.create({ payload }).subscribe(() => (emitted = true));
 
-      httpMock.expectOne(`${API}/projects`).flush({ id: 3, ...payload, total: 0 });
+      httpMock.expectOne(`${API}/v1/projects`).flush({ id: 3, ...payload, total: 0 });
       expect(emitted).toBe(true);
     });
   });
