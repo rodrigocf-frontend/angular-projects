@@ -9,7 +9,7 @@
     "test": "ng test",
     "test:coverage": "ng test --coverage",
     "db:start": "json-server --watch db.json ",
-    "db:start:render": "json-server --watch db.json --port $PORT --host 0.0.0.0 --delay 2000"
+    "db:start:render": "json-server --watch db.json --port $PORT --host 0.0.0.0"
   },
   "private": true,
   "dependencies": {
