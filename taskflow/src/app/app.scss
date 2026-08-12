@@ -20,6 +20,7 @@
   display: grid;
   grid-template-rows: 0fr 1fr 4.5vh;
   overflow-y: scroll;
+  overflow-x: hidden;
   background: $bg;
 
   @media (max-width: $bp-tablet) {

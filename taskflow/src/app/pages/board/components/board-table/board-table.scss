@@ -1,5 +1,13 @@
 @use '../../../../../themes/styles.scss' as *;
 
+:host {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
 .content {
   padding: toRem(20);
   overflow-y: auto;
@@ -277,6 +285,7 @@
   .content {
     padding: toRem(12);
     gap: toRem(12);
+    overflow-x: hidden;
   }
 
   .filters {
@@ -298,8 +307,11 @@
     flex-shrink: 0;
   }
 
+  // Troca de grid → flex para evitar o grid min-content overflow
   .kanban {
-    grid-template-columns: repeat(3, min(calc(100vw - 24px), #{toRem(300)}));
+    display: flex;
+    grid-template-columns: unset;
+    gap: toRem(12);
     overflow-x: auto;
     padding-bottom: toRem(8);
     -webkit-overflow-scrolling: touch;
@@ -319,12 +331,14 @@
   }
 
   .col {
+    min-width: 78vw;
+    flex-shrink: 0;
     scroll-snap-align: start;
   }
 }
 
 @media (max-width: $bp-mobile) {
-  .kanban {
-    grid-template-columns: repeat(3, calc(100vw - 24px));
+  .col {
+    min-width: 88vw;
   }
 }
