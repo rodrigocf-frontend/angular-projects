@@ -4,7 +4,7 @@
 @function rem($values...) {
   $sizes: ();
   @each $var in $values {
-    $sizes: list.append($sizes, math.div($var, 16) + rem);
+    $sizes: list.append($sizes, math.div($var, 16) * 1rem);
   }
 
   @return $sizes;

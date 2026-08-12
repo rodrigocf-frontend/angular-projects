@@ -31,7 +31,7 @@
   font-family: $ff-body;
   font-size: rem($text-sm);
   font-weight: 400;
-  letter-spacing: rem(ls-wider);
+  letter-spacing: rem($ls-wider);
   text-transform: uppercase;
   color: $txt-2;
   cursor: pointer;
