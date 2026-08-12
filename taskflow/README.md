@@ -2,6 +2,8 @@
 
 A Kanban-style task management app built as a portfolio project, focused on modern Angular best practices.
 
+![TaskFlow demo](docs/taskflow.gif)
+
 ## Overview
 
 TaskFlow lets you manage multiple projects, each with its own task board. Tasks are organized across three status columns (To Do, In Progress, Done) and can be dragged between them. The sidebar shows real-time progress computed directly from the loaded tasks via Angular Signals.
@@ -40,21 +42,27 @@ TaskFlow lets you manage multiple projects, each with its own task board. Tasks 
 ## Architecture Decisions
 
 ### Signals over NgRx
+
 State is managed with Angular Signals (`signal`, `computed`, `effect`) instead of NgRx. For a project of this scope, signals provide reactive state without the boilerplate of actions, reducers, and selectors.
 
 ### SidebarService as shared project state
+
 `SidebarService` holds the `selectedProject` signal. Both `SidebarComponent` and `Board` declare an `effect()` that reacts to this signal and calls `TaskService.readTasks()`, which fetches tasks for the active project and updates the shared `allTasks` signal via `tap()`. This keeps every consumer in sync without explicit wiring.
 
 ### HTTP interceptor for global loading
+
 A functional `loadingInterceptor` wraps every HTTP request with `LoadingService.start()` / `stop()` using RxJS `finalize()`. `LoadingService` is counter-based (`activeRequests` signal) so concurrent requests don't cancel each other's loading state prematurely.
 
 ### Global modal pattern
+
 `FormNewProject` and `FormNewTask` are mounted at the root `AppComponent` level and controlled via service signals (`visible`, `open()`, `close()`). This avoids z-index issues and keeps the modals outside the component tree that triggers them.
 
 ### Flat service state (no store)
+
 Each service owns its own signals and exposes them as readonly. Components read from signals directly — no facade or store layer needed at this scale.
 
 ### Attribute-selector UI components
+
 `Button` uses `selector: 'button[primary], button[ghost], button[danger]'` so it enhances the native `<button>` element rather than wrapping it — no extra DOM node, full accessibility semantics preserved. Variant inputs (`primary`, `ghost`, `danger`) use `input()` with `booleanAttribute` transform, which correctly converts the presence of a bare HTML attribute (e.g. `<button primary>`) to `true`. `Icon` uses `selector: 'i[name]'` and an `iconMap` record to keep Font Awesome class strings out of templates — every icon reference is type-checked against the `IconKey` union at compile time.
 
 ## Running Locally
@@ -76,13 +84,13 @@ Open `http://localhost:4200` in your browser. The API will be available at `http
 
 ## Scripts
 
-| Command | Description |
-|---|---|
-| `pnpm start` | Angular dev server |
-| `pnpm db-start` | json-server locally (port 3000) |
+| Command                | Description                       |
+| ---------------------- | --------------------------------- |
+| `pnpm start`           | Angular dev server                |
+| `pnpm db-start`        | json-server locally (port 3000)   |
 | `pnpm db-start:render` | json-server for Render deployment |
-| `pnpm build` | Production build |
-| `pnpm test` | Unit tests with Vitest |
+| `pnpm build`           | Production build                  |
+| `pnpm test`            | Unit tests with Vitest            |
 
 ## Project Structure
 
@@ -124,5 +132,5 @@ src/
 
 ## Author
 
-**Rodrigo Cunha** — Mid-level Developer  
+**Rodrigo Cunha** — Developer  
 [GitHub](https://github.com/rodrigocf-frontend)
