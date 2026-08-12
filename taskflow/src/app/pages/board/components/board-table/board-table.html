@@ -51,7 +51,7 @@
               }
 
               @if (item.dueDate) {
-                <span class="task-due"><i name="clock"></i>{{ item.dueDate }}</span>
+                <span class="task-due"><i name="clock"></i>{{ item.dueDate | date }}</span>
               }
             </div>
           </div>
@@ -98,7 +98,7 @@
               }
 
               @if (item.dueDate) {
-                <span class="task-due"><i name="clock"></i>{{ item.dueDate }}</span>
+                <span class="task-due"><i name="clock"></i>{{ item.dueDate | date }}</span>
               }
 
               @if (item.overdue) {

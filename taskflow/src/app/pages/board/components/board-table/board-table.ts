@@ -12,6 +12,7 @@ import { TaskStatus, TaskWithProjectDto, getTagClass } from '../../../../shared/
 import { UserService } from '../../../../core/services/user-service/user-service';
 import { isThisWeek } from 'date-fns';
 import { TaskService } from '../../../../core/services/task-service/task-service';
+import { DatePipe } from '@angular/common';
 
 enum Filters {
   ALL,
@@ -24,7 +25,7 @@ enum Filters {
   selector: 'app-board-table',
   templateUrl: 'board-table.html',
   styleUrl: 'board-table.scss',
-  imports: [CdkDropList, CdkDrag, Button, Icon],
+  imports: [CdkDropList, CdkDrag, Button, Icon, DatePipe],
 })
 export class BoardTable {
   private userService = inject(UserService);

@@ -77,7 +77,7 @@
             <div class="task-sub">
               <span [class]="'tag ' + getTagClass(task.tag)">{{ task.tag }}</span>
               @if (task.dueDate) {
-                <span class="due"><i name="clock"></i>{{ task.dueDate }}</span>
+                <span class="due"><i name="clock"></i>{{ task.dueDate | date }}</span>
               }
             </div>
           </div>
@@ -116,7 +116,7 @@
             <div class="task-sub">
               <span [class]="'tag ' + getTagClass(task.tag)">{{ task.tag }}</span>
               @if (task.dueDate) {
-                <span class="due"><i name="clock"></i>{{ task.dueDate }}</span>
+                <span class="due"><i name="clock"></i>{{ task.dueDate | date }}</span>
               }
             </div>
           </div>

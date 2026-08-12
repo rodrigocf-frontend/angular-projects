@@ -4,10 +4,11 @@ import { TaskService } from '../../core/services/task-service/task-service';
 import { TaskWithProjectDto, getTagClass } from '../../shared/dto/task.dto';
 import { TopBar } from '../../shared/components/top-bar/top-bar';
 import { Icon } from '../../shared/components/ui/icon/icon';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-my-tasks',
-  imports: [TopBar, Icon],
+  imports: [TopBar, Icon, DatePipe],
   templateUrl: './my-tasks.html',
   styleUrl: './my-tasks.scss',
 })
