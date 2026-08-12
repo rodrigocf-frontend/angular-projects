@@ -1,21 +1,9 @@
 <header class="header">
   @if (currentRoute() !== '/cart/checkout') {
     <nav class="header__nav">
-      <a [routerLink]="['/product/all']">Coleções</a>
-      <a
-        [routerLink]="['/product/all']"
-        [queryParams]="{
-          new: true,
-        }"
-        >Novidades</a
-      >
-      <a
-        [routerLink]="['/product/all']"
-        [queryParams]="{
-          sale: true,
-        }"
-        >Sale</a
-      >
+      <a href="/product/all">Coleções</a>
+      <a href="/product/all?new=true">Novidades</a>
+      <a href="/product/all?sale=true">Sale</a>
     </nav>
 
     <div class="header__logo"><a [routerLink]="['/']">Maison</a></div>

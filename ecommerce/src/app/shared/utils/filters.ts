@@ -1,17 +1,17 @@
-import { ActivatedRoute } from '@angular/router';
+import { Params } from '@angular/router';
 import { CategoryFilter, SortFilter } from '../../pages/products/store/products/products.reducers';
 
 export const getRouteParams = (
-  route: ActivatedRoute,
+  params: Params,
 ): {
   sort: SortFilter[];
   categories: CategoryFilter[];
 } => {
   let sort: SortFilter[] = [];
   let categories: CategoryFilter[] = [];
-  const isNew = route.snapshot.queryParams['new'];
-  const isSale = route.snapshot.queryParams['sale'];
-  const isCategory = route.snapshot.queryParams['category'];
+  const isNew = params['new'];
+  const isSale = params['sale'];
+  const isCategory = params['category'];
 
   if (isNew && isValidQueryParams(isNew)) sort = [{ name: 'Novidades', type: 'newest' }];
   if (isSale && isValidQueryParams(isSale)) sort = [...sort, { name: '', type: 'sale' }];

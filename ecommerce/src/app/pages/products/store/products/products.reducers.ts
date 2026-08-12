@@ -47,8 +47,11 @@ export interface PriceFilter extends ProductFilter {
   value: number | null;
 }
 
+export type SortFilterType =
+  'relevance' | 'min-price' | 'max-price' | 'newest' | 'sale' | 'featured';
+
 export interface SortFilter extends ProductFilter {
-  type: 'relevance' | 'min-price' | 'max-price' | 'newest' | 'sale' | 'featured';
+  type: SortFilterType;
 }
 
 export interface Pagination {
@@ -242,13 +245,14 @@ export const productsReducer = createReducer(
       },
     };
   }),
-  on(setFilter, (state, { filterType, color, category, size, price }) => {
+  on(setFilter, (state, { filterType, color, category, size, price, sort }) => {
     switch (filterType) {
       case FilterType.color:
         return {
           ...state,
           filters: {
             ...state.filters,
+            sort: [],
             colors: checkFilter<ColorFilter>(state.filters.colors, color),
           },
         };
@@ -257,6 +261,7 @@ export const productsReducer = createReducer(
           ...state,
           filters: {
             ...state.filters,
+            sort: [],
             categories: checkFilter<CategoryFilter>(state.filters.categories, category),
           },
         };
@@ -265,6 +270,7 @@ export const productsReducer = createReducer(
           ...state,
           filters: {
             ...state.filters,
+            sort: [],
             sizes: checkFilter<SizeFilter>(state.filters.sizes, size),
           },
         };
@@ -274,6 +280,7 @@ export const productsReducer = createReducer(
             ...state,
             filters: {
               ...state.filters,
+              sort: [],
               fromPrice: [
                 {
                   ...price,

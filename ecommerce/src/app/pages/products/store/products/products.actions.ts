@@ -85,6 +85,7 @@ export const setFilter = createAction(
     category?: CategoryFilter;
     size?: SizeFilter;
     price?: PriceFilter;
+    sort?: SortFilter;
   }>(),
 );
 

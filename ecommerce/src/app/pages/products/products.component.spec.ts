@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute, provideRouter, Router } from '@angular/router';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import ProductsComponent from './products.component';
 import {
@@ -66,11 +66,10 @@ describe('ProductsComponent', () => {
     overrides: {
       productsState?: Partial<ProductsState>;
       queryParams?: Record<string, string>;
-      queryParams$?: Observable<Record<string, string>>;
     } = {},
   ) => {
     activatedRouteMock.snapshot.queryParams = overrides.queryParams ?? {};
-    activatedRouteMock.queryParams = overrides.queryParams$ ?? of(overrides.queryParams ?? {});
+    activatedRouteMock.queryParams = of(overrides.queryParams ?? {});
 
     await TestBed.configureTestingModule({
       imports: [ProductsComponent],
@@ -435,36 +434,4 @@ describe('ProductsComponent', () => {
     );
   });
 
-  it('does not re-dispatch loadProducts for a URL change caused by its own state-to-URL sync, but does for an external one', async () => {
-    const queryParams$ = new Subject<Record<string, string>>();
-    await configureModule({ queryParams$ });
-    await createComponent();
-    const dispatchSpy = vi.spyOn(store, 'dispatch');
-    const router = TestBed.inject(Router);
-    vi.spyOn(router, 'navigate').mockResolvedValue(true);
-    dispatchSpy.mockClear();
-
-    // updateQueryParams() (state -> URL) sets the guard flag right before navigating; the
-    // resulting queryParams emission it causes must not trigger another loadProducts, or the
-    // subsequent configFilters() would rebuild the filter list from the (URL-only) params and
-    // wipe out size/color/price selections that never round-trip through the URL.
-    (component as any).updateQueryParams({
-      categories: [],
-      sizes: [{ name: 'M' }],
-      colors: [],
-      fromPrice: [],
-      toPrice: [],
-      sort: [],
-    });
-    queryParams$.next({ size: 'M' });
-    await fixture.whenStable();
-
-    expect(dispatchSpy).not.toHaveBeenCalledWith(expect.objectContaining({ type: loadProducts.type }));
-
-    // A real external navigation (e.g. a navbar link) must still trigger a reload.
-    queryParams$.next({ new: 'true' });
-    await fixture.whenStable();
-
-    expect(dispatchSpy).toHaveBeenCalledWith(expect.objectContaining({ type: loadProducts.type }));
-  });
 });
