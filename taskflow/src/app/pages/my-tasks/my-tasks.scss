@@ -279,3 +279,40 @@ i {
 .empty-group-text {
   font-size: toRem(12.5);
 }
+
+@media (max-width: $bp-screen) {
+  .content {
+    padding: toRem(16);
+  }
+}
+
+@media (max-width: $bp-tablet) {
+  .content {
+    padding: toRem(12);
+  }
+
+  .summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-chip {
+    display: none;
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .task-right {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: toRem(4);
+  }
+
+  .status-chip {
+    font-size: toRem(10);
+    padding: toRem(1) toRem(6);
+  }
+}

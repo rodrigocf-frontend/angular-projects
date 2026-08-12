@@ -57,3 +57,21 @@
   color: $txt;
   font-size: toRem(13);
 }
+
+.hamburger {
+  display: none;
+
+  @media (max-width: $bp-tablet) {
+    display: flex;
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .topbar-title {
+    font-size: toRem(13);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 160px;
+  }
+}

@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit {
   private readonly taskService = inject(TaskService);
   private readonly router = inject(Router);
   private readonly snackbarService = inject(SnackbarService);
-  private readonly sidebarService = inject(SidebarService);
+  protected readonly sidebarService = inject(SidebarService);
 
   private allTasks = this.taskService.allTasks;
   currentProject = this.sidebarService.selectedProject;

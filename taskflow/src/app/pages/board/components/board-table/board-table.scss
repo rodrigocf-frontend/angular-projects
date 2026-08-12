@@ -266,3 +266,65 @@
 .cdk-drag-animating {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+@media (max-width: $bp-screen) {
+  .content {
+    padding: toRem(16);
+  }
+}
+
+@media (max-width: $bp-tablet) {
+  .content {
+    padding: toRem(12);
+    gap: toRem(12);
+  }
+
+  .filters {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: toRem(4);
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .chip {
+    flex-shrink: 0;
+  }
+
+  .filter-right {
+    flex-shrink: 0;
+  }
+
+  .kanban {
+    grid-template-columns: repeat(3, min(calc(100vw - 24px), #{toRem(300)}));
+    overflow-x: auto;
+    padding-bottom: toRem(8);
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar {
+      height: toRem(4);
+    }
+    &::-webkit-scrollbar-track {
+      background: $surface-2;
+      border-radius: 2px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $border100;
+      border-radius: 2px;
+    }
+  }
+
+  .col {
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .kanban {
+    grid-template-columns: repeat(3, calc(100vw - 24px));
+  }
+}

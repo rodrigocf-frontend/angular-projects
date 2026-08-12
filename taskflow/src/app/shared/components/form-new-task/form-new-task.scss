@@ -174,3 +174,26 @@
   bottom: 0;
   background: $surface;
 }
+
+@media (max-width: $bp-tablet) {
+  .modal {
+    width: min(#{toRem(480)}, calc(100% - 32px));
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal {
+    width: 100%;
+    border-radius: toRem(16) toRem(16) 0 0;
+    max-height: 92vh;
+  }
+}

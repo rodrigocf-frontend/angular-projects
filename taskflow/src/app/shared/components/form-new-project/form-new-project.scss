@@ -130,3 +130,21 @@
   gap: toRem(8);
   justify-content: flex-end;
 }
+
+@media (max-width: $bp-tablet) {
+  .modal {
+    width: min(#{toRem(380)}, calc(100% - 32px));
+  }
+}
+
+@media (max-width: $bp-mobile) {
+  .overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal {
+    width: 100%;
+    border-radius: toRem(16) toRem(16) 0 0;
+  }
+}

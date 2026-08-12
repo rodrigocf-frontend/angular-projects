@@ -1,5 +1,8 @@
 <div class="app-container font-inter">
   <app-sidebar />
+  @if (sidebarService.mobileMenuOpen()) {
+    <div class="sidebar-backdrop" (click)="sidebarService.closeMobileMenu()"></div>
+  }
   <div class="main-content">
     <router-outlet />
     <app-bottom-bar />

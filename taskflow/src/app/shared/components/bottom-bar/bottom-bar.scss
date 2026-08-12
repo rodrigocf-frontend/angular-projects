@@ -4,6 +4,10 @@
   position: sticky;
   bottom: 0;
   z-index: 2;
+
+  @media (max-width: $bp-tablet) {
+    display: none;
+  }
 }
 
 .statusbar {

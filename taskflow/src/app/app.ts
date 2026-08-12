@@ -8,6 +8,7 @@ import { FormNewProject } from './shared/components/form-new-project/form-new-pr
 import { FormNewTask } from './shared/components/form-new-task/form-new-task';
 import { TaskService } from './core/services/task-service/task-service';
 import { ProjectService } from './core/services/project-service/project-service';
+import { SidebarService } from './core/services/sidebar-service/sidebar-service';
 
 @Component({
   selector: 'app-root',
@@ -26,4 +27,5 @@ import { ProjectService } from './core/services/project-service/project-service'
 export class App {
   taskService = inject(TaskService);
   projectService = inject(ProjectService);
+  sidebarService = inject(SidebarService);
 }

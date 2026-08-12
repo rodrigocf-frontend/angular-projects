@@ -38,6 +38,10 @@ export class TopBar {
     this.taskService.open();
   }
 
+  protected toggleMobileMenu() {
+    this.sidebarService.toggleMobileMenu();
+  }
+
   protected getTitle() {
     switch (this.currentNavigation()) {
       case '':

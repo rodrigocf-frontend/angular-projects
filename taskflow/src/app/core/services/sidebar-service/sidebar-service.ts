@@ -12,9 +12,20 @@ export class SidebarService {
     total: 0,
   });
 
+  private menuOpen = signal(false);
+
   selectedProject = this.project.asReadonly();
+  mobileMenuOpen = this.menuOpen.asReadonly();
 
   setProject(projectData: Project) {
     this.project.set(projectData);
+  }
+
+  toggleMobileMenu() {
+    this.menuOpen.update((v) => !v);
+  }
+
+  closeMobileMenu() {
+    this.menuOpen.set(false);
   }
 }

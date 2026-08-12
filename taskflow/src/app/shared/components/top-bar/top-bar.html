@@ -1,4 +1,5 @@
 <header class="topbar" id="topbar-el">
+  <button class="hamburger" ghost (click)="toggleMobileMenu()"><i name="bars"></i></button>
   <span class="topbar-title">{{ getTitle() }} · {{ selectedProject()?.name }}</span>
   @if (projects().length > 0) {
     <button primary (click)="openNewTaskForm()"><i name="add"></i>Nova tarefa</button>
