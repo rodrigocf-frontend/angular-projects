@@ -5,7 +5,7 @@ import { Subject, of, throwError } from 'rxjs';
 import { vi } from 'vitest';
 import { ProductCartEffects } from './product-cart.effects';
 import { ProductService } from '../../../core/services/product/products.service';
-import { addProductInCart, setItemsInCart } from './product-cart.actions';
+import { addProductInCart, saveCartLocal, setItemsInCart } from './product-cart.actions';
 import { MOCK_PRODUCT } from '../../../../mocks/models/product.mock';
 import { ProductColor, ProductSize } from '../../../shared/utils/product';
 
@@ -46,7 +46,10 @@ describe('ProductCartEffects', () => {
       actions$.next(addProductInCart({ id: MOCK_PRODUCT.id, count: 2, color, size }));
 
       expect(productService.getProduct).toHaveBeenCalledWith(MOCK_PRODUCT.id);
-      expect(emitted).toEqual([setItemsInCart({ product: MOCK_PRODUCT, count: 2, color, size })]);
+      expect(emitted).toEqual([
+        setItemsInCart({ product: MOCK_PRODUCT, count: 2, color, size }),
+        saveCartLocal(),
+      ]);
       sub.unsubscribe();
     });
 
@@ -60,6 +63,7 @@ describe('ProductCartEffects', () => {
 
       expect(emitted).toEqual([
         setItemsInCart({ product: MOCK_PRODUCT, count: undefined, color, size }),
+        saveCartLocal(),
       ]);
       sub.unsubscribe();
     });
@@ -86,7 +90,10 @@ describe('ProductCartEffects', () => {
       productService.getProduct.mockReturnValueOnce(of(MOCK_PRODUCT));
       actions$.next(addProductInCart({ id: MOCK_PRODUCT.id, count: 1, color, size }));
 
-      expect(emitted).toEqual([setItemsInCart({ product: MOCK_PRODUCT, count: 1, color, size })]);
+      expect(emitted).toEqual([
+        setItemsInCart({ product: MOCK_PRODUCT, count: 1, color, size }),
+        saveCartLocal(),
+      ]);
       sub.unsubscribe();
     });
   });

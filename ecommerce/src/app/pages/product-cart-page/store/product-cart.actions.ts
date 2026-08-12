@@ -14,3 +14,4 @@ export const setItemsInCart = createAction(
 );
 
 export const clearCart = createAction('[Cart] - clear products on cart');
+export const saveCartLocal = createAction('[Cart] - saveCartLocal');

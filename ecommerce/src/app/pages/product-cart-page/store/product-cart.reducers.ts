@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Product } from '../../../shared/models/product.model';
-import { clearCart, setItemsInCart, toggleCart } from './product-cart.actions';
+import { clearCart, saveCartLocal, setItemsInCart, toggleCart } from './product-cart.actions';
 import { ProductColor, ProductSize } from '../../../shared/utils/product';
 
 export const PRODUCT_CART_STORE_KEY = 'cart';
@@ -17,8 +17,17 @@ export interface CartState {
   open: boolean;
 }
 
+const getLocalStorage = () => {
+  const localItems = localStorage.getItem('[cart]-items');
+
+  if (localItems) {
+    return JSON.parse(localItems) as CartProductItem[];
+  }
+  return [] as CartProductItem[];
+};
+
 const initialCartState: CartState = {
-  items: [],
+  items: getLocalStorage(),
   open: false,
 };
 
@@ -53,10 +62,16 @@ export const cartReducers = createReducer(
     };
   }),
   on(clearCart, (state) => {
+    localStorage.removeItem('[cart]-items');
+
     return {
       ...state,
       items: [],
     };
+  }),
+  on(saveCartLocal, (state) => {
+    localStorage.setItem('[cart]-items', JSON.stringify(state.items));
+    return state;
   }),
 );
 
