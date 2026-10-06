@@ -1,59 +1,120 @@
-# GymApp
+# Gym App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.4.
+A workout management app for gym members and personal trainers, built as a portfolio project focused on Clean Architecture in Angular.
 
-## Development server
+> Early stage: the domain, data layer and test suite are in place; the UI is still a placeholder.
 
-To start a local development server, run:
+## Overview
+
+Gym App models two kinds of users — gym members and personal trainers — and the workouts a trainer assigns to a member, each made of exercises with series, repetitions, load and rest. Data is persisted in Supabase (Postgres). The code is split into a `domain` layer that holds the business rules and a `data` layer that talks to Supabase, connected through repository contracts.
+
+## Tech Stack
+
+- **Angular 22** — standalone components, `inject()`-based dependency injection
+- **TypeScript 6** — strict typing
+- **Supabase** — Postgres database accessed through `@supabase/supabase-js`, with row types generated into `database.types.ts`
+- **Supabase CLI** — local project config (`supabase/config.toml`) and schema pulls
+- **SCSS** — component and global styles
+- **Vitest** — unit testing via Angular's `@angular/build:unit-test` builder
+- **Prettier** — formatting
+- **pnpm** — package management
+
+## Features
+
+- Gym user entity with two roles (`gymMember` / `personalTrainer`) and an optional link to a personal trainer
+- Workout and exercise entities (series, repetitions, optional load and rest)
+- Create gym user use case, persisted to the `tb_gym_users` table
+- Supabase-backed repository with a DTO and mapper between the entity and the table row
+- Environment-based Supabase URL and publishable key
+
+## Architecture Decisions
+
+### Domain and data layers split by a repository contract
+
+`domain/` holds entities, use cases and the `GymUsersRepository` contract; `data/` holds the Supabase implementation, the DTO and the mapper. The domain never imports from `data/` or from `@supabase/supabase-js` — swapping Supabase for another backend means writing a new repository class and changing one provider.
+
+### Abstract class as the injection token
+
+`GymUsersRepository` is an `abstract class` rather than an `interface`. Interfaces are erased at compile time and can't be used as Angular DI tokens; an abstract class is both the contract and the token, so `app.config.ts` binds it with a single `{ provide: GymUsersRepository, useClass: SupabaseGymUsersRepositoryImpl }` and no `InjectionToken` is needed.
+
+### Use cases are Angular injectables
+
+Use cases are decorated with `@Injectable` and resolve their repository with `inject()`. This couples the domain to `@angular/core`, a deliberate trade-off: the domain isn't meant to be reused outside Angular, and letting the framework wire use cases avoids a hand-written factory provider for each one.
+
+### DTOs derived from the generated database types
+
+`GymUserDTO` is derived from `Database['public']['Tables']['tb_gym_users']['Row']` in `database.types.ts` instead of being written by hand, so a schema change surfaces as a compile error in the mapper rather than as a runtime failure.
+
+### Tests live outside `src/`
+
+Specs sit in a top-level `tests/` folder that mirrors the `src/` tree, instead of being co-located with the code. `angular.json`'s `test` target and `tsconfig.spec.json` both point at `tests/**/*.spec.ts`.
+
+## Running Locally
+
+**Prerequisites:** Node.js 20+, pnpm, a Supabase project
 
 ```bash
-ng serve
+# Install dependencies
+pnpm install
+
+# Create the environment files (ignored by git) and fill in your Supabase URL and publishable key
+cp src/environments/environment.example.ts src/environments/environment.ts
+cp src/environments/environment.example.ts src/environments/environment.development.ts
+
+# Start the Angular app (port 4200)
+pnpm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open `http://localhost:4200` in your browser.
 
-## Code scaffolding
+The files under `src/environments/` are not committed — only `environment.example.ts` is. `environment.ts` is used by production builds and `environment.development.ts` replaces it in development.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Scripts
+
+| Command        | Description                     |
+| -------------- | ------------------------------- |
+| `pnpm start`   | Angular dev server              |
+| `pnpm build`   | Production build                |
+| `pnpm watch`   | Development build in watch mode |
+| `pnpm test`    | Unit tests with Vitest          |
+| `pnpm db-pull` | Pull the remote Supabase schema |
+
+## Testing
+
+Unit tests cover the entities, the create gym user use case, the mapper, the Supabase repository and the root component, run with Vitest through Angular's `@angular/build:unit-test` builder.
 
 ```bash
-ng generate component component-name
+pnpm test              # watch mode
+pnpm test --watch=false   # run once
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+The repository spec never reaches Supabase: the client is replaced with a fake after the repository is created.
 
-```bash
-ng generate --help
+## Project Structure
+
+```
+gym-app/
+├── src/
+│   ├── app/
+│   │   ├── domain/
+│   │   │   ├── entities/           # GymUser, GymWorkout, GymExercise
+│   │   │   ├── repositories/       # GymUsersRepository — contract and DI token
+│   │   │   └── usecases/           # CreateGymUserCase
+│   │   ├── data/
+│   │   │   ├── models/             # GymUserDTO, derived from the generated database types
+│   │   │   ├── mappers/            # GymUserMapper — entity to table row
+│   │   │   └── repositories/       # SupabaseGymUsersRepositoryImpl
+│   │   ├── app.config.ts           # Binds repository contracts to their implementations
+│   │   └── app.ts                  # Root component
+│   └── environments/
+│       └── environment.example.ts  # Template for the git-ignored environment files
+├── tests/                          # Specs, mirroring the src/ tree
+├── supabase/
+│   └── config.toml                 # Supabase CLI project config
+└── database.types.ts               # Types generated from the Supabase schema
 ```
 
-## Building
+## Author
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Rodrigo Cunha** — Developer
+[GitHub](https://github.com/rodrigocf-frontend)
