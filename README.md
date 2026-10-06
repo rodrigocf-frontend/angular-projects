@@ -12,6 +12,7 @@ A monorepo of personal portfolio projects built with Angular 22, TypeScript and 
 | --- | --- | --- |
 | [`ecommerce`](./ecommerce) — **Maison** | Fashion e-commerce storefront: catalog with filters/sort/pagination, product details, cart drawer, multi-step checkout | Angular 22, NgRx (Store/Effects), RxJS, Angular CDK, Reactive Forms, SCSS |
 | [`taskflow`](./taskflow) — **TaskFlow** | Kanban-style task manager: multi-project boards, drag-and-drop columns, task/project modals | Angular 22, Signals, Angular CDK Drag & Drop, RxJS, Reactive Forms |
+| [`gym-app`](./gym-app) — **Gym App** | Workout manager for gym members and personal trainers (early stage: domain, data layer and tests) | Angular 22, Clean Architecture, Supabase |
 | [`taskflow-api`](./taskflow-api) | Backend API for TaskFlow (early-stage scaffold) | ASP.NET Core |
 
 Each Angular project is self-contained — its own `package.json`, `pnpm-lock.yaml`, test suite and README — and runs independently. See each project's README (linked above) for architecture notes, features and setup instructions.
@@ -46,6 +47,7 @@ angular-projects/
 │       ├── ecommerce-coverage.yml   # Test + Codecov upload for ecommerce/
 │       └── taskflow-coverage.yml    # Test + Codecov upload for taskflow/
 ├── ecommerce/                       # Maison — e-commerce storefront
+├── gym-app/                         # Gym App — workout manager (Supabase)
 ├── taskflow/                        # TaskFlow — Kanban task manager
 └── taskflow-api/                    # TaskFlow backend (.NET, work in progress)
 ```
