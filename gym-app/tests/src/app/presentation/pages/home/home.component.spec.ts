@@ -58,7 +58,7 @@ describe('HomePage', () => {
     it('should render the default photo with its alt text', () => {
       const image = compiled.querySelector<HTMLImageElement>('.banner__photo img');
 
-      expect(image?.getAttribute('src')).toBe('/banner.jpg');
+      expect(image?.getAttribute('src')).toBe('/banner.webp');
       expect(image?.getAttribute('alt')).toBe(
         'Aluna sorrindo enquanto amarra o tênis antes do treino',
       );
@@ -67,7 +67,7 @@ describe('HomePage', () => {
     it('should render the webp source', () => {
       const source = compiled.querySelector('.banner__photo source');
 
-      expect(source?.getAttribute('srcset')).toBe('/banner.jpg');
+      expect(source?.getAttribute('srcset')).toBe('/banner.webp');
       expect(source?.getAttribute('type')).toBe('image/webp');
     });
 
