@@ -51,7 +51,24 @@ describe('CreateGymUserCase', () => {
     });
 
     it.todo('should create the user from the given input');
-    it.todo('should wait for the repository to finish');
-    it.todo('should reject when the repository fails');
+
+    it('should wait for the repository to finish', async () => {
+      let finished = false;
+      gymUsersRepository.create.mockImplementation(async () => {
+        await Promise.resolve();
+        finished = true;
+      });
+
+      await TestBed.inject(CreateGymUserCase).execute();
+
+      expect(finished).toBe(true);
+    });
+
+    it('should reject when the repository fails', async () => {
+      const error = new Error('failed');
+      gymUsersRepository.create.mockRejectedValue(error);
+
+      await expect(TestBed.inject(CreateGymUserCase).execute()).rejects.toBe(error);
+    });
   });
 });
