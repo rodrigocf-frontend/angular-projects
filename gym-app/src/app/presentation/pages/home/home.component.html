@@ -1,0 +1,41 @@
+<section class="banner">
+  @if (imagemUrl()) {
+    <picture class="banner__photo">
+      @if (imagemWebp()) {
+        <source [srcset]="imagemWebp()" type="image/webp" />
+      }
+      <img [src]="imagemUrl()" [alt]="imagemAlt()" fetchpriority="high" />
+    </picture>
+  }
+
+  <div class="banner__content">
+    <div class="banner__text">
+      <h1 class="title">
+        <span class="title__lead">{{ chamada() }}</span>
+        <span class="title__highlight">{{ destaque() }}</span>
+        <span class="title__main">{{ titulo() }}</span>
+      </h1>
+      <p class="banner__subtitle">{{ subtitulo() }}</p>
+      <p class="banner__description">{{ texto() }}</p>
+      <a class="button" routerLink="/login">
+        <span class="button__arrow" aria-hidden="true">➜</span>
+        Matricule-se
+      </a>
+    </div>
+
+    <aside class="services" aria-label="Serviços">
+      <p class="services__badge">{{ selo() }}</p>
+      <ol class="services__list">
+        @for (servico of servicos(); track servico; let i = $index) {
+          <li class="service" [style.--i]="i">
+            <span class="service__number">{{ i + 1 }}</span>
+            <span class="service__name">{{ servico }}</span>
+          </li>
+        }
+      </ol>
+    </aside>
+  </div>
+
+  <span class="stripe stripe--left" aria-hidden="true"></span>
+  <span class="stripe stripe--right" aria-hidden="true"></span>
+</section>
