@@ -46,3 +46,6 @@ Thumbs.db
 #Enviroments
 /src/environments/*
 !/src/environments/environment.example.ts
+
+# Uncompressed source images
+/*.original.*

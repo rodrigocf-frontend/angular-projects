@@ -1,32 +1,27 @@
-import { Component, inject } from '@angular/core';
-import { CreateGymUserCase } from './domain/usecases/create-gym-user.usecase';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import {
-  GymUserAlreadyExistsError,
-  GymUserPersistenceError,
-} from './domain/errors/gym-user.errors';
+import { Component, input, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
-export class App {
-  protected service = inject(CreateGymUserCase);
-  private _snackBar = inject(MatSnackBar);
+export class App implements OnInit {
+  private supabase: SupabaseClient;
 
-  async login() {
-    try {
-      await this.service.execute();
-    } catch (e) {
-      const isDomainError =
-        e instanceof GymUserAlreadyExistsError || e instanceof GymUserPersistenceError;
-      const message = isDomainError ? e.message : 'Erro inesperado.';
-      if (!isDomainError) console.error(e);
-      this._snackBar.open(message, 'Fechar', { duration: 5000 });
-    }
+  constructor() {
+    this.supabase = createClient(environment.supabaseUrl, environment.supabasePublishableKey);
   }
 
-  async user() {}
+  ngOnInit(): void {
+    this.supabase.auth
+      .getSession()
+      .then((e) => console.log(e))
+      .catch((e) => {
+        console.error(e);
+      });
+  }
 }
