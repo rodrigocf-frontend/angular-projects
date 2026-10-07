@@ -6,8 +6,8 @@ import { GymUser } from '../entities/gym-user.entity';
 export class CreateGymUserCase {
   private gymUserRepository = inject(GymUsersRepository);
 
-  execute() {
-    this.gymUserRepository.create(
+  async execute() {
+    await this.gymUserRepository.create(
       new GymUser({
         cpf: '00000000000',
         email: 'aluno@email.com',

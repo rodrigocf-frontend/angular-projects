@@ -4,6 +4,10 @@ import { GymUsersRepository } from '../../domain/repositories/gym-users.reposito
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { environment } from '../../../environments/environment';
 import { GymUserMapper } from '../mappers/gym-user.mapper';
+import {
+  GymUserAlreadyExistsError,
+  GymUserPersistenceError,
+} from '../../domain/errors/gym-user.errors';
 
 @Injectable()
 export class SupabaseGymUsersRepositoryImpl extends GymUsersRepository {
@@ -16,7 +20,9 @@ export class SupabaseGymUsersRepositoryImpl extends GymUsersRepository {
 
   override async create(gymUser: GymUser): Promise<void> {
     const newUserData = GymUserMapper.toEntity(gymUser);
-
-    const { data, error } = await this.supabase.from('tb_gym_users').insert([newUserData]).select();
+    const { error } = await this.supabase.from('tb_gym_users').insert([newUserData]);
+    if (!error) return;
+    if (error.code === '23505') throw new GymUserAlreadyExistsError();
+    throw new GymUserPersistenceError(error);
   }
 }
