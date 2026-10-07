@@ -41,6 +41,7 @@ export class GymUser {
   get Type() {
     return this.type;
   }
+
   get Email() {
     return this.email;
   }
