@@ -19,8 +19,8 @@ export default class HomePage {
   linkAcao = input('#unidades');
   selo = input('Aberta 24/7');
   servicos = input<string[]>(['Personal trainer', 'Musculação', 'Aulas de boxe', 'Cardio']);
-  imagemUrl = input('/banner.jpg');
+  imagemUrl = input('/banner.webp');
 
-  imagemWebp = input('/banner.jpg');
+  imagemWebp = input('/banner.webp');
   imagemAlt = input('Aluna sorrindo enquanto amarra o tênis antes do treino');
 }
